@@ -13,3 +13,6 @@ corpora/
 
 # Logs
 *.log
+
+# Claude runtime state
+.claude/

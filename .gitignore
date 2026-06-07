@@ -1,0 +1,15 @@
+# Virtual envs
+.venv/
+.venv-parler/
+__pycache__/
+*.pyc
+
+# Generated audio + big corpora downloads (kept out of git; gefion/ has the small verse files)
+samples/
+corpora/
+*.mp3
+*.zip
+*.wav
+
+# Logs
+*.log

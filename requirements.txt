@@ -1,0 +1,8 @@
+# Core pipeline (light, no big downloads)
+ebooklib          # EPUB parsing
+beautifulsoup4    # EPUB HTML -> text
+lxml              # fast parser for BeautifulSoup
+pymupdf           # PDF text extraction
+sentence-splitter # rule-based sentence segmentation (da/en, no model)
+edge-tts          # free neural TTS (no API key)
+pydub             # audio assembly (uses ffmpeg)

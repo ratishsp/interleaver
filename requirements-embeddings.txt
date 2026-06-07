@@ -1,0 +1,3 @@
+# Optional — enables the much more accurate `--method embed` aligner (LaBSE).
+# Pulls in torch; first run downloads the model (~1.8 GB).
+sentence-transformers

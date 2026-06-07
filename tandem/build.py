@@ -7,6 +7,7 @@ A side-by-side transcript is written too, so you can eyeball alignment quality.
 from __future__ import annotations
 
 import re
+import sys
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -99,8 +100,14 @@ def _render(beads, out_mp3: Path, cfg: BuildConfig, engine: Engine) -> None:
                 if not text:
                     continue
                 clip_path = tmp_dir / f"{idx:05d}_{part}.mp3"
-                engine.synth(text, lang, clip_path)
-                combined += AudioSegment.from_file(clip_path)
+                try:
+                    engine.synth(text, lang, clip_path)
+                    combined += AudioSegment.from_file(clip_path)
+                except Exception as exc:  # noqa: BLE001
+                    # A single sentence edge-tts can't voice (after retries)
+                    # shouldn't sink the whole render — skip it and keep going.
+                    print(f"  [skip] bead {idx} ({lang}): {type(exc).__name__}: {text[:70]!r}",
+                          file=sys.stderr)
                 combined += gap_inner if part == 0 else gap_outer
 
     out_mp3.parent.mkdir(parents=True, exist_ok=True)

@@ -38,7 +38,9 @@ class EdgeTTS:
         self.voices = {**self.DEFAULT_VOICES, **(voices or {})}
         self.rate = rate  # edge-tts rate string, e.g. "-25%" for 75% speed
 
-    def synth(self, text: str, lang: str, out_path: Path) -> None:
+    def synth(self, text: str, lang: str, out_path: Path, retries: int = 4) -> None:
+        import time
+
         import edge_tts
 
         voice = self.voices.get(lang)
@@ -48,7 +50,18 @@ class EdgeTTS:
         async def _run():
             await edge_tts.Communicate(text, voice, rate=self.rate).save(str(out_path))
 
-        asyncio.run(_run())
+        # edge-tts intermittently returns NoAudioReceived on transient server
+        # hiccups; retry a few times before giving up so one blip doesn't kill
+        # a whole long render.
+        last_exc = None
+        for attempt in range(retries):
+            try:
+                asyncio.run(_run())
+                return
+            except Exception as exc:  # noqa: BLE001 - retry any synth failure
+                last_exc = exc
+                time.sleep(1.5 * (attempt + 1))
+        raise last_exc
 
 
 def speed_to_rate(speed: float) -> str:

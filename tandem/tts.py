@@ -14,6 +14,14 @@ from typing import Protocol
 class Engine(Protocol):
     def synth(self, text: str, lang: str, out_path: Path) -> None: ...
 
+    def voice_id(self, lang: str) -> str:
+        """Stable descriptor (engine+voice+rate) used as the clip-cache key.
+
+        Two configs that would produce the same audio must return the same id;
+        anything that changes the audio (voice, rate, engine) must change it.
+        """
+        ...
+
 
 class EdgeTTS:
     """Microsoft Edge online neural voices."""
@@ -32,11 +40,20 @@ class EdgeTTS:
         "de": "de-DE-KatjaNeural",
         "fr": "fr-FR-DeniseNeural",
         "es": "es-ES-ElviraNeural",
+        "sv": "sv-SE-SofieNeural",
+        "bn": "bn-IN-TanishaaNeural",
+        "ur": "ur-IN-GulNeural",
     }
 
     def __init__(self, voices: dict[str, str] | None = None, rate: str = "+0%"):
         self.voices = {**self.DEFAULT_VOICES, **(voices or {})}
         self.rate = rate  # edge-tts rate string, e.g. "-25%" for 75% speed
+
+    def voice_id(self, lang: str) -> str:
+        voice = self.voices.get(lang)
+        if voice is None:
+            raise ValueError(f"No voice configured for language {lang!r}")
+        return f"edge:{voice}:{self.rate}"
 
     def synth(self, text: str, lang: str, out_path: Path, retries: int = 4) -> None:
         import time

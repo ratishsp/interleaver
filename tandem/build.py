@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import re
 import sys
-import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -25,6 +24,7 @@ class BuildConfig:
     src_first: bool = True        # speak L2 then L1 (recommended for learning)
     gap_inner_ms: int = 600       # pause between the two languages of a bead
     gap_outer_ms: int = 1000      # pause after a bead, before the next one
+    cache_dir: str = "cache/clips"  # persistent clip cache (reused across pairs)
 
 
 def build_audio(
@@ -84,34 +84,38 @@ def _clean_for_tts(text: str) -> str:
 def _render(beads, out_mp3: Path, cfg: BuildConfig, engine: Engine) -> None:
     from pydub import AudioSegment
 
+    from .cache import ClipCache
+
+    cache = ClipCache(engine, cfg.cache_dir)
     gap_inner = AudioSegment.silent(duration=cfg.gap_inner_ms)
     gap_outer = AudioSegment.silent(duration=cfg.gap_outer_ms)
     combined = AudioSegment.empty()
 
-    with tempfile.TemporaryDirectory() as tmp:
-        tmp_dir = Path(tmp)
-        for idx, (src_group, tgt_group) in enumerate(beads):
-            src_text = _clean_for_tts(" ".join(src_group))
-            tgt_text = _clean_for_tts(" ".join(tgt_group))
-            first_text, first_lang = (src_text, cfg.src_lang) if cfg.src_first else (tgt_text, cfg.tgt_lang)
-            second_text, second_lang = (tgt_text, cfg.tgt_lang) if cfg.src_first else (src_text, cfg.src_lang)
+    for idx, (src_group, tgt_group) in enumerate(beads):
+        src_text = _clean_for_tts(" ".join(src_group))
+        tgt_text = _clean_for_tts(" ".join(tgt_group))
+        first_text, first_lang = (src_text, cfg.src_lang) if cfg.src_first else (tgt_text, cfg.tgt_lang)
+        second_text, second_lang = (tgt_text, cfg.tgt_lang) if cfg.src_first else (src_text, cfg.src_lang)
 
-            for part, (text, lang) in enumerate(((first_text, first_lang), (second_text, second_lang))):
-                if not text:
-                    continue
-                clip_path = tmp_dir / f"{idx:05d}_{part}.mp3"
-                try:
-                    engine.synth(text, lang, clip_path)
-                    combined += AudioSegment.from_file(clip_path)
-                except Exception as exc:  # noqa: BLE001
-                    # A single sentence edge-tts can't voice (after retries)
-                    # shouldn't sink the whole render — skip it and keep going.
-                    print(f"  [skip] bead {idx} ({lang}): {type(exc).__name__}: {text[:70]!r}",
-                          file=sys.stderr)
-                combined += gap_inner if part == 0 else gap_outer
+        for part, (text, lang) in enumerate(((first_text, first_lang), (second_text, second_lang))):
+            if not text:
+                continue
+            try:
+                # Cache hit if this exact (voice, rate, text) was ever voiced
+                # before — so a language reused across pairs synthesises once.
+                clip_path = cache.clip(text, lang)
+                combined += AudioSegment.from_file(clip_path)
+            except Exception as exc:  # noqa: BLE001
+                # A single sentence edge-tts can't voice (after retries)
+                # shouldn't sink the whole render — skip it and keep going.
+                print(f"  [skip] bead {idx} ({lang}): {type(exc).__name__}: {text[:70]!r}",
+                      file=sys.stderr)
+            combined += gap_inner if part == 0 else gap_outer
 
     out_mp3.parent.mkdir(parents=True, exist_ok=True)
     combined.export(out_mp3, format="mp3")
+    print(f"  [cache] {cache.misses} synthesised, {cache.hits} reused → {cache.dir}",
+          file=sys.stderr)
 
 
 def _write_transcript(beads, path: Path) -> None:

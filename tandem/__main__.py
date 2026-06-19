@@ -29,6 +29,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--limit", type=int, default=None, help="only use the first N beads (handy for samples)")
     p.add_argument("--speed", type=float, default=1.0,
                    help="speech speed multiplier (e.g. 0.75 = 75%% speed, slower; 1.0 = normal)")
+    p.add_argument("--cache-dir", default="cache/clips",
+                   help="persistent clip cache dir (clips reused across pairs; default: cache/clips)")
     args = p.parse_args(argv)
 
     cfg = BuildConfig(
@@ -38,6 +40,7 @@ def main(argv: list[str] | None = None) -> int:
         src_first=not args.l1_first,
         gap_inner_ms=args.gap_inner,
         gap_outer_ms=args.gap_outer,
+        cache_dir=args.cache_dir,
     )
     engine = get_engine("edge", rate=speed_to_rate(args.speed))
     beads = build_audio(

@@ -16,3 +16,5 @@ corpora/
 
 # Claude runtime state
 .claude/
+cache/
+samples/

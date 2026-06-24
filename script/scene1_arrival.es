@@ -1,5 +1,5 @@
-Hoy llego a la ciudad.
-Me llamo Anna.
+Hoy llego a Copenhague.
+Me llamo Maya.
 Tengo una maleta grande.
 Estoy un poco cansada.
 Hace frío.

@@ -1,5 +1,5 @@
-Jag kommer till staden idag.
-Jag heter Anna.
+Jag kommer till Köpenhamn idag.
+Jag heter Maya.
 Jag har en stor resväska.
 Jag är lite trött.
 Vädret är kallt.

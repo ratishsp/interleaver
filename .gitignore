@@ -11,8 +11,19 @@ corpora/
 *.zip
 *.wav
 
+# Per-week build outputs (regenerable): assembled audio + verify run artifacts
+year1/**/audio/
+year1/**/verify_summary.json
+
 # Logs
 *.log
+
+# Secrets — NEVER commit API keys or service-account credentials
+.env
+*.key.json
+*-key.json
+*credentials*.json
+service-account*.json
 
 # Claude runtime state
 .claude/

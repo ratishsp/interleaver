@@ -31,6 +31,8 @@ def main(argv: list[str] | None = None) -> int:
                    help="speech speed multiplier (e.g. 0.75 = 75%% speed, slower; 1.0 = normal)")
     p.add_argument("--cache-dir", default="cache/clips",
                    help="persistent clip cache dir (clips reused across pairs; default: cache/clips)")
+    p.add_argument("--engine", choices=["edge", "google"], default="edge",
+                   help="TTS engine: 'edge' (free) or 'google' (Chirp 3 HD, grant-funded)")
     args = p.parse_args(argv)
 
     cfg = BuildConfig(
@@ -42,7 +44,10 @@ def main(argv: list[str] | None = None) -> int:
         gap_outer_ms=args.gap_outer,
         cache_dir=args.cache_dir,
     )
-    engine = get_engine("edge", rate=speed_to_rate(args.speed))
+    if args.engine == "google":
+        engine = get_engine("google", speed=args.speed)
+    else:
+        engine = get_engine("edge", rate=speed_to_rate(args.speed))
     beads = build_audio(
         args.src_file, args.tgt_file, args.out,
         config=cfg, engine=engine, transcript_path=args.transcript,

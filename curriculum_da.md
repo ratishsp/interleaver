@@ -37,7 +37,7 @@ longer narrative thread). Rough guide — not a rule:
 Maya arrives in Copenhagen in January knowing almost no Danish. Over 52 weeks she settles in,
 finds work, makes friends, and ends the year fluent and at home. The arc *is* the CEFR ladder:
 arrival & survival (A1) → daily life (A2) → opinions & belonging (B1) → nuance & full participation (B2).
-Recurring cast: **Mette** (a Danish friend and neighbour), a few **new friends** she makes, and her
+Recurring cast: **Nina** (a Danish friend and neighbour), a few **new friends** she makes, and her
 **family back home** (video calls). The newcomer frame is deliberate — the protagonist's journey
 mirrors the learner's own, and it makes the early simplicity and the cultural content feel natural.
 
@@ -51,10 +51,10 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 
 | Wk | Lvl | Theme | Grammar focus | New | Cumul | Narrative beat |
 |----|-----|-------|---------------|----:|------:|----------------|
-| 1 | A1 | Arrival & introducing yourself | Present of *være/hedde/komme fra*; subject pronouns; *hvad/hvor* questions; V2 word order | 40 | 40 | Maya lands in Copenhagen, knowing no one |
+| 1 | A1 | Arrival & introducing yourself | Present of *være/hedde/komme fra*; existential *der er*; subject pronouns; *hvad/hvor* questions | 40 | 40 | Maya lands in Copenhagen, knowing no one |
 | 2 | A1 | Registration, forms & numbers | Numbers 0–100; *har*; *være* + age | 40 | 80 | Registering at the *kommune*; getting a CPR and a phone number |
 | 3 | A1 | Family back home | Possessives *min/din*; indefinite *en/et* | 40 | 120 | A video call to her family abroad |
-| 4 | A1 | Finding a place to live | *der er / der ligger*; place prepositions *i, på, under* | 40 | 160 | Moving into a small Copenhagen flat |
+| 4 | A1 | Finding a place to live | *der ligger* (review *der er*); place prepositions *i, på, under* | 40 | 160 | Moving into a small Copenhagen flat |
 | 5 | A1 | Food shopping & the kitchen | Definite nouns *-en/-et*; *kan lide*; *jeg vil gerne have* | 40 | 200 | First grocery run — unfamiliar products |
 | 6 | A1 | Settling into a routine | Present-tense regular verbs; reflexive *vasker mig*; V2 review | 40 | 240 | Building a daily rhythm |
 | 7 | A1 | Time & appointments | Telling the clock; *klokken*; weekdays/months; frequency adverbs | 40 | 280 | Planning her week; booking appointments |
@@ -90,7 +90,7 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 | Wk | Lvl | Theme | Grammar focus | New | Cumul | Narrative beat |
 |----|-----|-------|---------------|----:|------:|----------------|
 | 29 | B1 | Memories of home | Extended past; *plejede at*; *da* vs *når* | 115 | 1615 | Comparing childhood there with life here |
-| 30 | B1 | The people in my new life | Adjective nuance; relative clauses *som/der* | 115 | 1730 | Portraits of Mette and new friends |
+| 30 | B1 | The people in my new life | Adjective nuance; relative clauses *som/der* | 115 | 1730 | Portraits of Nina and new friends |
 | 31 | B1 | Following Danish news | Passive *blive* + participle; reporting | 115 | 1845 | Maya starts understanding the news |
 | 32 | B1 | Nature & cycling culture | Real conditional *hvis*; modal nuance | 115 | 1960 | Embracing the bike; a nature trip |
 | 33 | B1 | Money, taxes & welfare | Large numbers; hypothetical *ville/skulle* | 115 | 2075 | Navigating SKAT and budgeting |
@@ -111,7 +111,7 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 | 43 | B2 | Politics & debate | Abstract discourse; *hvorvidt*; concessive *selvom* | 180 | 3360 | A political dinner debate she can now join |
 | 44 | B2 | Science & technology | Complex passive; *således at*; cause/effect connectors | 180 | 3540 | A documentary sparks discussion |
 | 45 | B2 | Media & advertising | Rhetorical structures; *ikke kun… men også* | 180 | 3720 | Deconstructing a Danish ad campaign |
-| 46 | B2 | Art & literature | Interpreting; hypothetical *ville have* | 180 | 3900 | An exhibition with Mette |
+| 46 | B2 | Art & literature | Interpreting; hypothetical *ville have* | 180 | 3900 | An exhibition with Nina |
 | 47 | B2 | Ethics & dilemmas | Conditional perfect; *hvis… havde…, ville… have* | 180 | 4080 | A moral dilemma at work |
 | 48 | B2 | The Danish model: economy & work culture | Formal register; the language of statistics | 180 | 4260 | Reflecting on the welfare model as an insider |
 | 49 | B2 | History & change | Narrative-past mastery; *indtil/siden*; historic present | 180 | 4440 | Copenhagen and Denmark, then and now |

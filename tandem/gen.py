@@ -32,12 +32,12 @@ DEFAULT_MODEL = "gemini-2.5-pro"
 
 # The fixed world every prompt shares, so referents / gender / continuity stay consistent.
 STORY_BIBLE = (
-    "Story world: A graded comprehensible-input language course. The protagonist is Maya, a "
-    "31-year-old woman from Mexico, spending her first year in "
-    "Copenhagen, Denmark. She has moved to Copenhagen for a fresh start; she arrives knowing almost "
-    "no one and gradually settles in — making friends, finding her way around the city, everyday "
-    "life. She grew up in a warm climate, so the cold, dark Danish winter is new to her. Recurring "
-    "cast: Mette (a Danish friend and neighbour) and her family back home in Mexico (video calls)."
+    "Story world: The protagonist is Maya, a 31-year-old woman from Mexico, spending her first year "
+    "in Copenhagen, Denmark. She has moved to Copenhagen for a fresh start; she arrives knowing "
+    "almost no one and gradually settles in — making friends, finding her way around the city, "
+    "everyday life. She grew up in a warm climate, so the cold, dark Danish winter is new to her. "
+    "Recurring cast: Nina (a Danish friend and neighbour) and her family back home in Mexico (video "
+    "calls)."
 )
 
 
@@ -64,7 +64,12 @@ def make_client():
 
 
 def _json_call(client, model: str, prompt: str) -> dict:
-    """Call the model forcing a JSON object response and parse it."""
+    """Call the model forcing a JSON object response and parse it.
+
+    Temperature is left UNSET so the model's own default applies (1.0 for current Gemini, which
+    Google recommends across both 2.x and 3.x). This keeps the pipeline model-agnostic — no temp to
+    retune when swapping models — and avoids Gemini 3's looping/degradation risk from sub-1.0 temps.
+    """
     from google.genai import types
 
     resp = client.models.generate_content(
@@ -72,7 +77,6 @@ def _json_call(client, model: str, prompt: str) -> dict:
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
-            temperature=0.7,
         ),
     )
     text = (resp.text or "").strip()
@@ -99,24 +103,15 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
 TASK: Write ONE short scene for WEEK {week} (CEFR level {level}) of the Danish course.
 Scene title: "{scene_title}". Narrative beat: {beat}
 {arc_block}
-AUTHOR THE DANISH NATIVELY AND IDIOMATICALLY — it is the language being learned, so it must be
-native-quality and exactly in-level. The English is a faithful, natural gloss of the Danish.
+The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish always beats hitting a target.
 
-HARD GRADING CONSTRAINTS (this is what 'graded' means — obey strictly):
-- Grammar allowed this week ONLY: {grammar}. Do NOT use grammar beyond this (no past tense, no
-  modals, no subordinate clauses unless listed above). Earlier-week grammar may recur.
-- Vocabulary: about {new_words} distinct content words for the whole week; keep this scene to a
-  small, high-frequency slice. Prefer the most common everyday Danish words.
-{f'- Vocabulary already introduced (reuse freely, keep recycling): {prior_vocab}' if prior_vocab else ''}
-- Sentences must be SHORT and simple ({level} = very simple at A1).
-- Exactly {lines} lines. ONE sentence per line. The DA and EN arrays MUST have the same number of
-  entries and align line-for-line (line i of EN is the translation of line i of DA).
-- Natural spoken register; a little dialogue is good.
-- Write a small coherent narrative that follows the beat — connected and flowing, not a list of
-  disconnected facts. Keep a warm, natural first-person voice, and only introduce characters the
-  beat calls for.
+- Level {level}, this week's grammar: {grammar}. Earlier-week grammar may recur; don't reach clearly beyond {level}.
+- Use common everyday words and the already-introduced ones{' (below)' if prior_vocab else ''}; add only a few new ones (~{new_words}/week, spread across scenes).
+- Tell it as Maya's own first-person account of the scene (her voice throughout). Weave any speech in as short, quoted, attributed lines ("Velkommen," siger han) — never a bare back-and-forth where you can't tell who is speaking. Only the characters the beat calls for.
+{f'- Already introduced (reuse freely): {prior_vocab}' if prior_vocab else ''}
+- About {lines} lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
-Return JSON: {{"da": ["...", ...], "en": ["...", ...]}} with exactly {lines} entries each."""
+Return JSON: {{"da": [...], "en": [...]}}, same number of entries in each."""
 
 
 def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, beat: str,
@@ -145,12 +140,9 @@ TASK: Translate the following {len(lines)} lines from {src_lang} into {tgt_lang}
 
 RULES:
 - Translate naturally and idiomatically in {tgt_lang}; avoid word-for-word translationese.
-- PHASE-1 POLICY = TRANSLATE, DO NOT RELOCATE. Keep the Danish setting and Danish-specific terms
-  (e.g. SKAT, hygge, Janteloven, CPR, MitID, København) — render them naturally, do NOT swap them
-  for the target culture's equivalents.
+- PHASE-1 POLICY = TRANSLATE, DO NOT RELOCATE. Keep the Danish setting and Danish-specific terms (e.g. SKAT, hygge, Janteloven, CPR, MitID, København) — render them naturally, do NOT swap them for the target culture's equivalents.
 - Keep names consistent.{f' Glossary: {glossary}' if glossary else ''}
-- Preserve sentence segmentation EXACTLY: return the SAME number of lines ({len(lines)}), one
-  translation per input line, in order. Do not merge or split lines.
+- Preserve sentence segmentation EXACTLY: return the SAME number of lines ({len(lines)}), one translation per input line, in order. Do not merge or split lines.
 
 INPUT:
 {numbered}
@@ -172,8 +164,68 @@ def translate_lines(client, *, model: str, src_lang: str, tgt_lang: str, lines: 
 
 _WORD_RE = re.compile(r"[a-zA-ZæøåÆØÅ]+")
 
+# A line holds more than one sentence if a sentence-final mark (optionally closing a quote/paren/
+# guillemet) is followed by whitespace and a new capitalised sentence. Heuristic, but enough to guard
+# the one-sentence-per-line invariant the per-sentence audio assembler depends on. Since this is a
+# HARD gate, false positives must be avoided: a digit after the mark ("kl. 10"), a known Danish
+# abbreviation ("f.eks. Noget", "bl.a. K"), and a single initial ("H. C. Andersen") all produce
+# "mark + space + Capital" but are NOT sentence breaks, so they're excluded below.
+_MULTI_SENTENCE_RE = re.compile(r"[.!?][\"»«')\]]?\s+[A-ZÆØÅ]")
+_ABBREVS = ("f.eks", "bl.a", "m.m", "m.fl", "d.v.s", "dvs", "osv", "ca", "kl", "nr", "stk",
+            "o.l", "inkl", "ekskl", "tlf", "jf", "pga", "evt")
+
+
+def _multi_sentence_lines(lines: list[str]) -> list[int]:
+    """1-based indices of lines that appear to hold more than one sentence (abbreviations excluded)."""
+    out = []
+    for i, ln in enumerate(lines):
+        for m in _MULTI_SENTENCE_RE.finditer(ln):
+            if ln[m.start()] == ".":                  # only a period can be an abbreviation
+                before = ln[:m.start()].lower()
+                if any(before.endswith(a) for a in _ABBREVS):
+                    continue                          # e.g. "f.eks.", "kl."
+                if re.search(r"(?:^|\s)\w$", before):  # single initial, e.g. "H." / "C."
+                    continue
+            out.append(i + 1)
+            break
+    return out
+
 # Dimensions the LLM reviewer scores (order = display order).
-VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "content_neutral", "naturalness")
+VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "content_neutral", "naturalness",
+                     "gloss_fidelity")
+# Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
+# grammar_whitelist = scope (correct-but-slightly-advanced Danish is fine); cefr_level = exact level.
+ADVISORY_DIMS = ("grammar_whitelist", "cefr_level")
+
+# CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
+# These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
+# and skews conversational, so concrete scene nouns (kuffert, lufthavn, fly) routinely fall
+# beyond the band even when perfectly A1-appropriate. The band-check is therefore DIAGNOSTIC
+# (advisory) — it lists the out-of-band word-forms + ranks for a human glance, not a hard gate.
+CEFR_BANDS = {"A1": 800, "A2": 1500, "B1": 3000, "B2": 5000, "C1": 8000, "C2": 12000}
+
+# Story-world proper nouns — never in a frequency list, always exempt from the band-check.
+STORY_NAMES = frozenset({"maya", "nina", "danmark", "danmarks", "københavn", "københavns",
+                         "mexico"})
+
+_FREQ_PATH = Path(__file__).parent / "data" / "da_freq_50k.txt"
+_FREQ_RANKS: dict[str, int] | None = None
+
+
+def load_freq_ranks(path: str | Path | None = None) -> dict[str, int]:
+    """Load the Danish frequency list (word-form → 1-based rank, most common = 1). Cached."""
+    global _FREQ_RANKS
+    if path is None and _FREQ_RANKS is not None:
+        return _FREQ_RANKS
+    p = Path(path) if path else _FREQ_PATH
+    ranks: dict[str, int] = {}
+    for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), start=1):
+        word = line.split(" ", 1)[0].strip().lower()
+        if word and word not in ranks:
+            ranks[word] = i
+    if path is None:
+        _FREQ_RANKS = ranks
+    return ranks
 
 
 def _distinct_words(lines: list[str]) -> set[str]:
@@ -183,59 +235,71 @@ def _distinct_words(lines: list[str]) -> set[str]:
     return words
 
 
-def verify_prompt(*, level: str, grammar: str, new_words: int, da_lines: list[str],
+def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None = None,
+               exempt: frozenset[str] = frozenset()) -> dict:
+    """Flag Danish word-forms ranked beyond the level's frequency band (or unranked). Advisory."""
+    if ranks is None:
+        ranks = load_freq_ranks()
+    band = CEFR_BANDS.get(level.upper())
+    out = []
+    for w in sorted(_distinct_words(da_lines)):
+        if w in STORY_NAMES or w in exempt:
+            continue
+        r = ranks.get(w)
+        if band and (r is None or r > band):
+            out.append({"word": w, "rank": r})
+    out.sort(key=lambda d: (d["rank"] is not None, d["rank"] or 0))
+    return {"level": level, "band": band, "out_of_band": out}
+
+
+def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
                   en_lines: list[str], cumulative_vocab: str = "") -> str:
     """Build the independent-QA prompt (also used by --show-prompt)."""
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
-    return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene
-below against its spec. Be strict, concrete, and cite the offending Danish by line number. Do not be
-generous — your job is to catch problems the writer missed.
+    return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
 
 SPEC:
 - CEFR level: {level}
 - Grammar FOCUS this week (the new structures introduced): {grammar}
-- ALSO always allowed (never flag these): the basic function words every sentence needs — articles
-  (en/et), conjunctions (og, men), common possessives (min/din/sin), prepositions, negation (ikke),
-  and ordinary adverbs. Only count SUBSTANTIVE structures beyond the level as violations.
-- Weekly new-word budget ≈ {new_words}; vocabulary should be high-frequency and appropriate for {level}.
+- ALSO always allowed (never flag these): the basic function words every sentence needs — articles (en/et), conjunctions (og, men), common possessives (min/din/sin), prepositions, negation (ikke), and ordinary adverbs. Only count SUBSTANTIVE structures beyond the level as violations.
 {f'- Vocabulary already taught earlier (fine to reuse): {cumulative_vocab}' if cumulative_vocab else ''}
 
-The Danish is the language being learned, so it must be native-quality and exactly in-level. The
-English is only a gloss.
+The Danish is the language being learned — judge it as real, native Danish. The English is its gloss, and is the pivot other languages are later translated from, so it must faithfully convey the Danish.
 
 SCENE (line-aligned Danish / English):
 {pairs}
 
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
-1. grammar_whitelist — does every Danish line stay within the week's grammar? Flag ONLY substantive
-   structures beyond the level: other tenses (past/perfect/future), modal verbs (kan/vil/skal/må/bør),
-   subordinate or relative clauses, the passive, comparatives/superlatives. Do NOT flag basic function
-   words (articles, og/men, min/din, prepositions, ikke) — those are always allowed.
-2. cefr_level — is it genuinely {level} (sentence length, complexity, word frequency)? Flag lines
-   that are too advanced — or so trivial they break the narrative.
-3. content_neutral — is it about ordinary life and NOT about learning a language? Flag any language
-   school, language class, or "learning/practising Danish" content.
-4. naturalness — is the Danish idiomatic and native (not translationese)? Flag awkward/unnatural lines.
+1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus. Never flag the basic function words listed above.
+2. cefr_level — is the sentence length and complexity appropriate to {level}? Flag ONLY lines whose complexity clearly EXCEEDS {level}; simplicity that fits {level} is expected, not a defect. (Word frequency is checked separately — ignore it here.)
+3. content_neutral — is it about ordinary life and NOT about learning a language? Flag any language school, language class, or "learning/practising Danish" content.
+4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
+5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
  "cefr_level": {{"pass": true, "assessed_level": "{level}", "issues": []}},
  "content_neutral": {{"pass": true, "issues": []}},
- "naturalness": {{"pass": true, "issues": []}}}}
+ "naturalness": {{"pass": true, "issues": []}},
+ "gloss_fidelity": {{"pass": true, "issues": []}}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 
-def verify_scene(client, *, model: str, level: str, grammar: str, new_words: int,
+def verify_scene(client, *, model: str, level: str, grammar: str,
                  da_lines: list[str], en_lines: list[str], cumulative_vocab: str = "") -> dict:
     """Programmatic checks + an independent LLM review. Returns a report dict."""
+    multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
     report = {
         "aligned": len(da_lines) == len(en_lines),
+        "one_per_line": not multi,                 # hard structural gate (audio segmentation)
+        "multi_sentence_lines": multi,
         "da_lines": len(da_lines),
         "en_lines": len(en_lines),
         "distinct_da_words": len(_distinct_words(da_lines)),
+        "band": band_check(da_lines, level=level),
     }
-    prompt = verify_prompt(level=level, grammar=grammar, new_words=new_words,
+    prompt = verify_prompt(level=level, grammar=grammar,
                            da_lines=da_lines, en_lines=en_lines, cumulative_vocab=cumulative_vocab)
     report["llm"] = _json_call(client, model, prompt)
     return report
@@ -243,21 +307,64 @@ def verify_scene(client, *, model: str, level: str, grammar: str, new_words: int
 
 def print_verify_report(rep: dict) -> bool:
     """Pretty-print a verify report; return True iff everything passed."""
-    ok = rep["aligned"]
+    ok = rep["aligned"] and rep.get("one_per_line", True)
     print(f"  alignment: {'OK' if rep['aligned'] else 'FAIL'} "
           f"(DA {rep['da_lines']} / EN {rep['en_lines']} lines)")
+    one = rep.get("one_per_line", True)
+    print(f"  one sentence per line: {'OK' if one else 'FAIL'}"
+          + ("" if one else f" (lines {rep.get('multi_sentence_lines')})"))
     print(f"  distinct Danish words: {rep['distinct_da_words']}")
+    band = rep.get("band")
+    if band and band.get("band"):
+        oob = band["out_of_band"]
+        print(f"  band-check ({band['level']} ≈ top {band['band']}): "
+              f"{len(oob)} out-of-band word-form(s) [advisory]")
+        for o in oob:
+            rank = o["rank"] if o["rank"] is not None else "unranked"
+            print(f"      - {o['word']} ({rank})")
     llm = rep.get("llm", {})
     for dim in VERIFY_DIMENSIONS:
         d = llm.get(dim, {}) or {}
         passed = bool(d.get("pass", False))
-        ok = ok and passed
+        advisory = dim in ADVISORY_DIMS
+        if not advisory:                       # only hard dims (+ alignment) gate the overall result
+            ok = ok and passed
+        tag = " [advisory]" if advisory else ""
         extra = f" [assessed {d.get('assessed_level')}]" if dim == "cefr_level" and d.get("assessed_level") else ""
-        print(f"  {dim}: {'PASS' if passed else 'FAIL'}{extra}")
+        print(f"  {dim}: {'PASS' if passed else 'FAIL'}{tag}{extra}")
         for iss in (d.get("issues") or []):
             print(f"      - line {iss.get('line', '?')}: {iss.get('problem', '')}")
     print(f"  OVERALL: {'PASS ✓' if ok else 'FAIL ✗'}")
     return ok
+
+
+def parse_storyboard_header(path: str | Path) -> dict:
+    """Parse the storyboard's header block into the week's generation spec.
+
+    The header (everything before the scene table) carries the per-week spec as bold fields,
+    e.g. ``**Level:** A1 · **Grammar:** … · **New words:** ~40 … · **Lines/scene:** ~12``.
+    This is the single machine-read source for the week's grammar/level/budget — gen_week reads
+    it instead of hardcoding constants, so the spec lives in exactly one place.
+    """
+    text = Path(path).read_text(encoding="utf-8")
+    head = text.split("|", 1)[0]                    # everything before the table
+    flat = " ".join(head.split())                   # collapse wrapped lines
+    fields: dict[str, str] = {}
+    for m in re.finditer(r"\*\*([^:*]+):\*\*\s*(.*?)(?=\*\*[^:*]+:\*\*|$)", flat):
+        fields[m.group(1).strip().lower()] = m.group(2).strip().strip("·").strip()
+
+    def _int(s: str, default: int) -> int:
+        m = re.search(r"\d+", s or "")
+        return int(m.group()) if m else default
+
+    title_m = re.search(r"Week\s+(\d+)", flat)
+    return {
+        "week": int(title_m.group(1)) if title_m else None,
+        "level": fields.get("level", "A1"),
+        "grammar": fields.get("grammar", ""),
+        "new_words": _int(fields.get("new words", ""), 40),
+        "lines": _int(fields.get("lines/scene", ""), 12),
+    }
 
 
 def parse_storyboard(path: str | Path) -> list[dict]:
@@ -310,7 +417,7 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--scene-num", type=int, help="which scene number within the storyboard")
     g.add_argument("--grammar", required=True)
     g.add_argument("--new-words", type=int, default=40)
-    g.add_argument("--lines", type=int, default=14)
+    g.add_argument("--lines", type=int, default=12)
     g.add_argument("--prior-vocab", default="")
     g.add_argument("--out-stem", help="writes <stem>.da and <stem>.en (default: storyboard dir/stem)")
     g.add_argument("--show-prompt", action="store_true",
@@ -332,7 +439,6 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("--en", required=True, help="generated English file")
     v.add_argument("--level", default="A1")
     v.add_argument("--grammar", required=True, help="grammar allowed this week (the whitelist)")
-    v.add_argument("--new-words", type=int, default=40)
     v.add_argument("--cumulative-vocab", default="")
     v.add_argument("--show-prompt", action="store_true",
                    help="print the exact prompt and exit (no API call, no credentials needed)")
@@ -356,7 +462,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "verify":
             da = [ln for ln in Path(args.da).read_text(encoding="utf-8").splitlines() if ln.strip()]
             en = [ln for ln in Path(args.en).read_text(encoding="utf-8").splitlines() if ln.strip()]
-            print(verify_prompt(level=args.level, grammar=args.grammar, new_words=args.new_words,
+            print(verify_prompt(level=args.level, grammar=args.grammar,
                                 da_lines=da, en_lines=en, cumulative_vocab=args.cumulative_vocab))
         return 0
 
@@ -390,8 +496,7 @@ def main(argv: list[str] | None = None) -> int:
         da = [ln for ln in Path(args.da).read_text(encoding="utf-8").splitlines() if ln.strip()]
         en = [ln for ln in Path(args.en).read_text(encoding="utf-8").splitlines() if ln.strip()]
         rep = verify_scene(client, model=args.model, level=args.level, grammar=args.grammar,
-                           new_words=args.new_words, da_lines=da, en_lines=en,
-                           cumulative_vocab=args.cumulative_vocab)
+                           da_lines=da, en_lines=en, cumulative_vocab=args.cumulative_vocab)
         print(f"Verifying {args.da} (level {args.level}):", file=sys.stderr)
         ok = print_verify_report(rep)
         return 0 if ok else 1

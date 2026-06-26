@@ -168,8 +168,9 @@ _WORD_RE = re.compile(r"[a-zA-ZæøåÆØÅ]+")
 # guillemet) is followed by whitespace and a new capitalised sentence. Heuristic, but enough to guard
 # the one-sentence-per-line invariant the per-sentence audio assembler depends on. Since this is a
 # HARD gate, false positives must be avoided: a digit after the mark ("kl. 10"), a known Danish
-# abbreviation ("f.eks. Noget", "bl.a. K"), and a single initial ("H. C. Andersen") all produce
-# "mark + space + Capital" but are NOT sentence breaks, so they're excluded below.
+# abbreviation ("f.eks. Noget", "bl.a. K"), a single initial ("H. C. Andersen"), and a closing
+# quote followed by the English attribution "I" ('"...?" I ask') all produce "mark + space +
+# Capital" but are NOT sentence breaks, so they're excluded below.
 _MULTI_SENTENCE_RE = re.compile(r"[.!?][\"»«')\]]?\s+[A-ZÆØÅ]")
 _ABBREVS = ("f.eks", "bl.a", "m.m", "m.fl", "d.v.s", "dvs", "osv", "ca", "kl", "nr", "stk",
             "o.l", "inkl", "ekskl", "tlf", "jf", "pga", "evt")
@@ -186,6 +187,13 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
                     continue                          # e.g. "f.eks.", "kl."
                 if re.search(r"(?:^|\s)\w$", before):  # single initial, e.g. "H." / "C."
                     continue
+            # Quoted speech + English "I" attribution — «"...?" I ask» is one utterance (one audio
+            # bead), not two sentences. Skip ONLY when a closing quote precedes the capital; a bare
+            # «. I left.» (no quote) is a real break and still flags.
+            quoted = ln[m.start() + 1] in "\"»«')]"
+            cap_is_I = ln[m.end() - 1] == "I" and (m.end() >= len(ln) or ln[m.end()] in " \t")
+            if quoted and cap_is_I:
+                continue
             out.append(i + 1)
             break
     return out

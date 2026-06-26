@@ -171,7 +171,9 @@ _WORD_RE = re.compile(r"[a-zA-ZæøåÆØÅ]+")
 # abbreviation ("f.eks. Noget", "bl.a. K"), a single initial ("H. C. Andersen"), and a closing
 # quote followed by the English attribution "I" ('"...?" I ask') all produce "mark + space +
 # Capital" but are NOT sentence breaks, so they're excluded below.
-_MULTI_SENTENCE_RE = re.compile(r"[.!?][\"»«')\]]?\s+[A-ZÆØÅ]")
+# The capital may be preceded by an OPENING quote — a new sentence that begins with quoted speech
+# ('... siger hun. "Hvad hedder du?"') is still a sentence break.
+_MULTI_SENTENCE_RE = re.compile(r"[.!?][\"»«')\]]?\s+[\"«»']?[A-ZÆØÅ]")
 _ABBREVS = ("f.eks", "bl.a", "m.m", "m.fl", "d.v.s", "dvs", "osv", "ca", "kl", "nr", "stk",
             "o.l", "inkl", "ekskl", "tlf", "jf", "pga", "evt")
 

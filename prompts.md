@@ -46,7 +46,7 @@ This week's arc (write ONLY the marked scene; do not cover other scenes' beats o
 The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish always beats hitting a target.
 
 - Level A1, this week's grammar: present tense of være / hedde / komme fra; existential der er (there is/are); subject pronouns; hvad/hvor questions; greetings (hej, goddag, tak, velkommen, farvel, undskyld). Earlier-week grammar may recur; don't reach clearly beyond A1.
-- Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking. Only the characters the beat calls for.
+- Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking.
 - About 14 lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {"da": [...], "en": [...]}, same number of entries in each.

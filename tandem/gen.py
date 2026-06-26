@@ -107,7 +107,7 @@ The Danish is what's being learned — author it natively and idiomatically; the
 
 - Level {level}, this week's grammar: {grammar}. Earlier-week grammar may recur; don't reach clearly beyond {level}.
 - Use common everyday words and the already-introduced ones{' (below)' if prior_vocab else ''}; add only a few new ones (~{new_words}/week, spread across scenes).
-- Tell it as Maya's own first-person account of the scene (her voice throughout). Weave any speech in as short, quoted, attributed lines ("Velkommen," siger han) — never a bare back-and-forth where you can't tell who is speaking. Only the characters the beat calls for.
+- Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking. Only the characters the beat calls for.
 {f'- Already introduced (reuse freely): {prior_vocab}' if prior_vocab else ''}
 - About {lines} lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 

@@ -14,7 +14,7 @@ Design decisions this encodes (see design_notes.md):
 
 CLI:
   python -m tandem.gen scene --week 1 --scene-title "Arrival" --beat "Maya lands in Copenhagen" \\
-      --grammar "present være/hedde/komme fra; pronouns; hvad/hvor; V2" --new-words 40 --lines 14 \\
+      --grammar "present være/hedde/komme fra; der er; pronouns; hvad/hvor" --lines 14 \\
       --out-stem year1/week01/01_arrival
   python -m tandem.gen translate --src en --tgt es --context "Maya's first year, Copenhagen" \\
       --in year1/week01/01_arrival.en --out year1/week01/01_arrival.es
@@ -87,8 +87,7 @@ def _json_call(client, model: str, prompt: str) -> dict:
 
 
 def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar: str,
-                 new_words: int, lines: int, prior_vocab: str = "", arc: list | None = None,
-                 scene_num: int | None = None) -> str:
+                 lines: int, arc: list | None = None, scene_num: int | None = None) -> str:
     """Build the exact generation prompt (also used by --show-prompt for inspection)."""
     arc_block = ""
     if arc:
@@ -106,21 +105,19 @@ Scene title: "{scene_title}". Narrative beat: {beat}
 The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish always beats hitting a target.
 
 - Level {level}, this week's grammar: {grammar}. Earlier-week grammar may recur; don't reach clearly beyond {level}.
-- Use common everyday words and the already-introduced ones{' (below)' if prior_vocab else ''}; add only a few new ones (~{new_words}/week, spread across scenes).
+- Use common, everyday words.
 - Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking. Only the characters the beat calls for.
-{f'- Already introduced (reuse freely): {prior_vocab}' if prior_vocab else ''}
 - About {lines} lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {{"da": [...], "en": [...]}}, same number of entries in each."""
 
 
 def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, beat: str,
-                   grammar: str, new_words: int, lines: int, prior_vocab: str = "",
-                   arc: list | None = None, scene_num: int | None = None) -> dict:
+                   grammar: str, lines: int, arc: list | None = None,
+                   scene_num: int | None = None) -> dict:
     """Author a graded scene natively in Danish + an English gloss. Returns {'da': [...], 'en': [...]}."""
     prompt = scene_prompt(week=week, level=level, scene_title=scene_title, beat=beat,
-                          grammar=grammar, new_words=new_words, lines=lines, prior_vocab=prior_vocab,
-                          arc=arc, scene_num=scene_num)
+                          grammar=grammar, lines=lines, arc=arc, scene_num=scene_num)
     out = _json_call(client, model, prompt)
     da, en = out.get("da", []), out.get("en", [])
     if len(da) != len(en):
@@ -263,7 +260,7 @@ def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None 
 
 
 def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
-                  en_lines: list[str], cumulative_vocab: str = "") -> str:
+                  en_lines: list[str]) -> str:
     """Build the independent-QA prompt (also used by --show-prompt)."""
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
@@ -273,7 +270,6 @@ SPEC:
 - CEFR level: {level}
 - Grammar FOCUS this week (the new structures introduced): {grammar}
 - ALSO always allowed (never flag these): the basic function words every sentence needs — articles (en/et), conjunctions (og, men), common possessives (min/din/sin), prepositions, negation (ikke), and ordinary adverbs. Only count SUBSTANTIVE structures beyond the level as violations.
-{f'- Vocabulary already taught earlier (fine to reuse): {cumulative_vocab}' if cumulative_vocab else ''}
 
 The Danish is the language being learned — judge it as real, native Danish. The English is its gloss, and is the pivot other languages are later translated from, so it must faithfully convey the Danish.
 
@@ -297,7 +293,7 @@ Return JSON exactly:
 
 
 def verify_scene(client, *, model: str, level: str, grammar: str,
-                 da_lines: list[str], en_lines: list[str], cumulative_vocab: str = "") -> dict:
+                 da_lines: list[str], en_lines: list[str]) -> dict:
     """Programmatic checks + an independent LLM review. Returns a report dict."""
     multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
     report = {
@@ -309,8 +305,7 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
         "distinct_da_words": len(_distinct_words(da_lines)),
         "band": band_check(da_lines, level=level),
     }
-    prompt = verify_prompt(level=level, grammar=grammar,
-                           da_lines=da_lines, en_lines=en_lines, cumulative_vocab=cumulative_vocab)
+    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines)
     report["llm"] = _json_call(client, model, prompt)
     return report
 
@@ -372,7 +367,6 @@ def parse_storyboard_header(path: str | Path) -> dict:
         "week": int(title_m.group(1)) if title_m else None,
         "level": fields.get("level", "A1"),
         "grammar": fields.get("grammar", ""),
-        "new_words": _int(fields.get("new words", ""), 40),
         "lines": _int(fields.get("lines/scene", ""), 12),
     }
 
@@ -426,9 +420,7 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--storyboard", help="storyboard .md to draw the scene + the week's arc from")
     g.add_argument("--scene-num", type=int, help="which scene number within the storyboard")
     g.add_argument("--grammar", required=True)
-    g.add_argument("--new-words", type=int, default=40)
     g.add_argument("--lines", type=int, default=12)
-    g.add_argument("--prior-vocab", default="")
     g.add_argument("--out-stem", help="writes <stem>.da and <stem>.en (default: storyboard dir/stem)")
     g.add_argument("--show-prompt", action="store_true",
                    help="print the exact prompt and exit (no API call, no credentials needed)")
@@ -449,7 +441,6 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("--en", required=True, help="generated English file")
     v.add_argument("--level", default="A1")
     v.add_argument("--grammar", required=True, help="grammar allowed this week (the whitelist)")
-    v.add_argument("--cumulative-vocab", default="")
     v.add_argument("--show-prompt", action="store_true",
                    help="print the exact prompt and exit (no API call, no credentials needed)")
 
@@ -462,8 +453,7 @@ def main(argv: list[str] | None = None) -> int:
     if getattr(args, "show_prompt", False):
         if args.cmd == "scene":
             print(scene_prompt(week=args.week, level=args.level, scene_title=scene_title,
-                               beat=beat, grammar=args.grammar, new_words=args.new_words,
-                               lines=args.lines, prior_vocab=args.prior_vocab,
+                               beat=beat, grammar=args.grammar, lines=args.lines,
                                arc=arc, scene_num=scene_num))
         elif args.cmd == "translate":
             lines = [ln for ln in Path(args.infile).read_text(encoding="utf-8").splitlines() if ln.strip()]
@@ -472,8 +462,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "verify":
             da = [ln for ln in Path(args.da).read_text(encoding="utf-8").splitlines() if ln.strip()]
             en = [ln for ln in Path(args.en).read_text(encoding="utf-8").splitlines() if ln.strip()]
-            print(verify_prompt(level=args.level, grammar=args.grammar,
-                                da_lines=da, en_lines=en, cumulative_vocab=args.cumulative_vocab))
+            print(verify_prompt(level=args.level, grammar=args.grammar, da_lines=da, en_lines=en))
         return 0
 
     client = make_client()
@@ -486,8 +475,7 @@ def main(argv: list[str] | None = None) -> int:
         res = generate_scene(
             client, model=args.model, week=args.week, level=args.level,
             scene_title=scene_title, beat=beat, grammar=args.grammar,
-            new_words=args.new_words, lines=args.lines, prior_vocab=args.prior_vocab,
-            arc=arc, scene_num=scene_num,
+            lines=args.lines, arc=arc, scene_num=scene_num,
         )
         _write_lines(Path(out_stem + ".da"), res["da"])
         _write_lines(Path(out_stem + ".en"), res["en"])
@@ -506,7 +494,7 @@ def main(argv: list[str] | None = None) -> int:
         da = [ln for ln in Path(args.da).read_text(encoding="utf-8").splitlines() if ln.strip()]
         en = [ln for ln in Path(args.en).read_text(encoding="utf-8").splitlines() if ln.strip()]
         rep = verify_scene(client, model=args.model, level=args.level, grammar=args.grammar,
-                           da_lines=da, en_lines=en, cumulative_vocab=args.cumulative_vocab)
+                           da_lines=da, en_lines=en)
         print(f"Verifying {args.da} (level {args.level}):", file=sys.stderr)
         ok = print_verify_report(rep)
         return 0 if ok else 1

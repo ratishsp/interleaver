@@ -3,7 +3,7 @@
 **Level:** A1 · **Grammar:** present tense of være / hedde / komme fra; existential der er (there
 is/are); subject pronouns; hvad/hvor questions; greetings (hej, goddag, tak, velkommen, farvel,
 undskyld) ·
-**New words:** ~40 for the week · **Lines/scene:** ~14 · **Target:** ~28 min.
+**Lines/scene:** ~14 · **Target:** ~28 min.
 
 The curriculum gives one beat per week ("Maya lands in Copenhagen, knowing no one"); this decomposes
 it into 12 scene-level beats. Drives the `gen.py scene → verify → assemble` loop. Maya = 31, from

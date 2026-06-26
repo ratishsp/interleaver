@@ -1,13 +1,12 @@
-"""Generate + verify a full week from a storyboard, feeding vocab forward and retrying failures.
+"""Generate + verify a full week from a storyboard, retrying failures.
 
-The week's spec (level / grammar / new-word budget / lines-per-scene) is read from the storyboard's
-own header — the storyboard is the single source of truth, so there are no spec constants to keep in
-sync here. Pass a storyboard path to drive any week.
+The week's spec (level / grammar / lines-per-scene) is read from the storyboard's own header — the
+storyboard is the single source of truth, so there are no spec constants to keep in sync here. Pass
+a storyboard path to drive any week.
 
 Run:  set -a; . ./.env; set +a;  .venv/bin/python gen_week.py [year1/weekNN/storyboard.md] [--scenes 1-3]
 Writes <stem>.da/.en into the storyboard's dir + verify_summary.json. Audio is a separate step.
---scenes regenerates only a subset (e.g. '1-3', '1,4,7'); skipped scenes still feed their existing
-.da vocab forward, so the cumulative vocabulary stays correct.
+--scenes regenerates only a subset (e.g. '1-3', '1,4,7'); other scenes are left untouched.
 """
 from __future__ import annotations
 import argparse
@@ -15,8 +14,7 @@ import json
 from pathlib import Path
 
 from tandem.gen import (make_client, generate_scene, verify_scene, parse_storyboard,
-                        parse_storyboard_header, _distinct_words,
-                        VERIFY_DIMENSIONS, ADVISORY_DIMS)
+                        parse_storyboard_header, VERIFY_DIMENSIONS, ADVISORY_DIMS)
 
 
 def _parse_scene_sel(s: str | None) -> set[int] | None:
@@ -39,8 +37,8 @@ def _parse_scene_sel(s: str | None) -> set[int] | None:
 _ap = argparse.ArgumentParser(description="Generate + verify a week (or a subset of scenes) from a storyboard.")
 _ap.add_argument("storyboard", nargs="?", default="year1/week01/storyboard.md",
                  help="storyboard .md (single source for the week's spec + arc)")
-_ap.add_argument("--scenes", help="subset to (re)generate, e.g. '1-3', '1,4,7', '2-3,9' (default: all); "
-                                   "skipped scenes still feed their existing .da vocab forward")
+_ap.add_argument("--scenes", help="subset to (re)generate, e.g. '1-3', '1,4,7', '2-3,9' "
+                                   "(default: all); other scenes are left untouched")
 _args = _ap.parse_args()
 STORYBOARD = _args.storyboard
 SCENES = _parse_scene_sel(_args.scenes)
@@ -48,7 +46,6 @@ _SPEC = parse_storyboard_header(STORYBOARD)            # single source: the stor
 WEEK = _SPEC["week"]
 LEVEL = _SPEC["level"]
 GRAMMAR = _SPEC["grammar"]
-NEW_WORDS = _SPEC["new_words"]
 LINES = _SPEC["lines"]
 
 GEN_MODEL = "gemini-2.5-pro"
@@ -72,18 +69,12 @@ def main() -> int:
     client = make_client()
     arc = parse_storyboard(STORYBOARD)
     outdir = Path(STORYBOARD).parent
-    prior: set[str] = set()
     summary = []
 
     for row in arc:
         n, stem = row["num"], row["stem"]
         if SCENES is not None and n not in SCENES:        # not regenerating this scene
-            da_path = outdir / f"{stem}.da"               # but keep its vocab in the running total
-            if da_path.exists():
-                kept = [ln for ln in da_path.read_text(encoding="utf-8").splitlines() if ln.strip()]
-                prior |= _distinct_words(kept)
             continue
-        prior_str = ", ".join(sorted(prior))
         best = best_rep = None
         attempts = 0
         for attempt in range(MAX_RETRIES + 1):
@@ -91,11 +82,9 @@ def main() -> int:
             try:
                 res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
                                      scene_title=row["title"], beat=row["beat"], grammar=GRAMMAR,
-                                     new_words=NEW_WORDS, lines=LINES, prior_vocab=prior_str,
-                                     arc=arc, scene_num=n)
+                                     lines=LINES, arc=arc, scene_num=n)
                 rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
-                                  da_lines=res["da"], en_lines=res["en"],
-                                  cumulative_vocab=prior_str)
+                                  da_lines=res["da"], en_lines=res["en"])
             except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
                 print(f"[{n:2}/{len(arc)}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
                       f"{str(e)[:120]}", flush=True)
@@ -111,7 +100,6 @@ def main() -> int:
 
         (outdir / f"{stem}.da").write_text("\n".join(best["da"]) + "\n", encoding="utf-8")
         (outdir / f"{stem}.en").write_text("\n".join(best["en"]) + "\n", encoding="utf-8")
-        prior |= _distinct_words(best["da"])
 
         llm = best_rep.get("llm", {})
         g = (llm.get("grammar_whitelist") or {}).get("pass")
@@ -139,7 +127,6 @@ def main() -> int:
               f"hard={'OK ' if s['hard_pass'] else 'FAIL'} | "
               f"content={s['content']} natural={s['natural']} gloss={s['gloss']}  "
               f"[adv G={s['grammar']} CEFR={s['cefr']}]")
-    print(f"\nDistinct Danish words across the week: {len(prior)}")
     return 0
 
 

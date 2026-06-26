@@ -124,6 +124,39 @@ def generate_scene(client, *, model: str, week: int, level: str, scene_title: st
     return {"da": da, "en": en}
 
 
+def revise_prompt(*, level: str, grammar: str, beat: str, da_lines: list[str],
+                  en_lines: list[str], feedback: str) -> str:
+    """Build the revise prompt: a rejected draft + the QA problems to fix (also used by --show-prompt)."""
+    pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
+                      for i, (d, e) in enumerate(zip(da_lines, en_lines)))
+    return f"""{STORY_BIBLE}
+
+A draft scene for this Danish course (CEFR level {level}) was rejected by QA. Fix ONLY the problems listed below; keep everything else — the story, the line order, and every line that wasn't flagged — unchanged.
+
+Scene beat (for context): {beat}
+Level {level}; this week's grammar: {grammar}.
+
+DRAFT (line-aligned Danish / English):
+{pairs}
+
+PROBLEMS TO FIX:
+{feedback}
+
+Return the FULL corrected scene as JSON: {{"da": [...], "en": [...]}} — one sentence per line, the two arrays the same length and aligned line-for-line. Splitting a line to fix it changes the line count; that's fine, just keep "da" and "en" aligned."""
+
+
+def revise_scene(client, *, model: str, level: str, grammar: str, beat: str,
+                 da_lines: list[str], en_lines: list[str], feedback: str) -> dict:
+    """Revise a rejected draft to fix the QA problems, keeping the rest. Returns {'da': [...], 'en': [...]}."""
+    prompt = revise_prompt(level=level, grammar=grammar, beat=beat,
+                           da_lines=da_lines, en_lines=en_lines, feedback=feedback)
+    out = _json_call(client, model, prompt)
+    da, en = out.get("da", []), out.get("en", [])
+    if len(da) != len(en):
+        raise SystemExit(f"Alignment broken: {len(da)} DA lines vs {len(en)} EN lines.")
+    return {"da": da, "en": en}
+
+
 def translate_prompt(*, src_lang: str, tgt_lang: str, lines: list[str], context: str = "",
                      level: str = "", glossary: str = "") -> str:
     """Build the exact translation prompt (also used by --show-prompt for inspection)."""
@@ -340,6 +373,34 @@ def print_verify_report(rep: dict) -> bool:
             print(f"      - line {iss.get('line', '?')}: {iss.get('problem', '')}")
     print(f"  OVERALL: {'PASS ✓' if ok else 'FAIL ✗'}")
     return ok
+
+
+_HARD_DIMS = tuple(d for d in VERIFY_DIMENSIONS if d not in ADVISORY_DIMS)
+
+
+def format_failures(rep: dict) -> str:
+    """The HARD failures in a verify report as a concrete fix-list, for feeding into a revise retry.
+
+    Pulls from what each gate already reports — alignment counts, multi-sentence line numbers, and the
+    failing hard dimensions' {line, problem} issues. Advisory dims (they don't gate) are not included.
+    Returns '' if nothing hard-failed.
+    """
+    out: list[str] = []
+    if not rep.get("aligned", True):
+        out.append(f"- The DA and EN had different line counts (DA {rep.get('da_lines')}, "
+                   f"EN {rep.get('en_lines')}). Return the SAME number of lines, aligned one-for-one.")
+    multi = rep.get("multi_sentence_lines") or []
+    if multi:
+        nums = ", ".join(str(n) for n in multi)
+        out.append(f"- Line(s) {nums} hold more than one sentence. Put exactly ONE sentence per line, "
+                   f'splitting quoted sentences too (e.g. "Hej, mor. Hej, far." becomes two lines).')
+    llm = rep.get("llm", {})
+    for d in _HARD_DIMS:
+        dd = llm.get(d) or {}
+        if not dd.get("pass", True):
+            for iss in (dd.get("issues") or []):
+                out.append(f"- {d}: line {iss.get('line', '?')} — {iss.get('problem', '')}")
+    return "\n".join(out)
 
 
 def parse_storyboard_header(path: str | Path) -> dict:

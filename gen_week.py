@@ -15,8 +15,8 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from tandem.gen import (make_client, generate_scene, verify_scene, parse_storyboard,
-                        parse_storyboard_header, VERIFY_DIMENSIONS, ADVISORY_DIMS)
+from tandem.gen import (make_client, generate_scene, revise_scene, verify_scene, format_failures,
+                        parse_storyboard, parse_storyboard_header, VERIFY_DIMENSIONS, ADVISORY_DIMS)
 
 
 def _parse_scene_sel(s: str | None) -> set[int] | None:
@@ -83,9 +83,14 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
     for attempt in range(MAX_RETRIES + 1):
         attempts = attempt + 1
         try:
-            res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
-                                 scene_title=row["title"], beat=row["beat"], grammar=GRAMMAR,
-                                 lines=LINES, arc=arc, scene_num=n)
+            if attempt == 0 or best is None:          # fresh draft (or the prior attempt errored)
+                res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
+                                     scene_title=row["title"], beat=row["beat"], grammar=GRAMMAR,
+                                     lines=LINES, arc=arc, scene_num=n)
+            else:                                     # revise the rejected draft — fix only what failed
+                res = revise_scene(client, model=GEN_MODEL, level=LEVEL, grammar=GRAMMAR,
+                                   beat=row["beat"], da_lines=best["da"], en_lines=best["en"],
+                                   feedback=format_failures(best_rep))
             rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
                               da_lines=res["da"], en_lines=res["en"])
         except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week

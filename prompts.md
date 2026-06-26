@@ -43,7 +43,7 @@ This week's arc (write ONLY the marked scene; do not cover other scenes' beats o
   11. The Friend Returns — Nina knocks on the door and asks how Maya is doing. Maya says she is happy here. Nina is warm and kind. She is Maya's neighbour now, so Maya is not alone. She feels welcome.
   12. First Night — It is late — Maya's first night in Copenhagen. She is tired, and the city is quiet. Copenhagen is her new home now, and Nina is her first friend. Maya smiles. Good night.
 
-The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish always beats hitting a target.
+The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish comes first, even when that means not landing exactly in-level.
 
 - Level A1, this week's grammar: present tense of være / hedde / komme fra; existential der er (there is/are); subject pronouns; hvad/hvor questions; greetings (hej, goddag, tak, velkommen, farvel, undskyld). Earlier-week grammar may recur; don't reach clearly beyond A1.
 - Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking.

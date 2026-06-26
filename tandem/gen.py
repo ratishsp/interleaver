@@ -102,7 +102,7 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
 TASK: Write ONE short scene for WEEK {week} (CEFR level {level}) of the Danish course.
 Scene title: "{scene_title}". Narrative beat: {beat}
 {arc_block}
-The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish always beats hitting a target.
+The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish comes first, even when that means not landing exactly in-level.
 
 - Level {level}, this week's grammar: {grammar}. Earlier-week grammar may recur; don't reach clearly beyond {level}.
 - Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking.

@@ -12,8 +12,8 @@ python -m tandem.gen translate ... --show-prompt
 ```
 
 **Design split (see `design_notes.md`):** generation = lean positive *intent* (who Maya is, the scene,
-the grading targets, the format — no negative-constraint clauses); verification = independent
-enforcement by a separate model; gating lives in code, not the prompt. Hard gates: structural
+the level + grammar, the format — no negative-constraint clauses, no vocabulary list); verification =
+independent enforcement by a separate model; gating lives in code, not the prompt. Hard gates: structural
 alignment + one-sentence-per-line, and the dims `content_neutral` / `naturalness` / `gloss_fidelity`.
 Advisory (reported, never block): `grammar_whitelist` (scope) / `cefr_level`, and the frequency
 band-check. Prompts are level-relative (`{level}`/`{grammar}`), so the same text scales A1→B2.
@@ -21,35 +21,33 @@ band-check. Prompts are level-relative (`{level}`/`{grammar}`), so the same text
 ---
 
 ## 1. GENERATION prompt
-*(Week 1, scene 6 "The Neighbour" — shown with the week arc injected and prior-vocab recycling.)*
+*(Week 1, scene 6 "The Neighbour" — shown with the week arc injected.)*
 
 ```
 Story world: The protagonist is Maya, a 31-year-old woman from Mexico, spending her first year in Copenhagen, Denmark. She has moved to Copenhagen for a fresh start; she arrives knowing almost no one and gradually settles in — making friends, finding her way around the city, everyday life. She grew up in a warm climate, so the cold, dark Danish winter is new to her. Recurring cast: Nina (a Danish friend and neighbour) and her family back home in Mexico (video calls).
 
 TASK: Write ONE short scene for WEEK 1 (CEFR level A1) of the Danish course.
-Scene title: "The Neighbour". Narrative beat: At the door Maya meets Nina, her Danish neighbour. They introduce themselves; Nina is from Denmark, Maya from Mexico. A friendship begins.
+Scene title: "The Neighbour". Narrative beat: At the door Maya meets Nina, who lives next door. Nina says hello and tells Maya her name; Maya does the same. Nina comes from Denmark, Maya from Mexico. They are happy — a friendship begins.
 
 This week's arc (write ONLY the marked scene; do not cover other scenes' beats or bring in characters who first appear in a later scene):
-  1. Landing — Maya's plane lands in Copenhagen. She introduces herself — her name, that she is 31 and from Mexico, and that she is now in Denmark.
-  2. Baggage — In the busy airport Maya collects her big suitcase. She describes the airport and how she feels — tired but happy.
-  3. A Friendly Face — A friendly stranger greets Maya and welcomes her. They exchange names and she says where she is from. A warm first hello.
-  4. The Taxi — Maya takes a taxi. The driver is friendly; Maya gives her new address and they talk a little about how big and lovely Copenhagen is.
-  5. The Street — The taxi reaches Maya's new street. She looks at the old houses and the quiet street — everything is new to her.
-  6. The Neighbour — At the door Maya meets Nina, her Danish neighbour. They introduce themselves; Nina is from Denmark, Maya from Mexico. A friendship begins.   ← WRITE THIS SCENE
-  7. The Flat — Maya steps into her new flat. It is small but lovely — a little kitchen, a table, a chair.
-  8. The Window — From her window Maya looks out at Copenhagen — a big city, many people. The weather is cold; back home in Mexico it is warm.
-  9. A Call Home — Maya makes a video call to her family in Mexico. She tells them she is in Copenhagen, she is well, and it is cold but beautiful here.
-  10. Evening Alone — Evening comes. Maya is alone in her new flat — a little tired and a little homesick, but also happy and curious.
-  11. The Friend Returns — Nina knocks again and asks how Maya is settling in. Maya says she is happy here. Nina is warm — she's Maya's neighbour now, and Maya is not alone. Maya feels welcome.
-  12. First Night — It is late on Maya's first night. She is tired, but Copenhagen is her new home now, and Nina is her first friend.
+  1. Landing — The plane lands in Copenhagen. Maya looks out the small window at the grey sky. She is happy and a little nervous. She says her name, that she is 31, that she comes from Mexico, and that now she is in Denmark. This is her new home.
+  2. Baggage — The airport is big and busy — there are many people. Maya walks to the baggage. There are many suitcases. Hers is big and red. She takes it. She is tired but happy.
+  3. A Friendly Face — A friendly woman smiles at Maya and welcomes her to Denmark. They say hello and exchange names, and Maya says where she comes from. The woman is Danish. A warm first hello.
+  4. The Taxi — Maya takes a taxi. The driver says hello and asks where she is going. Maya gives her new address. They talk a little; Copenhagen is big and beautiful. She looks out at the streets and the tall houses.
+  5. The Street — The taxi stops on Maya's new street. The street is quiet. There are old houses — they are tall and beautiful. Everything is new to Maya, and she is curious.
+  6. The Neighbour — At the door Maya meets Nina, who lives next door. Nina says hello and tells Maya her name; Maya does the same. Nina comes from Denmark, Maya from Mexico. They are happy — a friendship begins.   ← WRITE THIS SCENE
+  7. The Flat — Maya goes into her new flat. It is small but nice. There is a little kitchen, a table, and two chairs. There is a big window. Maya likes her new home.
+  8. The Window — Maya stands at the window and looks out at Copenhagen. It is a big city — there are many people and many bikes. The sky is grey and it is cold. At home in Mexico it is warm. She thinks about her family.
+  9. A Call Home — Maya calls her family in Mexico. She sees her mother and father on the screen, and they say hello. Maya tells them she is in Copenhagen and she is well. It is cold but beautiful here. She is happy.
+  10. Evening Alone — It is evening, and Maya is alone in the flat. It is quiet. She is a little tired and a little homesick. But she is also happy and curious. Tomorrow is a new day.
+  11. The Friend Returns — Nina knocks on the door and asks how Maya is doing. Maya says she is happy here. Nina is warm and kind. She is Maya's neighbour now, so Maya is not alone. She feels welcome.
+  12. First Night — It is late — Maya's first night in Copenhagen. She is tired, and the city is quiet. Copenhagen is her new home now, and Nina is her first friend. Maya smiles. Good night.
 
 The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish always beats hitting a target.
 
 - Level A1, this week's grammar: present tense of være / hedde / komme fra; existential der er (there is/are); subject pronouns; hvad/hvor questions; greetings (hej, goddag, tak, velkommen, farvel, undskyld). Earlier-week grammar may recur; don't reach clearly beyond A1.
-- Use common everyday words and the already-introduced ones (below); add only a few new ones (~40/week, spread across scenes).
-- Follow the beat as a small, connected narrative; only the characters it calls for.
-- Already introduced (reuse freely): jeg, er, hedder, Maya, kommer, fra, Mexico, i, København, og, en, by, stor, tak, her, ny
-- About 12 lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking. Only the characters the beat calls for.
+- About 14 lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {"da": [...], "en": [...]}, same number of entries in each.
 ```
@@ -66,7 +64,6 @@ SPEC:
 - CEFR level: A1
 - Grammar FOCUS this week (the new structures introduced): present tense of være / hedde / komme fra; existential der er (there is/are); subject pronouns; hvad/hvor questions; greetings (hej, goddag, tak, velkommen, farvel, undskyld)
 - ALSO always allowed (never flag these): the basic function words every sentence needs — articles (en/et), conjunctions (og, men), common possessives (min/din/sin), prepositions, negation (ikke), and ordinary adverbs. Only count SUBSTANTIVE structures beyond the level as violations.
-- Vocabulary already taught earlier (fine to reuse): jeg, er, hedder, Maya
 
 The Danish is the language being learned — judge it as real, native Danish. The English is its gloss, and is the pivot other languages are later translated from, so it must faithfully convey the Danish.
 

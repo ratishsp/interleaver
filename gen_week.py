@@ -4,13 +4,15 @@ The week's spec (level / grammar / lines-per-scene) is read from the storyboard'
 storyboard is the single source of truth, so there are no spec constants to keep in sync here. Pass
 a storyboard path to drive any week.
 
-Run:  set -a; . ./.env; set +a;  .venv/bin/python gen_week.py [year1/weekNN/storyboard.md] [--scenes 1-3]
+Run:  set -a; . ./.env; set +a;  .venv/bin/python gen_week.py [year1/weekNN/storyboard.md] [--scenes 1-3] [--workers 4]
 Writes <stem>.da/.en into the storyboard's dir + verify_summary.json. Audio is a separate step.
 --scenes regenerates only a subset (e.g. '1-3', '1,4,7'); other scenes are left untouched.
+Scenes are independent (no vocab carried between them), so --workers runs them concurrently.
 """
 from __future__ import annotations
 import argparse
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from tandem.gen import (make_client, generate_scene, verify_scene, parse_storyboard,
@@ -39,9 +41,13 @@ _ap.add_argument("storyboard", nargs="?", default="year1/week01/storyboard.md",
                  help="storyboard .md (single source for the week's spec + arc)")
 _ap.add_argument("--scenes", help="subset to (re)generate, e.g. '1-3', '1,4,7', '2-3,9' "
                                    "(default: all); other scenes are left untouched")
+_ap.add_argument("--workers", type=int, default=4,
+                 help="concurrent scenes (default 4). Scenes are independent, so they run in "
+                      "parallel — raise for speed, lower to stay under API rate limits")
 _args = _ap.parse_args()
 STORYBOARD = _args.storyboard
 SCENES = _parse_scene_sel(_args.scenes)
+WORKERS = max(1, _args.workers)
 _SPEC = parse_storyboard_header(STORYBOARD)            # single source: the storyboard header
 WEEK = _SPEC["week"]
 LEVEL = _SPEC["level"]
@@ -65,55 +71,65 @@ def hard_pass(rep: dict) -> bool:
     return structural and all((llm.get(d) or {}).get("pass") for d in HARD_DIMS)
 
 
+def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
+    """Generate + verify one scene (with retry), write its .da/.en, return its summary row.
+
+    Self-contained: scenes share no state (no vocab carried between them), so this is safe to call
+    concurrently across scenes.
+    """
+    n, stem, total = row["num"], row["stem"], len(arc)
+    best = best_rep = None
+    attempts = 0
+    for attempt in range(MAX_RETRIES + 1):
+        attempts = attempt + 1
+        try:
+            res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
+                                 scene_title=row["title"], beat=row["beat"], grammar=GRAMMAR,
+                                 lines=LINES, arc=arc, scene_num=n)
+            rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
+                              da_lines=res["da"], en_lines=res["en"])
+        except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
+            print(f"[{n:2}/{total}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
+                  f"{str(e)[:120]}", flush=True)
+            continue
+        best, best_rep = res, rep
+        if hard_pass(rep):
+            break
+
+    if best is None:
+        print(f"[{n:2}/{total}] {stem}: ALL ATTEMPTS FAILED — skipping", flush=True)
+        return {"n": n, "stem": stem, "attempts": attempts, "status": "failed"}
+
+    (outdir / f"{stem}.da").write_text("\n".join(best["da"]) + "\n", encoding="utf-8")
+    (outdir / f"{stem}.en").write_text("\n".join(best["en"]) + "\n", encoding="utf-8")
+
+    llm = best_rep.get("llm", {})
+    g = (llm.get("grammar_whitelist") or {}).get("pass")
+    c = (llm.get("cefr_level") or {}).get("pass")
+    ct = (llm.get("content_neutral") or {}).get("pass")
+    nat = (llm.get("naturalness") or {}).get("pass")
+    gl = (llm.get("gloss_fidelity") or {}).get("pass")
+    print(f"[{n:2}/{total}] {stem:24} attempts={attempts} hard={'OK ' if hard_pass(best_rep) else 'FAIL'} "
+          f"G={g} CEFR={c} content={ct} natural={nat} gloss={gl}", flush=True)
+    return {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
+            "grammar": g, "cefr": c, "content": ct, "natural": nat, "gloss": gl,
+            "lines": len(best["da"]),
+            "issues": {d: (llm.get(d) or {}).get("issues", []) for d in VERIFY_DIMENSIONS}}
+
+
 def main() -> int:
     client = make_client()
     arc = parse_storyboard(STORYBOARD)
     outdir = Path(STORYBOARD).parent
-    summary = []
+    todo = [row for row in arc if SCENES is None or row["num"] in SCENES]
 
-    for row in arc:
-        n, stem = row["num"], row["stem"]
-        if SCENES is not None and n not in SCENES:        # not regenerating this scene
-            continue
-        best = best_rep = None
-        attempts = 0
-        for attempt in range(MAX_RETRIES + 1):
-            attempts = attempt + 1
-            try:
-                res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
-                                     scene_title=row["title"], beat=row["beat"], grammar=GRAMMAR,
-                                     lines=LINES, arc=arc, scene_num=n)
-                rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
-                                  da_lines=res["da"], en_lines=res["en"])
-            except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
-                print(f"[{n:2}/{len(arc)}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
-                      f"{str(e)[:120]}", flush=True)
-                continue
-            best, best_rep = res, rep
-            if hard_pass(rep):
-                break
-
-        if best is None:
-            print(f"[{n:2}/{len(arc)}] {stem}: ALL ATTEMPTS FAILED — skipping", flush=True)
-            summary.append({"n": n, "stem": stem, "attempts": attempts, "status": "failed"})
-            continue
-
-        (outdir / f"{stem}.da").write_text("\n".join(best["da"]) + "\n", encoding="utf-8")
-        (outdir / f"{stem}.en").write_text("\n".join(best["en"]) + "\n", encoding="utf-8")
-
-        llm = best_rep.get("llm", {})
-        g = (llm.get("grammar_whitelist") or {}).get("pass")
-        c = (llm.get("cefr_level") or {}).get("pass")
-        ct = (llm.get("content_neutral") or {}).get("pass")
-        nat = (llm.get("naturalness") or {}).get("pass")
-        gl = (llm.get("gloss_fidelity") or {}).get("pass")
-        row_sum = {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
-                   "grammar": g, "cefr": c, "content": ct, "natural": nat, "gloss": gl,
-                   "lines": len(best["da"]),
-                   "issues": {d: (llm.get(d) or {}).get("issues", []) for d in VERIFY_DIMENSIONS}}
-        summary.append(row_sum)
-        print(f"[{n:2}/{len(arc)}] {stem:24} attempts={attempts} hard={'OK ' if hard_pass(best_rep) else 'FAIL'} "
-              f"G={g} CEFR={c} content={ct} natural={nat} gloss={gl}", flush=True)
+    workers = min(WORKERS, len(todo)) or 1
+    if workers > 1:
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            summary = list(ex.map(lambda r: process_scene(client, arc, outdir, r), todo))
+    else:
+        summary = [process_scene(client, arc, outdir, r) for r in todo]
+    summary.sort(key=lambda s: s["n"])
 
     (outdir / "verify_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False),
                                                 encoding="utf-8")

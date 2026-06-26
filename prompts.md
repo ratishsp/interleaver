@@ -65,7 +65,7 @@ SPEC:
 - Grammar FOCUS this week (the new structures introduced): present tense of være / hedde / komme fra; existential der er (there is/are); subject pronouns; hvad/hvor questions; greetings (hej, goddag, tak, velkommen, farvel, undskyld)
 - ALSO always allowed (never flag these): the basic function words every sentence needs — articles (en/et), conjunctions (og, men), common possessives (min/din/sin), prepositions, negation (ikke), and ordinary adverbs. Only count SUBSTANTIVE structures beyond the level as violations.
 
-The Danish is the language being learned — judge it as real, native Danish. The English is its gloss, and is the pivot other languages are later translated from, so it must faithfully convey the Danish.
+The Danish is the language being learned — judge it as real, native Danish; the English is its faithful gloss.
 
 SCENE (line-aligned Danish / English):
 1. DA: Der er en kvinde her.    EN: There is a woman here.
@@ -74,7 +74,7 @@ SCENE (line-aligned Danish / English):
 4. DA: "Velkommen, Maya."    EN: "Welcome, Maya."
 
 Score each dimension. For each: pass = true/false, and list specific issues as {line, problem}.
-1. grammar_whitelist — is the grammar within A1? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond A1 and not part of this week's focus. Never flag the basic function words listed above.
+1. grammar_whitelist — is the grammar within A1? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond A1 and not part of this week's focus.
 2. cefr_level — is the sentence length and complexity appropriate to A1? Flag ONLY lines whose complexity clearly EXCEEDS A1; simplicity that fits A1 is expected, not a defect. (Word frequency is checked separately — ignore it here.)
 3. content_neutral — is it about ordinary life and NOT about learning a language? Flag any language school, language class, or "learning/practising Danish" content.
 4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.

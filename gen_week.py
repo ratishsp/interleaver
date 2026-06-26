@@ -4,19 +4,46 @@ The week's spec (level / grammar / new-word budget / lines-per-scene) is read fr
 own header — the storyboard is the single source of truth, so there are no spec constants to keep in
 sync here. Pass a storyboard path to drive any week.
 
-Run:  set -a; . ./.env; set +a;  .venv/bin/python gen_week.py [year1/weekNN/storyboard.md]
+Run:  set -a; . ./.env; set +a;  .venv/bin/python gen_week.py [year1/weekNN/storyboard.md] [--scenes 1-3]
 Writes <stem>.da/.en into the storyboard's dir + verify_summary.json. Audio is a separate step.
+--scenes regenerates only a subset (e.g. '1-3', '1,4,7'); skipped scenes still feed their existing
+.da vocab forward, so the cumulative vocabulary stays correct.
 """
 from __future__ import annotations
+import argparse
 import json
-import sys
 from pathlib import Path
 
 from tandem.gen import (make_client, generate_scene, verify_scene, parse_storyboard,
                         parse_storyboard_header, _distinct_words,
                         VERIFY_DIMENSIONS, ADVISORY_DIMS)
 
-STORYBOARD = sys.argv[1] if len(sys.argv) > 1 else "year1/week01/storyboard.md"
+
+def _parse_scene_sel(s: str | None) -> set[int] | None:
+    """Parse a scene selection ('1-3', '1,4,7', '2-3,9') into a set of scene numbers (None = all)."""
+    if not s:
+        return None
+    nums: set[int] = set()
+    for part in s.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        if "-" in part:
+            a, b = part.split("-", 1)
+            nums.update(range(int(a), int(b) + 1))
+        else:
+            nums.add(int(part))
+    return nums
+
+
+_ap = argparse.ArgumentParser(description="Generate + verify a week (or a subset of scenes) from a storyboard.")
+_ap.add_argument("storyboard", nargs="?", default="year1/week01/storyboard.md",
+                 help="storyboard .md (single source for the week's spec + arc)")
+_ap.add_argument("--scenes", help="subset to (re)generate, e.g. '1-3', '1,4,7', '2-3,9' (default: all); "
+                                   "skipped scenes still feed their existing .da vocab forward")
+_args = _ap.parse_args()
+STORYBOARD = _args.storyboard
+SCENES = _parse_scene_sel(_args.scenes)
 _SPEC = parse_storyboard_header(STORYBOARD)            # single source: the storyboard header
 WEEK = _SPEC["week"]
 LEVEL = _SPEC["level"]
@@ -50,6 +77,12 @@ def main() -> int:
 
     for row in arc:
         n, stem = row["num"], row["stem"]
+        if SCENES is not None and n not in SCENES:        # not regenerating this scene
+            da_path = outdir / f"{stem}.da"               # but keep its vocab in the running total
+            if da_path.exists():
+                kept = [ln for ln in da_path.read_text(encoding="utf-8").splitlines() if ln.strip()]
+                prior |= _distinct_words(kept)
+            continue
         prior_str = ", ".join(sorted(prior))
         best = best_rep = None
         attempts = 0
@@ -96,7 +129,8 @@ def main() -> int:
 
     (outdir / "verify_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False),
                                                 encoding="utf-8")
-    print(f"\n=== WEEK {WEEK} SUMMARY ===")
+    sel = f" (scenes {sorted(SCENES)})" if SCENES is not None else ""
+    print(f"\n=== WEEK {WEEK} SUMMARY{sel} ===")
     for s in summary:
         if s.get("status") == "failed":
             print(f"  {s['n']:2} {s['stem']:24} FAILED ({s['attempts']} attempts)")

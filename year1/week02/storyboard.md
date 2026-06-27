@@ -15,8 +15,8 @@ it to the kommune.
 
 | # | stem | beat |
 |---|------|------|
-| 1 | 01_a_new_morning | Maya wakes in the flat. It is her second day in Copenhagen. Today she has two things to do: get a phone number and go to the kommune — the town office. She has her papers and her passport. She is a little nervous. |
-| 2 | 02_nina_explains | Nina knocks and asks how Maya is. Maya says she must go to the kommune today. Nina explains the order: first get a Danish phone number at a shop, then go to the kommune. The kommune is not far — bus number four. Nina is kind. |
+| 1 | 01_a_new_morning | Maya wakes in the flat. It is her second day in Copenhagen. Today she is going to the kommune — the town office — to register. She has her passport and papers ready in her bag. She is a little nervous, but also happy. A big day. |
+| 2 | 02_nina_explains | Nina knocks and asks how Maya is. Maya says she is going to the kommune today. Nina tells her there is one thing to do first: she needs a Danish phone number, from a phone shop, before the kommune. The kommune is not far — bus number four. Nina is kind and helpful. |
 | 3 | 03_the_phone_shop | Maya goes to a phone shop. A man says hello and asks how he can help. Maya says she needs a Danish phone number. She gets a new number — a simple, made-up one: 12 34 56 78. She reads the eight numbers slowly, two at a time (the Danish way). Now she has a phone number in Denmark. |
 | 4 | 04_the_bus | Maya waits at the bus stop. Bus number four comes. She gets on. She counts the stops — one, two, three, four, five. She looks at the numbers on the houses. The city is big. |
 | 5 | 05_at_the_office | The kommune is a big building. There are many people. Maya takes a number — she is number forty-two. She sits and waits. She looks at the screen and waits for her number. |

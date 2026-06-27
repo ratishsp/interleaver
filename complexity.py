@@ -25,18 +25,27 @@ from tandem.gen import parse_storyboard_header
 _WORD = re.compile(r"[\wæøåÆØÅ']+")
 _COMPOUND = re.compile(r",\s+(og|men|så|eller|for)\b")          # comma + coordinator = two clauses
 _SUBORD = re.compile(r"\b(fordi|når|da|som|hvis|mens|selvom|inden|efter at|før)\b")
-# Place/direction prepositions — a line stacking several is "busy" for A1 even as ONE clause (e.g.
-# "over gangen fra mit gamle værelse", "på køleskabet og på brødet på bordet"). The compound-CLAUSE
-# check misses these; this surfaces them for a HUMAN to judge (noun lists / two quick actions are fine).
+# Place/direction prepositions — a line stacking 2+ DISTINCT phrases is "busy" for A1 even as ONE
+# clause (e.g. "over gangen fra mit gamle værelse", "på køleskabet og på brødet på bordet"). The
+# compound-CLAUSE check misses these; this surfaces them for a HUMAN to judge.
 _PREP = {"i", "på", "til", "fra", "med", "over", "under", "ved", "om", "af", "hen", "ind", "ud",
-         "bag", "mod", "gennem", "mellem", "efter", "hos", "forbi", "rundt"}
+         "bag", "mod", "gennem", "mellem", "efter", "hos", "forbi", "rundt", "ned", "op"}
 
 
 def _busy(line: str) -> bool:
+    """Count DISTINCT prepositional phrases, not preposition tokens — that's the key distinction.
+    A run of consecutive prepositions ("ud i", "hen til", "ned til") is ONE phrase/direction, so it
+    doesn't trip; two SEPARATE phrases ("over gangen ... fra mit gamle værelse") in a longish line
+    does. This catches the maker's example without the "ud i køkkenet" false positive, and flags only
+    a handful per week (advisory — noun lists and two quick actions don't have 2 prep-phrases)."""
     toks = [t.lower() for t in _WORD.findall(line)]
-    preps = sum(1 for t in toks if t in _PREP)
-    intra_og = bool(re.search(r"\w\s+og\s+\w", line)) and not re.search(r",\s+og\b", line)
-    return len(toks) >= 7 and (preps >= 3 or (intra_og and preps >= 2))
+    phrases, prev_prep = 0, False
+    for t in toks:
+        is_prep = t in _PREP
+        if is_prep and not prev_prep:   # start of a new prepositional phrase
+            phrases += 1
+        prev_prep = is_prep
+    return len(toks) >= 8 and phrases >= 2
 
 # Per-level advisory ceilings. The PRIMARY structural signal is the COMPOUND ratio (two clauses joined
 # by a comma + coordinator) + subordinate clauses — that's what "complex sentences" means and what

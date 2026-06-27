@@ -59,10 +59,13 @@ LEVEL = _SPEC["level"]
 GRAMMAR = _SPEC["grammar"]
 LINES = _SPEC["lines"]
 
-GEN_MODEL = "gemini-2.5-pro"
-VERIFY_MODEL = "gemini-3.1-pro-preview"   # stronger judge than the generator — false negatives (missing a
-                                          # real defect, e.g. the bad number-word 'syvogtirs') are the costly
-                                          # error. Needs location='global'; generation stays on 2.5-pro.
+GEN_MODEL = "gemini-3.1-pro-preview"      # gen + revise on the strongest model — best first drafts, fewest
+                                          # hand-fixes (user choice 2026-06-27). Needs location='global'.
+VERIFY_MODEL = "gemini-3.1-pro-preview"   # same model as the generator now, so per-scene verify is a
+                                          # SELF-CHECK, not an independent audit. The real independent
+                                          # checks are the human read-through + the whole-week gate
+                                          # (review_week.py) — lean on those, since a model is weakest at
+                                          # catching its own mistakes (it passed wk3's out-of-scope 'var').
 MAX_RETRIES = 1                      # one retry on hard-fail, then accept best + log (no thrash)
 # Hard gates (block + retry) = alignment (structural, checked separately) + every non-advisory dim:
 # content_neutral (cross-language reuse invariant), naturalness (idiomatic Danish), gloss_fidelity

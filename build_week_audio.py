@@ -5,6 +5,7 @@ Natural pace (1.0); beginner-gentleness comes from gaps + the interleaving, not 
 Run:  set -a; . ./.env; set +a;  .venv/bin/python build_week_audio.py
 """
 from __future__ import annotations
+import sys
 from pathlib import Path
 
 from google.cloud import texttospeech as tts
@@ -12,7 +13,8 @@ from tandem.build import BuildConfig, build_audio
 from tandem.tts import GoogleTTS
 from tandem.gen import parse_storyboard
 
-WEEKDIR = Path("year1/week01")
+# Week directory may be passed as the first CLI arg; defaults to week 1.
+WEEKDIR = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("year1/week01")
 OUT = WEEKDIR / "audio"
 SPEED = 1.0
 SPEAKER = "Sulafat"                       # chosen for Maya — warm, clear female voice

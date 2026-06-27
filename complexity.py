@@ -25,6 +25,18 @@ from tandem.gen import parse_storyboard_header
 _WORD = re.compile(r"[\wæøåÆØÅ']+")
 _COMPOUND = re.compile(r",\s+(og|men|så|eller|for)\b")          # comma + coordinator = two clauses
 _SUBORD = re.compile(r"\b(fordi|når|da|som|hvis|mens|selvom|inden|efter at|før)\b")
+# Place/direction prepositions — a line stacking several is "busy" for A1 even as ONE clause (e.g.
+# "over gangen fra mit gamle værelse", "på køleskabet og på brødet på bordet"). The compound-CLAUSE
+# check misses these; this surfaces them for a HUMAN to judge (noun lists / two quick actions are fine).
+_PREP = {"i", "på", "til", "fra", "med", "over", "under", "ved", "om", "af", "hen", "ind", "ud",
+         "bag", "mod", "gennem", "mellem", "efter", "hos", "forbi", "rundt"}
+
+
+def _busy(line: str) -> bool:
+    toks = [t.lower() for t in _WORD.findall(line)]
+    preps = sum(1 for t in toks if t in _PREP)
+    intra_og = bool(re.search(r"\w\s+og\s+\w", line)) and not re.search(r",\s+og\b", line)
+    return len(toks) >= 7 and (preps >= 3 or (intra_og and preps >= 2))
 
 # Per-level advisory ceilings. The PRIMARY structural signal is the COMPOUND ratio (two clauses joined
 # by a comma + coordinator) + subordinate clauses — that's what "complex sentences" means and what
@@ -86,6 +98,14 @@ def report(target: Path) -> int:
     if cand:
         print("\n  SPLIT candidates (compound/long/subordinate — split into single-clause lines):")
         for l, w, s in cand[:16]:
+            print(f"    [{w:2}w] ({s}) {l}")
+
+    # Busy lines: single clause but 2+ stacked phrases — advisory, HUMAN judges (lists are fine).
+    busy = sorted({(l, w, s) for l, w, s in rows if _busy(l)}, key=lambda r: -r[1])
+    if busy:
+        print("\n  BUSY-LINE candidates (one clause, 2+ phrases — simplify if it packs two ideas;\n"
+              "  noun lists / two quick actions are FINE, use judgment):")
+        for l, w, s in busy[:12]:
             print(f"    [{w:2}w] ({s}) {l}")
     print()
     over = avg > avg_ceil or cratio > comp_ceil

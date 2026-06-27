@@ -2,37 +2,41 @@
 
 **Level:** A1 · **Grammar:** *der ligger / der står* (review *der er*); place prepositions *i, på,
 under, ved*; recurring week 1–3 grammar (present of *være/hedde/komme fra/have*, possessives
-*min/mit, din/dit*, indefinite *en/et*, subject pronouns, *hvad/hvor*) · **Lines/scene:** ~14 ·
-**Target:** ~36 min.
+*min/mit, din/dit*, indefinite *en/et*, subject pronouns, *hvad/hvor*) · **Lines/scene:** ~16 ·
+**Target:** ~34 min.
 
 The curriculum row ("Leaving the temporary room for her own flat — a permanent place opens up in the
-same building (where Nina lives), so she stays next door to Nina; her real home at last") decomposes
-into 14 beats (wk1=12, wk2–4=14; the ramp climbs later as the palette opens up). Continuity from the bible: the
-temp flat is **already in Nina's building**, so this is a *permanent* flat opening up in the **same
-building, on the same floor** — Maya leaves her temporary room for her own real home and **stays next
-door to Nina**. The flat comes **furnished** (a small let), which is why she carries only light boxes
-of her own things — books, clothes, the family photo — and no furniture. This is the first week with a
-stable home of her own; from now on the flat is the recurring set.
+same building (where Nina lives), so she stays next door to Nina; her real home at last") is realized
+as an **eventful move-in DAY**, not a static tour. **Density standard = Anna's week:** each scene is a
+mini-vignette that MOVES (a problem, a task, an errand, a small exchange), spanning varied situations
+— her own door, the stairwell, a caretaker call, a corner shop, her first dinner — with real
+**friction** (a sticky key, a cold flat, an empty cupboard, a stove she can't work) that always
+resolves warmly. The redesign trades scene COUNT for scene SUBSTANCE (11 dense scenes, ~16 lines,
+vs the old 14 thin ones).
 
-The week's job: describe **where things are** in the new flat — *der står en lampe ved vinduet*,
-*bøgerne ligger på bordet*, *under bordet* — lived through an emotional move-in day with Nina helping.
-Recurring cast: **Nina** (neighbour, now permanent next-door); the family photo from wk3 reappears.
-Season: still winter (decoupled). Mood: warm, proud, arriving — never lonely; the close lands on
-*this is my home*.
+The placement grammar is taught **through action and the existential construction**: *der står en
+lampe ved vinduet*, *der ligger pærer på hylden*, *radiatoren sidder under vinduet* — never a static
+"X is at Y" inventory. (Realism: Danish wall radiators *sidder/hænger*, they don't *står*; use *der
+står/ligger* for free-standing/lying objects — a lamp, baskets, books, bulbs.)
+
+Continuity (bible): the temp flat is **already in Nina's building, same floor**, so this is a *shift
+across the hall* to her own permanent flat — no stairs, she already knows the building, and she stays
+next door to Nina. The flat is a **small furnished let** (that's why she carries only boxes of
+books/clothes). The **family photo from wk3** reappears (mor, far, sister **Sofía**, brother **Diego**,
+dog **Lola**). New minor character: **viceværten** (the caretaker), one scene. Season: winter (the cold
+flat is the season made concrete). Mood: warm, capable, arriving — friction resolves; the close lands
+on *this is my home*.
 
 | # | stem | beat |
 |---|------|------|
-| 1 | 01_moving_day | Morning. Today is a big day: Maya moves into her own flat. It is in the same building — right next to Nina, on the same floor. She is so happy. No more temporary room; this is her real home. (set-up; *min egen lejlighed*) |
-| 2 | 02_the_boxes | Maya has boxes. The boxes stand by the door. They are not heavy — just books and clothes. Nina comes to help. "Good morning!" says Nina. Together they carry the boxes inside. (*kasserne står ved døren*; *der er mange*; no stairs — same floor) |
-| 3 | 03_the_new_flat | Maya opens the door. The flat is small and bright. It is a furnished flat, so her things fit easily. There is a big window. There is a lot of light. "This is my flat," she says quietly. It is small, but it is hers. (review *der er*; *mit*) |
-| 4 | 04_the_living_room | They step straight into the living room. There is a sofa. A table stands in the middle of the room. By the window stands an old lamp. Maya sits down on the sofa for a moment. "I like it here," she says. (the tour starts here — no separate room roll-call; *der står en sofa/lampe*; *ved vinduet*, *i midten*) |
-| 5 | 05_the_kitchen | They go into the kitchen. Nina opens a cupboard — the cups stand inside. The plates lie on the shelf. By the window there is a small table. "Now we can make coffee here," says Nina, and laughs. (*i køkkenet*; *står i skabet*; *ligger på hylden*) |
-| 6 | 06_the_bedroom | In the bedroom the bed stands by the wall. A warm blanket lies on the bed. Maya touches the soft blanket. By the bed there is a small lamp. "You can sleep well here," says Nina. (*sengen står ved væggen*; *ligger på sengen*; *ved sengen*) |
-| 7 | 07_the_books | Maya opens a box of books. One by one she puts them on the shelf. Now the books stand on the shelf. The flat begins to feel like home. (*bøgerne står på hylden*; the work of settling in) |
-| 8 | 08_the_photo | At the bottom of a box Maya finds the photo of her family in Mexico. She smiles. She places it on the table in the living room. "Now you are here too," she says softly. (wk3 callback; *på bordet*; warm, not sad) |
-| 9 | 09_a_gift | Then Nina goes to her own flat — just next door — and comes back with a small green plant. "Welcome to your new home," she says, and gives it to Maya. Maya puts the plant in the window. (*en gave/en plante*; *i vinduet*; the next-door warmth) |
-| 10 | 10_coffee_together | Maya and Nina sit on the sofa. Two cups of coffee stand on the table. "I am happy you stay here, next to me," says Nina. Maya is happy too. She has a friend right next door. (the "stays next to Nina" payoff; *står på bordet*) |
-| 11 | 11_where_is_it | Maya wants to hang her keys by the door, but she cannot find them. "Where are my keys?" she asks. They are not on the table. They are not in the kitchen. Nina helps her look. (*hvor er…?*; place prepositions in questions; light, not stressful) |
-| 12 | 12_under_the_table | Then Nina laughs. "Look — under the table!" The keys lie under the table, by a box. "Oh!" says Maya, and laughs too. (*under bordet*; problem resolved with warmth) |
-| 13 | 13_everything_in_place | Evening. Nina goes home — just next door. Maya looks around her flat. The lamp stands by the window, the books on the shelf, the photo on the table, the keys now hang by the door. Everything is in its place. (*alt står/ligger/hænger på sin plads*; the week's grammar consolidated; quiet satisfaction) |
-| 14 | 14_my_home | Finally Maya sits down on her sofa, tired but happy. The flat is small, but it is hers. Her family smiles from the photo; her friend is next door. "This is my home," she says. She is not alone. She smiles. (warm, hopeful close; *mit hjem*) |
+| 1 | 01_my_own_door | Morning. Maya stands at her own door for the first time — her *own* flat, in the same building as Nina, no more temporary room. She puts the key in the lock; it sticks, she jiggles it, and it turns. The door opens. "This is mine," she says, and steps inside. (first entry; sticky-key friction; *nøglen i låsen, min egen dør*) |
+| 2 | 02_the_boxes | Maya carries her boxes across the hall from her old room — Nina helps. There are not many, just books and clothes, but two are heavy. One slips; Maya catches it just in time, and they both laugh. They set the boxes down by the door. "Pause! I'll leave you to it," says Nina, and goes back to her own flat next door. (same-floor move, no stairs; a small mishap; Nina exits so Maya faces the cold alone; *kasserne, tunge, ved døren*) |
+| 3 | 03_a_cold_flat | The flat is small and furnished. Maya drops her bag on the sofa and walks past the table to the window. She pulls back the curtains and light fills the room. But it is freezing. The radiator sits under the window; she touches it — stone cold — and turns the knob, but nothing happens. "The heat doesn't work," she says, rubbing her hands. (furniture introduced through action; cold + dead radiator in one beat; *radiatoren sidder under vinduet, sofaen, bordet, koldt*) |
+| 4 | 04_the_caretaker | Maya goes down and fetches the caretaker. He comes up, looks at the radiator, turns the thermostat and opens a little valve. Soon it grows warm. "There you go," he says. "Thank you so much!" says Maya, relieved, and takes off her coat. (new character; a real problem solved through dialogue; *termostaten, varmen virker nu, nu er der varmt*) |
+| 5 | 05_unpacking | Now Maya unpacks. She puts her books on the shelf, her clothes in the wardrobe. At the bottom of a box she finds the photo of her family — her mother, father, her sister and brother, even Lola the dog, all in Mexico. She smiles and sets it on the table; now the photo stands by the lamp. "Now you are here too," she says softly. (unpacking + the photo moment; grammar via action; *bøgerne på hylden, tøjet i skabet, billedet står på bordet*) |
+| 6 | 06_an_empty_cupboard | Evening, and it is getting dark. Maya reaches for the lamp by the window — but it stays dark; the bulb doesn't work. Then she opens the cupboard to start dinner, and it is almost bare: no food, no coffee. She checks her purse: a little money. "I'll pop down to the shop," she says, and pulls her coat back on. (two clean triggers — dead bulb + bare cupboard; present tense only; *pæren virker ikke, skabet er tomt, der er ingen kaffe; i butikken*) |
+| 7 | 07_the_shop | Maya walks to the little shop on the corner. She grabs a basket from where they stand by the door, and reaches for a bulb from the ones lying on the bottom shelf. She picks up coffee and a few things for dinner. "Excuse me, where is the milk?" she asks. "In the fridge by the window," says the man. She pays at the till and walks home. (a full shop vignette — variety; placement verbs through action; *kurvene står ved døren, der ligger pærer på hylden, i køleskabet, ved kassen, betaler*) |
+| 8 | 08_the_flat_lights_up | Back home, Maya screws the new bulb into the lamp — and the lamp lights up by the window. Suddenly the flat looks warm and alive, not empty. She puts the coffee in the cupboard, the milk in the fridge, and stands a moment in the soft light. For the first time, it feels like she really lives here. (the practical-to-emotional turn — transformation, not inventory; existential *der står en lampe ved vinduet*; *pæren i lampen, kaffen i skabet, mælken i køleskabet*) |
+| 9 | 09_first_dinner | Maya starts her first dinner — a pot on the stove, vegetables on the board. But she can't work this stove: the flat touch controls light up and nothing heats. She knocks on Nina's door, right next door, and Nina comes over, laughs, and shows her how it works. "Stay and eat with me?" says Maya. (a cooking vignette + fresh friction — a tricky induction stove, not a "Danish" novelty — resolved via the next-door payoff; *gryden står på komfuret, komfuret, ved siden af*) |
+| 10 | 10_dinner_together | They eat Maya's first home-cooked dinner together at the little table. Afterwards Maya makes coffee — the new coffee from the shop. They sit on the sofa, two cups on the table. "Welcome home," says Nina, and they clink their cups. A warm flat, a good meal, a friend. (the social payoff, earned through the day; present tense only; *to kopper på bordet*) |
+| 11 | 11_my_home | Late. Nina goes home. Maya turns off the bright ceiling light, leaving just the warm lamp by the window. She sits down on the sofa, tired and content, the photo of her family beside her. "This is my home," she thinks, and smiles. (one earned close with a concrete final action — turning off the light — not an inventory; *mit hjem*) |

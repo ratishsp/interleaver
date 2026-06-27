@@ -35,6 +35,15 @@ A separate PER-SCENE verifier already checked each scene's Danish in isolation (
 naturalness). Do NOT re-do that. YOUR job is the WHOLE-WEEK view — only what is visible ACROSS scenes:
 repetition, the emotional arc, cross-scene consistency, and pacing.
 
+IMPORTANT CALIBRATION — this is a comprehensible-input beginner LANGUAGE course, NOT a novel. MODERATE
+repetition of common words and simple phrases is PEDAGOGICALLY GOOD (it reinforces vocabulary) and is
+EXPECTED — not a defect. Do NOT flag a word or phrase merely for recurring across scenes (a learner
+hearing "varm" or "på skærmen" several times is fine and useful). Flag repetition ONLY when it is
+genuinely monotonous or mechanical: the SAME full sentence/line repeated back-to-back, a whole scene
+recapping another, a filler line that adds nothing, an identical scene-template reused many times, or
+one element so dominant it appears in nearly EVERY scene and crowds out the content. When in doubt on
+mere word-frequency, it is fine — lean High only for clear, listener-noticeable monotony.
+
 GROUND TRUTH:
 --- story_bible.md (facts + cross-cutting rules, incl. the mood rule) ---
 {bible}

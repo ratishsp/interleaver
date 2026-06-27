@@ -1,20 +1,24 @@
 # Danish — 52-Week Scope & Sequence (Year 1: A1 → B2)
 
 **What this is.** The blueprint for a full year of *tandem* graded audio. One row = one week.
-Each week is a themed unit of **~90 min of interleaved EN→DA audio**, generated against that row's
-level, grammar focus, and frequency-band vocabulary.
+Each week is a themed unit of interleaved EN→DA audio — **ramping from ~28 min early to a ~90-min
+plateau** (see below) — generated against that row's level, grammar focus, and frequency-band vocabulary.
 
-**Scene length scales with level.** The 90 minutes is the only fixed target; the number of scenes
-(the "chapters" in the player) is whatever divides it up well at that level. Shorter, more numerous
-scenes early (short attention, short sentences); longer, fewer scenes later (learners can sustain a
-longer narrative thread). Rough guide — not a rule:
+**Length ramps with the syllabus, then plateaus.** Duration is *not* a flat target — it grows with
+the learner's palette. Week 1 is only ~28 min (12 scenes): with three verbs and a tiny vocabulary you
+cannot fill 90 minutes without padding or repetition. As grammar and vocabulary open up, each week
+sustains more, climbing toward a **~90-min plateau reached by late A1 / early A2** (the Anna's-week
+A2 sample is already ~90 min). After that the *duration* holds steady; only the scene *shape* changes —
+shorter/more-numerous scenes early, longer/fewer later (learners can sustain a longer narrative thread).
+Rough guide — not a rule:
 
-| Band | Scenes/week | Each | Why |
-|------|-------------|------|-----|
-| A1 | ~30 | ~3 min | short sentences, tight single-topic chunks are easiest to digest |
-| A2 | ~26 | ~3.5 min | as in the Anna's-week sample |
-| B1 | ~18 | ~5 min | longer connected passages |
-| B2 | ~12 | ~7.5 min | sustained, abstract discourse |
+| Phase | Weeks | Scenes/week | Each | ≈ Duration | Why |
+|-------|-------|-------------|------|-----------|-----|
+| early A1 | 1 | 12 | ~2.5 min | ~28 min | tiny palette (3 verbs) — short, tight chunks |
+| A1 ramp | 2–15 | 14 → 28 | ~2.5 min | ~32 → ~90 min | vocabulary/grammar open up; duration climbs |
+| A2 | 16–28 | ~26 | ~3.5 min | ~90 min | plateau; as in the Anna's-week sample |
+| B1 | 29–41 | ~18 | ~5 min | ~90 min | longer connected passages |
+| B2 | 42–52 | ~12 | ~7.5 min | ~90 min | sustained, abstract discourse |
 
 **How to read it.**
 - **Level** — CEFR band. Weighted toward the bottom (beginners need more time):
@@ -40,6 +44,11 @@ Recurring cast: **Nina** (a Danish friend and neighbour), a few **new friends** 
 **family back home** (video calls). The newcomer frame is deliberate — the protagonist's journey
 mirrors the learner's own, and it makes the early simplicity and the cultural content feel natural.
 
+Course-weeks are **learning units, not calendar weeks** — story-time is elastic — but the **seasons
+turn loosely across the arc** so the year still feels real: winter at arrival (wk 1) → spring (wk ~17)
+→ summer (wk ~26, 32, *Sankt Hans*) → autumn (wk ~36, the *efterår* hygge season) → winter again at the
+close (wk 50 *jul*, wk 52 a year on). No week is pinned to a month, so nothing can contradict the clock.
+
 **Design principles** (these double as the ITU workshop content): high-frequency-first,
 spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO progression
 (A1 isolated phrases → A2 connected sentences → B1 linked ideas → B2 abstract discourse).
@@ -53,7 +62,7 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 | 1 | A1 | Arrival & introducing yourself | Present of *være/hedde/komme fra*; existential *der er*; subject pronouns; *hvad/hvor* questions | Maya lands in Copenhagen, knowing no one |
 | 2 | A1 | Registration, forms & numbers | Numbers 0–100; *har*; *være* + age | Registering at the *kommune*; getting a CPR and a phone number |
 | 3 | A1 | Family back home | Possessives *min/din*; indefinite *en/et* | A video call to her family abroad |
-| 4 | A1 | Finding a place to live | *der ligger* (review *der er*); place prepositions *i, på, under* | Moving into a small Copenhagen flat |
+| 4 | A1 | Moving into her own flat | *der ligger/står* (review *der er*); place prepositions *i, på, under, ved* | Leaving the temporary room for her own flat — a place comes free in Nina's building; her real home at last |
 | 5 | A1 | Food shopping & the kitchen | Definite nouns *-en/-et*; *kan lide*; *jeg vil gerne have* | First grocery run — unfamiliar products |
 | 6 | A1 | Settling into a routine | Present-tense regular verbs; reflexive *vasker mig*; V2 review | Building a daily rhythm |
 | 7 | A1 | Time & appointments | Telling the clock; *klokken*; weekdays/months; frequency adverbs | Planning her week; booking appointments |
@@ -71,18 +80,18 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 | Wk | Lvl | Theme | Grammar focus | Narrative beat |
 |----|-----|-------|---------------|----------------|
 | 16 | A2 | Talking about the past | Preteritum of common verbs; *i går / sidste uge* | Maya recounts her first weeks |
-| 17 | A2 | Exploring Denmark | Past-tense narration; *var/havde/tog*; 3rd-person possessive *sin* vs *hans/hendes*; time expressions | A weekend trip to another town |
+| 17 | A2 | Exploring Denmark | Past-tense narration; *var/havde/tog*; 3rd-person possessive *sin* vs *hans/hendes*; time expressions | A spring weekend trip to another town — *forår*, lighter evenings |
 | 18 | A2 | Health & the doctor | *gør ondt*; body parts; *har det godt/dårligt*; *burde* | First visit to a Danish doctor; the *sundhedskort* |
-| 19 | A2 | Looking for work | Present perfect *har arbejdet*; professions | Job hunting; writing an application |
+| 19 | A2 | Looking for work | Present perfect *har arbejdet*; professions | Job hunting, an interview — and her first Danish job |
 | 20 | A2 | Learning a new skill | Past + perfect mixed; *lære at*; ordinals | Maya joins an evening class and learns a new hobby |
 | 21 | A2 | Buying clothes | Comparatives *større/mindre*; *prøve*; sizes | Shopping and returns |
 | 22 | A2 | Cooking & Danish food | Imperative sequences; quantities; *først/så/derefter* | Trying Danish recipes for new friends |
 | 23 | A2 | Making plans & friends | Future *skal/vil*; *har tænkt mig at*; suggestions | Invited to a Danish home for the first time |
 | 24 | A2 | Feelings about the new life | *synes/tror/føler at*; subordinate *at* word order | Homesickness and small victories |
 | 25 | A2 | Bureaucracy & services | *fordi* clauses (word-order shift); bank/post/pharmacy | Opening a bank account; MitID; the pharmacy |
-| 26 | A2 | Danish traditions & holidays | Perfect tense; customs (*jul*, *fastelavn*, *fødselsdag*) | Her first Danish birthday and holiday |
+| 26 | A2 | Danish summer & traditions | Perfect tense; customs (*Sankt Hans*, *sommerferie*, *fødselsdag*) | Her first Danish summer — *Sankt Hans* bonfires and a birthday |
 | 27 | A2 | Phones, internet & admin online | *pleje at*; instructions; passive intro *-s* | Navigating self-service Denmark (*Borger.dk*) |
-| 28 | A2 | **A2 review** — a week in the new life | Consolidation across all A2 grammar | A full A2 week — now part of the everyday |
+| 28 | A2 | **A2 review** — a week in the new life | Consolidation across all A2 grammar | A full A2 week — her new job now part of the everyday |
 
 ## B1 — Ideas, opinions & belonging (weeks 29–41): subordination, narrative, the conditional
 
@@ -91,11 +100,11 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 | 29 | B1 | Memories of home | Extended past; *plejede at*; *da* vs *når* | Comparing childhood there with life here |
 | 30 | B1 | The people in my new life | Adjective nuance; relative clauses *som/der* | Portraits of Nina and new friends |
 | 31 | B1 | Following Danish news | Passive *blive* + participle; reporting | Maya starts understanding the news |
-| 32 | B1 | Nature & cycling culture | Real conditional *hvis*; modal nuance | Embracing the bike; a nature trip |
+| 32 | B1 | Nature & cycling culture | Real conditional *hvis*; modal nuance | Embracing the bike; a summer nature trip |
 | 33 | B1 | Money, taxes & welfare | Large numbers; hypothetical *ville/skulle* | Navigating SKAT and budgeting |
 | 34 | B1 | Friendships & relationships | Reciprocal *hinanden*; emotion verbs | Deepening relationships |
 | 35 | B1 | Danish culture: film, music, books | Extended opinions; *synes godt om*; relatives | Discovering Danish culture |
-| 36 | B1 | Understanding Danish society | Connectors *derfor/dog/alligevel*; *hygge*, *Janteloven* | Cracking *hygge* and the unwritten rules |
+| 36 | B1 | Understanding Danish society | Connectors *derfor/dog/alligevel*; *hygge*, *Janteloven* | As the dark *efterår* sets in — cracking *hygge* and the unwritten rules |
 | 37 | B1 | Staying or going? | Conditional; *hvis jeg skulle…*; *håber/regner med at* | Maya weighs whether to stay in Denmark |
 | 38 | B1 | Problems & getting advice | *burde/skulle*; complaints; subordinate word-order mastery | A setback; friends help her through |
 | 39 | B1 | Travel stories | Extended narrative; tense-mixing; sequencing | A bigger journey, recounted in full |
@@ -114,9 +123,9 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 | 47 | B2 | Ethics & dilemmas | Conditional perfect; *hvis… havde…, ville… have* | A moral dilemma at work |
 | 48 | B2 | The Danish model: economy & work culture | Formal register; the language of statistics | Reflecting on the welfare model as an insider |
 | 49 | B2 | History & change | Narrative-past mastery; *indtil/siden*; historic present | Copenhagen and Denmark, then and now |
-| 50 | B2 | Happiness, success & belonging | Nominalisation; abstract subordination | What "home" means to her now |
+| 50 | B2 | Happiness, success & belonging | Nominalisation; abstract subordination | Her second *jul* with Nina and friends — what "home" means to her now |
 | 51 | B2 | Speaking like a Dane: idioms & particles | Modal particles *jo/da/nok/vist/vel*; idioms | Everyday speech, fully natural |
-| 52 | B2 | **B2 capstone** — a year on | All structures; full narrative close | One year later: fluent and at home — full circle to arrival |
+| 52 | B2 | **B2 capstone** — a year on | All structures; full narrative close | One year later, deep winter again: fluent and at home — full circle to her January arrival |
 
 ---
 

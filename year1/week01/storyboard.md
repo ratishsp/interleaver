@@ -8,6 +8,8 @@ undskyld) ·
 The curriculum gives one beat per week ("Maya lands in Copenhagen, knowing no one"); this decomposes
 it into 12 scene-level beats. Drives the `gen.py scene → verify → assemble` loop. Maya = 31, from
 Mexico; recurring cast = Nina (Danish neighbour) and family back home in Mexico.
+The flat she lands in this week is a *temporary* place; her real home comes in week 4 (a flat opens up
+in Nina's building, so she stays next door to Nina).
 
 | # | stem | beat |
 |---|------|------|
@@ -17,8 +19,8 @@ Mexico; recurring cast = Nina (Danish neighbour) and family back home in Mexico.
 | 4 | 04_the_taxi | Maya takes a taxi. The driver says hello and asks where she is going. Maya gives her new address. They talk a little; Copenhagen is big and beautiful. She looks out at the streets and the tall houses. |
 | 5 | 05_the_street | The taxi stops on Maya's new street. The street is quiet. There are old houses — they are tall and beautiful. Everything is new to Maya, and she is curious. |
 | 6 | 06_the_neighbour | At the door Maya meets Nina, who lives next door. Nina says hello and tells Maya her name; Maya does the same. Nina comes from Denmark, Maya from Mexico. They are happy — a friendship begins. |
-| 7 | 07_the_flat | Maya goes into her new flat. It is small but nice. There is a little kitchen, a table, and two chairs. There is a big window. Maya likes her new home. |
-| 8 | 08_the_window | Maya stands at the window and looks out at Copenhagen. It is a big city — there are many people and many bikes. The sky is grey and it is cold. At home in Mexico it is warm. She thinks about her family. |
+| 7 | 07_the_flat | Maya goes into the small flat where she is staying for now. It is small but nice — a little kitchen, a table, two chairs, a big window. She likes it — a good start in Denmark. She is happy. |
+| 8 | 08_the_window | Maya stands at the window and looks out at Copenhagen. It is a big city — there are many people and many bikes. The sky is grey and it is cold. At home in Mexico it is warm. She thinks about her family far away — but she is happy to be here. |
 | 9 | 09_a_call_home | Maya calls her family in Mexico. She sees her mother and father on the screen, and they say hello. Maya tells them she is in Copenhagen and she is well. It is cold but beautiful here. She is happy. |
 | 10 | 10_evening_alone | It is evening, and Maya is alone in the flat. It is quiet. She is a little tired and a little homesick. But she is also happy and curious. Tomorrow is a new day. |
 | 11 | 11_the_friend_returns | Nina knocks on the door and asks how Maya is doing. Maya says she is happy here. Nina is warm and kind. She is Maya's neighbour now, so Maya is not alone. She feels welcome. |

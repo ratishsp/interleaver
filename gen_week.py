@@ -12,6 +12,7 @@ Scenes are independent (no vocab carried between them), so --workers runs them c
 from __future__ import annotations
 import argparse
 import json
+import os
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -44,7 +45,11 @@ _ap.add_argument("--scenes", help="subset to (re)generate, e.g. '1-3', '1,4,7', 
 _ap.add_argument("--workers", type=int, default=4,
                  help="concurrent scenes (default 4). Scenes are independent, so they run in "
                       "parallel — raise for speed, lower to stay under API rate limits")
+_ap.add_argument("--location", default="global",
+                 help="Vertex location (default 'global' — required for the gemini-3.1-pro verify "
+                      "judge; gemini-2.5-pro generation also works there)")
 _args = _ap.parse_args()
+os.environ["GOOGLE_CLOUD_LOCATION"] = _args.location   # gen (2.5-pro) and verify (3.1-pro) both run in global
 STORYBOARD = _args.storyboard
 SCENES = _parse_scene_sel(_args.scenes)
 WORKERS = max(1, _args.workers)
@@ -55,8 +60,9 @@ GRAMMAR = _SPEC["grammar"]
 LINES = _SPEC["lines"]
 
 GEN_MODEL = "gemini-2.5-pro"
-VERIFY_MODEL = "gemini-2.5-pro"     # max capability on the QA gate — false negatives (missing a real
-                                    # defect) are the costly error; matters most for low-resource L2s
+VERIFY_MODEL = "gemini-3.1-pro-preview"   # stronger judge than the generator — false negatives (missing a
+                                          # real defect, e.g. the bad number-word 'syvogtirs') are the costly
+                                          # error. Needs location='global'; generation stays on 2.5-pro.
 MAX_RETRIES = 1                      # one retry on hard-fail, then accept best + log (no thrash)
 # Hard gates (block + retry) = alignment (structural, checked separately) + every non-advisory dim:
 # content_neutral (cross-language reuse invariant), naturalness (idiomatic Danish), gloss_fidelity

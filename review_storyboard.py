@@ -31,7 +31,6 @@ from pathlib import Path
 
 from tandem.gen import (
     DEFAULT_MODEL,
-    _json_call,
     make_client,
     parse_storyboard,
     parse_storyboard_header,
@@ -42,6 +41,11 @@ A "week" is a STORYBOARD: ~14 scene "beats" (one-paragraph summaries). From each
 generates ~14 short Danish sentences + English glosses, then text-to-speech. You are reviewing the
 STORYBOARD (the beats), BEFORE any Danish is generated, to catch design problems while a fix is cheap
 (edit a beat, not regenerate + re-verify + re-render).
+
+CONVENTION (do NOT flag): beats are written as 3rd-person summaries ("Maya sits...", "She says...").
+The generator converts them to Maya's 1st-person voice ("Jeg sidder...") — this is enforced in the
+generation prompt and proven across weeks 1–2. So 3rd-person phrasing in the beats is EXPECTED and
+correct; never report it as an issue.
 
 GROUND TRUTH:
 --- story_bible.md (established story facts + cross-cutting rules) ---
@@ -160,10 +164,50 @@ def build_prompt(lens: dict, *, header: str, beats: str, bible: str, curric: str
     return common + body + _CONTRACT
 
 
+def _call_findings(client, model: str, prompt: str) -> list[dict]:
+    """Call the judge for a JSON {findings:[...]} and return the list, robust to truncation.
+
+    A reasoning model can run long and get its JSON cut off mid-array. Rather than crash the whole
+    panel on one flaky lens, we salvage every COMPLETE finding object and drop the truncated tail.
+    Only a total parse failure raises — so main() can mark that lens incomplete (never a silent pass).
+    """
+    from google.genai import types
+
+    resp = client.models.generate_content(
+        model=model, contents=prompt,
+        config=types.GenerateContentConfig(response_mime_type="application/json",
+                                           max_output_tokens=8192),
+    )
+    text = (resp.text or "").strip()
+    try:
+        return json.loads(text).get("findings", []) or []
+    except json.JSONDecodeError:
+        pass
+    # Salvage: scan balanced {...} objects inside the findings array; keep the parseable ones.
+    objs, depth, start = [], 0, None
+    for j in range(max(0, text.find("findings")), len(text)):
+        c = text[j]
+        if c == "{":
+            if depth == 0:
+                start = j
+            depth += 1
+        elif c == "}" and depth > 0:
+            depth -= 1
+            if depth == 0 and start is not None:
+                try:
+                    objs.append(json.loads(text[start:j + 1]))
+                except json.JSONDecodeError:
+                    pass
+                start = None
+    if not objs:
+        raise RuntimeError(f"unparseable JSON from judge ({len(text)} chars)")
+    return objs
+
+
 def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
-    rep = _json_call(client, model, prompt)
+    raw = _call_findings(client, model, prompt)
     out = []
-    for f in rep.get("findings", []) or []:
+    for f in raw:
         out.append({
             "lens": lens["title"],
             "scene": str(f.get("scene", "?")),

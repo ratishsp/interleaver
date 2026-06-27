@@ -157,6 +157,16 @@ def main() -> int:
               f"hard={'OK ' if s['hard_pass'] else 'FAIL'} | "
               f"content={s['content']} natural={s['natural']} gloss={s['gloss']}  "
               f"[adv G={s['grammar']} CEFR={s['cefr']}]")
+
+    # Deterministic repetition lint over the WHOLE week (cheap, no API) — surfaces mechanical repeats
+    # (smile-as-every-closer, an emotion tag in half the scenes, a sentence reused across scenes)
+    # right after generation, before the LLM week-gate. Advisory: prints flags, never blocks the run.
+    try:
+        from lint_week import lint as _lint_week
+        if _lint_week(outdir) == 1:
+            print("  ↳ repetition lint flagged HIGHs above — worth a pass before review_week.")
+    except Exception as exc:
+        print(f"[warn] repetition lint skipped: {exc}")
     return 0
 
 

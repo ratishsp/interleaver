@@ -1,10 +1,17 @@
 """Storyboard review gate — a 4-lens panel that reviews a week's storyboard BEFORE generation.
 
 Mirrors `verify_scene`, one tier up:  author beats → REVIEW → revise → pass → generate.
-Three mechanical lenses (continuity / narrative-logic / realism+privacy) carry a prescribed
-checklist as a FLOOR *plus* explicit agency; a fourth "naive learner" lens has NO checklist —
-it catches what a checklist can't (pacing, monotony, flat mood). The text verifier checks the
-generated Danish; this checks the *design*, before any Danish exists.
+Four mechanical lenses (continuity / narrative-logic / realism+privacy / density+eventfulness)
+carry a prescribed checklist as a FLOOR *plus* explicit agency; a fifth "naive learner" lens has
+NO checklist — it catches what a checklist can't (pacing, monotony, flat mood). The text verifier
+checks the generated Danish; this checks the *design*, before any Danish exists.
+
+The DENSITY lens (added 2026-06-27) is the root-cause catch: week 4 ("moving into a flat") passed
+this gate clean, then the whole-week text gate forced two scene cuts because the week was one thin
+event (a move-in) micro-sliced 14 ways — static room-description scenes, three evening reflections,
+a smile/glad flood. All of that is visible in the BEATS. The standard is Anna's-week density: each
+scene a complete mini-vignette that MOVES (a market visit hitting several stalls, a bank errand with
+a problem + resolution), not a furniture inventory; the week spanning varied situations, not one.
 
 Why a panel, why agency: a reviewer's errors are asymmetric — a false alarm costs seconds to
 dismiss, a miss costs a bad week (×50 at scale). So each lens is told its checklist is a MINIMUM,
@@ -109,6 +116,35 @@ LENSES = [
             "(d) Translation/gloss hazards — beats likely to produce constructions awkward to render in\n"
             "    English / another L1 (written-out abbreviations, lexically ambiguous words, inaccurate\n"
             "    inline glosses of culture-specific terms)."
+        ),
+    },
+    {
+        "key": "density",
+        "title": "Density, eventfulness & variety",
+        "lens": "whether enough HAPPENS — each scene a real mini-event, the week varied, not one thin situation micro-sliced to fill a scene count",
+        "floor": (
+            "STANDARD (the bar to hold each scene to): a scene should be a complete mini-vignette that\n"
+            "MOVES — like a market visit (several stalls, each a small exchange + its own concrete words)\n"
+            "or a bank errand (a problem and its resolution, with a little stakes). NOT a static\n"
+            "description of a place, an inventory of objects, or a mood with no action.\n"
+            "(a) EVENT per scene — does each beat have something HAPPEN / change / get encountered / get\n"
+            "    decided, with a small beginning→middle→end? Or is it mostly static description (what a\n"
+            "    room looks like, what objects are where, a feeling restated)? FLAG every scene that is\n"
+            "    description-only with no event or internal arc.\n"
+            "(b) WEEK variety — does the week span several DISTINCT situations/activities (different\n"
+            "    places, people, tasks), or does it micro-slice ONE event (a single move-in, a single\n"
+            "    tour) across many scenes? FLAG a week that is one thin situation stretched to length.\n"
+            "(c) FRICTION — does anything ever go even slightly wrong, surprise her, or require a choice\n"
+            "    (a problem, an obstacle, a small conflict)? A frictionless week of pleasant description\n"
+            "    is flat — FLAG the absence of any friction.\n"
+            "(d) CONCRETE specificity — does each scene bring its OWN concrete nouns/actions, or lean on\n"
+            "    generic filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable\n"
+            "    scenes.\n"
+            "(e) CUT/MERGE — could thin scenes be cut or merged with no loss of event? Too many small\n"
+            "    scenes for too little content is the tell; name which to cut or merge.\n"
+            "NOTE: the grammar focus (e.g. placement verbs der står/ligger) must be taught through\n"
+            "ACTION (she puts the lamp by the window, the cup falls under the table), not a static\n"
+            "inventory — flag beats that will force flat 'X is at Y' description."
         ),
     },
     {

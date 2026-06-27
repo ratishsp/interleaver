@@ -176,6 +176,15 @@ def main() -> int:
         _vocab_load(outdir)
     except Exception as exc:
         print(f"[warn] vocab-load readout skipped: {exc}")
+
+    # Sentence-complexity readout (deterministic) — the per-scene CEFR judge is lenient about
+    # structure, so this catches compound/long-sentence drift above the level baseline (the 3.1
+    # generator tends to string clauses together). Advisory; split the flagged lines if over.
+    try:
+        from complexity import report as _complexity
+        _complexity(outdir)
+    except Exception as exc:
+        print(f"[warn] complexity readout skipped: {exc}")
     return 0
 
 

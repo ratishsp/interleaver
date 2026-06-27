@@ -167,6 +167,15 @@ def main() -> int:
             print("  ↳ repetition lint flagged HIGHs above — worth a pass before review_week.")
     except Exception as exc:
         print(f"[warn] repetition lint skipped: {exc}")
+
+    # Week-level vocabulary-load readout (deterministic) — the counterweight to the storyboard
+    # density lens: surfaces the rarest words so a jargon spike from an over-technical event is
+    # visible. Advisory; the % tracks density, the rarest list is what to scan.
+    try:
+        from vocab_load import report as _vocab_load
+        _vocab_load(outdir)
+    except Exception as exc:
+        print(f"[warn] vocab-load readout skipped: {exc}")
     return 0
 
 

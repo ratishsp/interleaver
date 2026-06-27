@@ -62,7 +62,7 @@ spiralling review, Krashen *i+1* (each week one notch up), and an explicit SOLO 
 | 1 | A1 | Arrival & introducing yourself | Present of *være/hedde/komme fra*; existential *der er*; subject pronouns; *hvad/hvor* questions | Maya lands in Copenhagen, knowing no one |
 | 2 | A1 | Registration, forms & numbers | Numbers 0–100; *har*; *være* + age | Registering at the *kommune*; getting a CPR and a phone number |
 | 3 | A1 | Family back home | Possessives *min/din*; indefinite *en/et* | A video call to her family abroad |
-| 4 | A1 | Moving into her own flat | *der ligger/står* (review *der er*); place prepositions *i, på, under, ved* | Leaving the temporary room for her own flat — a place comes free in Nina's building; her real home at last |
+| 4 | A1 | Moving into her own flat | *der ligger/står* (review *der er*); place prepositions *i, på, under, ved* | Leaving the temporary room for her own flat — a permanent place opens up in the same building (where Nina lives), so she stays next door to Nina; her real home at last |
 | 5 | A1 | Food shopping & the kitchen | Definite nouns *-en/-et*; *kan lide*; *jeg vil gerne have* | First grocery run — unfamiliar products |
 | 6 | A1 | Settling into a routine | Present-tense regular verbs; reflexive *vasker mig*; V2 review | Building a daily rhythm |
 | 7 | A1 | Time & appointments | Telling the clock; *klokken*; weekdays/months; frequency adverbs | Planning her week; booking appointments |

@@ -19,10 +19,13 @@ locked. The continuity lens treats everything here as established truth: a new w
 - Maya lives in a **small TEMPORARY flat** (a place for the first weeks). She **already has an
   address** (this temp flat — she gave it to a taxi on arrival). It is *not* her permanent home yet
   ("a good start").
-- She has **met Nina** (neighbour, first friend).
+- She has **met Nina** (neighbour, first friend) — Nina lives **next door in the same building** as
+  the temp flat (so Maya is already in Nina's building).
 - She does **NOT yet have**: a Danish phone number, a CPR number, an *official/registered* address, a job.
-- Foreshadowed (not yet true): her **own flat in week 4** (a place opens up in Nina's building, so she
-  stays next to Nina); CPR + phone + registration in **week 2**.
+- Foreshadowed (not yet true): her **own flat in week 4** — the temp flat is **already in Nina's
+  building** (Nina is her next-door neighbour from day 1), so week 4 is a *permanent* flat opening up
+  in the **same building**: she leaves the temporary room for her own real home and **stays next to
+  Nina**. CPR + phone + registration in **week 2**.
 
 ## Cross-cutting rules (every week)
 - **Privacy** — the CPR number is sensitive (like an SSN). Never read it out / repeat it digit-by-digit;

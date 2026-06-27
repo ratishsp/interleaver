@@ -12,7 +12,8 @@ locked. The continuity lens treats everything here as established truth: a new w
 
 ## Recurring cast
 - **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives next door. Kind, helpful.
-- **Family** — parents (*mor/far*) back home in Mexico; contact by video call.
+- **Family** — back home in Mexico, contact by video call: parents (*mor/far*), sister **Sofía**,
+  brother **Diego**, and the family dog **Lola** (siblings + dog established in wk3's family call).
 
 ## Status ledger — what is TRUE by end of each week
 ### End of Week 1 (arrival)

@@ -1,7 +1,7 @@
 """Storyboard review gate — a 4-lens panel that reviews a week's storyboard BEFORE generation.
 
 Mirrors `verify_scene`, one tier up:  author beats → REVIEW → revise → pass → generate.
-Four mechanical lenses (continuity / narrative-logic / realism+privacy / density+eventfulness)
+Four mechanical lenses (continuity / narrative-logic / realism+privacy / density+variety)
 carry a prescribed checklist as a FLOOR *plus* explicit agency; a fifth "naive learner" lens has
 NO checklist — it catches what a checklist can't (pacing, monotony, flat mood). The text verifier
 checks the generated Danish; this checks the *design*, before any Danish exists.
@@ -10,8 +10,8 @@ The DENSITY lens (added 2026-06-27) is the root-cause catch: week 4 ("moving int
 this gate clean, then the whole-week text gate forced two scene cuts because the week was one thin
 event (a move-in) micro-sliced 14 ways — static room-description scenes, three evening reflections,
 a smile/glad flood. All of that is visible in the BEATS. The standard is Anna's-week density: each
-scene a complete mini-vignette that MOVES (a market visit hitting several stalls, a bank errand with
-a problem + resolution), not a furniture inventory; the week spanning varied situations, not one.
+scene a complete mini-vignette that MOVES (a market visit hitting several stalls), not a furniture
+inventory; the week spanning varied situations, not one thin event micro-sliced.
 
 Why a panel, why agency: a reviewer's errors are asymmetric — a false alarm costs seconds to
 dismiss, a miss costs a bad week (×50 at scale). So each lens is told its checklist is a MINIMUM,
@@ -20,7 +20,7 @@ not a maximum, and to err toward surfacing.
 Validated 2026-06-27 on the pre-fix week-2 storyboard (commit d04b950): the panel independently
 caught all 5 issues we'd found by hand (CPR-read-aloud, texts-before-having-number, already-has-
 address, bus#4/4-stops, plan-duplication) plus real residual ones (out-of-scope ordinal, the
-12/14 recap, the "writes it down" refrain, no-friction flatness).
+12/14 recap, the "writes it down" refrain, flat-affect monotony).
 
 GROW THE CHECKLIST: when a lens keeps surfacing the same new kind of issue, fold it into that
 lens's `floor` below (discovery via agency → codify into the floor). The bible (story_bible.md)
@@ -120,40 +120,32 @@ LENSES = [
     },
     {
         "key": "density",
-        "title": "Density, eventfulness & variety",
-        "lens": "whether enough HAPPENS — each scene a real mini-event, the week varied, not one thin situation micro-sliced to fill a scene count",
+        "title": "Density, activity & variety",
+        "lens": "whether each scene is a real activity that moves and the week is varied, not one thin situation micro-sliced to fill a scene count",
         "floor": (
-            "STANDARD (the bar to hold each scene to): a scene should be a complete mini-vignette that\n"
-            "MOVES — like a market visit (several stalls, each a small exchange + its own concrete words)\n"
-            "or a bank errand (a problem and its resolution, with a little stakes). NOT a static\n"
-            "description of a place, an inventory of objects, or a mood with no action.\n"
-            "(a) EVENT per scene — does each beat have something HAPPEN / change / get encountered / get\n"
-            "    decided, with a small beginning→middle→end? Or is it mostly static description (what a\n"
-            "    room looks like, what objects are where, a feeling restated)? FLAG every scene that is\n"
-            "    description-only with no event or internal arc.\n"
-            "(b) WEEK variety — does the week span several DISTINCT situations/activities (different\n"
-            "    places, people, tasks), or does it micro-slice ONE event (a single move-in, a single\n"
-            "    tour) across many scenes? FLAG a week that is one thin situation stretched to length.\n"
-            "(c) FRICTION — does anything ever go even slightly wrong, surprise her, or require a choice\n"
-            "    (a problem, an obstacle, a small conflict)? A frictionless week of pleasant description\n"
-            "    is flat — FLAG the absence of any friction.\n"
-            "(d) CONCRETE specificity — does each scene bring its OWN concrete nouns/actions, or lean on\n"
-            "    generic filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable\n"
-            "    scenes.\n"
-            "(e) CUT/MERGE — could thin scenes be cut or merged with no loss of event? Too many small\n"
-            "    scenes for too little content is the tell; name which to cut or merge.\n"
-            "(f) COMMON VOCABULARY — diversity of EVENTS must not become diversity of JARGON. Are the\n"
-            "    beats grounded in common, everyday words, or do they force TECHNICAL / specialized /\n"
-            "    rare nouns? The axis is common-vs-technical, NOT specific-vs-generic: SPECIFIC-and-\n"
-            "    common is ideal and memorable (strawberries, rye bread, a heavy box, a lost key); it\n"
-            "    is SPECIFIC-and-technical that costs (a thermostat, a valve, induction controls, a tax\n"
-            "    appeal). Prefer friction everyday words can carry (can't lift it, can't find it, it's\n"
-            "    cold, she's hungry, it spills) over friction that needs a specialized vocabulary even\n"
-            "    to describe. FLAG any event that will drag in technical/rare nouns when a common-vocab\n"
-            "    event of the same shape (same grammar, same friction, same warmth) would do.\n"
-            "NOTE: the grammar focus (e.g. placement verbs der står/ligger) must be taught through\n"
-            "ACTION (she puts the lamp by the window, the cup falls under the table), not a static\n"
-            "inventory — flag beats that will force flat 'X is at Y' description."
+            "STANDARD (the bar for each scene): a complete mini-vignette that MOVES — like a market\n"
+            "visit (several stalls, a small exchange at each). NOT a static description of a place, an\n"
+            "inventory of objects, or a mood with no action.\n"
+            "(a) ACTIVITY per scene — is each scene a real activity that moves, with a small\n"
+            "    beginning→middle→end? Or is it static description (what a room looks like, where\n"
+            "    objects are, a feeling restated)? FLAG every description-only scene. A smooth, ordinary\n"
+            "    task done well IS the standard.\n"
+            "(b) WEEK variety — does the week span several DISTINCT situations (different places, people,\n"
+            "    tasks), or micro-slice ONE event (a single move-in, a single tour) across many scenes?\n"
+            "    FLAG a week that is one thin situation stretched to length. Also FLAG the SAME kind of\n"
+            "    beat repeated (e.g. several 'she meets an unfamiliar thing' scenes) — vary the shape.\n"
+            "    There is NO target or minimum scene count: a small topic at 4–5 scenes is fine. If a\n"
+            "    week feels short, ADD a second activity/topic — never pad one thin topic into more\n"
+            "    scenes to hit a count or a runtime.\n"
+            "(c) CONCRETE texture — does each scene bring its OWN concrete detail — nouns, actions, the\n"
+            "    odd sensory note (a smell, warmth, a taste, a small pleasure) — or lean on generic\n"
+            "    filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable scenes.\n"
+            "(d) CUT/MERGE — could thin scenes be cut or merged with no loss? Name which.\n"
+            "(e) COMMON VOCABULARY — keep the beats in common, everyday words. The axis is common-vs-\n"
+            "    technical, NOT specific-vs-generic: SPECIFIC-and-common is ideal and memorable\n"
+            "    (strawberries, rye bread, a heavy box, a lost key); SPECIFIC-and-technical is what costs\n"
+            "    (a thermostat, a valve, induction controls, a tax appeal). FLAG any beat that drags in\n"
+            "    technical/rare nouns when a common-vocab beat of the same shape would do."
         ),
     },
     {
@@ -171,7 +163,7 @@ not an inspector. We use you precisely to catch what a checklist would miss.
 
 What's confusing? boring or flat? oddly repetitive? Where does your attention drift? What made you
 think "huh, that's weird" or "wait, why would she do that"? Anything emotionally off (a downbeat that
-never resolves, a narrow emotional palette, a week where nothing ever goes even slightly wrong)?
+never resolves, a narrow emotional palette, the same beat or device repeated until it grates)?
 Trust your gut; report whatever strikes you, however small or subjective.
 Rate each by gut-strength: High = strong reaction, Med = notable, Low = minor."""
 

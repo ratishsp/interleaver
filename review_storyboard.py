@@ -1,4 +1,4 @@
-"""Storyboard review gate — a 4-lens panel that reviews a week's storyboard BEFORE generation.
+"""Storyboard review gate — a 5-lens panel that reviews a week's storyboard BEFORE generation.
 
 Mirrors `verify_scene`, one tier up:  author beats → REVIEW → revise → pass → generate.
 Four mechanical lenses (continuity / narrative-logic / realism+privacy / density+variety)
@@ -77,7 +77,11 @@ _FLOOR_AGENCY = """
 
 [Agency:] This list is a MINIMUM, not a maximum. Use your judgment — flag anything else off through
 your lens even if it is not listed. A false alarm costs us seconds to dismiss; a miss costs a bad
-lesson. Err toward surfacing."""
+lesson. Err toward surfacing.
+
+[Severity:] High = blocking: a hard contradiction, a spec/level breach, or a structural defect that
+makes the content unusable as-is. Med = a real problem worth fixing, but not blocking. Low = minor /
+polish. Surface liberally, but reserve High for genuinely blocking issues."""
 
 LENSES = [
     {
@@ -88,8 +92,8 @@ LENSES = [
             "(a) Does any beat CONTRADICT a story_bible fact, or RE-INTRODUCE as new something Maya\n"
             "    already has/knows/is (housing, address, phone, CPR, job, relationships)?\n"
             "(b) Does the week hit its curriculum grammar focus and its theme?\n"
-            "(c) Does the scene count COVER the week's grammar without padding? (Few scenes is fine in\n"
-            "    itself — flag only padding or genuine grammar under-coverage.)\n"
+            "(c) Does the scene count COVER the week's grammar without padding? Flag only padding or\n"
+            "    genuine grammar under-coverage.\n"
             "(d) Level-appropriate (no out-of-scope grammar,\n"
             "    e.g. ordinals/past-tense before they are introduced)?\n"
             "(e) Character facts consistent (recurring cast, Maya's age/origin)?"
@@ -100,12 +104,12 @@ LENSES = [
         "title": "Narrative logic & coherence",
         "lens": "internal logic, ordering, redundancy, and dramatic sense within the week",
         "floor": (
-            "(a) Redundancy — is the same information delivered twice (a plan stated, then restated)?\n"
+            "(a) Redundancy / over-repetition — the same information, fact, number, phrase, or\n"
+            "    scene-shape delivered more than once (e.g. a plan stated, then restated).\n"
             "(b) Logic gaps — does any action presuppose something not yet true (contacting someone\n"
             "    before you could have their contact details)?\n"
             "(c) Ordering / cause-effect plausibility across scenes.\n"
-            "(d) Over-repetition — a fact, number, phrase, or scene-shape repeated more than it should.\n"
-            "(e) Does each scene earn its place / advance something?"
+            "(d) Does each scene earn its place / advance something?"
         ),
     },
     {
@@ -263,7 +267,7 @@ _SEV_RANK = {"High": 0, "Med": 1, "Low": 2}
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="Review a week's storyboard with the 4-lens panel.")
+    ap = argparse.ArgumentParser(description="Review a week's storyboard with the 5-lens panel.")
     ap.add_argument("storyboard", help="path to the week's storyboard.md")
     ap.add_argument("--bible", default="story_bible.md")
     ap.add_argument("--curriculum", default="curriculum_da.md")

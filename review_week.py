@@ -38,11 +38,7 @@ repetition, the emotional arc, cross-scene consistency, and pacing.
 IMPORTANT CALIBRATION — this is a comprehensible-input beginner LANGUAGE course, NOT a novel. MODERATE
 repetition of common words and simple phrases is PEDAGOGICALLY GOOD (it reinforces vocabulary) and is
 EXPECTED — not a defect. Do NOT flag a word or phrase merely for recurring across scenes (a learner
-hearing "varm" or "på skærmen" several times is fine and useful). Flag repetition ONLY when it is
-genuinely monotonous or mechanical: the SAME full sentence/line repeated back-to-back, a whole scene
-recapping another, a filler line that adds nothing, an identical scene-template reused many times, or
-one element so dominant it appears in nearly EVERY scene and crowds out the content. When in doubt on
-mere word-frequency, it is fine — lean High only for clear, listener-noticeable monotony.
+hearing "varm" or "på skærmen" several times is fine and useful).
 
 GROUND TRUTH:
 --- story_bible.md (facts + cross-cutting rules, incl. the mood rule) ---
@@ -71,11 +67,13 @@ LENSES = [
         "title": "Repetition & monotony",
         "lens": "things over-repeated or too samey across the week",
         "floor": (
-            "(a) A fact/phrase/word/emotion restated in more scenes than it needs (e.g. the same\n"
-            "    feeling stated in scene after scene).\n"
+            "(a) An emotion or state asserted in scene after scene (e.g. the same feeling restated)\n"
+            "    — not mere vocabulary recurrence, which is fine.\n"
             "(b) Scenes built on an identical shape/template — a 'roll-call' of near-identical beats.\n"
             "(c) A whole scene that recaps another (near-verbatim summary of the same content).\n"
-            "(d) A refrain — the same small action or line recurring scene after scene."
+            "(d) A refrain — the same small action or line recurring scene after scene.\n"
+            "When in doubt on mere word-frequency, it's fine — reserve High for clear, listener-\n"
+            "noticeable monotony."
         ),
     },
     {
@@ -83,8 +81,9 @@ LENSES = [
         "title": "Mood & emotional arc",
         "lens": "the week's emotional shape as a whole (see the bible's mood rule)",
         "floor": (
-            "(a) Does the week RESOLVE? The bible says never end a scene on despair/loneliness —\n"
-            "    resolve the wistful notes. Flag any scene that ends on a down note with no lift.\n"
+            "(a) Resolution — the bible says never leave a scene, or the week, on despair/loneliness.\n"
+            "    Flag the week if its arc doesn't lift by the end, and any individual scene that ends on\n"
+            "    a down note with no lift (this mood rule has no per-scene gate, so it lives here).\n"
             "(b) Cumulative gloom — sadness/loneliness/cold/dark stacked across scenes without warmth.\n"
             "(c) Emotional range — or is the whole week stuck on one narrow note?\n"
             "(d) Overall: would this feel warm and hopeful to listen to, or a bit depressing?"

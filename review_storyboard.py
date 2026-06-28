@@ -76,8 +76,8 @@ _FLOOR_AGENCY = """
 {floor}
 
 [Agency & severity:] The floor is a MINIMUM — flag anything off through your lens, listed or not.
-Surface Med (worth fixing) and Low (minor) freely; they're cheap to dismiss. Reserve High for a
-genuinely blocking problem: content unusable or wrong as-is that must be fixed before shipping
+Surface Med (worth fixing) and Low (minor) freely. Reserve High for a genuinely blocking problem:
+content unusable or wrong as-is that must be fixed before shipping
 (a contradiction, a spec/level breach, a safety/privacy breach, a structural defect — judge by that
 bar, not only these examples)."""
 

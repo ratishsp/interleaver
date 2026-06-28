@@ -72,11 +72,10 @@ STORYBOARD UNDER REVIEW — {header}:
 """
 
 _FLOOR_AGENCY = """
-[Floor — check these at minimum:]
+[Floor — check at least these, and flag anything else off through your lens:]
 {floor}
 
-[Agency & severity:] The floor is a MINIMUM — also flag anything else off through your lens. Rate each
-finding: Med = a problem worth fixing; Low = minor; High = a genuinely blocking problem — content
+[Severity:] Med = a problem worth fixing; Low = minor; High = a genuinely blocking problem — content
 unusable or wrong as-is that must be fixed before shipping (e.g. a contradiction, a spec/level breach,
 a safety/privacy breach, a structural defect; judge by that bar, not only these examples)."""
 

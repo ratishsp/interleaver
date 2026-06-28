@@ -184,17 +184,29 @@ Use an empty list if you find nothing. Do not summarize the storyboard back."""
 
 
 def curriculum_row(curriculum_path: str | Path, week: int | None) -> str:
-    """Pull the week's table row (+ its section header) from the curriculum, for context."""
+    """Pull the week's table row (+ its section header and the table's own column header) from the curriculum, for context."""
     if not curriculum_path or week is None:
         return "(curriculum not provided)"
     text = Path(curriculum_path).read_text(encoding="utf-8")
     section = ""
+    header = ""                                     # the table's column-header row, read from the file
     for line in text.splitlines():
         if line.startswith("## "):
             section = line.lstrip("# ").strip()
-        cells = [c.strip() for c in line.strip().strip("|").split("|")] if line.strip().startswith("|") else []
-        if cells and cells[0].isdigit() and int(cells[0]) == week:
-            return f"[{section}]\n| Wk | Lvl | Theme | Grammar focus | Narrative beat |\n{line.strip()}"
+            header = ""                             # each section has its own table; don't carry one over
+            continue
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            continue
+        cells = [c.strip() for c in stripped.strip("|").split("|")]
+        if all(set(c) <= {"-", ":"} for c in cells):   # |---|:--:| separator row — skip
+            continue
+        if cells and cells[0].isdigit():               # a data row (first cell is the week number)
+            if int(cells[0]) == week:
+                head = f"{header}\n" if header else ""
+                return f"[{section}]\n{head}{stripped}"
+            continue
+        header = stripped                              # non-separator, non-data |-row = the column header
     return f"(no row found for week {week})"
 
 

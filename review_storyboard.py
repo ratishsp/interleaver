@@ -79,9 +79,10 @@ _FLOOR_AGENCY = """
 your lens even if it is not listed. A false alarm costs us seconds to dismiss; a miss costs a bad
 lesson. Err toward surfacing.
 
-[Severity:] High = blocking: a hard contradiction, a spec/level breach, or a structural defect that
-makes the content unusable as-is. Med = a real problem worth fixing, but not blocking. Low = minor /
-polish. Surface liberally, but reserve High for genuinely blocking issues."""
+[Severity:] High = blocking — something that makes the content unusable or wrong as-is and must be
+fixed before shipping (e.g. a hard contradiction, a spec/level breach, a safety/privacy breach, a
+structural defect); judge by that bar, not only these examples. Med = a real problem worth fixing,
+but not blocking. Low = minor / polish. Surface liberally, but reserve High for genuinely blocking issues."""
 
 LENSES = [
     {

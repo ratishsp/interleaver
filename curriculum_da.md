@@ -36,13 +36,9 @@ Rough guide — not a rule:
   vocabulary; richness ramps with the syllabus.)
 - **Narrative beat** — the through-line.
 
-**The narrative — Maya's first year in Denmark (a newcomer's year).**
-Maya arrives in Copenhagen in January knowing almost no Danish. Over 52 weeks she settles in,
-finds work, makes friends, and ends the year fluent and at home. The arc *is* the CEFR ladder:
-arrival & survival (A1) → daily life (A2) → opinions & belonging (B1) → nuance & full participation (B2).
-Recurring cast: **Nina** (a Danish friend and neighbour), a few **new friends** she makes, and her
-**family back home** (video calls). The newcomer frame is deliberate — the protagonist's journey
-mirrors the learner's own, and it makes the early simplicity and the cultural content feel natural.
+**The narrative.** The story arc — Maya's first year, the recurring cast, how the CEFR ladder maps to
+the plot — lives in `design_notes.md` → "The narrative arc". The **Narrative beat** column below is
+that arc, one week at a time.
 
 Course-weeks are **learning units, not calendar weeks** — story-time is elastic — but the **seasons
 turn loosely across the arc** so the year still feels real: winter at arrival (wk 1) → spring (wk ~17)

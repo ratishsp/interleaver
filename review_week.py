@@ -28,7 +28,7 @@ from tandem.gen import DEFAULT_MODEL, make_client, parse_storyboard, parse_story
 from review_storyboard import _call_findings, _SEV_RANK, _FLOOR_AGENCY, _CONTRACT, curriculum_row
 
 COMMON = """This is a Danish-for-English-speakers graded AUDIO course (interleaved English→Danish). A
-"week" is ~14 short scenes; the learner hears them one after another in a sitting. You are reviewing
+"week" is several short scenes; the learner hears them one after another in a sitting. You are reviewing
 the GENERATED TEXT of a FULL WEEK — every scene, in order, as "Danish line  |  English gloss".
 
 A separate PER-SCENE verifier already checked each scene's Danish in isolation (grammar, alignment,

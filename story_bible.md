@@ -5,7 +5,8 @@ locked. The continuity lens treats everything here as established truth: a new w
 *contradict* it, nor *re-introduce* (as if new) something already true.
 
 ## Maya (protagonist)
-- 31, from Mexico. Arrived in Copenhagen in **January**, knowing almost no Danish.
+- 31, from Mexico. Arrived in Copenhagen in **January**, knowing almost no Danish. Moved for a fresh
+  start; gradually settling in. Grew up in a warm climate, so the cold Danish winter is new to her.
 - First-person narrator throughout (her own voice).
 - Tone: bittersweet **but hopeful** — homesick at times, yet curious, warm, moving forward.
   Never end a scene on despair/loneliness; resolve the wistful notes.

@@ -30,14 +30,37 @@ from pathlib import Path
 
 DEFAULT_MODEL = "gemini-2.5-pro"
 
-# The fixed world every prompt shares, so referents / gender / continuity stay consistent.
-STORY_BIBLE = (
-    "Story world: The protagonist is Maya, a 31-year-old woman from Mexico, spending her first year "
-    "in Copenhagen, Denmark. She has moved to Copenhagen for a fresh start and is gradually settling "
-    "in. She grew up in a warm climate, so the cold Danish winter is new to her. "
-    "Recurring cast: Nina (a Danish neighbour who gradually becomes Maya's friend) and her family "
-    "back home in Mexico (video calls)."
-)
+# The shared story world is story_bible.md — the same ground-truth the review gates read — so the
+# author, the QA/revise prompts, and the gates can't drift apart. The per-week STATUS LEDGER is
+# gate-only and is NOT fed to the author: it foreshadows later weeks, which a scene could leak.
+_BIBLE_PATH = Path(__file__).resolve().parent.parent / "story_bible.md"
+_BIBLE_DROP_SECTIONS = ("status ledger",)   # gate-only sections, excluded from the author's view
+_STORY_BIBLE: str | None = None
+
+
+def load_story_bible(path: str | Path | None = None) -> str:
+    """The STABLE story facts (Maya, cast, cross-cutting rules) shared by the author + revise prompts.
+
+    Reads story_bible.md and drops the per-week status ledger (gate-only — its foreshadowing must not
+    reach the author). Cached when read from the default path.
+    """
+    global _STORY_BIBLE
+    if path is None and _STORY_BIBLE is not None:
+        return _STORY_BIBLE
+    p = Path(path) if path else _BIBLE_PATH
+    kept, started, skip = [], False, False
+    for line in p.read_text(encoding="utf-8").splitlines():
+        if line.startswith("## "):                       # a top-level section header
+            started = True
+            skip = any(k in line.lower() for k in _BIBLE_DROP_SECTIONS)
+        if not started or skip:                          # drop the title/preamble and dropped sections
+            continue
+        kept.append(line)
+    text = ("Story world — canonical facts; keep every scene consistent with these:\n\n"
+            + "\n".join(kept).strip())
+    if path is None:
+        _STORY_BIBLE = text
+    return text
 
 
 def make_client():
@@ -86,13 +109,16 @@ def _json_call(client, model: str, prompt: str) -> dict:
 
 
 def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar: str,
-                 lines: int, arc: list | None = None, scene_num: int | None = None) -> str:
+                 lines: int, arc: list | None = None, scene_num: int | None = None,
+                 bible: str | None = None) -> str:
     """Build the exact generation prompt (also used by --show-prompt for inspection).
 
     `lines` is accepted for caller compatibility but is no longer fed to the generator as a
     target — scene length follows the beat, not a quota (the storyboard's Lines/scene is advisory).
+    `bible` defaults to the stable sections of story_bible.md (single source of truth with the gates).
     """
     del lines  # intentionally not surfaced to the model
+    bible = bible if bible is not None else load_story_bible()
     arc_block = ""
     if arc:
         rows = "\n".join(
@@ -101,7 +127,7 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
             for a in arc)
         arc_block = ("\nThis week's arc (write ONLY the marked scene; do not cover other scenes' "
                      "beats or bring in characters who first appear in a later scene):\n" + rows + "\n")
-    return f"""{STORY_BIBLE}
+    return f"""{bible}
 
 TASK: Write ONE short scene for WEEK {week} (CEFR level {level}) of the Danish course.
 Scene title: "{scene_title}". Narrative beat: {beat}
@@ -117,10 +143,10 @@ Return JSON: {{"da": [...], "en": [...]}}, same number of entries in each."""
 
 def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, beat: str,
                    grammar: str, lines: int, arc: list | None = None,
-                   scene_num: int | None = None) -> dict:
+                   scene_num: int | None = None, bible: str | None = None) -> dict:
     """Author a graded scene natively in Danish + an English gloss. Returns {'da': [...], 'en': [...]}."""
     prompt = scene_prompt(week=week, level=level, scene_title=scene_title, beat=beat,
-                          grammar=grammar, lines=lines, arc=arc, scene_num=scene_num)
+                          grammar=grammar, lines=lines, arc=arc, scene_num=scene_num, bible=bible)
     out = _json_call(client, model, prompt)
     da, en = out.get("da", []), out.get("en", [])
     if len(da) != len(en):
@@ -129,11 +155,12 @@ def generate_scene(client, *, model: str, week: int, level: str, scene_title: st
 
 
 def revise_prompt(*, level: str, grammar: str, beat: str, da_lines: list[str],
-                  en_lines: list[str], feedback: str) -> str:
+                  en_lines: list[str], feedback: str, bible: str | None = None) -> str:
     """Build the revise prompt: a rejected draft + the QA problems to fix (also used by --show-prompt)."""
+    bible = bible if bible is not None else load_story_bible()
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
-    return f"""{STORY_BIBLE}
+    return f"""{bible}
 
 A draft scene for this Danish course (CEFR level {level}) was rejected by QA. Fix ONLY the problems listed below; keep everything else — the story, the line order, and every line that wasn't flagged — unchanged.
 
@@ -150,10 +177,11 @@ Return the FULL corrected scene as JSON: {{"da": [...], "en": [...]}} — one se
 
 
 def revise_scene(client, *, model: str, level: str, grammar: str, beat: str,
-                 da_lines: list[str], en_lines: list[str], feedback: str) -> dict:
+                 da_lines: list[str], en_lines: list[str], feedback: str,
+                 bible: str | None = None) -> dict:
     """Revise a rejected draft to fix the QA problems, keeping the rest. Returns {'da': [...], 'en': [...]}."""
     prompt = revise_prompt(level=level, grammar=grammar, beat=beat,
-                           da_lines=da_lines, en_lines=en_lines, feedback=feedback)
+                           da_lines=da_lines, en_lines=en_lines, feedback=feedback, bible=bible)
     out = _json_call(client, model, prompt)
     da, en = out.get("da", []), out.get("en", [])
     if len(da) != len(en):
@@ -162,10 +190,11 @@ def revise_scene(client, *, model: str, level: str, grammar: str, beat: str,
 
 
 def translate_prompt(*, src_lang: str, tgt_lang: str, lines: list[str], context: str = "",
-                     level: str = "", glossary: str = "") -> str:
+                     level: str = "", glossary: str = "", bible: str | None = None) -> str:
     """Build the exact translation prompt (also used by --show-prompt for inspection)."""
+    bible = bible if bible is not None else load_story_bible()
     numbered = "\n".join(f"{i+1}. {ln}" for i, ln in enumerate(lines))
-    return f"""{STORY_BIBLE}
+    return f"""{bible}
 
 TASK: Translate the following {len(lines)} lines from {src_lang} into {tgt_lang} for this course.
 {f'Scene context: {context}' if context else ''}
@@ -184,10 +213,11 @@ Return JSON: {{"lines": ["...", ...]}} with exactly {len(lines)} entries, in ord
 
 
 def translate_lines(client, *, model: str, src_lang: str, tgt_lang: str, lines: list[str],
-                    context: str = "", level: str = "", glossary: str = "") -> list[str]:
+                    context: str = "", level: str = "", glossary: str = "",
+                    bible: str | None = None) -> list[str]:
     """Context-rich, alignment-preserving translation of `lines` from src_lang to tgt_lang."""
     prompt = translate_prompt(src_lang=src_lang, tgt_lang=tgt_lang, lines=lines,
-                              context=context, level=level, glossary=glossary)
+                              context=context, level=level, glossary=glossary, bible=bible)
     out = _json_call(client, model, prompt)
     res = out.get("lines", [])
     if len(res) != len(lines):

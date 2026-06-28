@@ -75,15 +75,11 @@ _FLOOR_AGENCY = """
 [Floor — check these at minimum:]
 {floor}
 
-[Agency:] This list is a MINIMUM, not a maximum. Use your judgment — flag anything else off through
-your lens even if it is not listed. A false Med/Low alarm costs only seconds to dismiss and a miss
-costs a bad lesson, so err toward surfacing — but a wrong High costs a needless revise cycle, so rate
-by the severity bar below.
-
-[Severity:] High = blocking — something that makes the content unusable or wrong as-is and must be
-fixed before shipping (e.g. a hard contradiction, a spec/level breach, a safety/privacy breach, a
-structural defect); judge by that bar, not only these examples. Med = a real problem worth fixing,
-but not blocking. Low = minor / polish. Surface liberally, but reserve High for genuinely blocking issues."""
+[Agency & severity:] The floor is a MINIMUM — flag anything off through your lens, listed or not.
+Surface Med (worth fixing) and Low (minor) freely; they're cheap to dismiss. Reserve High for a
+genuinely blocking problem: content unusable or wrong as-is that must be fixed before shipping
+(a contradiction, a spec/level breach, a safety/privacy breach, a structural defect — judge by that
+bar, not only these examples)."""
 
 LENSES = [
     {

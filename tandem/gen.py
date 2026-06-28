@@ -33,11 +33,10 @@ DEFAULT_MODEL = "gemini-2.5-pro"
 # The fixed world every prompt shares, so referents / gender / continuity stay consistent.
 STORY_BIBLE = (
     "Story world: The protagonist is Maya, a 31-year-old woman from Mexico, spending her first year "
-    "in Copenhagen, Denmark. She has moved to Copenhagen for a fresh start; she arrives knowing "
-    "almost no one and gradually settles in. She grew up in a warm climate, so the cold, dark "
-    "Danish winter is new to her. "
-    "Recurring cast: Nina (a Danish friend and neighbour) and her family back home in Mexico (video "
-    "calls)."
+    "in Copenhagen, Denmark. She has moved to Copenhagen for a fresh start and is gradually settling "
+    "in. She grew up in a warm climate, so the cold Danish winter is new to her. "
+    "Recurring cast: Nina (a Danish neighbour who gradually becomes Maya's friend) and her family "
+    "back home in Mexico (video calls)."
 )
 
 
@@ -107,11 +106,11 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
 TASK: Write ONE short scene for WEEK {week} (CEFR level {level}) of the Danish course.
 Scene title: "{scene_title}". Narrative beat: {beat}
 {arc_block}
-The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss. Natural, correct Danish comes first, even when that means not landing exactly in-level.
+The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss.
 
-- Level {level}, this week's grammar: {grammar}. Earlier-week grammar may recur; don't reach clearly beyond {level}.
-- Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking.
-- One sentence per line; let the scene run as long as the beat naturally needs — no padding, no quota. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural Danish first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
+- Tell it as Maya's own first-person account; attribute any quoted speech so it's clear who's speaking.
+- One sentence per line in both arrays; let the scene run as long as the beat naturally needs — no padding, no quota. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {{"da": [...], "en": [...]}}, same number of entries in each."""
 
@@ -298,7 +297,11 @@ def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None 
 
 def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
                   en_lines: list[str]) -> str:
-    """Build the independent-QA prompt (also used by --show-prompt)."""
+    """Build the independent-QA prompt (also used by --show-prompt).
+
+    Note: first-person POV (Maya's own voice) is an AUTHORING invariant set in scene_prompt, not
+    re-checked here — a POV dimension would false-flag legitimate quoted speech by other characters.
+    """
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
     return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
@@ -315,7 +318,7 @@ SCENE (line-aligned Danish / English):
 
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus.
-2. cefr_level — is the sentence length and complexity appropriate to {level}? Flag ONLY lines whose complexity clearly EXCEEDS {level}; simplicity that fits {level} is expected, not a defect. (Word frequency is checked separately — ignore it here.)
+2. cefr_level — is the sentence length and complexity appropriate to {level}? Flag ONLY lines whose complexity clearly EXCEEDS {level}; simplicity that fits {level} is expected, not a defect. (Word frequency is checked separately — ignore it here.) Also state, as `assessed_level`, the CEFR level the scene's complexity actually reads as.
 3. content_neutral — is it about ordinary life and NOT about learning a language? Flag any language school, language class, or "learning/practising Danish" content.
 4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
 5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.

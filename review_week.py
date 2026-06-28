@@ -143,6 +143,7 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
             "issue": (f.get("issue") or f.get("reaction") or "").strip(),
             "severity": (f.get("severity") or "Med").strip().capitalize(),
             "why": (f.get("why") or "").strip(),
+            "advisory": lens.get("floor") is None,   # the open naive lens is a human signal, never blocks
         })
     return out
 
@@ -185,12 +186,15 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"  [warn] lens '{lens['title']}' failed: {exc}")
 
     findings.sort(key=lambda f: (_SEV_RANK.get(f["severity"], 1), f["lens"]))
-    highs = [f for f in findings if f["severity"] == "High"]
+    highs = [f for f in findings if f["severity"] == "High" and not f["advisory"]]
+    adv_high = sum(1 for f in findings if f["severity"] == "High" and f["advisory"])
 
     print(f"\n=== WEEK-CONTENT REVIEW — {header_line} ===")
-    print(f"{len(findings)} findings ({len(highs)} High) across {len(LENSES) - len(failed)}/{len(LENSES)} lenses\n")
+    extra = f", {adv_high} advisory High" if adv_high else ""
+    print(f"{len(findings)} findings ({len(highs)} blocking High{extra}) across {len(LENSES) - len(failed)}/{len(LENSES)} lenses\n")
     for f in findings:
-        print(f"  [{f['severity']:<4}] (scene {f['scene']}; {f['lens']}) {f['issue']}")
+        adv = "  (advisory — does not block)" if f["advisory"] else ""
+        print(f"  [{f['severity']:<4}] (scene {f['scene']}; {f['lens']}) {f['issue']}{adv}")
         if f["why"]:
             print(f"         ↳ {f['why']}")
     print()
@@ -198,9 +202,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"GATE: ⚠ INCOMPLETE — {len(failed)} lens(es) errored ({', '.join(failed)}). Re-run; not a pass.")
         return 2
     if highs:
-        print(f"GATE: ✗ {len(highs)} High-severity finding(s) — fix the week before audio.")
+        print(f"GATE: ✗ {len(highs)} blocking High finding(s) — fix the week before audio.")
         return 1
-    print("GATE: ✓ no High-severity findings — clear for audio (review Med/Low first).")
+    print("GATE: ✓ no blocking findings — clear for audio (review advisory + Med/Low first).")
     return 0
 
 

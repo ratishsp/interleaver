@@ -61,7 +61,10 @@ GROUND TRUTH:
 
 --- this week's curriculum row (level / grammar focus / theme) ---
 {curric}
-(Scene-count guide: A1 ramps ~12→28 scenes; A2 ~26; B1 ~18; B2 ~12 — all ≈ a level-appropriate length.)
+(Scene count: right-size to the TOPIC — there is NO minimum. A small topic at 4–5 scenes is fine; a
+rich one runs longer. Length comes from how much genuinely happens, not a quota; if a week feels short,
+a second activity/topic is added rather than padding one topic. Do NOT flag a week merely for a low
+scene count.)
 --- end curriculum ---
 
 STORYBOARD UNDER REVIEW — {header}:
@@ -85,7 +88,9 @@ LENSES = [
             "(a) Does any beat CONTRADICT a story_bible fact, or RE-INTRODUCE as new something Maya\n"
             "    already has/knows/is (housing, address, phone, CPR, job, relationships)?\n"
             "(b) Does the week hit its curriculum grammar focus and its theme?\n"
-            "(c) Scene count vs the ramp guidance? (d) Level-appropriate (no out-of-scope grammar,\n"
+            "(c) Is the scene count right-sized to the topic? (NO minimum — do NOT flag a week merely\n"
+            "    for few scenes; flag only padding or genuine under-coverage of the grammar.)\n"
+            "(d) Level-appropriate (no out-of-scope grammar,\n"
             "    e.g. ordinals/past-tense before they are introduced)?\n"
             "(e) Character facts consistent (recurring cast, Maya's age/origin)?"
         ),

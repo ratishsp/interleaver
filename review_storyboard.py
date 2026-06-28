@@ -75,11 +75,10 @@ _FLOOR_AGENCY = """
 [Floor — check these at minimum:]
 {floor}
 
-[Agency & severity:] The floor is a MINIMUM — flag anything off through your lens, listed or not.
-Surface Med (worth fixing) and Low (minor) freely. Reserve High for a genuinely blocking problem:
-content unusable or wrong as-is that must be fixed before shipping
-(a contradiction, a spec/level breach, a safety/privacy breach, a structural defect — judge by that
-bar, not only these examples)."""
+[Agency & severity:] The floor is a MINIMUM — also flag anything else off through your lens. Rate each
+finding: Med = a problem worth fixing; Low = minor; High = a genuinely blocking problem — content
+unusable or wrong as-is that must be fixed before shipping (e.g. a contradiction, a spec/level breach,
+a safety/privacy breach, a structural defect; judge by that bar, not only these examples)."""
 
 LENSES = [
     {

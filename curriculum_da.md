@@ -77,35 +77,3 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 50 | B2 | Happiness, success & belonging | Nominalisation; abstract subordination | Her second *jul* with Nina and friends — what "home" means to her now |
 | 51 | B2 | Speaking like a Dane: idioms & particles | Modal particles *jo/da/nok/vist/vel*; idioms | Everyday speech, fully natural |
 | 52 | B2 | **B2 capstone** — a year on | All structures; full narrative close | One year later, deep winter again: fluent and at home — full circle to her January arrival |
-
----
-
-## Relationship to the existing Anna's-week sample
-
-All 52 weeks are generated **from scratch** against this curriculum — the course is *not* built by
-retrofitting the 26 existing Anna's-week scenes. Those scenes remain a standalone proof-of-concept
-and listening sample; they are independent of this year-long course.
-
-## Per-language template (for scaling)
-
-Everything here splits into two layers:
-- **Language-agnostic** (reusable for Hindi, German, …): the level banding, the frequency-band curve,
-  the SOLO/i+1 progression, and the *newcomer arc* (arrival → daily life → opinions → full participation).
-- **Language/place-specific** (swap per language): the grammar sequence (V2 word order, *-en/-et*
-  definites, modal particles…) and the local-integration content (CPR/MitID → that country's
-  equivalents; *hygge/Janteloven* → that culture's customs).
-
-To instantiate a new language: keep the left structure and the arc, replace the grammar-focus column
-with that language's syllabus order, the frequency bands with slices of its own frequency list, and
-the place-specific cultural/bureaucratic details.
-
-## Next steps
-
-0. **Build & listen to week 1 end-to-end *before* locking this curve** (waterfall guard — the first
-   real built week will likely shift scene length / vocabulary band / pacing). And frame the product
-   honestly as a **comprehensible-input *listening* course, beginner → upper-intermediate** — ~78 h of
-   audio is a strong listening backbone, not a full productive-B2 course on its own. *(2026-06-24)*
-1. **Validate the curve** — sanity-check that no week spikes in difficulty (grammar + vocab jump together).
-2. **Lock the grammar sequence** against a published syllabus (Cervantes *Plan Curricular* / Goethe specs as structural models).
-3. **Pick the vocabulary spine** — a Danish frequency list; assign each week its high-frequency slice.
-4. **Generate week-by-week** with Gemini (each week self-contained — no vocab carried forward), then TTS.

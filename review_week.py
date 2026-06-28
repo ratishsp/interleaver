@@ -81,10 +81,9 @@ LENSES = [
         "title": "Mood & emotional arc",
         "lens": "the week's emotional shape as a whole (see the bible's mood rule)",
         "floor": (
-            "(a) Resolution — the bible says never end a SCENE on despair/loneliness; each scene resolves\n"
-            "    its own wistful notes and ends on a hopeful note (bittersweet is fine, despair is not).\n"
-            "    Flag any scene that ends on an unresolved down note, AND flag the week if its overall arc\n"
-            "    doesn't lift by the end (this mood rule has no per-scene gate, so it lives here).\n"
+            "(a) Resolution — the bible says never leave a scene, or the week, on despair/loneliness.\n"
+            "    Flag the week if its arc doesn't lift by the end, and any individual scene that ends on\n"
+            "    a down note with no lift (this mood rule has no per-scene gate, so it lives here).\n"
             "(b) Cumulative gloom — sadness/loneliness/cold/dark stacked across scenes without warmth.\n"
             "(c) Emotional range — or is the whole week stuck on one narrow note?\n"
             "(d) Overall: would this feel warm and hopeful to listen to, or a bit depressing?"

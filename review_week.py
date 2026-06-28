@@ -155,8 +155,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--curriculum", default="curriculum_da.md")
     ap.add_argument("--model", default=DEFAULT_MODEL,
                     help="judge model (e.g. gemini-3.1-pro-preview)")
-    ap.add_argument("--location", default=None,
-                    help="Vertex location override; Gemini-3 preview models need 'global'")
+    ap.add_argument("--location", default="global",
+                    help="Vertex location (default 'global' — required for gemini-3 models)")
     ap.add_argument("--workers", type=int, default=4)
     args = ap.parse_args(argv)
     if args.location:

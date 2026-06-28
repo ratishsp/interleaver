@@ -46,10 +46,10 @@ _ap.add_argument("--workers", type=int, default=4,
                  help="concurrent scenes (default 4). Scenes are independent, so they run in "
                       "parallel — raise for speed, lower to stay under API rate limits")
 _ap.add_argument("--location", default="global",
-                 help="Vertex location (default 'global' — required for the gemini-3.1-pro verify "
-                      "judge; gemini-2.5-pro generation also works there)")
+                 help="Vertex location (default 'global' — required for gemini-3.1-pro, used for both "
+                      "generation and the verify judge)")
 _args = _ap.parse_args()
-os.environ["GOOGLE_CLOUD_LOCATION"] = _args.location   # gen (2.5-pro) and verify (3.1-pro) both run in global
+os.environ["GOOGLE_CLOUD_LOCATION"] = _args.location   # gen + verify (both gemini-3.1-pro) run in global
 STORYBOARD = _args.storyboard
 SCENES = _parse_scene_sel(_args.scenes)
 WORKERS = max(1, _args.workers)

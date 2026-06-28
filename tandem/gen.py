@@ -28,7 +28,7 @@ import re
 import sys
 from pathlib import Path
 
-DEFAULT_MODEL = "gemini-2.5-pro"
+DEFAULT_MODEL = "gemini-3.1-pro-preview"   # gen, verify, and the gates all run on this (Vertex location 'global')
 
 # The shared story world is story_bible.md — the same ground-truth the review gates read — so the
 # author, the QA/revise prompts, and the gates can't drift apart. The per-week STATUS LEDGER is

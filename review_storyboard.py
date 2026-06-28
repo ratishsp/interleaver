@@ -76,8 +76,9 @@ _FLOOR_AGENCY = """
 {floor}
 
 [Agency:] This list is a MINIMUM, not a maximum. Use your judgment — flag anything else off through
-your lens even if it is not listed. A false alarm costs us seconds to dismiss; a miss costs a bad
-lesson. Err toward surfacing.
+your lens even if it is not listed. A false Med/Low alarm costs only seconds to dismiss and a miss
+costs a bad lesson, so err toward surfacing — but a wrong High costs a needless revise cycle, so rate
+by the severity bar below.
 
 [Severity:] High = blocking — something that makes the content unusable or wrong as-is and must be
 fixed before shipping (e.g. a hard contradiction, a spec/level breach, a safety/privacy breach, a
@@ -181,7 +182,7 @@ _CONTRACT = """
 Return ONLY a JSON object of this exact shape:
 {"findings": [{"scene": "<scene number, or 'week'>", "issue": "<one line>",
                "severity": "High" | "Med" | "Low", "why": "<1-2 sentences>"}]}
-Use an empty list if you find nothing. Do not summarize the storyboard back."""
+Use an empty list if you find nothing. Do not summarize the content back."""
 
 
 def curriculum_row(curriculum_path: str | Path, week: int | None) -> str:

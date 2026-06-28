@@ -83,7 +83,8 @@ LENSES = [
         "floor": (
             "(a) Resolution — the bible says never leave a scene, or the week, on despair/loneliness.\n"
             "    Flag the week if its arc doesn't lift by the end, and any individual scene that ends on\n"
-            "    a down note with no lift (this mood rule has no per-scene gate, so it lives here).\n"
+            "    a down note that nothing later in the week lifts (this mood rule has no per-scene gate,\n"
+            "    so it lives here).\n"
             "(b) Cumulative gloom — sadness/loneliness/cold/dark stacked across scenes without warmth.\n"
             "(c) Emotional range — or is the whole week stuck on one narrow note?\n"
             "(d) Overall: would this feel warm and hopeful to listen to, or a bit depressing?"

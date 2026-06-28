@@ -34,8 +34,8 @@ DEFAULT_MODEL = "gemini-2.5-pro"
 STORY_BIBLE = (
     "Story world: The protagonist is Maya, a 31-year-old woman from Mexico, spending her first year "
     "in Copenhagen, Denmark. She has moved to Copenhagen for a fresh start; she arrives knowing "
-    "almost no one and gradually settles in — making friends, finding her way around the city, "
-    "everyday life. She grew up in a warm climate, so the cold, dark Danish winter is new to her. "
+    "almost no one and gradually settles in. She grew up in a warm climate, so the cold, dark "
+    "Danish winter is new to her. "
     "Recurring cast: Nina (a Danish friend and neighbour) and her family back home in Mexico (video "
     "calls)."
 )
@@ -88,7 +88,12 @@ def _json_call(client, model: str, prompt: str) -> dict:
 
 def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar: str,
                  lines: int, arc: list | None = None, scene_num: int | None = None) -> str:
-    """Build the exact generation prompt (also used by --show-prompt for inspection)."""
+    """Build the exact generation prompt (also used by --show-prompt for inspection).
+
+    `lines` is accepted for caller compatibility but is no longer fed to the generator as a
+    target — scene length follows the beat, not a quota (the storyboard's Lines/scene is advisory).
+    """
+    del lines  # intentionally not surfaced to the model
     arc_block = ""
     if arc:
         rows = "\n".join(
@@ -106,7 +111,7 @@ The Danish is what's being learned — author it natively and idiomatically; the
 
 - Level {level}, this week's grammar: {grammar}. Earlier-week grammar may recur; don't reach clearly beyond {level}.
 - Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking.
-- About {lines} lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- One sentence per line; let the scene run as long as the beat naturally needs — no padding, no quota. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {{"da": [...], "en": [...]}}, same number of entries in each."""
 

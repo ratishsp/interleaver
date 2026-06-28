@@ -44,8 +44,8 @@ from tandem.gen import (
 )
 
 COMMON = """This is a Danish-for-English-speakers graded AUDIO course (interleaved English→Danish, beginner→up).
-A "week" is a STORYBOARD: ~14 scene "beats" (one-paragraph summaries). From each beat a model later
-generates ~14 short Danish sentences + English glosses, then text-to-speech. You are reviewing the
+A "week" is a STORYBOARD: a set of scene "beats" (one-paragraph summaries). From each beat a model later
+generates a short scene of Danish sentences + English glosses, then text-to-speech. You are reviewing the
 STORYBOARD (the beats), BEFORE any Danish is generated, to catch design problems while a fix is cheap
 (edit a beat, not regenerate + re-verify + re-render).
 

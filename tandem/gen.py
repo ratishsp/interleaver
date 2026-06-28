@@ -355,7 +355,7 @@ Score each dimension. For each: pass = true/false, and list specific issues as {
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
- "cefr_level": {{"pass": true, "assessed_level": "{level}", "issues": []}},
+ "cefr_level": {{"pass": true, "assessed_level": "<the level it actually reads as>", "issues": []}},
  "content_neutral": {{"pass": true, "issues": []}},
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}}}}

@@ -103,10 +103,16 @@ class GoogleTTS:
         "bn": "bn-IN-Chirp3-HD-Aoede",
     }
 
-    def __init__(self, voices: dict[str, str] | None = None, speed: float = 1.0):
+    def __init__(self, voices: dict[str, str] | None = None,
+                 speed: float | dict[str, float] = 1.0):
         self.voices = {**self.DEFAULT_VOICES, **(voices or {})}
-        self.speed = speed  # speaking_rate, 1.0 = natural
+        # speaking_rate, 1.0 = natural. A float applies to every language; a dict
+        # sets it per language, e.g. {"da": 0.9, "en": 1.0} to slow only the L2.
+        self.speed = speed
         self._client = None
+
+    def _speed(self, lang: str) -> float:
+        return self.speed.get(lang, 1.0) if isinstance(self.speed, dict) else self.speed
 
     def _get_client(self):
         if self._client is None:
@@ -118,7 +124,7 @@ class GoogleTTS:
         voice = self.voices.get(lang)
         if voice is None:
             raise ValueError(f"No voice configured for language {lang!r}")
-        return f"google:{voice}:{self.speed}"
+        return f"google:{voice}:{self._speed(lang)}"
 
     def synth(self, text: str, lang: str, out_path: Path, retries: int = 4) -> None:
         import time
@@ -134,7 +140,7 @@ class GoogleTTS:
         synth_input = tts.SynthesisInput(text=text)
         voice = tts.VoiceSelectionParams(language_code=lang_code, name=voice_name)
         audio_config = tts.AudioConfig(audio_encoding=tts.AudioEncoding.MP3,
-                                       speaking_rate=self.speed)
+                                       speaking_rate=self._speed(lang))
 
         last_exc = None
         for attempt in range(retries):

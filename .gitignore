@@ -13,6 +13,7 @@ corpora/
 
 # Per-week build outputs (regenerable): assembled audio + verify run artifacts
 year1/**/audio/
+year1/**/audio_slow/
 year1/**/verify_summary.json
 
 # Logs

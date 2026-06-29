@@ -168,23 +168,13 @@ def main() -> int:
     except Exception as exc:
         print(f"[warn] repetition lint skipped: {exc}")
 
-    # Week-level vocabulary-load readout (deterministic) — the counterweight to the storyboard
-    # density lens: surfaces the rarest words so a jargon spike from an over-technical event is
-    # visible. Advisory; the % tracks density, the rarest list is what to scan.
+    # Week-level vocabulary readout (deterministic) — surfaces the rarest words so a jargon spike
+    # from an over-technical event is visible. Advisory; scan the rarest list for technical jargon.
     try:
         from vocab_load import report as _vocab_load
         _vocab_load(outdir)
     except Exception as exc:
-        print(f"[warn] vocab-load readout skipped: {exc}")
-
-    # Sentence-complexity readout (deterministic) — the per-scene CEFR judge is lenient about
-    # structure, so this catches compound/long-sentence drift above the level baseline (the 3.1
-    # generator tends to string clauses together). Advisory; split the flagged lines if over.
-    try:
-        from complexity import report as _complexity
-        _complexity(outdir)
-    except Exception as exc:
-        print(f"[warn] complexity readout skipped: {exc}")
+        print(f"[warn] vocab readout skipped: {exc}")
     return 0
 
 

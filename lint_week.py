@@ -1,9 +1,13 @@
 """Deterministic repetition linter for a week's generated scenes — runs BEFORE the LLM week-gate.
 
-No API, no model: pure string analysis over the week's `.da` files. It catches the mechanical
-repetition the expensive 3.1-pro whole-week gate would otherwise spend rounds on (smile-as-every-
-closer, an emotion word in half the scenes, identical openers, a sentence copy-pasted across
-scenes). Cheap + instant → fix the obvious stuff here, let the LLM gate judge what needs judgment.
+No API, no model: pure string analysis over the week's `.en` GLOSS files. It catches the mechanical
+repetition the expensive whole-week gate would otherwise spend rounds on (one line closing many
+scenes, an emotion word in half the scenes, identical openers, a sentence copy-pasted across scenes).
+Cheap + instant → fix the obvious stuff here, let the LLM gate judge what needs judgment.
+
+It runs on the ENGLISH gloss, not the L2: the gloss is line-aligned and faithful, so repetition in
+the target language surfaces identically in English — and English is constant across every L2, so this
+one check is language-agnostic (no per-language stoplist/tokeniser to maintain as languages are added).
 
 This is the deterministic backstop to the storyboard DENSITY lens (the real fix is dense, varied
 scenes — then repetition mostly takes care of itself, as in Anna's week). Calibrated for a
@@ -11,7 +15,7 @@ comprehensible-input course: MODERATE repetition of common words is GOOD, so thr
 genuinely mechanical reuse (a full sentence repeated across scenes, one beat closing many scenes,
 an element saturating the week), never ordinary function-word frequency.
 
-Run:  .venv/bin/python lint_week.py year1/week04        (or a storyboard.md, or a dir of .da files)
+Run:  .venv/bin/python lint_week.py year1/week04        (or a storyboard.md, or a dir of .en files)
 Exit:  1 if any HIGH-severity repeat, else 0.
 """
 from __future__ import annotations
@@ -21,22 +25,25 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-# Danish function words / ubiquitous-by-design tokens excluded from the "word in many scenes" check.
+# Ubiquitous English function words excluded from the "word in many scenes" check. The gloss is
+# English, so the stoplist is English too — which is what makes this check language-agnostic.
 _STOP = {
-    "jeg", "du", "han", "hun", "den", "det", "de", "vi", "er", "har", "en", "et", "og", "i", "på",
-    "til", "med", "for", "af", "som", "der", "her", "så", "men", "ikke", "at", "min", "mit", "mine",
-    "din", "dit", "nu", "er", "var", "kan", "vil", "skal", "hun", "ham", "hende", "sig", "mig", "dig",
-    "om", "ved", "fra", "the", "a", "er", "et", "lille", "stor", "meget", "også", "hvad", "hvor",
+    "i", "you", "he", "she", "it", "we", "they", "is", "are", "am", "was", "were", "be", "been",
+    "have", "has", "had", "do", "does", "did", "a", "an", "the", "and", "or", "but", "not", "no",
+    "in", "on", "to", "with", "for", "of", "as", "at", "by", "from", "about", "into", "over",
+    "that", "this", "these", "those", "my", "your", "his", "her", "its", "our", "their",
+    "here", "there", "now", "so", "very", "just", "then", "what", "where", "when", "who", "how",
+    "can", "will", "shall", "would", "could", "should", "me", "him", "us", "them", "up", "out",
 }
 _WORD = re.compile(r"[a-zæøåA-ZÆØÅ]+")
 
 
 def _scene_files(target: Path) -> list[Path]:
-    """Resolve target → ordered list of scene .da files (a week dir, a storyboard.md, or a dir)."""
+    """Resolve target → ordered list of scene .en gloss files (a week dir, a storyboard.md, or a dir)."""
     if target.is_file() and target.suffix == ".md":          # storyboard → its directory
         target = target.parent
-    das = [p for p in target.glob("*.da") if re.match(r"\d+_", p.name)]
-    return sorted(das, key=lambda p: int(p.name.split("_", 1)[0]))
+    glosses = [p for p in target.glob("*.en") if re.match(r"\d+_", p.name)]
+    return sorted(glosses, key=lambda p: int(p.name.split("_", 1)[0]))
 
 
 def _norm(line: str) -> str:
@@ -52,7 +59,7 @@ def lint(target: Path) -> int:
         print(f"no NN_*.da scene files under {target}", file=sys.stderr)
         return 2
     n = len(files)
-    scenes = {f.name.replace(".da", ""): [ln.rstrip("\n") for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    scenes = {f.name.replace(".en", ""): [ln.rstrip("\n") for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip()]
               for f in files}
     stems = list(scenes)
 

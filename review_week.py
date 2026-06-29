@@ -41,7 +41,7 @@ EXPECTED — not a defect. Do NOT flag a word or phrase merely for recurring acr
 hearing "varm" or "på skærmen" several times is fine and useful).
 
 GROUND TRUTH:
---- story_bible.md (facts + cross-cutting rules, incl. the mood rule) ---
+--- story_bible.md (facts + cross-cutting rules) ---
 {bible}
 --- this week's curriculum row ---
 {curric}
@@ -79,11 +79,11 @@ LENSES = [
     {
         "key": "mood",
         "title": "Mood & emotional arc",
-        "lens": "the week's emotional shape as a whole (see the bible's mood rule)",
+        "lens": "the week's emotional shape as a whole",
         "floor": (
-            "(a) Resolution — the bible says never leave a scene, or the week, on despair/loneliness.\n"
-            "    Flag the week if its arc doesn't lift by the end, and any individual scene that ends on\n"
-            "    a down note with no lift (this mood rule has no per-scene gate, so it lives here).\n"
+            "(a) Resolution — never leave a scene, or the week, on despair/loneliness. Flag the week\n"
+            "    if its arc doesn't lift by the end, and any individual scene that ends on a down note\n"
+            "    with no lift (this is the only mood gate, so the rule lives here, not in the bible).\n"
             "(b) Cumulative gloom — sadness/loneliness/cold/dark stacked across scenes without warmth.\n"
             "(c) Emotional range — or is the whole week stuck on one narrow note?\n"
             "(d) Overall: would this feel warm and hopeful to listen to, or a bit depressing?"

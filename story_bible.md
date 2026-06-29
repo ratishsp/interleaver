@@ -6,11 +6,9 @@ locked. The continuity lens treats everything here as established truth: a new w
 
 ## Maya (protagonist)
 - 31, from Mexico. A **software engineer** — she moved to Copenhagen in **January** because she landed
-  a job at a software company here; the job is *why* she came. Gradually settling in. Grew up in a
-  warm climate, so the cold Danish winter is new to her.
+  a job at a software company here; the job is *why* she came. Gradually settling in.
 - First-person narrator throughout (her own voice).
-- Tone: warm, hopeful, **purposeful** — building a new life she chose; homesick at times, but curious
-  and moving forward. Never end a scene on despair/loneliness; resolve the wistful notes.
+- Tone: warm, hopeful
 
 ## Recurring cast
 - **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives next door. Kind, helpful.

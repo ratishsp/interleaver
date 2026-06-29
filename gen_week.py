@@ -175,6 +175,15 @@ def main() -> int:
         _vocab_load(outdir)
     except Exception as exc:
         print(f"[warn] vocab readout skipped: {exc}")
+
+    # Sentence-complexity readout (deterministic, on the .en GLOSS) — surfaces compound sentences
+    # (two clauses joined by and/but/so/or) that sit above the one-clause-per-line norm of the early
+    # levels. Language-agnostic via the gloss. Advisory; split the flagged lines if a week reads complex.
+    try:
+        from complexity import report as _complexity
+        _complexity(outdir)
+    except Exception as exc:
+        print(f"[warn] complexity readout skipped: {exc}")
     return 0
 
 

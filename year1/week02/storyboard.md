@@ -1,31 +1,34 @@
-# Week 2 — Storyboard (Maya registers at the kommune)
+# Week 2 — Storyboard (Maya's first days: work & registration)
 
 **Level:** A1 · **Grammar:** numbers 0–100; *har* (have); *være* + age; recurring week-1 grammar
-(present of *være/hedde/komme fra*, *der er*, subject pronouns, *hvad/hvor* questions) ·
-**Lines/scene:** ~14 · **Target:** ~32 min.
+(present of *være/hedde/komme fra*, *der er*, subject pronouns, *hvad/hvor* questions). PRESENT TENSE
+ONLY — no past-tense verbs (weeks 1–15 are present).
 
-The curriculum gives one beat for the week ("Registering at the *kommune*; getting a CPR and a phone
-number"); this decomposes it into 14 scene-level beats. Drives the `gen.py scene → verify → assemble`
-loop. First rung of the length ramp (week 1 = 12 scenes → week 2 = 14). Maya = 31, from Mexico, still in
-the small temporary flat (her own place comes in week 4); recurring cast = Nina (Danish neighbour)
-and family back home in Mexico.
-The week's job is to make numbers and *har* feel lived-in — ages, dates, a CPR number, a phone number,
-a house number — not drilled. Real-world order: Maya gets a phone number at a shop *first*, then gives
-it to the kommune.
+The curriculum beat is "First day & registration — her first days: starting at the software company,
+then sorting the CPR and phone number that let her settle in." Two parts: the FIRST DAY AT WORK
+(scenes 1–6) and the REGISTRATION admin the NEXT MORNING (scenes 7–13) — her work gives her the first
+morning off to register. The grammar spine — numbers, *har*, age — lives in the registration half; the
+work half reviews the week-1 introductions and carries the job-first premise. Maya = 31, a software
+engineer, just arrived; still in the small temporary flat (her own place comes in week 4). She already
+HAS an address (the temp flat from week 1) — at the kommune it gets officially REGISTERED, not newly
+acquired. Recurring cast = Nina (next-door neighbour) and family back home; work colleagues are
+friendly but unnamed. She takes the BUS to the office (cycling comes later, not the January cold) and
+WALKS to the kommune. Numbers woven into action — bus 4, a team of 8, ticket 42, age 31, house number
+7 — never the same number for two unrelated things. Each phone number is read out in full exactly ONCE
+(Maya's in sc 8, Nina's in sc 12).
 
 | # | stem | beat |
 |---|------|------|
-| 1 | 01_a_new_morning | Maya wakes in the flat. It is her second day in Copenhagen. Today she is going to the kommune — the town office — to register. She has her passport and papers ready in her bag. She is a little nervous, but also happy. A big day. |
-| 2 | 02_nina_explains | Nina knocks and asks how Maya is. Maya says she is going to the kommune today. Nina tells her there is one thing to do first: she needs a Danish phone number, from a phone shop, before the kommune. The kommune is not far — bus number four. Nina is kind and helpful. |
-| 3 | 03_the_phone_shop | Maya goes to a phone shop. A man says hello and asks how he can help. Maya says she needs a Danish phone number. She gets a new number — a simple, made-up one: 12 34 56 78. She reads the eight numbers slowly, two at a time (the Danish way). Now she has a phone number in Denmark. |
-| 4 | 04_the_bus | Maya waits at the bus stop. Bus number four comes. She gets on. She counts the stops — one, two, three, four, five. She looks at the numbers on the houses. The city is big. |
-| 5 | 05_at_the_office | The kommune is a big building. There are many people. Maya takes a number — she is number forty-two. She sits and waits. She looks at the screen and waits for her number. |
-| 6 | 06_my_number | The screen shows number forty-two. That is Maya. She walks to the desk. A woman says hello and welcomes her. The woman is friendly. Maya sits down. |
-| 7 | 07_name_and_age | The woman asks Maya's name. "My name is Maya," she says. The woman asks how old she is. "I am thirty-one years old," says Maya. She comes from Mexico. The woman writes it down. |
-| 8 | 08_the_passport | The woman asks for Maya's passport. Maya has it in her bag. She gives it to the woman. The woman looks at the date — Maya's birthday. She has all the papers. Everything is good. |
-| 9 | 09_my_phone_number | The woman asks for Maya's phone number. Maya has it now — from the shop. She reads it again: 12 34 56 78. The woman writes the number down. It is good to have a Danish number. |
-| 10 | 10_the_cpr | Maya gets her CPR number — the personal number you need for everything in Denmark. The woman says it is important, and that Maya must keep it safe and private. Maya puts the card carefully in her bag. Now she is in the system. It is a big moment. |
-| 11 | 11_my_address | The woman asks where Maya lives. Maya gives her address — house number seven (a cardinal; avoid floor ordinals, out of A1 scope). The woman types it in. Now the kommune knows where she lives. |
-| 12 | 12_all_done | The woman gives Maya her papers. "Welcome to Denmark," she says. Maya says thank you. She has a phone number, a CPR number, and an address. She is happy and a little proud. |
-| 13 | 13_numbers_with_nina | Maya comes home. Nina is at the door. They say hello. Maya gives Nina her new phone number — 12 34 56 78. Nina gives Maya her number too. Now they have each other's numbers. They are neighbours and friends. |
-| 14 | 14_evening_at_home | Evening. Maya is tired but happy in the flat. She thinks about her day — it went well. She has a good friend here now (Nina), and her family back in Mexico whom she misses — but she is not alone. Tomorrow is a new day; she is ready. (Reflective close — deliberately does NOT re-list phone/CPR/address; scene 12 already did.) |
+| 1 | 01_first_day_morning | It is Monday — Maya's first day at her new job. She drinks her coffee and packs her bag: her passport, a pen, the office address. She puts on a warm coat, because it is cold in January. She is nervous and excited. A big day. |
+| 2 | 02_nina_wishes_luck | Nina knocks and asks how Maya is. Maya says it is her first day at work today. Nina is warm and wishes her luck. The office is not far — she can take bus number four. A kind send-off. |
+| 3 | 03_at_the_office | Maya arrives at the software company — a tall glass building. She goes in. A colleague meets her, says hello, and gives her a keycard. They walk in together past the desks. |
+| 4 | 04_meeting_colleagues | In the office kitchen, Maya meets her new colleagues over a cup of coffee. She says her name, that she is a software engineer, and that she comes from Mexico. They tell her their names too. |
+| 5 | 05_my_desk | Maya sits down at her own desk by a window. She turns on the computer. A colleague shows her her first task and helps her start. The team is small — they are eight people — and everyone is kind. |
+| 6 | 06_first_day_done | The day is over. Maya puts on her coat and says goodbye to her colleagues. It is a good first day — she has a job in Copenhagen now. She takes the bus home, tired but happy. |
+| 7 | 07_register_first | In the evening Maya tells Nina about her first day. She says her work gives her tomorrow morning off, to register at the kommune for her CPR number. Nina nods and gives her a tip: get a Danish phone number first, for the forms. |
+| 8 | 08_the_sim_card | The next morning Maya buys a Danish SIM card at a kiosk. The man asks how he can help; she needs a phone number. She gets a new one and reads it out, two digits at a time: 12 34 56 78. Now she has a number in Denmark. |
+| 9 | 09_at_the_kommune | Then Maya walks to the kommune. It is not far; she looks at the house numbers on the way. Inside it is big and full of people. She takes a ticket — she is number forty-two — and sits down to wait. |
+| 10 | 10_name_and_address | The screen shows forty-two. A woman welcomes Maya to the desk and asks for her details. "I am Maya. I am thirty-one years old. I come from Mexico," Maya says. She hands over her passport and papers, with her address — house number seven. |
+| 11 | 11_my_cpr | The woman registers Maya in the system. She gives Maya her CPR number — the personal number you need for everything in Denmark. It is important and private; Maya keeps it safe in her bag. The woman notes Maya's phone number too. "Welcome to Denmark." |
+| 12 | 12_numbers_with_nina | Maya comes home. Nina is on the stairs. Maya gives Nina her phone number, and Nina gives Maya hers: 87 65 43 21. Now they have each other's numbers — neighbours and friends. |
+| 13 | 13_evening_at_home | In the evening Maya makes a cup of tea and sits by the window. Her first days are good — a new job and a friend next door. She misses her family in Mexico, but she is not alone. Tomorrow is a new day. (Reflective close — does NOT re-list job/phone/CPR/address.) |

@@ -232,13 +232,22 @@ _WORD_RE = re.compile(r"[a-zA-ZæøåÆØÅ]+")
 # the one-sentence-per-line invariant the per-sentence audio assembler depends on. Since this is a
 # HARD gate, false positives must be avoided: a digit after the mark ("kl. 10"), a known Danish
 # abbreviation ("f.eks. Noget", "bl.a. K"), a single initial ("H. C. Andersen"), and a closing
-# quote followed by the English attribution "I" ('"...?" I ask') all produce "mark + space +
+# quote followed by an attribution clause ('"...?" Nina asks') all produce "mark + space +
 # Capital" but are NOT sentence breaks, so they're excluded below.
 # The capital may be preceded by an OPENING quote — a new sentence that begins with quoted speech
 # ('... siger hun. "Hvad hedder du?"') is still a sentence break.
 _MULTI_SENTENCE_RE = re.compile(r"[.!?][\"»«')\]]?\s+[\"«»']?[A-ZÆØÅ]")
 _ABBREVS = ("f.eks", "bl.a", "m.m", "m.fl", "d.v.s", "dvs", "osv", "ca", "kl", "nr", "stk",
             "o.l", "inkl", "ekskl", "tlf", "jf", "pga", "evt")
+# Speech verbs (present tense, EN + DA): an attribution clause after a quoted utterance —
+# «"...?" Nina asks.» / «"...?" siger Nina.» — is ONE audio bead, not two sentences.
+_SPEECH_VERBS = frozenset({
+    "ask", "asks", "say", "says", "answer", "answers", "reply", "replies", "explain", "explains",
+    "add", "adds", "tell", "tells", "continue", "continues", "repeat", "repeats", "whisper",
+    "whispers", "shout", "shouts", "call", "calls", "cry", "cries",
+    "siger", "spørger", "svarer", "forklarer", "tilføjer", "gentager", "hvisker", "råber",
+    "fortsætter", "fortæller", "mener", "kalder",
+})
 
 
 def _multi_sentence_lines(lines: list[str]) -> list[int]:
@@ -252,13 +261,16 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
                     continue                          # e.g. "f.eks.", "kl."
                 if re.search(r"(?:^|\s)\w$", before):  # single initial, e.g. "H." / "C."
                     continue
-            # Quoted speech + English "I" attribution — «"...?" I ask» is one utterance (one audio
-            # bead), not two sentences. Skip ONLY when a closing quote precedes the capital; a bare
-            # «. I left.» (no quote) is a real break and still flags.
+            # Quoted speech + an attribution clause — «"...?" Nina asks» / «"...?" siger han» — is one
+            # utterance (one audio bead), not two sentences. Skip when a closing quote precedes the
+            # break AND a speech verb is among the next two words. Real narration after a quote
+            # («"Hej." Hun smiler.») has no speech verb and still flags, as does a second quoted
+            # sentence («"Hej." "Dav."»).
             quoted = ln[m.start() + 1] in "\"»«')]"
-            cap_is_I = ln[m.end() - 1] == "I" and (m.end() >= len(ln) or ln[m.end()] in " \t")
-            if quoted and cap_is_I:
-                continue
+            if quoted:
+                tail = re.findall(r"[A-Za-zÆØÅæøå]+", ln[m.end() - 1:])[:2]
+                if any(t.lower() in _SPEECH_VERBS for t in tail):
+                    continue
             out.append(i + 1)
             break
     return out

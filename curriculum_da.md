@@ -10,8 +10,8 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 
 | Wk | Lvl | Theme | Grammar focus | Narrative beat |
 |----|-----|-------|---------------|----------------|
-| 1 | A1 | Arrival & introducing yourself | Present of *være/hedde/komme fra*; existential *der er*; subject pronouns; *hvad/hvor* questions | Maya lands in Copenhagen, knowing no one |
-| 2 | A1 | Registration, forms & numbers | Numbers 0–100; *har*; *være* + age | Registering at the *kommune*; getting a CPR and a phone number |
+| 1 | A1 | Arrival & introducing yourself | Present of *være/hedde/komme fra*; existential *der er*; subject pronouns; *hvad/hvor* questions | Maya lands in Copenhagen for a new job, knowing no one |
+| 2 | A1 | First day & registration | Numbers 0–100; *har*; *være* + age | Her first days: starting at the software company, then sorting the CPR and phone number that let her settle in |
 | 3 | A1 | Family back home | Possessives *min/din*; indefinite *en/et* | A video call to her family abroad |
 | 4 | A1 | Moving into her own flat | *der ligger/står* (review *der er*); place prepositions *i, på, under, ved* | Leaving the temporary room for her own flat — a permanent place opens up in the same building (where Nina lives), so she stays next door to Nina; her real home at last |
 | 5 | A1 | Food shopping & the kitchen | Definite nouns *-en/-et*; *kan lide*; *jeg vil gerne have* | First grocery run — unfamiliar products |
@@ -21,7 +21,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 9 | A1 | At the market & prices | Prices; *koster*; *hvor meget* | Learning kroner at the market |
 | 10 | A1 | Clothes & dressing for winter | Adjective agreement *en/et/*plural; *har på* | Buying warm clothes — first Danish cold |
 | 11 | A1 | Danish weather | Impersonal *det er / det bliver*; seasons | Coping with the dark Danish winter |
-| 12 | A1 | Free time & meeting people | Verb + infinitive; *godt kan lide at*; *spille/dyrke* | Joining a club to meet people |
+| 12 | A1 | Free time & meeting people | Verb + infinitive; *godt kan lide at*; *spille/dyrke* | Joining a badminton club to meet people — going with a friend |
 | 13 | A1 | At the café | Modal *vil gerne*; politeness; *må jeg bede om* | First tentative café order in Danish |
 | 14 | A1 | Public transport | *tage/køre med*; *til/med*; *skal til* | Buses, metro and the Rejsekort |
 | 15 | A1 | **A1 review** — a day in the new city | Mixed present-tense narration; consolidation | A full ordinary day — now manageable |
@@ -33,8 +33,8 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 16 | A2 | Talking about the past | Preteritum of common verbs; *i går / sidste uge* | Maya recounts her first weeks |
 | 17 | A2 | Exploring Denmark | Past-tense narration; *var/havde/tog*; 3rd-person possessive *sin* vs *hans/hendes*; time expressions | A spring weekend trip to another town — *forår*, lighter evenings |
 | 18 | A2 | Health & the doctor | *gør ondt*; body parts; *har det godt/dårligt*; *burde* | First visit to a Danish doctor; the *sundhedskort* |
-| 19 | A2 | Looking for work | Present perfect *har arbejdet*; professions | Job hunting, an interview — and her first Danish job |
-| 20 | A2 | Learning a new skill | Past + perfect mixed; *lære at*; ordinals | Maya joins an evening class and learns a new hobby |
+| 19 | A2 | Work & colleagues | Present perfect *har arbejdet*; professions | A few months in — a project at the office, getting to know her colleagues and what they each do |
+| 20 | A2 | Volunteering at the café | Past + perfect mixed; *lære at*; ordinals | Starts volunteering at a café on weekends — learning the ropes and making friends there |
 | 21 | A2 | Buying clothes | Comparatives *større/mindre*; *prøve*; sizes | Shopping and returns |
 | 22 | A2 | Cooking & Danish food | Imperative sequences; quantities; *først/så/derefter* | Trying Danish recipes for new friends |
 | 23 | A2 | Making plans & friends | Future *skal/vil*; *har tænkt mig at*; suggestions | Invited to a Danish home for the first time |
@@ -42,7 +42,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 25 | A2 | Bureaucracy & services | *fordi* clauses (word-order shift); bank/post/pharmacy | Opening a bank account; MitID; the pharmacy |
 | 26 | A2 | Danish summer & traditions | Perfect tense; customs (*Sankt Hans*, *sommerferie*, *fødselsdag*) | Her first Danish summer — *Sankt Hans* bonfires and a birthday |
 | 27 | A2 | Phones, internet & admin online | *pleje at*; instructions; passive intro *-s* | Navigating self-service Denmark (*Borger.dk*) |
-| 28 | A2 | **A2 review** — a week in the new life | Consolidation across all A2 grammar | A full A2 week — her new job now part of the everyday |
+| 28 | A2 | **A2 review** — a week in the new life | Consolidation across all A2 grammar | A full A2 week — her job now part of the everyday |
 
 ## B1 — Ideas, opinions & belonging (weeks 29–41): subordination, narrative, the conditional
 
@@ -58,7 +58,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 36 | B1 | Understanding Danish society | Connectors *derfor/dog/alligevel*; *hygge*, *Janteloven* | As the dark *efterår* sets in — cracking *hygge* and the unwritten rules |
 | 37 | B1 | Staying or going? | Conditional; *hvis jeg skulle…*; *håber/regner med at* | Maya weighs whether to stay in Denmark |
 | 38 | B1 | Problems & getting advice | *burde/skulle*; complaints; subordinate word-order mastery | A setback; friends help her through |
-| 39 | B1 | Travel stories | Extended narrative; tense-mixing; sequencing | A bigger journey, recounted in full |
+| 39 | B1 | Family visits Copenhagen | Extended narrative; tense-mixing; sequencing | Her family comes to visit — she shows them around the city, now the local guide: full circle from her January arrival |
 | 40 | B1 | Lifestyle & wellbeing | Abstract nouns; *det er vigtigt at*; impersonal | Finding a Danish work–life balance |
 | 41 | B1 | **B1 review** — a turning point | Mixed grammar; narrative climax | **Maya commits to building a life in Denmark** |
 

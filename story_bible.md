@@ -5,11 +5,12 @@ locked. The continuity lens treats everything here as established truth: a new w
 *contradict* it, nor *re-introduce* (as if new) something already true.
 
 ## Maya (protagonist)
-- 31, from Mexico. Arrived in Copenhagen in **January**, knowing almost no Danish. Moved for a fresh
-  start; gradually settling in. Grew up in a warm climate, so the cold Danish winter is new to her.
+- 31, from Mexico. A **software engineer** — she moved to Copenhagen in **January** because she landed
+  a job at a software company here; the job is *why* she came. Gradually settling in. Grew up in a
+  warm climate, so the cold Danish winter is new to her.
 - First-person narrator throughout (her own voice).
-- Tone: bittersweet **but hopeful** — homesick at times, yet curious, warm, moving forward.
-  Never end a scene on despair/loneliness; resolve the wistful notes.
+- Tone: warm, hopeful, **purposeful** — building a new life she chose; homesick at times, but curious
+  and moving forward. Never end a scene on despair/loneliness; resolve the wistful notes.
 
 ## Recurring cast
 - **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives next door. Kind, helpful.
@@ -23,11 +24,13 @@ locked. The continuity lens treats everything here as established truth: a new w
   ("a good start").
 - She has **met Nina** (neighbour, first friend) — Nina lives **next door in the same building** as
   the temp flat (so Maya is already in Nina's building).
-- She does **NOT yet have**: a Danish phone number, a CPR number, an *official/registered* address, a job.
+- She **has a job** — a software-engineering post at a software company; it is the reason she moved.
+  She has **not started yet**: her first day at the office is in **week 2**.
+- She does **NOT yet have**: a Danish phone number, a CPR number, an *official/registered* address.
 - Foreshadowed (not yet true): her **own flat in week 4** — the temp flat is **already in Nina's
   building** (Nina is her next-door neighbour from day 1), so week 4 is a *permanent* flat opening up
   in the **same building**: she leaves the temporary room for her own real home and **stays next to
-  Nina**. CPR + phone + registration in **week 2**.
+  Nina**. CPR + phone + registration **and her first day at the software company** in **week 2**.
 
 ## Cross-cutting rules (every week)
 - **Privacy** — the CPR number is sensitive (like an SSN). Never read it out / repeat it digit-by-digit;

@@ -67,26 +67,24 @@ LENSES = [
         "title": "Repetition & monotony",
         "lens": "things over-repeated or too samey across the week",
         "floor": (
-            "(a) An emotion or state asserted in scene after scene (e.g. the same feeling restated)\n"
-            "    — not mere vocabulary recurrence, which is fine.\n"
+            "(a) An emotion or state asserted in scene after scene (e.g. the same feeling restated).\n"
             "(b) Scenes built on an identical shape/template — a 'roll-call' of near-identical beats.\n"
             "(c) A whole scene that recaps another (near-verbatim summary of the same content).\n"
             "(d) A refrain — the same small action or line recurring scene after scene.\n"
-            "When in doubt on mere word-frequency, it's fine — reserve High for clear, listener-\n"
-            "noticeable monotony."
+            "Reserve High for clear, listener-noticeable monotony."
         ),
     },
     {
         "key": "mood",
         "title": "Mood & emotional arc",
         "lens": "the week's emotional shape as a whole",
+        # Mood-resolution rule lives here, not in the bible — this is the only mood gate.
         "floor": (
             "(a) Resolution — never leave a scene, or the week, on despair/loneliness. Flag the week\n"
             "    if its arc doesn't lift by the end, and any individual scene that ends on a down note\n"
-            "    with no lift (this is the only mood gate, so the rule lives here, not in the bible).\n"
+            "    with no lift.\n"
             "(b) Cumulative gloom — sadness/loneliness/cold/dark stacked across scenes without warmth.\n"
-            "(c) Emotional range — or is the whole week stuck on one narrow note?\n"
-            "(d) Overall: would this feel warm and hopeful to listen to, or a bit depressing?"
+            "(c) Emotional range — or is the whole week stuck on one narrow note?"
         ),
     },
     {

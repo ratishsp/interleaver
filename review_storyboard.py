@@ -86,13 +86,11 @@ LENSES = [
         "lens": "consistency with established story facts, and conformance to the week's curriculum spec",
         "floor": (
             "(a) Does any beat CONTRADICT a story_bible fact, or RE-INTRODUCE as new something Maya\n"
-            "    already has/knows/is (housing, address, phone, CPR, job, relationships)?\n"
+            "    already has/knows/is (housing, address, phone, CPR, job, relationships, recurring cast,\n"
+            "    her age/origin)?\n"
             "(b) Does the week hit its curriculum grammar focus and its theme?\n"
-            "(c) Does the scene count COVER the week's grammar without padding? Flag only padding or\n"
-            "    genuine grammar under-coverage.\n"
-            "(d) Level-appropriate (no out-of-scope grammar,\n"
-            "    e.g. ordinals/past-tense before they are introduced)?\n"
-            "(e) Character facts consistent (recurring cast, Maya's age/origin)?"
+            "(c) Level-appropriate (no out-of-scope grammar,\n"
+            "    e.g. ordinals/past-tense before they are introduced)?"
         ),
     },
     {
@@ -128,28 +126,22 @@ LENSES = [
         "title": "Density, activity & variety",
         "lens": "whether each scene is a real activity that moves and the week is varied, not one thin situation micro-sliced to fill a scene count",
         "floor": (
-            "STANDARD (the bar for each scene): a complete mini-vignette that MOVES — like a market\n"
-            "visit (several stalls, a small exchange at each). NOT a static description of a place, an\n"
-            "inventory of objects, or a mood with no action.\n"
-            "(a) ACTIVITY per scene — is each scene a real activity that moves, with a small\n"
-            "    beginning→middle→end? Or is it static description (what a room looks like, where\n"
-            "    objects are, a feeling restated)? FLAG every description-only scene. A smooth, ordinary\n"
-            "    task done well IS the standard.\n"
+            "(a) ACTIVITY per scene — each scene should be a complete mini-vignette that MOVES (like a\n"
+            "    market visit: several stalls, a small exchange at each), with a small beginning→middle→\n"
+            "    end — NOT a static description of a place, an inventory of objects, or a feeling\n"
+            "    restated. FLAG every description-only scene; a smooth, ordinary task done well IS the\n"
+            "    standard.\n"
             "(b) WEEK variety — does the week span several DISTINCT situations (different places, people,\n"
             "    tasks), or micro-slice ONE event (a single move-in, a single tour) across many scenes?\n"
             "    FLAG a week that is one thin situation stretched to length. Also FLAG the SAME kind of\n"
             "    beat repeated (e.g. several 'she meets an unfamiliar thing' scenes) — vary the shape.\n"
-            "    (Few scenes is not itself a fault — see the scene-count note above.) The fix for a thin\n"
-            "    week is a second activity/topic, never padding one topic to fill a count.\n"
+            "    (Few scenes is not itself a fault — see the scene-count note above.)\n"
             "(c) CONCRETE texture — does each scene bring its OWN concrete detail — nouns, actions, the\n"
             "    odd sensory note (a smell, warmth, a taste, a small pleasure) — or lean on generic\n"
             "    filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable scenes.\n"
-            "(d) CUT/MERGE — could thin scenes be cut or merged with no loss? Name which.\n"
-            "(e) COMMON VOCABULARY — keep the beats in common, everyday words. The axis is common-vs-\n"
-            "    technical, NOT specific-vs-generic: SPECIFIC-and-common is ideal and memorable\n"
-            "    (strawberries, rye bread, a heavy box, a lost key); SPECIFIC-and-technical is what costs\n"
-            "    (a thermostat, a valve, induction controls, a tax appeal). FLAG any beat that drags in\n"
-            "    technical/rare nouns when a common-vocab beat of the same shape would do."
+            "(d) COMMON VOCABULARY — keep the beats in common, everyday words (the axis is common-vs-\n"
+            "    technical, not specific-vs-generic: 'rye bread' is great, 'a thermostat' is not). FLAG\n"
+            "    any beat that drags in technical/rare nouns when a common one of the same shape would do."
         ),
     },
     {

@@ -136,9 +136,9 @@ The Danish is what's being learned — author it natively and idiomatically; the
 
 - Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural Danish first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
 - Tell it as Maya's own first-person account; attribute any quoted speech so it's clear who's speaking.
-- One sentence per line in both arrays; let the scene run as long as the beat naturally needs — no padding, no quota. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- One sentence per line in both arrays; let the scene run as long as the beat naturally needs. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
-Return JSON: {{"da": [...], "en": [...]}}, same number of entries in each."""
+Return JSON: {{"da": [...], "en": [...]}}."""
 
 
 def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, beat: str,
@@ -201,7 +201,7 @@ TASK: Translate the following {len(lines)} lines from {src_lang} into {tgt_lang}
 {f'Target CEFR level: {level} — keep the translation in-level, do not drift up or down.' if level else ''}
 
 RULES:
-- Translate naturally and idiomatically in {tgt_lang}; avoid word-for-word translationese.
+- Translate naturally and idiomatically in {tgt_lang}.
 - PHASE-1 POLICY = TRANSLATE, DO NOT RELOCATE. Keep the Danish setting and Danish-specific terms (e.g. SKAT, hygge, Janteloven, CPR, MitID, København) — render them naturally, do NOT swap them for the target culture's equivalents.
 - Keep names consistent.{f' Glossary: {glossary}' if glossary else ''}
 - Preserve sentence segmentation EXACTLY: return the SAME number of lines ({len(lines)}), one translation per input line, in order. Do not merge or split lines.

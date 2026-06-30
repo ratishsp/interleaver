@@ -74,6 +74,6 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 47 | B2 | Ethics & dilemmas | Conditional perfect; *hvis… havde…, ville… have* | A moral dilemma at work |
 | 48 | B2 | The Danish model: economy & work culture | Formal register; the language of statistics | Reflecting on the welfare model as an insider |
 | 49 | B2 | History & change | Narrative-past mastery; *indtil/siden*; historic present | Copenhagen and Denmark, then and now |
-| 50 | B2 | Happiness, success & belonging | Nominalisation; abstract subordination | Her second Christmas with Nina and friends — what "home" means to her now |
+| 50 | B2 | Happiness, success & belonging | Nominalisation; abstract subordination | Her first Christmas with Nina and friends — what "home" means to her now |
 | 51 | B2 | Speaking like a Dane: idioms & particles | Modal particles *jo/da/nok/vist/vel*; idioms | Everyday speech, fully natural |
 | 52 | B2 | **B2 capstone** — a year on | All structures; full narrative close | One year later, deep winter again: fluent and at home — full circle to her January arrival |

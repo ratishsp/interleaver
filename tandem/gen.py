@@ -276,7 +276,7 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
     return out
 
 # Dimensions the LLM reviewer scores (order = display order).
-VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "content_neutral", "naturalness",
+VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "coherence", "naturalness",
                      "gloss_fidelity")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
 # grammar_whitelist = scope (correct-but-slightly-advanced Danish is fine); cefr_level = exact level.
@@ -361,14 +361,14 @@ SCENE (line-aligned Danish / English):
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus.
 2. cefr_level — is the sentence length and complexity appropriate to {level}? Flag ONLY lines whose complexity clearly EXCEEDS {level}; simplicity that fits {level} is expected, not a defect. (Word frequency is checked separately — ignore it here.) Also state, as `assessed_level`, the CEFR level the scene's complexity actually reads as.
-3. content_neutral — is it about ordinary life and NOT about learning a language? Flag any language school, language class, or "learning/practising Danish" content.
+3. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
 4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
 5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
  "cefr_level": {{"pass": true, "assessed_level": "<the level it actually reads as>", "issues": []}},
- "content_neutral": {{"pass": true, "issues": []}},
+ "coherence": {{"pass": true, "issues": []}},
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""

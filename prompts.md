@@ -14,7 +14,7 @@ python -m tandem.gen translate ... --show-prompt
 **Design split (see `design_notes.md`):** generation = lean positive *intent* (who Maya is, the scene,
 the level + grammar, the format — no negative-constraint clauses, no vocabulary list); verification =
 independent enforcement by a separate model; gating lives in code, not the prompt. Hard gates: structural
-alignment + one-sentence-per-line, and the dims `content_neutral` / `naturalness` / `gloss_fidelity`.
+alignment + one-sentence-per-line, and the dims `coherence` / `naturalness` / `gloss_fidelity`.
 Advisory (reported, never block): `grammar_whitelist` (scope) / `cefr_level`, and the frequency
 band-check. Prompts are level-relative (`{level}`/`{grammar}`), so the same text scales A1→B2.
 
@@ -76,14 +76,14 @@ SCENE (line-aligned Danish / English):
 Score each dimension. For each: pass = true/false, and list specific issues as {line, problem}.
 1. grammar_whitelist — is the grammar within A1? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond A1 and not part of this week's focus.
 2. cefr_level — is the sentence length and complexity appropriate to A1? Flag ONLY lines whose complexity clearly EXCEEDS A1; simplicity that fits A1 is expected, not a defect. (Word frequency is checked separately — ignore it here.)
-3. content_neutral — is it about ordinary life and NOT about learning a language? Flag any language school, language class, or "learning/practising Danish" content.
+3. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
 4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
 5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
 
 Return JSON exactly:
 {"grammar_whitelist": {"pass": true, "issues": []},
  "cefr_level": {"pass": true, "assessed_level": "A1", "issues": []},
- "content_neutral": {"pass": true, "issues": []},
+ "coherence": {"pass": true, "issues": []},
  "naturalness": {"pass": true, "issues": []},
  "gloss_fidelity": {"pass": true, "issues": []}}
 (Use false and fill issues where there are problems; each issue is {"line": <int>, "problem": "<text>"}.)

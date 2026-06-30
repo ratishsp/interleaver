@@ -68,7 +68,7 @@ VERIFY_MODEL = "gemini-3.1-pro-preview"   # same model as the generator now, so 
                                           # catching its own mistakes (it passed wk3's out-of-scope 'var').
 MAX_RETRIES = 1                      # one retry on hard-fail, then accept best + log (no thrash)
 # Hard gates (block + retry) = alignment (structural, checked separately) + every non-advisory dim:
-# content_neutral (cross-language reuse invariant), naturalness (idiomatic Danish), gloss_fidelity
+# coherence (the scene's lines hang together), naturalness (idiomatic Danish), gloss_fidelity
 # (the EN pivot ~100 languages translate from). grammar_whitelist/cefr_level are advisory. Derived
 # from the single source in gen.py so the split can't drift.
 HARD_DIMS = tuple(d for d in VERIFY_DIMENSIONS if d not in ADVISORY_DIMS)
@@ -120,13 +120,13 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
     llm = best_rep.get("llm", {})
     g = (llm.get("grammar_whitelist") or {}).get("pass")
     c = (llm.get("cefr_level") or {}).get("pass")
-    ct = (llm.get("content_neutral") or {}).get("pass")
+    coh = (llm.get("coherence") or {}).get("pass")
     nat = (llm.get("naturalness") or {}).get("pass")
     gl = (llm.get("gloss_fidelity") or {}).get("pass")
     print(f"[{n:2}/{total}] {stem:24} attempts={attempts} hard={'OK ' if hard_pass(best_rep) else 'FAIL'} "
-          f"G={g} CEFR={c} content={ct} natural={nat} gloss={gl}", flush=True)
+          f"G={g} CEFR={c} cohere={coh} natural={nat} gloss={gl}", flush=True)
     return {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
-            "grammar": g, "cefr": c, "content": ct, "natural": nat, "gloss": gl,
+            "grammar": g, "cefr": c, "coherence": coh, "natural": nat, "gloss": gl,
             "lines": len(best["da"]),
             "issues": {d: (llm.get(d) or {}).get("issues", []) for d in VERIFY_DIMENSIONS}}
 
@@ -155,7 +155,7 @@ def main() -> int:
             continue
         print(f"  {s['n']:2} {s['stem']:24} att={s['attempts']} "
               f"hard={'OK ' if s['hard_pass'] else 'FAIL'} | "
-              f"content={s['content']} natural={s['natural']} gloss={s['gloss']}  "
+              f"cohere={s['coherence']} natural={s['natural']} gloss={s['gloss']}  "
               f"[adv G={s['grammar']} CEFR={s['cefr']}]")
 
     # Deterministic repetition lint over the WHOLE week (cheap, no API) — surfaces mechanical repeats

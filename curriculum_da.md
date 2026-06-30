@@ -19,8 +19,8 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 7 | A1 | Time & appointments | Telling the clock; *klokken*; weekdays/months; frequency adverbs | Planning her week; booking appointments |
 | 8 | A1 | Getting to know the city | Imperatives *gå/drej*; direction prepositions | Visiting tourist places |
 | 9 | A1 | At the market & prices | Prices; *koster*; *hvor meget* | Learning the local currency at the market |
-| 10 | A1 | Clothes & dressing for winter | Adjective agreement *en/et/*plural; *har på* | Buying warm clothes |
-| 11 | A1 | Danish weather | Impersonal *det er / det bliver*; seasons | Season |
+| 10 | A1 | Clothes & dressing for winter | Adjective agreement *en/et/*plural; *har på* | Buying warmer winter clothes |
+| 11 | A1 | Danish weather | Impersonal *det er / det bliver*; seasons | Short, dark midwinter days — cold and rain. |
 | 12 | A1 | Free time & meeting people | Verb + infinitive; *godt kan lide at*; *spille/dyrke* | Joining a badminton club |
 | 13 | A1 | At the café | Modal *vil gerne*; politeness; *må jeg bede om* | At the café |
 | 14 | A1 | Public transport | *tage/køre med*; *til/med*; *skal til* | Buses, the metro and a travel card |

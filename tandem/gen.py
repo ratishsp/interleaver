@@ -85,27 +85,70 @@ def make_client():
     return genai.Client(api_key=key)
 
 
-def _json_call(client, model: str, prompt: str) -> dict:
-    """Call the model forcing a JSON object response and parse it.
+def _parse_json_object(text: str) -> dict | None:
+    """Parse a JSON object from model text, tolerating markdown fences / trailing prose.
+
+    Returns the dict, or None if nothing parseable. Transient malformed responses (fences, a
+    stray sentence after the JSON, truncation) used to crash whole scenes; salvage what we can.
+    """
+    t = (text or "").strip()
+    if t.startswith("```"):                      # strip a ```json … ``` fence
+        t = t.split("\n", 1)[-1]
+        if t.rstrip().endswith("```"):
+            t = t.rstrip()[:-3]
+        t = t.strip()
+    try:
+        return json.loads(t)
+    except json.JSONDecodeError:
+        pass
+    start = t.find("{")                          # scan the first BALANCED {...}; ignore trailing junk
+    if start < 0:                                # (handles a stray extra '}' or prose after the object)
+        return None
+    depth, instr, esc = 0, False, False
+    for idx in range(start, len(t)):
+        c = t[idx]
+        if instr:
+            esc = (c == "\\" and not esc)
+            if c == '"' and not esc:
+                instr = False
+        elif c == '"':
+            instr = True
+        elif c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                try:
+                    return json.loads(t[start:idx + 1])
+                except json.JSONDecodeError:
+                    return None
+    return None
+
+
+def _json_call(client, model: str, prompt: str, *, retries: int = 1) -> dict:
+    """Call the model forcing a JSON object response and parse it (salvage + one retry).
 
     Temperature is left UNSET so the model's own default applies (1.0 for current Gemini, which
     Google recommends across both 2.x and 3.x). This keeps the pipeline model-agnostic — no temp to
     retune when swapping models — and avoids Gemini 3's looping/degradation risk from sub-1.0 temps.
+
+    A transient malformed/truncated response is no longer fatal: we salvage fenced/­trailing JSON,
+    and regenerate once before giving up (this was dropping whole scenes — wk6 sc6, wk7 sc4).
     """
     from google.genai import types
 
-    resp = client.models.generate_content(
-        model=model,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-        ),
-    )
-    text = (resp.text or "").strip()
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError as exc:
-        raise SystemExit(f"Model did not return valid JSON:\n{text[:500]}\n---\n{exc}")
+    last = ""
+    for _ in range(retries + 1):
+        resp = client.models.generate_content(
+            model=model,
+            contents=prompt,
+            config=types.GenerateContentConfig(response_mime_type="application/json"),
+        )
+        last = (resp.text or "").strip()
+        parsed = _parse_json_object(last)
+        if parsed is not None:
+            return parsed
+    raise SystemExit(f"Model did not return valid JSON after {retries + 1} tries:\n{last[:500]}")
 
 
 def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar: str,

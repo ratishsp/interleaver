@@ -40,6 +40,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("week", type=int)
     ap.add_argument("--max-rounds", type=int, default=4, help="storyboard revise rounds")
+    ap.add_argument("--week-rounds", type=int, default=2, help="whole-week review+revise rounds")
     ap.add_argument("--model", default=None, help="override the gate/generator model")
     ap.add_argument("--location", default="global")
     ap.add_argument("--with-slow", action="store_true", help="also build the slow-Danish audio pass")
@@ -84,13 +85,27 @@ def main() -> int:
                      f"(best draft kept): {', '.join(s['stem'] for s in bad)} — listen closely.")
     print(f"✓ scenes generated ({len(summary) - len(bad)}/{len(summary)} hard-passed)")
 
-    # 3 — whole-week text gate: advisory here. Record blockers, do not stop.
-    stage("STAGE 3/4 · week review gate (advisory)")
-    rc = run([PY, "review_week.py", sb, "--location", a.location] + model)
+    # 3 — whole-week gate + revise loop: the gate's findings DRIVE a fix (regenerate missing scenes,
+    #     revise the scenes a finding implicates), like per-scene revise but at the week level.
+    #     Bounded; residuals become a note, never a halt.
+    stage("STAGE 3/4 · week review + revise loop")
+    wk_findings = workdir / f"wk{wk:02d}_week_findings.json"
+    rc = 1
+    for wr in range(1, a.week_rounds + 1):
+        rc = run([PY, "review_week.py", sb, "--location", a.location, "--out", wk_findings] + model)
+        if rc == 0:
+            print(f"✓ week gate cleared (round {wr})")
+            break
+        if rc == 2:
+            notes.append("Whole-week gate was INCOMPLETE (a lens errored).")
+            break
+        if wr == a.week_rounds:
+            break                                # out of rounds — leave rc==1 for the note below
+        print(f"\n[week-revise round {wr}] acting on the gate's findings…", flush=True)
+        run([PY, "revise_week.py", sb, wk_findings, "--location", a.location] + model)
     if rc == 1:
-        notes.append("Whole-week gate flagged blocking issues (see Stage 3 output above).")
-    elif rc == 2:
-        notes.append("Whole-week gate was INCOMPLETE (a lens errored).")
+        notes.append(f"Whole-week gate still flags blocking issues after {a.week_rounds} revise "
+                     f"round(s) — best effort kept (see Stage 3 output).")
 
     # 4 — audio: always built, so there is something to listen to.
     if a.skip_audio:

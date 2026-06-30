@@ -21,6 +21,7 @@ Run:  set -a; . ./.env; set +a; export GOOGLE_CLOUD_LOCATION=global
 from __future__ import annotations
 import argparse
 import concurrent.futures
+import json
 import os
 from pathlib import Path
 
@@ -156,6 +157,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--location", default="global",
                     help="Vertex location (default 'global' — required for gemini-3 models)")
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--out", help="also write the findings list as JSON to this path (for the week-revise loop)")
     args = ap.parse_args(argv)
     if args.location:
         os.environ["GOOGLE_CLOUD_LOCATION"] = args.location
@@ -186,6 +188,8 @@ def main(argv: list[str] | None = None) -> int:
     findings.sort(key=lambda f: (_SEV_RANK.get(f["severity"], 1), f["lens"]))
     highs = [f for f in findings if f["severity"] == "High" and not f["advisory"]]
     adv_high = sum(1 for f in findings if f["severity"] == "High" and f["advisory"])
+    if args.out:
+        Path(args.out).write_text(json.dumps(findings, indent=2, ensure_ascii=False), encoding="utf-8")
 
     print(f"\n=== WEEK-CONTENT REVIEW — {header_line} ===")
     extra = f", {adv_high} advisory High" if adv_high else ""

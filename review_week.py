@@ -5,11 +5,13 @@ Completes the verification matrix:
    design          —                   review_storyboard (beats)
    text            verify_scene        review_week (this)   <-- the gap
 
-`verify_scene` reads one scene in isolation, so it is structurally blind to anything that is a
-property of the WHOLE WEEK: repetition/monotony across scenes, the mood arc, cross-scene continuity,
-pacing. Those are exactly the issues a human keeps catching by hand (an emotion restated in four
-scenes, a week that ends on "alone", a time-zone that flips between scenes). This panel reads every
-scene in order and checks them — pushing that human pass into the pipeline so it holds at scale.
+`verify_scene` reads one scene in isolation, so it is structurally blind to WHOLE-WEEK properties:
+repetition/monotony across scenes, cross-scene continuity, and pacing. This panel reads every scene
+in order and checks those — pushing that human pass into the pipeline so it holds at scale.
+
+Mood/warmth is deliberately NOT gated here: it's the most ear-judged property, left to the bible's
+tone + the human listen. A per-scene "must end warm / lift" rule used to live here but was removed —
+it manufactured robotic smiling (every scene tacking on "jeg smiler, jeg er glad" to satisfy it).
 
 Reuses review_storyboard's panel machinery (the robust judge call, severity rank, floor+agency and
 output contract). Same gate semantics: High-severity findings block; an incomplete run (a lens errors)
@@ -76,19 +78,6 @@ LENSES = [
         ),
     },
     {
-        "key": "mood",
-        "title": "Mood & emotional arc",
-        "lens": "the week's emotional shape as a whole",
-        # Mood-resolution rule lives here, not in the bible — this is the only mood gate.
-        "floor": (
-            "(a) Resolution — never leave a scene, or the week, on despair/loneliness. Flag the week\n"
-            "    if its arc doesn't lift by the end, and any individual scene that ends on a down note\n"
-            "    with no lift.\n"
-            "(b) Cumulative gloom — sadness/loneliness/cold/dark stacked across scenes without warmth.\n"
-            "(c) Emotional range — or is the whole week stuck on one narrow note?"
-        ),
-    },
-    {
         "key": "continuity",
         "title": "Cross-scene continuity & consistency",
         "lens": "facts holding consistent from scene to scene across the week",
@@ -148,7 +137,7 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="Review a whole week's generated content with the 4-lens panel.")
+    ap = argparse.ArgumentParser(description="Review a whole week's generated content with the 3-lens panel.")
     ap.add_argument("storyboard", help="path to the week's storyboard.md (its dir holds the .da/.en)")
     ap.add_argument("--bible", default="story_bible.md")
     ap.add_argument("--curriculum", default="curriculum_da.md")

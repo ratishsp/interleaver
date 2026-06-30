@@ -34,9 +34,12 @@ locked. The continuity lens treats everything here as established truth: a new w
 - **Privacy** — the CPR number is sensitive (like an SSN). Never read it out / repeat it digit-by-digit;
   treat it as private, kept safe. Phone numbers MAY be shared/read aloud.
 - **Fictional data** — any phone number etc. must be an obvious placeholder, never a plausibly-real
-  number. Maya's phone: **12 34 56 78** (Nina's: 87 65 43 21).
+  number. Maya's phone: **12 34 56 78** (*tolv, fireogtredive, seksoghalvtreds, otteoghalvfjerds*);
+  Nina's: 87 65 43 21 (*syvogfirs, femogtres, treogfyrre, enogtyve*).
 - **Numbers woven into action** (ages, tickets, house numbers), not drilled. Don't use the SAME number
-  for unrelated things in one scene (reads as if they're linked).
+  for unrelated things in one scene (reads as if they're linked). A number **said aloud is written as
+  Danish words, not digits** — this is an audio course (e.g. *tolv, fireogtredive…*, never *12 34*;
+  times already use words like *klokken otte*).
 - **Translation-robust** — avoid constructions that gloss/translate awkwardly (written-out abbreviated
   addresses, lexical ambiguities).
 - **Dialogue** — speakers address each other correctly (a clerk speaks *to* Maya, not in Maya's voice).

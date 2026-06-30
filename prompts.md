@@ -47,7 +47,8 @@ The Danish is what's being learned — author it natively and idiomatically; the
 
 - Level A1, this week's grammar: present tense of være / hedde / komme fra; existential der er (there is/are); subject pronouns; hvad/hvor questions; greetings (hej, goddag, tak, velkommen, farvel, undskyld). Earlier-week grammar may recur; don't reach clearly beyond A1.
 - Tell it as Maya's own first-person account (her voice throughout); attribute any quoted speech so it's clear who's speaking.
-- About 14 lines, one sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- Match sentence complexity to the level: at A1–A2 favor short sentences. Reserve dense, multi-clause sentences for B1+.
+- One sentence per line; don't pad. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {"da": [...], "en": [...]}, same number of entries in each.
 ```

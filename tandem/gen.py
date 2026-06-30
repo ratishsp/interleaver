@@ -136,6 +136,7 @@ The Danish is what's being learned — author it natively and idiomatically; the
 
 - Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural Danish first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
 - Tell it as Maya's own first-person account; attribute any quoted speech so it's clear who's speaking.
+- Match sentence complexity to {level}: at A1–A2 favor short sentences. Reserve dense, multi-clause sentences for B1+.
 - One sentence per line in both arrays; let the scene run as long as the beat naturally needs. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {{"da": [...], "en": [...]}}."""

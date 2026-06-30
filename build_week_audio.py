@@ -16,7 +16,11 @@ from tandem.tts import GoogleTTS
 from tandem.gen import parse_storyboard
 
 # Week directory may be passed as the first CLI arg; defaults to week 1.
-WEEKDIR = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("year1/week01")
+# Pass --natural-only to build just the natural-speed render (skip audio_slow/).
+_argv = sys.argv[1:]
+NATURAL_ONLY = "--natural-only" in _argv
+_pos = [a for a in _argv if not a.startswith("--")]
+WEEKDIR = Path(_pos[0]) if _pos else Path("year1/week01")
 SPEAKER = "Sulafat"                       # chosen for Maya — warm, clear female voice
 MAYA_DA = f"da-DK-Chirp3-HD-{SPEAKER}"    # the learner's L2 voice (Maya)
 
@@ -33,6 +37,8 @@ VERSIONS = [
     ("audio",      {"da": 1.0,  "en": 1.0}),   # natural
     ("audio_slow", {"da": 0.75, "en": 1.0}),   # slow Danish for the beginner ear
 ]
+if NATURAL_ONLY:
+    VERSIONS = VERSIONS[:1]
 
 rows = parse_storyboard(WEEKDIR / "storyboard.md")
 for subdir, speed in VERSIONS:

@@ -66,7 +66,7 @@ VERIFY_MODEL = "gemini-3.1-pro-preview"   # same model as the generator now, so 
                                           # checks are the human read-through + the whole-week gate
                                           # (review_week.py) — lean on those, since a model is weakest at
                                           # catching its own mistakes (it passed wk3's out-of-scope 'var').
-MAX_RETRIES = 1                      # one retry on hard-fail, then accept best + log (no thrash)
+MAX_RETRIES = 2                      # up to two revise retries on hard-fail, then accept best + log
 # Hard gates (block + retry) = alignment (structural, checked separately) + every non-advisory dim:
 # coherence (the scene's lines hang together), naturalness (idiomatic Danish), gloss_fidelity
 # (the EN pivot ~100 languages translate from). grammar_whitelist/cefr_level are advisory. Derived

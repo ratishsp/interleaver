@@ -2,7 +2,7 @@
 
 **Level:** A1 · **Grammar:** possessives *min/mit, din/dit*; indefinite *en/et*; recurring week 1–2
 grammar (present of *være/hedde/komme fra*, *har*, *der er*, subject pronouns, *hvad/hvor*) ·
-**Lines/scene:** ~14 · **Target:** ~34 min.
+**Target:** ~34 min.
 
 The curriculum row ("A video call to her family abroad") decomposes into 14 beats. The single-call
 narrative fits 14 cleanly (the ramp resumes wk4+). Maya is still in her small **temporary** flat (her
@@ -16,7 +16,7 @@ call home. Recurring cast: her family in Mexico (mor, far, sister **Sofía**, br
 | 1 | 01_i_miss_them | Evening in Copenhagen. Maya is alone in her flat. She thinks about her family in Mexico. She misses them. Now she calls them on the phone. She is happy and a little excited. |
 | 2 | 02_the_call | The screen lights up — and there they are! Maya sees her whole family. Everyone smiles and waves. "Hej, Maya!" they say together. She is so happy. |
 | 3 | 03_my_mother | Maya sees her mother. "Hej, mor," says Maya. Her mother smiles warmly. "Hej, min skat," her mother says. "How are you?" Maya says she is well. It is so good to see her mother. |
-| 4 | 04_my_father | Her father is there too. "Hej, far," says Maya. "How is Denmark?" he asks. "It is cold, but it is nice," says Maya. Her father is happy. |
+| 4 | 04_my_father | Her father is there too. "Hej, far," says Maya. "How is your new job going?" he asks. "My work is going well," says Maya. "I am happy." Her father smiles, proud of her. (job as a clean single Q&A — *dit nye arbejde*, din/dit; *mit arbejde*, possessive *mit*; present tense only.) |
 | 5 | 05_my_siblings | Sofía is her little sister, and Diego is her big brother. Maya turns to them. "How are you two?" she asks. Sofía laughs and waves; Diego just smiles. (possessives shown descriptively — "min lillesøster", "min storebror"; they were already on screen in scene 2, so no fresh greeting) |
 | 6 | 06_my_flat | Maya shows them around. "This is my kitchen," she says. "And here is my window." Her flat is small, but it is nice. (mit køkken, mit vindue — adult's flat, not "my room") |
 | 7 | 07_the_window | Maya holds the phone up to the window. "This is Copenhagen," she says. Outside it is dark, and the city lights shine. "Oh, it is so dark there!" says her mother. |

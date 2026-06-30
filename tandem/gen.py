@@ -321,10 +321,10 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
 
 # Dimensions the LLM reviewer scores (order = display order).
 VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "coherence", "naturalness",
-                     "gloss_fidelity")
+                     "gloss_fidelity", "show_dont_tell")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
 # grammar_whitelist = scope (correct-but-slightly-advanced Danish is fine); cefr_level = exact level.
-ADVISORY_DIMS = ("grammar_whitelist", "cefr_level")
+ADVISORY_DIMS = ("grammar_whitelist", "cefr_level", "show_dont_tell")
 
 # CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
 # These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
@@ -408,13 +408,15 @@ Score each dimension. For each: pass = true/false, and list specific issues as {
 3. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
 4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
 5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
+6. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
  "cefr_level": {{"pass": true, "assessed_level": "<the level it actually reads as>", "issues": []}},
  "coherence": {{"pass": true, "issues": []}},
  "naturalness": {{"pass": true, "issues": []}},
- "gloss_fidelity": {{"pass": true, "issues": []}}}}
+ "gloss_fidelity": {{"pass": true, "issues": []}},
+ "show_dont_tell": {{"pass": true, "issues": []}}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 

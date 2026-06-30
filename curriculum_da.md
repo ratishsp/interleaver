@@ -14,17 +14,17 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 2 | A1 | First day & registration | Numbers 0–100; *har*; *være* + age | Her first days: starting at the software company, then sorting the CPR and phone number that let her settle in |
 | 3 | A1 | Family back home | Possessives *min/din*; indefinite *en/et* | A video call to her family abroad |
 | 4 | A1 | Moving into her own flat | *der ligger/står* (review *der er*); place prepositions *i, på, under, ved* | Leaving the temporary room for her own flat — a permanent place opens up in the same building (where Nina lives), so she stays next door to Nina; her real home at last |
-| 5 | A1 | Food shopping & the kitchen | Definite nouns *-en/-et*; *kan lide*; *jeg vil gerne have* | First grocery run — unfamiliar products |
+| 5 | A1 | Food shopping & the kitchen | Definite nouns *-en/-et*; *kan lide*; *jeg vil gerne have* | First grocery run |
 | 6 | A1 | Settling into a routine | Present-tense regular verbs; reflexive *vasker mig*; V2 review | Building a daily rhythm |
 | 7 | A1 | Time & appointments | Telling the clock; *klokken*; weekdays/months; frequency adverbs | Planning her week; booking appointments |
-| 8 | A1 | Getting to know the city | Imperatives *gå/drej*; direction prepositions | Getting lost, asking the way |
+| 8 | A1 | Getting to know the city | Imperatives *gå/drej*; direction prepositions | Visiting tourist places |
 | 9 | A1 | At the market & prices | Prices; *koster*; *hvor meget* | Learning kroner at the market |
-| 10 | A1 | Clothes & dressing for winter | Adjective agreement *en/et/*plural; *har på* | Buying warm clothes — first Danish cold |
-| 11 | A1 | Danish weather | Impersonal *det er / det bliver*; seasons | Coping with the dark Danish winter |
-| 12 | A1 | Free time & meeting people | Verb + infinitive; *godt kan lide at*; *spille/dyrke* | Joining a badminton club to meet people — going with a friend |
-| 13 | A1 | At the café | Modal *vil gerne*; politeness; *må jeg bede om* | First tentative café order in Danish |
+| 10 | A1 | Clothes & dressing for winter | Adjective agreement *en/et/*plural; *har på* | Buying warm clothes |
+| 11 | A1 | Danish weather | Impersonal *det er / det bliver*; seasons | Season |
+| 12 | A1 | Free time & meeting people | Verb + infinitive; *godt kan lide at*; *spille/dyrke* | Joining a badminton club |
+| 13 | A1 | At the café | Modal *vil gerne*; politeness; *må jeg bede om* | At the café |
 | 14 | A1 | Public transport | *tage/køre med*; *til/med*; *skal til* | Buses, metro and the Rejsekort |
-| 15 | A1 | **A1 review** — a day in the new city | Mixed present-tense narration; consolidation | A full ordinary day — now manageable |
+| 15 | A1 | **A1 review** — a day in the new city | Mixed present-tense narration; consolidation | A full ordinary day |
 
 ## A2 — Daily life & the past (weeks 16–28): past tense, connecting ideas
 
@@ -37,11 +37,11 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 20 | A2 | Volunteering at the café | Past + perfect mixed; *lære at*; ordinals | Starts volunteering at a café on weekends — learning the ropes and making friends there |
 | 21 | A2 | Buying clothes | Comparatives *større/mindre*; *prøve*; sizes | Shopping and returns |
 | 22 | A2 | Cooking & Danish food | Imperative sequences; quantities; *først/så/derefter* | Trying Danish recipes for new friends |
-| 23 | A2 | Making plans & friends | Future *skal/vil*; *har tænkt mig at*; suggestions | Invited to a Danish home for the first time |
-| 24 | A2 | Feelings about the new life | *synes/tror/føler at*; subordinate *at* word order | Homesickness and small victories |
-| 25 | A2 | Bureaucracy & services | *fordi* clauses (word-order shift); bank/post/pharmacy | Opening a bank account; MitID; the pharmacy |
+| 23 | A2 | Making plans & friends | Future *skal/vil*; *har tænkt mig at*; *synes/tror/føler at* + subordinate *at* word order | Invited to a colleague's home for the first time |
+| 24 | A2 | Looking after Nina's dog | Imperatives + object pronouns *den/ham/hende*; *skal/må* (rules) | Nina is away for a weekend, so Maya dog-sits — park walks |
+| 25 | A2 | A Sunday in the city | Demonstratives *denne/dette/disse*; *for … siden* (ago); time adverbs | A slow Danish Sunday — a *loppemarked* and a free museum; weekend *fritid* culture |
 | 26 | A2 | Danish summer & traditions | Perfect tense; customs (*Sankt Hans*, *sommerferie*, *fødselsdag*) | Her first Danish summer — *Sankt Hans* bonfires and a birthday |
-| 27 | A2 | Phones, internet & admin online | *pleje at*; instructions; passive intro *-s* | Navigating self-service Denmark (*Borger.dk*) |
+| 27 | A2 | Phones, internet & admin online | *pleje at*; instructions; passive *-s* + *blive* + participle | Navigating self-service Denmark (*Borger.dk*) |
 | 28 | A2 | **A2 review** — a week in the new life | Consolidation across all A2 grammar | A full A2 week — her job now part of the everyday |
 
 ## B1 — Ideas, opinions & belonging (weeks 29–41): subordination, narrative, the conditional
@@ -50,9 +50,9 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 |----|-----|-------|---------------|----------------|
 | 29 | B1 | Memories of home | Extended past; *plejede at*; *da* vs *når* | Comparing childhood there with life here |
 | 30 | B1 | The people in my new life | Adjective nuance; relative clauses *som/der* | Portraits of Nina and new friends |
-| 31 | B1 | Following Danish news | Passive *blive* + participle; reporting | Maya starts understanding the news |
+| 31 | B1 | Passing on the news | Indirect questions (*om* / *hv-* word order in subordinate clauses); reported speech | Maya catches Nina up on her week — what a colleague told her, what's happening back home |
 | 32 | B1 | Nature & cycling culture | Real conditional *hvis*; modal nuance | Embracing the bike; a summer nature trip |
-| 33 | B1 | Money, taxes & welfare | Large numbers; hypothetical *ville/skulle* | Navigating SKAT and budgeting |
+| 33 | B1 | Money, taxes & welfare | Large numbers; hypothetical *ville/skulle*; *fordi* clauses (word-order shift) | Navigating SKAT and budgeting |
 | 34 | B1 | Friendships & relationships | Reciprocal *hinanden*; emotion verbs | Deepening relationships |
 | 35 | B1 | Danish culture: film, music, books | Extended opinions; *synes godt om*; relatives | Discovering Danish culture |
 | 36 | B1 | Understanding Danish society | Connectors *derfor/dog/alligevel*; *hygge*, *Janteloven* | As the dark *efterår* sets in — cracking *hygge* and the unwritten rules |

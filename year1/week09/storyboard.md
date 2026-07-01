@@ -3,10 +3,10 @@
 **Level:** A1 · **Grammar:** Prices; *koster*; *hvor meget / hvad koster*; numbers 10–100 as words;
 present tense · **Target:** ~30 min
 
-A solo Saturday morning at a **generic outdoor weekend market**. Eight stalls, each a slightly
+A solo Saturday morning at a **generic outdoor weekend market**. Nine stalls, each a slightly
 different transaction so it reads as a market *morning*, not a price drill: exact change for coffee,
 per-kilo apples, tallying veg, change from a note at the baker, a weighed salmon with a free extra, a
-cheese tasting paid by card, a bouquet, and candles to close. **Winter-seasonal** (apples, root veg,
+cheese tasting paid by card, a bouquet, a knitting/yarn stall, and candles to close. **Winter-seasonal** (apples, root veg,
 rye bread, candles) — no summer produce. Prices and numbers spelled out as Danish words. **No
 recurring cast** — Maya and the vendors (strangers) only; she starts and ends the day on her own.
 Denmark is cashless, so cash and card both appear naturally.
@@ -20,4 +20,5 @@ Denmark is cashless, so cash and card both appear naturally.
 | 5 | 05_weighing_the_salmon | At the fish stall Maya points to a salmon fillet on the ice. The fishmonger weighs it. "Hvor meget bliver det?" — "Det bliver tooghalvfjerds kroner." He smiles and throws in a free lemon for the fish before wrapping it in paper. (weight-based price + a free extra; *hvor meget bliver det / tooghalvfjerds kroner*) |
 | 6 | 06_cheese_tasting | The cheese vendor offers Maya a slice of strong winter cheese to taste. She likes the sharp flavour and buys a piece. "Hvad koster den?" — "Femogfirs kroner." She pays by card, tapping her phone on the terminal. (a tasting + paying by card; *hvad koster den / femogfirs kroner*) |
 | 7 | 07_the_flower_stall | Maya stops at a flower stall for something bright against the grey winter. She admires the colour of the yellow tulips. "Hvor meget koster de?" — "Tredive kroner for buketten." She buys the bouquet. (admiring the colour — tulips are scentless, so no smelling; *hvor meget koster de / tredive kroner*) |
-| 8 | 08_candles_to_close | Last, a household stall with handmade candles to make her flat cosy for the winter evening. She takes three white candles. "Hvad koster lysene?" — "Fyrre kroner." She pays, picks up her full bags, and walks home. (plural pricing; a warm solo close, no "hygge" label; *hvad koster lysene / fyrre kroner*) |
+| 8 | 08_the_yarn_stall | Maya passes a craft stall and decides to take up knitting this winter. She chooses a couple of balls of yarn in different colours and knitting needles in a couple of sizes, asking the price of each. (a hobby stall — a change from the food stalls; colours + needle sizes; *garn, strikkepinde*; individual prices — *hvor meget koster …?*, numbers as words) |
+| 9 | 09_candles_to_close | Last, a household stall with handmade candles to make her flat cosy for the winter evening. She takes three white candles. "Hvad koster lysene?" — "Fyrre kroner." She pays, picks up her full bags, and walks home. (plural pricing; a warm solo close, no "hygge" label; *hvad koster lysene / fyrre kroner*) |

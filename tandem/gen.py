@@ -398,7 +398,7 @@ def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
     beat_block = f"\nSTORYBOARD BEAT (the intent this scene was written from):\n{beat}\n" if beat else ""
     beat_dim = (
-        "\n7. beat_coverage — [ADVISORY] compare the scene to its STORYBOARD BEAT above and flag any CONCRETE, SPECIFIC element the beat names — a physical object, a place, a distinct action — that does NOT appear in the scene at all (a silently dropped detail, e.g. the beat says the phone is held up to the window but the scene never mentions a window). The scene MAY compress and paraphrase, so do NOT flag wording, mood, tone, or a detail that is present but phrased differently — only a concrete element that is genuinely ABSENT and whose loss a listener might notice."
+        "\n7. beat_coverage — [ADVISORY] flag a concrete element named in the STORYBOARD BEAT above — an object, place, or action — that is absent from the scene entirely. The scene may compress or paraphrase, so ignore rewordings and mood; flag only a genuinely missing element."
         if beat else "")
     beat_schema = ',\n "beat_coverage": {"pass": true, "issues": []}' if beat else ""
     return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.

@@ -45,3 +45,4 @@ locked. The continuity lens treats everything here as established truth: a new w
 - **Translation-robust** — avoid constructions that gloss/translate awkwardly (written-out abbreviated
   addresses, lexical ambiguities).
 - **Dialogue** — speakers address each other correctly (a clerk speaks *to* Maya, not in Maya's voice).
+- **Scene-to-scene flow** — where natural, a scene may foreshadow the next or pay off the previous; don't force a bridge on every scene.

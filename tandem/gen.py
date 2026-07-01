@@ -156,8 +156,9 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
                  bible: str | None = None) -> str:
     """Build the exact generation prompt (also used by --show-prompt for inspection).
 
-    `lines` is accepted for caller compatibility but is no longer fed to the generator as a
-    target — scene length follows the beat, not a quota (the storyboard's Lines/scene is advisory).
+    `lines` is accepted for caller compatibility but is not fed to the generator as a hard quota;
+    the prompt instead steers toward a rich ~15-20 line-pair situation (the storyboard's Lines/scene
+    stays advisory).
     `bible` defaults to the stable sections of story_bible.md (single source of truth with the gates).
     """
     del lines  # intentionally not surfaced to the model
@@ -172,7 +173,7 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
                      "beats or bring in characters who first appear in a later scene):\n" + rows + "\n")
     return f"""{bible}
 
-TASK: Write ONE short scene for WEEK {week} (CEFR level {level}) of the Danish course.
+TASK: Write ONE full scene for WEEK {week} (CEFR level {level}) of the Danish course.
 Scene title: "{scene_title}". Narrative beat: {beat}
 {arc_block}
 The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss.
@@ -180,7 +181,7 @@ The Danish is what's being learned — author it natively and idiomatically; the
 - Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural Danish first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
 - Tell it as Maya's own first-person account; attribute any quoted speech so it's clear who's speaking.
 - Match sentence complexity to {level}: at A1–A2 favor short sentences. Reserve dense, multi-clause sentences for B1+.
-- One sentence per line in both arrays; let the scene run as long as the beat naturally needs. The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- One sentence per line in both arrays; let the scene run to a full ~15-20 line-pairs (a complete situation, not a sketch). The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {{"da": [...], "en": [...]}}."""
 

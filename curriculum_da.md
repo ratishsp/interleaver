@@ -18,7 +18,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 6 | A1 | Settling into a routine | Present-tense regular verbs; reflexive *vasker mig*; V2 review | Building a daily rhythm |
 | 7 | A1 | Time & appointments | Telling the clock; *klokken*; weekdays/months; frequency adverbs | Planning her week; booking appointments |
 | 8 | A1 | Getting to know the city | Imperatives *gå/drej*; direction prepositions | Visiting tourist places |
-| 9 | A1 | At the market & prices | Prices; *koster*; *hvor meget* | Learning the local currency at the market |
+| 9 | A1 | At the market & prices | Prices; *koster*; *hvor meget* | A morning at a generic outdoor weekend market — Maya goes stall to stall (~8 scenes): coffee, fruit, vegetables, bread, fish, cheese, flowers, candles. Winter-seasonal produce (apples/root veg, not strawberries). Prices — *hvor meget koster det?* / *… kroner*, numbers as words. Vary the shape a little (a taste, a bit thrown in), not eight identical ask-price-pays. No recurring cast — just Maya and the vendors |
 | 10 | A1 | Clothes & dressing for winter | Adjective agreement *en/et/*plural; *har på* | Buying warmer winter clothes |
 | 11 | A1 | Danish weather | Impersonal *det er / det bliver*; seasons | Short, dark midwinter days — cold and rain. |
 | 12 | A1 | Free time & meeting people | Verb + infinitive; *godt kan lide at*; *spille/dyrke* | Joining a badminton club |

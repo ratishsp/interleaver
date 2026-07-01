@@ -74,10 +74,16 @@ MAX_RETRIES = 2                      # up to two revise retries on hard-fail, th
 HARD_DIMS = tuple(d for d in VERIFY_DIMENSIONS if d not in ADVISORY_DIMS)
 
 
+def _dim(llm: dict, d: str) -> dict:
+    """A verify dim's report dict, guarding a malformed non-dict value (e.g. the model returned a list)."""
+    v = llm.get(d)
+    return v if isinstance(v, dict) else {}
+
+
 def hard_pass(rep: dict) -> bool:
     llm = rep.get("llm", {})
     structural = bool(rep.get("aligned")) and bool(rep.get("one_per_line", True))
-    return structural and all((llm.get(d) or {}).get("pass") for d in HARD_DIMS)
+    return structural and all(_dim(llm, d).get("pass") for d in HARD_DIMS)
 
 
 def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
@@ -118,18 +124,18 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
     (outdir / f"{stem}.en").write_text("\n".join(best["en"]) + "\n", encoding="utf-8")
 
     llm = best_rep.get("llm", {})
-    g = (llm.get("grammar_whitelist") or {}).get("pass")
-    c = (llm.get("cefr_level") or {}).get("pass")
-    coh = (llm.get("coherence") or {}).get("pass")
-    nat = (llm.get("naturalness") or {}).get("pass")
-    gl = (llm.get("gloss_fidelity") or {}).get("pass")
-    cov = (llm.get("beat_coverage") or {}).get("pass")
+    g = _dim(llm, "grammar_whitelist").get("pass")
+    c = _dim(llm, "cefr_level").get("pass")
+    coh = _dim(llm, "coherence").get("pass")
+    nat = _dim(llm, "naturalness").get("pass")
+    gl = _dim(llm, "gloss_fidelity").get("pass")
+    cov = _dim(llm, "beat_coverage").get("pass")
     print(f"[{n:2}/{total}] {stem:24} attempts={attempts} hard={'OK ' if hard_pass(best_rep) else 'FAIL'} "
           f"G={g} CEFR={c} cohere={coh} natural={nat} gloss={gl} cov={cov}", flush=True)
     return {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
             "grammar": g, "cefr": c, "coherence": coh, "natural": nat, "gloss": gl, "beat_coverage": cov,
             "lines": len(best["da"]),
-            "issues": {d: (llm.get(d) or {}).get("issues", []) for d in VERIFY_DIMENSIONS}}
+            "issues": {d: _dim(llm, d).get("issues", []) for d in VERIFY_DIMENSIONS}}
 
 
 def main() -> int:

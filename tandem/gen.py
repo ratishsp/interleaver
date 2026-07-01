@@ -173,7 +173,7 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
                      "beats or bring in characters who first appear in a later scene):\n" + rows + "\n")
     return f"""{bible}
 
-TASK: Write ONE full scene for WEEK {week} (CEFR level {level}) of the Danish course.
+TASK: Write ONE scene for WEEK {week} (CEFR level {level}) of the Danish course.
 Scene title: "{scene_title}". Narrative beat: {beat}
 {arc_block}
 The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss.

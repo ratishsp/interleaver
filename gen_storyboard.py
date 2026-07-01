@@ -82,8 +82,8 @@ Narrative beat to decompose: {row['beat']}
 {revise}
 Rules:
 - CEFR {row['level']}: weeks 1-15 are PRESENT TENSE ONLY (no past tense).
-- Decompose the beat into a natural sequence of scenes — let the material decide the count
-  (typically ~6-9). Make each scene a full ~15-20 line-pair situation, so the week runs ~15-20 min of audio. Prefer FEWER, RICHER scenes (each a complete
+- Decompose the beat into a natural sequence of scenes — let the material decide the count. Prefer
+  FEWER, RICHER scenes (each a complete
   activity that moves) over many thin object-by-object beats. Vary the scene shapes and span several
   DISTINCT situations so no single kind of beat repeats until it grates.
 - Every scene's beat must carry the week's grammar THROUGH ACTION, never a static "X is at Y" list.

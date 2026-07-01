@@ -46,3 +46,5 @@ locked. The continuity lens treats everything here as established truth: a new w
   addresses, lexical ambiguities).
 - **Dialogue** — speakers address each other correctly (a clerk speaks *to* Maya, not in Maya's voice).
 - **Scene-to-scene flow** — where natural, a scene may foreshadow the next or pay off the previous; don't force a bridge on every scene.
+- **Translatable setting** — the real test is whether a place/thing **translates n-way**, not generic-vs-specific. Everyday places (a square, a park, a harbour, a museum) and **translatable references** (a known dish/statue/festival — *smørrebrød*, the Little Mermaid → *La Sirenita* etc.) are fine. **Opaque local place-names** (Nyhavn, Amalienborg) are NOT — they only transliterate. Keep any such reference to a **single deliberate anchor** per week, and never a kroner price.
+- **Cast used sparingly** — the recurring cast (Nina, Peter, the family video call) appear only where a scene earns them, not every week; a week may stand on its own (Maya alone or with strangers).

@@ -18,8 +18,10 @@ Realism (Danish supermarket): mostly **self-service** — cheese/milk come from 
 aisle, not a deli counter; the one manned counter is the **bakery** (so "jeg vil gerne have" happens
 there). Carts are chained and need a **coin**. The unfamiliar product is a very Danish one
 (**leverpostej**, liver paté); the free sample is **salt lakrids** (salty licorice) — the classic thing
-newcomers dislike, a perfect *kan ikke lide* beat. The odd vegetable is a **Nordic root** (knoldselleri),
-not a pepper (Maya is Mexican — peppers are home food, not strange).
+newcomers dislike, a perfect *kan ikke lide* beat. The odd vegetable is a simple, widely-known root
+(**pastinak**, parsnip) — kept generic so it translates cleanly n-way, not a Nordic-specific one like
+celeriac; and not a pepper (Maya is Mexican — peppers are home food, not strange). She names it (reads
+the sign) and buys it — a curious, adventurous payoff rather than putting it back.
 
 Continuity (bible): by now Maya is **settled in her own furnished flat** (wk4, in Nina's building), has
 a phone + CPR + registration (wk2). This is her **first big weekly shop** at a real supermarket —
@@ -30,7 +32,7 @@ still winter. Mood: curious, capable, a little adventurous — warm close.
 |---|------|------|
 | 1 | 01_the_list | Morning in Maya's new flat. The fridge and cupboards are still nearly empty — time to stock her own kitchen at last. At her kitchen table she writes a list: milk, bread, cheese, fruit, vegetables. It's her first big grocery run in Denmark. She takes two cloth bags and heads out. (anchors to the new flat from wk4; the list; food nouns *mælk, brød, ost*) |
 | 2 | 02_the_cart | Maya walks to the big supermarket — much bigger than the corner shop, bright and full of people. She goes to take a cart, but the carts are chained: she needs a coin. She digs in her pocket, finds a ten-krone coin, and frees a cart. So many shelves, so many things! Where to start? (an authentic friction — the coin-cart; content-neutral overwhelm — the store's abundance, NOT the language; *en indkøbsvogn, en mønt*) |
-| 3 | 03_fruit_and_veg | In the fruit and vegetable section Maya picks up an apple. She likes apples — she smells it and puts the apple in her cart. She takes some tomatoes and a cucumber too. Then she sees a vegetable she doesn't recognise; she picks it up, turns it over — "what is that?" she thinks — and puts it back. Another day. (*kan godt lide* as a thought; definite *æblet*, one apple; an unfamiliar vegetable in everyday words) |
+| 3 | 03_fruit_and_veg | In the fruit and vegetable section Maya picks up an apple. She likes apples and puts the apple in her cart. She takes some tomatoes and a cucumber too. Then she sees a vegetable she doesn't recognise; she picks it up, turns it over — "what is that?" — reads the sign (*pastinak*), and decides to try something new: she puts it in her cart. Curious, a little adventurous. (*kan godt lide* as a thought; definite *æblet*/*pastinakken*; *vil gerne* — trying something new; the sign read via *der står*) |
 | 4 | 04_so_much_bread | The bread aisle stops her — so many kinds of dark rye bread! In Mexico the bread is soft and white; this Danish *rugbrød* is dark and heavy. She isn't sure which to take, then chooses one. "The Danes love this bread," she thinks, and adds the dark loaf to her cart. (unfamiliar product; *rugbrødet*; a real cultural beat; definite *brødet*) |
 | 5 | 05_what_is_this | In the cold section Maya finds a small foil tray she doesn't recognise. What is inside it? A man reaches past her for one, so she asks him: "Excuse me — what is this?" "It's *leverpostej* — liver paté. You put it on rye bread," he says. "It's good!" Curious, she decides to try it. (the man NAMES and EXPLAINS it — no circular read-then-ask; *en bakke*, chilled case; sets up the smørrebrød) |
 | 6 | 06_the_bakery | At the in-store bakery counter Maya waits her turn. Fresh rolls and loaves lie behind the glass. "I would like three rolls, please," she says. "Anything else?" asks the baker. "No thank you, that's all." She takes the warm bag of rolls. (*jeg vil gerne have*; the one manned counter; a real exchange; *bollerne*) |

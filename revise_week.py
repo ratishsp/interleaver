@@ -80,7 +80,7 @@ def main() -> int:
                                  beat=r["beat"], grammar=grammar, lines=spec["lines"], arc=arc,
                                  scene_num=r["num"])
             rep = verify_scene(client, model=a.model, level=level, grammar=grammar,
-                               da_lines=res["da"], en_lines=res["en"])
+                               da_lines=res["da"], en_lines=res["en"], beat=r["beat"])
             if not hard_pass(rep):               # one revise pass, then keep best-effort
                 res = revise_scene(client, model=a.model, level=level, grammar=grammar, beat=r["beat"],
                                    da_lines=res["da"], en_lines=res["en"], feedback=format_failures(rep))
@@ -112,7 +112,7 @@ def main() -> int:
             res = revise_scene(client, model=a.model, level=level, grammar=grammar, beat=r["beat"],
                                da_lines=da, en_lines=en, feedback=feedback)
             rep = verify_scene(client, model=a.model, level=level, grammar=grammar,
-                               da_lines=res["da"], en_lines=res["en"])
+                               da_lines=res["da"], en_lines=res["en"], beat=r["beat"])
             write_scene(wdir, r["stem"], res)
             n_revised += 1
             print(f"         per-scene re-verify: {'OK' if hard_pass(rep) else 'still flags (kept best)'}",

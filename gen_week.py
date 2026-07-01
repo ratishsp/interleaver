@@ -101,7 +101,7 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
                                    beat=row["beat"], da_lines=best["da"], en_lines=best["en"],
                                    feedback=format_failures(best_rep))
             rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
-                              da_lines=res["da"], en_lines=res["en"])
+                              da_lines=res["da"], en_lines=res["en"], beat=row["beat"])
         except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
             print(f"[{n:2}/{total}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
                   f"{str(e)[:120]}", flush=True)
@@ -123,10 +123,11 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
     coh = (llm.get("coherence") or {}).get("pass")
     nat = (llm.get("naturalness") or {}).get("pass")
     gl = (llm.get("gloss_fidelity") or {}).get("pass")
+    cov = (llm.get("beat_coverage") or {}).get("pass")
     print(f"[{n:2}/{total}] {stem:24} attempts={attempts} hard={'OK ' if hard_pass(best_rep) else 'FAIL'} "
-          f"G={g} CEFR={c} cohere={coh} natural={nat} gloss={gl}", flush=True)
+          f"G={g} CEFR={c} cohere={coh} natural={nat} gloss={gl} cov={cov}", flush=True)
     return {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
-            "grammar": g, "cefr": c, "coherence": coh, "natural": nat, "gloss": gl,
+            "grammar": g, "cefr": c, "coherence": coh, "natural": nat, "gloss": gl, "beat_coverage": cov,
             "lines": len(best["da"]),
             "issues": {d: (llm.get(d) or {}).get("issues", []) for d in VERIFY_DIMENSIONS}}
 
@@ -156,7 +157,7 @@ def main() -> int:
         print(f"  {s['n']:2} {s['stem']:24} att={s['attempts']} "
               f"hard={'OK ' if s['hard_pass'] else 'FAIL'} | "
               f"cohere={s['coherence']} natural={s['natural']} gloss={s['gloss']}  "
-              f"[adv G={s['grammar']} CEFR={s['cefr']}]")
+              f"[adv G={s['grammar']} CEFR={s['cefr']} cov={s.get('beat_coverage')}]")
 
     # Deterministic repetition lint over the WHOLE week (cheap, no API) — surfaces mechanical repeats
     # (smile-as-every-closer, an emotion tag in half the scenes, a sentence reused across scenes)

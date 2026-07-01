@@ -319,12 +319,15 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
             break
     return out
 
-# Dimensions the LLM reviewer scores (order = display order).
+# Dimensions the LLM reviewer scores (order = display order). beat_coverage is only scored when a
+# beat is passed in (the pipeline always has one; ad-hoc `gen verify` may not) — otherwise it is
+# simply absent from the report, not a failure.
 VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "coherence", "naturalness",
-                     "gloss_fidelity", "show_dont_tell")
+                     "gloss_fidelity", "show_dont_tell", "beat_coverage")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
 # grammar_whitelist = scope (correct-but-slightly-advanced Danish is fine); cefr_level = exact level.
-ADVISORY_DIMS = ("grammar_whitelist", "cefr_level", "show_dont_tell")
+# beat_coverage = a concrete beat detail the scene dropped (points the ear at it; the model may compress).
+ADVISORY_DIMS = ("grammar_whitelist", "cefr_level", "show_dont_tell", "beat_coverage")
 
 # CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
 # These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
@@ -382,14 +385,22 @@ def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None 
 
 
 def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
-                  en_lines: list[str]) -> str:
+                  en_lines: list[str], beat: str | None = None) -> str:
     """Build the independent-QA prompt (also used by --show-prompt).
 
     Note: first-person POV (Maya's own voice) is an AUTHORING invariant set in scene_prompt, not
     re-checked here — a POV dimension would false-flag legitimate quoted speech by other characters.
+
+    If `beat` is given, an ADVISORY beat_coverage dimension is added: it flags a concrete detail the
+    storyboard beat named that the generated scene dropped. Omitted entirely when there is no beat.
     """
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
+    beat_block = f"\nSTORYBOARD BEAT (the intent this scene was written from):\n{beat}\n" if beat else ""
+    beat_dim = (
+        "\n7. beat_coverage — [ADVISORY] compare the scene to its STORYBOARD BEAT above and flag any CONCRETE, SPECIFIC element the beat names — a physical object, a place, a distinct action — that does NOT appear in the scene at all (a silently dropped detail, e.g. the beat says the phone is held up to the window but the scene never mentions a window). The scene MAY compress and paraphrase, so do NOT flag wording, mood, tone, or a detail that is present but phrased differently — only a concrete element that is genuinely ABSENT and whose loss a listener might notice."
+        if beat else "")
+    beat_schema = ',\n "beat_coverage": {"pass": true, "issues": []}' if beat else ""
     return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
 
 SPEC:
@@ -401,14 +412,14 @@ The Danish is the language being learned — judge it as real, native Danish; th
 
 SCENE (line-aligned Danish / English):
 {pairs}
-
+{beat_block}
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus.
 2. cefr_level — is the sentence length and complexity appropriate to {level}? Flag ONLY lines whose complexity clearly EXCEEDS {level}; simplicity that fits {level} is expected, not a defect. (Word frequency is checked separately — ignore it here.) Also state, as `assessed_level`, the CEFR level the scene's complexity actually reads as.
 3. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
 4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
 5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
-6. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.
+6. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.{beat_dim}
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
@@ -416,13 +427,17 @@ Return JSON exactly:
  "coherence": {{"pass": true, "issues": []}},
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}},
- "show_dont_tell": {{"pass": true, "issues": []}}}}
+ "show_dont_tell": {{"pass": true, "issues": []}}{beat_schema}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 
 def verify_scene(client, *, model: str, level: str, grammar: str,
-                 da_lines: list[str], en_lines: list[str]) -> dict:
-    """Programmatic checks + an independent LLM review. Returns a report dict."""
+                 da_lines: list[str], en_lines: list[str], beat: str | None = None) -> dict:
+    """Programmatic checks + an independent LLM review. Returns a report dict.
+
+    `beat` (optional) turns on the advisory beat_coverage dimension — a dropped-detail check against
+    the storyboard beat. The pipeline always passes it; ad-hoc callers may omit it.
+    """
     multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
     report = {
         "aligned": len(da_lines) == len(en_lines),
@@ -433,7 +448,7 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
         "distinct_da_words": len(_distinct_words(da_lines)),
         "band": band_check(da_lines, level=level),
     }
-    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines)
+    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines, beat=beat)
     report["llm"] = _json_call(client, model, prompt)
     return report
 
@@ -457,6 +472,8 @@ def print_verify_report(rep: dict) -> bool:
             print(f"      - {o['word']} ({rank})")
     llm = rep.get("llm", {})
     for dim in VERIFY_DIMENSIONS:
+        if dim not in llm:                     # not scored this run (e.g. beat_coverage with no beat)
+            continue
         d = llm.get(dim, {}) or {}
         passed = bool(d.get("pass", False))
         advisory = dim in ADVISORY_DIMS

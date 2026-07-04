@@ -583,7 +583,12 @@ def verify_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_
     Deterministic gates run always; the LLM review runs only when the three columns are aligned (an
     unaligned zip would silently drop lines). Triage output — nothing here blocks the pipeline.
     """
-    multi = _multi_sentence_lines_generic(tgt_lines)
+    # Quote+attribution lines («"Hello!" she says.») are ONE utterance, but the script-agnostic detector
+    # has no speech-verb exemption (the Danish one does) and trips on them. The source is guaranteed
+    # one-sentence-per-line upstream, yet the SAME detector trips on its attribution lines too — so use
+    # the source's trips as a false-positive mask: flag a target line only if its aligned source is clean.
+    src_mask = set(_multi_sentence_lines_generic(en_lines))
+    multi = [i for i in _multi_sentence_lines_generic(tgt_lines) if i not in src_mask]
     empties = [i + 1 for i, t in enumerate(tgt_lines) if not t.strip()]
     echoes = [i + 1 for i, (e, t) in enumerate(zip(en_lines, tgt_lines))
               if t.strip() and t.strip() == e.strip()]      # target parroted the English (untranslated)

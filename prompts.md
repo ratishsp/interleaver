@@ -106,7 +106,7 @@ Target CEFR level: A1 — keep the translation in-level, do not drift up or down
 
 RULES:
 - Translate naturally and idiomatically in es; avoid word-for-word translationese.
-- PHASE-1 POLICY = TRANSLATE, DO NOT RELOCATE. Keep the Danish setting and Danish-specific terms (e.g. SKAT, hygge, Janteloven, CPR, MitID, København) — render them naturally, do NOT swap them for the target culture's equivalents.
+- TRANSLATE, DON'T RELOCATE: keep the Danish setting and render proper nouns (København, Nina, Mexico) faithfully by sound — never swap them for a target-culture equivalent (no Copenhagen -> Madrid, no Nina -> María) or auto-localize.
 - Keep names consistent.
 - Preserve sentence segmentation EXACTLY: return the SAME number of lines (4), one translation per input line, in order. Do not merge or split lines.
 

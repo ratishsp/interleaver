@@ -135,7 +135,6 @@ LENSES = [
             "    tasks), or micro-slice ONE event (a single move-in, a single tour) across many scenes?\n"
             "    FLAG a week that is one thin situation stretched to length. Also FLAG the SAME kind of\n"
             "    scene repeated (e.g. several 'she meets an unfamiliar thing' scenes) — vary the shape.\n"
-            "    (Few scenes is not itself a fault — see the scene-count note above.)\n"
             "(c) CONCRETE texture — does each scene bring its OWN concrete detail — nouns, actions, the\n"
             "    odd sensory note (a smell, warmth, a taste, a small pleasure) — or lean on generic\n"
             "    filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable scenes.\n"

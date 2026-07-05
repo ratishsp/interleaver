@@ -57,7 +57,6 @@ _SPEC = parse_storyboard_header(STORYBOARD)            # single source: the stor
 WEEK = _SPEC["week"]
 LEVEL = _SPEC["level"]
 GRAMMAR = _SPEC["grammar"]
-LINES = _SPEC["lines"]
 
 GEN_MODEL = "gemini-3.1-pro-preview"      # gen + revise on the strongest model — best first drafts, fewest
                                           # hand-fixes (user choice 2026-06-27). Needs location='global'.
@@ -69,7 +68,7 @@ VERIFY_MODEL = "gemini-3.1-pro-preview"   # same model as the generator now, so 
 MAX_RETRIES = 2                      # up to two revise retries on hard-fail, then accept best + log
 # Hard gates (block + retry) = alignment (structural, checked separately) + every non-advisory dim:
 # coherence (the scene's lines hang together), naturalness (idiomatic Danish), gloss_fidelity
-# (the EN pivot ~100 languages translate from). grammar_whitelist/cefr_level are advisory. Derived
+# (the EN pivot ~100 languages translate from). grammar_whitelist is advisory. Derived
 # from the single source in gen.py so the split can't drift.
 HARD_DIMS = tuple(d for d in VERIFY_DIMENSIONS if d not in ADVISORY_DIMS)
 
@@ -101,13 +100,13 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
             if attempt == 0 or best is None:          # fresh draft (or the prior attempt errored)
                 res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
                                      scene_title=row["title"], scene=row["scene"], grammar=GRAMMAR,
-                                     lines=LINES, arc=arc, scene_num=n)
+                                     arc=arc, scene_num=n)
             else:                                     # revise the rejected draft — fix only what failed
                 res = revise_scene(client, model=GEN_MODEL, level=LEVEL, grammar=GRAMMAR,
                                    scene=row["scene"], da_lines=best["da"], en_lines=best["en"],
                                    feedback=format_failures(best_rep))
             rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
-                              da_lines=res["da"], en_lines=res["en"], scene=row["scene"])
+                              da_lines=res["da"], en_lines=res["en"])
         except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
             print(f"[{n:2}/{total}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
                   f"{str(e)[:120]}", flush=True)
@@ -125,15 +124,13 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
 
     llm = best_rep.get("llm", {})
     g = _dim(llm, "grammar_whitelist").get("pass")
-    c = _dim(llm, "cefr_level").get("pass")
     coh = _dim(llm, "coherence").get("pass")
     nat = _dim(llm, "naturalness").get("pass")
     gl = _dim(llm, "gloss_fidelity").get("pass")
-    cov = _dim(llm, "scene_coverage").get("pass")
     print(f"[{n:2}/{total}] {stem:24} attempts={attempts} hard={'OK ' if hard_pass(best_rep) else 'FAIL'} "
-          f"G={g} CEFR={c} cohere={coh} natural={nat} gloss={gl} cov={cov}", flush=True)
+          f"G={g} cohere={coh} natural={nat} gloss={gl}", flush=True)
     return {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
-            "grammar": g, "cefr": c, "coherence": coh, "natural": nat, "gloss": gl, "scene_coverage": cov,
+            "grammar": g, "coherence": coh, "natural": nat, "gloss": gl,
             "lines": len(best["da"]),
             "issues": {d: _dim(llm, d).get("issues", []) for d in VERIFY_DIMENSIONS}}
 
@@ -163,7 +160,7 @@ def main() -> int:
         print(f"  {s['n']:2} {s['stem']:24} att={s['attempts']} "
               f"hard={'OK ' if s['hard_pass'] else 'FAIL'} | "
               f"cohere={s['coherence']} natural={s['natural']} gloss={s['gloss']}  "
-              f"[adv G={s['grammar']} CEFR={s['cefr']} cov={s.get('scene_coverage')}]")
+              f"[adv G={s['grammar']}]")
 
     # Deterministic repetition lint over the WHOLE week (cheap, no API) — surfaces mechanical repeats
     # (smile-as-every-closer, an emotion tag in half the scenes, a sentence reused across scenes)

@@ -152,16 +152,13 @@ def _json_call(client, model: str, prompt: str, *, retries: int = 1) -> dict:
 
 
 def scene_prompt(*, week: int, level: str, scene_title: str, scene: str, grammar: str,
-                 lines: int, arc: list | None = None, scene_num: int | None = None,
+                 arc: list | None = None, scene_num: int | None = None,
                  bible: str | None = None) -> str:
     """Build the exact generation prompt (also used by --show-prompt for inspection).
 
-    `lines` is accepted for caller compatibility but is not fed to the generator as a hard quota;
-    the prompt instead steers toward a rich ~15-20 line-pair situation (the storyboard's Lines/scene
-    stays advisory).
+    Scene length is not a caller quota — the prompt steers toward a rich ~15-20 line-pair situation.
     `bible` defaults to the stable sections of story_bible.md (single source of truth with the gates).
     """
-    del lines  # intentionally not surfaced to the model
     bible = bible if bible is not None else load_story_bible()
     arc_block = ""
     if arc:
@@ -187,11 +184,11 @@ Return JSON: {{"da": [...], "en": [...]}}."""
 
 
 def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, scene: str,
-                   grammar: str, lines: int, arc: list | None = None,
+                   grammar: str, arc: list | None = None,
                    scene_num: int | None = None, bible: str | None = None) -> dict:
     """Author a graded scene natively in Danish + an English gloss. Returns {'da': [...], 'en': [...]}."""
     prompt = scene_prompt(week=week, level=level, scene_title=scene_title, scene=scene,
-                          grammar=grammar, lines=lines, arc=arc, scene_num=scene_num, bible=bible)
+                          grammar=grammar, arc=arc, scene_num=scene_num, bible=bible)
     out = _json_call(client, model, prompt)
     da, en = out.get("da", []), out.get("en", [])
     if len(da) != len(en):
@@ -341,15 +338,12 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
             break
     return out
 
-# Dimensions the LLM reviewer scores (order = display order). scene_coverage is only scored when the
-# storyboard scene is passed in (the pipeline always has one; ad-hoc `gen verify` may not) — otherwise
-# it is simply absent from the report, not a failure.
-VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "coherence", "naturalness",
-                     "gloss_fidelity", "show_dont_tell", "scene_coverage")
+# Dimensions the LLM reviewer scores (order = display order).
+VERIFY_DIMENSIONS = ("grammar_whitelist", "coherence", "naturalness",
+                     "gloss_fidelity", "show_dont_tell")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
-# grammar_whitelist = scope (correct-but-slightly-advanced Danish is fine); cefr_level = exact level.
-# scene_coverage = a concrete detail from the storyboard scene the generated text dropped (points the ear at it; the model may compress).
-ADVISORY_DIMS = ("grammar_whitelist", "cefr_level", "show_dont_tell", "scene_coverage")
+# grammar_whitelist = scope: correct-but-slightly-advanced Danish is fine (judged by level, not a strict whitelist).
+ADVISORY_DIMS = ("grammar_whitelist", "show_dont_tell")
 
 # CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
 # These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
@@ -407,22 +401,14 @@ def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None 
 
 
 def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
-                  en_lines: list[str], scene: str | None = None) -> str:
+                  en_lines: list[str]) -> str:
     """Build the independent-QA prompt (also used by --show-prompt).
 
     Note: first-person POV (Maya's own voice) is an AUTHORING invariant set in scene_prompt, not
     re-checked here — a POV dimension would false-flag legitimate quoted speech by other characters.
-
-    If `scene` is given, an ADVISORY scene_coverage dimension is added: it flags a concrete detail the
-    storyboard scene named that the generated text dropped. Omitted entirely when there is no scene.
     """
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
-    scene_block = f"\nSTORYBOARD SCENE (the intent this scene was written from):\n{scene}\n" if scene else ""
-    cov_dim = (
-        "\n7. scene_coverage — [ADVISORY] flag a concrete element named in the STORYBOARD SCENE above — an object, place, or action — that is absent from the generated scene entirely. The scene may compress or paraphrase, so ignore rewordings and mood; flag only a genuinely missing element."
-        if scene else "")
-    cov_schema = ',\n "scene_coverage": {"pass": true, "issues": []}' if scene else ""
     return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
 
 SPEC:
@@ -434,32 +420,26 @@ The Danish is the language being learned — judge it as real, native Danish; th
 
 SCENE (line-aligned Danish / English):
 {pairs}
-{scene_block}
+
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus.
-2. cefr_level — is the sentence length and complexity appropriate to {level}? Flag ONLY lines whose complexity clearly EXCEEDS {level}; simplicity that fits {level} is expected, not a defect. (Word frequency is checked separately — ignore it here.) Also state, as `assessed_level`, the CEFR level the scene's complexity actually reads as.
-3. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
-4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
-5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
-6. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.{cov_dim}
+2. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
+3. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
+4. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
+5. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
- "cefr_level": {{"pass": true, "assessed_level": "<the level it actually reads as>", "issues": []}},
  "coherence": {{"pass": true, "issues": []}},
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}},
- "show_dont_tell": {{"pass": true, "issues": []}}{cov_schema}}}
+ "show_dont_tell": {{"pass": true, "issues": []}}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 
 def verify_scene(client, *, model: str, level: str, grammar: str,
-                 da_lines: list[str], en_lines: list[str], scene: str | None = None) -> dict:
-    """Programmatic checks + an independent LLM review. Returns a report dict.
-
-    `scene` (optional) turns on the advisory scene_coverage dimension — a dropped-detail check against
-    the storyboard scene. The pipeline always passes it; ad-hoc callers may omit it.
-    """
+                 da_lines: list[str], en_lines: list[str]) -> dict:
+    """Programmatic checks + an independent LLM review. Returns a report dict."""
     multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
     report = {
         "aligned": len(da_lines) == len(en_lines),
@@ -470,7 +450,7 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
         "distinct_da_words": len(_distinct_words(da_lines)),
         "band": band_check(da_lines, level=level),
     }
-    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines, scene=scene)
+    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines)
     report["llm"] = _json_call(client, model, prompt)
     return report
 
@@ -494,7 +474,7 @@ def print_verify_report(rep: dict) -> bool:
             print(f"      - {o['word']} ({rank})")
     llm = rep.get("llm", {})
     for dim in VERIFY_DIMENSIONS:
-        if dim not in llm:                     # not scored this run (e.g. scene_coverage with no scene)
+        if dim not in llm:                     # not scored this run (defensive — e.g. a malformed reply)
             continue
         d = llm.get(dim, {}) or {}
         passed = bool(d.get("pass", False))
@@ -502,8 +482,7 @@ def print_verify_report(rep: dict) -> bool:
         if not advisory:                       # only hard dims (+ alignment) gate the overall result
             ok = ok and passed
         tag = " [advisory]" if advisory else ""
-        extra = f" [assessed {d.get('assessed_level')}]" if dim == "cefr_level" and d.get("assessed_level") else ""
-        print(f"  {dim}: {'PASS' if passed else 'FAIL'}{tag}{extra}")
+        print(f"  {dim}: {'PASS' if passed else 'FAIL'}{tag}")
         for iss in (d.get("issues") or []):
             print(f"      - line {iss.get('line', '?')}: {iss.get('problem', '')}")
     print(f"  OVERALL: {'PASS ✓' if ok else 'FAIL ✗'}")
@@ -744,16 +723,11 @@ def parse_storyboard_header(path: str | Path) -> dict:
     for m in re.finditer(r"\*\*([^:*]+):\*\*\s*(.*?)(?=\*\*[^:*]+:\*\*|$)", flat):
         fields[m.group(1).strip().lower()] = m.group(2).strip().strip("·").strip()
 
-    def _int(s: str, default: int) -> int:
-        m = re.search(r"\d+", s or "")
-        return int(m.group()) if m else default
-
     title_m = re.search(r"Week\s+(\d+)", flat)
     return {
         "week": int(title_m.group(1)) if title_m else None,
         "level": fields.get("level", "A1"),
         "grammar": fields.get("grammar", ""),
-        "lines": _int(fields.get("lines/scene", ""), 12),
     }
 
 
@@ -806,7 +780,6 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--storyboard", help="storyboard .md to draw the scene + the week's arc from")
     g.add_argument("--scene-num", type=int, help="which scene number within the storyboard")
     g.add_argument("--grammar", required=True)
-    g.add_argument("--lines", type=int, default=12)
     g.add_argument("--out-stem", help="writes <stem>.da and <stem>.en (default: storyboard dir/stem)")
     g.add_argument("--show-prompt", action="store_true",
                    help="print the exact prompt and exit (no API call, no credentials needed)")
@@ -839,7 +812,7 @@ def main(argv: list[str] | None = None) -> int:
     if getattr(args, "show_prompt", False):
         if args.cmd == "scene":
             print(scene_prompt(week=args.week, level=args.level, scene_title=scene_title,
-                               scene=scene, grammar=args.grammar, lines=args.lines,
+                               scene=scene, grammar=args.grammar,
                                arc=arc, scene_num=scene_num))
         elif args.cmd == "translate":
             lines = [ln for ln in Path(args.infile).read_text(encoding="utf-8").splitlines() if ln.strip()]
@@ -861,7 +834,7 @@ def main(argv: list[str] | None = None) -> int:
         res = generate_scene(
             client, model=args.model, week=args.week, level=args.level,
             scene_title=scene_title, scene=scene, grammar=args.grammar,
-            lines=args.lines, arc=arc, scene_num=scene_num,
+            arc=arc, scene_num=scene_num,
         )
         _write_lines(Path(out_stem + ".da"), res["da"])
         _write_lines(Path(out_stem + ".en"), res["en"])

@@ -77,12 +77,12 @@ def main() -> int:
         print(f"[regen] scene {r['num']} {r['stem']} (missing)", flush=True)
         try:
             res = generate_scene(client, model=a.model, week=week, level=level, scene_title=r["title"],
-                                 beat=r["beat"], grammar=grammar, lines=spec["lines"], arc=arc,
+                                 scene=r["scene"], grammar=grammar, lines=spec["lines"], arc=arc,
                                  scene_num=r["num"])
             rep = verify_scene(client, model=a.model, level=level, grammar=grammar,
-                               da_lines=res["da"], en_lines=res["en"], beat=r["beat"])
+                               da_lines=res["da"], en_lines=res["en"], scene=r["scene"])
             if not hard_pass(rep):               # one revise pass, then keep best-effort
-                res = revise_scene(client, model=a.model, level=level, grammar=grammar, beat=r["beat"],
+                res = revise_scene(client, model=a.model, level=level, grammar=grammar, scene=r["scene"],
                                    da_lines=res["da"], en_lines=res["en"], feedback=format_failures(rep))
             write_scene(wdir, r["stem"], res)
             n_regen += 1
@@ -109,10 +109,10 @@ def main() -> int:
                     "natural instance across the week is fine:\n" + "\n".join(targets[k]))
         print(f"[revise] scene {k} {r['stem']} ({len(targets[k])} finding(s))", flush=True)
         try:
-            res = revise_scene(client, model=a.model, level=level, grammar=grammar, beat=r["beat"],
+            res = revise_scene(client, model=a.model, level=level, grammar=grammar, scene=r["scene"],
                                da_lines=da, en_lines=en, feedback=feedback)
             rep = verify_scene(client, model=a.model, level=level, grammar=grammar,
-                               da_lines=res["da"], en_lines=res["en"], beat=r["beat"])
+                               da_lines=res["da"], en_lines=res["en"], scene=r["scene"])
             write_scene(wdir, r["stem"], res)
             n_revised += 1
             print(f"         per-scene re-verify: {'OK' if hard_pass(rep) else 'still flags (kept best)'}",

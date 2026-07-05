@@ -13,7 +13,7 @@ Design decisions this encodes (see design_notes.md):
     and pair assembly key on).
 
 CLI:
-  python -m tandem.gen scene --week 1 --scene-title "Arrival" --beat "Maya lands in Copenhagen" \\
+  python -m tandem.gen scene --week 1 --scene-title "Arrival" --scene "Maya lands in Copenhagen" \\
       --grammar "present være/hedde/komme fra; der er; pronouns; hvad/hvor" --lines 14 \\
       --out-stem year1/week01/01_arrival
   python -m tandem.gen translate --src en --tgt es --context "Maya's first year, Copenhagen" \\
@@ -151,7 +151,7 @@ def _json_call(client, model: str, prompt: str, *, retries: int = 1) -> dict:
     raise SystemExit(f"Model did not return valid JSON after {retries + 1} tries:\n{last[:500]}")
 
 
-def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar: str,
+def scene_prompt(*, week: int, level: str, scene_title: str, scene: str, grammar: str,
                  lines: int, arc: list | None = None, scene_num: int | None = None,
                  bible: str | None = None) -> str:
     """Build the exact generation prompt (also used by --show-prompt for inspection).
@@ -166,15 +166,15 @@ def scene_prompt(*, week: int, level: str, scene_title: str, beat: str, grammar:
     arc_block = ""
     if arc:
         rows = "\n".join(
-            f'  {a["num"]}. {a["title"]} — {a["beat"]}'
+            f'  {a["num"]}. {a["title"]} — {a["scene"]}'
             + ("   ← WRITE THIS SCENE" if a["num"] == scene_num else "")
             for a in arc)
-        arc_block = ("\nThis week's arc (write ONLY the marked scene; do not cover other scenes' "
-                     "beats or bring in characters who first appear in a later scene):\n" + rows + "\n")
+        arc_block = ("\nThis week's arc (write ONLY the marked scene; do not cover the other "
+                     "scenes or bring in characters who first appear in a later scene):\n" + rows + "\n")
     return f"""{bible}
 
 TASK: Write ONE scene for WEEK {week} (CEFR level {level}) of the Danish course.
-Scene title: "{scene_title}". Narrative beat: {beat}
+Scene title: "{scene_title}". Scene: {scene}
 {arc_block}
 The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss.
 
@@ -186,11 +186,11 @@ The Danish is what's being learned — author it natively and idiomatically; the
 Return JSON: {{"da": [...], "en": [...]}}."""
 
 
-def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, beat: str,
+def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, scene: str,
                    grammar: str, lines: int, arc: list | None = None,
                    scene_num: int | None = None, bible: str | None = None) -> dict:
     """Author a graded scene natively in Danish + an English gloss. Returns {'da': [...], 'en': [...]}."""
-    prompt = scene_prompt(week=week, level=level, scene_title=scene_title, beat=beat,
+    prompt = scene_prompt(week=week, level=level, scene_title=scene_title, scene=scene,
                           grammar=grammar, lines=lines, arc=arc, scene_num=scene_num, bible=bible)
     out = _json_call(client, model, prompt)
     da, en = out.get("da", []), out.get("en", [])
@@ -199,7 +199,7 @@ def generate_scene(client, *, model: str, week: int, level: str, scene_title: st
     return {"da": da, "en": en}
 
 
-def revise_prompt(*, level: str, grammar: str, beat: str, da_lines: list[str],
+def revise_prompt(*, level: str, grammar: str, scene: str, da_lines: list[str],
                   en_lines: list[str], feedback: str, bible: str | None = None) -> str:
     """Build the revise prompt: a rejected draft + the QA problems to fix (also used by --show-prompt)."""
     bible = bible if bible is not None else load_story_bible()
@@ -209,7 +209,7 @@ def revise_prompt(*, level: str, grammar: str, beat: str, da_lines: list[str],
 
 A draft scene for this Danish course (CEFR level {level}) was rejected by QA. Fix ONLY the problems listed below; keep everything else — the story, the line order, and every line that wasn't flagged — unchanged.
 
-Scene beat (for context): {beat}
+Scene (for context): {scene}
 Level {level}; this week's grammar: {grammar}.
 
 DRAFT (line-aligned Danish / English):
@@ -221,11 +221,11 @@ PROBLEMS TO FIX:
 Return the FULL corrected scene as JSON: {{"da": [...], "en": [...]}} — one sentence per line, the two arrays the same length and aligned line-for-line. Splitting a line to fix it changes the line count; that's fine, just keep "da" and "en" aligned."""
 
 
-def revise_scene(client, *, model: str, level: str, grammar: str, beat: str,
+def revise_scene(client, *, model: str, level: str, grammar: str, scene: str,
                  da_lines: list[str], en_lines: list[str], feedback: str,
                  bible: str | None = None) -> dict:
     """Revise a rejected draft to fix the QA problems, keeping the rest. Returns {'da': [...], 'en': [...]}."""
-    prompt = revise_prompt(level=level, grammar=grammar, beat=beat,
+    prompt = revise_prompt(level=level, grammar=grammar, scene=scene,
                            da_lines=da_lines, en_lines=en_lines, feedback=feedback, bible=bible)
     out = _json_call(client, model, prompt)
     da, en = out.get("da", []), out.get("en", [])
@@ -341,15 +341,15 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
             break
     return out
 
-# Dimensions the LLM reviewer scores (order = display order). beat_coverage is only scored when a
-# beat is passed in (the pipeline always has one; ad-hoc `gen verify` may not) — otherwise it is
-# simply absent from the report, not a failure.
+# Dimensions the LLM reviewer scores (order = display order). scene_coverage is only scored when the
+# storyboard scene is passed in (the pipeline always has one; ad-hoc `gen verify` may not) — otherwise
+# it is simply absent from the report, not a failure.
 VERIFY_DIMENSIONS = ("grammar_whitelist", "cefr_level", "coherence", "naturalness",
-                     "gloss_fidelity", "show_dont_tell", "beat_coverage")
+                     "gloss_fidelity", "show_dont_tell", "scene_coverage")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
 # grammar_whitelist = scope (correct-but-slightly-advanced Danish is fine); cefr_level = exact level.
-# beat_coverage = a concrete beat detail the scene dropped (points the ear at it; the model may compress).
-ADVISORY_DIMS = ("grammar_whitelist", "cefr_level", "show_dont_tell", "beat_coverage")
+# scene_coverage = a concrete detail from the storyboard scene the generated text dropped (points the ear at it; the model may compress).
+ADVISORY_DIMS = ("grammar_whitelist", "cefr_level", "show_dont_tell", "scene_coverage")
 
 # CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
 # These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
@@ -407,22 +407,22 @@ def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None 
 
 
 def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
-                  en_lines: list[str], beat: str | None = None) -> str:
+                  en_lines: list[str], scene: str | None = None) -> str:
     """Build the independent-QA prompt (also used by --show-prompt).
 
     Note: first-person POV (Maya's own voice) is an AUTHORING invariant set in scene_prompt, not
     re-checked here — a POV dimension would false-flag legitimate quoted speech by other characters.
 
-    If `beat` is given, an ADVISORY beat_coverage dimension is added: it flags a concrete detail the
-    storyboard beat named that the generated scene dropped. Omitted entirely when there is no beat.
+    If `scene` is given, an ADVISORY scene_coverage dimension is added: it flags a concrete detail the
+    storyboard scene named that the generated text dropped. Omitted entirely when there is no scene.
     """
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
-    beat_block = f"\nSTORYBOARD BEAT (the intent this scene was written from):\n{beat}\n" if beat else ""
-    beat_dim = (
-        "\n7. beat_coverage — [ADVISORY] flag a concrete element named in the STORYBOARD BEAT above — an object, place, or action — that is absent from the scene entirely. The scene may compress or paraphrase, so ignore rewordings and mood; flag only a genuinely missing element."
-        if beat else "")
-    beat_schema = ',\n "beat_coverage": {"pass": true, "issues": []}' if beat else ""
+    scene_block = f"\nSTORYBOARD SCENE (the intent this scene was written from):\n{scene}\n" if scene else ""
+    cov_dim = (
+        "\n7. scene_coverage — [ADVISORY] flag a concrete element named in the STORYBOARD SCENE above — an object, place, or action — that is absent from the generated scene entirely. The scene may compress or paraphrase, so ignore rewordings and mood; flag only a genuinely missing element."
+        if scene else "")
+    cov_schema = ',\n "scene_coverage": {"pass": true, "issues": []}' if scene else ""
     return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
 
 SPEC:
@@ -434,14 +434,14 @@ The Danish is the language being learned — judge it as real, native Danish; th
 
 SCENE (line-aligned Danish / English):
 {pairs}
-{beat_block}
+{scene_block}
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus.
 2. cefr_level — is the sentence length and complexity appropriate to {level}? Flag ONLY lines whose complexity clearly EXCEEDS {level}; simplicity that fits {level} is expected, not a defect. (Word frequency is checked separately — ignore it here.) Also state, as `assessed_level`, the CEFR level the scene's complexity actually reads as.
 3. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
 4. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
 5. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
-6. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.{beat_dim}
+6. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.{cov_dim}
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
@@ -449,16 +449,16 @@ Return JSON exactly:
  "coherence": {{"pass": true, "issues": []}},
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}},
- "show_dont_tell": {{"pass": true, "issues": []}}{beat_schema}}}
+ "show_dont_tell": {{"pass": true, "issues": []}}{cov_schema}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 
 def verify_scene(client, *, model: str, level: str, grammar: str,
-                 da_lines: list[str], en_lines: list[str], beat: str | None = None) -> dict:
+                 da_lines: list[str], en_lines: list[str], scene: str | None = None) -> dict:
     """Programmatic checks + an independent LLM review. Returns a report dict.
 
-    `beat` (optional) turns on the advisory beat_coverage dimension — a dropped-detail check against
-    the storyboard beat. The pipeline always passes it; ad-hoc callers may omit it.
+    `scene` (optional) turns on the advisory scene_coverage dimension — a dropped-detail check against
+    the storyboard scene. The pipeline always passes it; ad-hoc callers may omit it.
     """
     multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
     report = {
@@ -470,7 +470,7 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
         "distinct_da_words": len(_distinct_words(da_lines)),
         "band": band_check(da_lines, level=level),
     }
-    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines, beat=beat)
+    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines, scene=scene)
     report["llm"] = _json_call(client, model, prompt)
     return report
 
@@ -494,7 +494,7 @@ def print_verify_report(rep: dict) -> bool:
             print(f"      - {o['word']} ({rank})")
     llm = rep.get("llm", {})
     for dim in VERIFY_DIMENSIONS:
-        if dim not in llm:                     # not scored this run (e.g. beat_coverage with no beat)
+        if dim not in llm:                     # not scored this run (e.g. scene_coverage with no scene)
             continue
         d = llm.get(dim, {}) or {}
         passed = bool(d.get("pass", False))
@@ -758,7 +758,7 @@ def parse_storyboard_header(path: str | Path) -> dict:
 
 
 def parse_storyboard(path: str | Path) -> list[dict]:
-    """Parse a storyboard markdown table into rows: {num, stem, title, beat}."""
+    """Parse a storyboard markdown table into rows: {num, stem, title, scene}."""
     rows = []
     for line in Path(path).read_text(encoding="utf-8").splitlines():
         line = line.strip()
@@ -767,14 +767,14 @@ def parse_storyboard(path: str | Path) -> list[dict]:
         cells = [c.strip() for c in line.strip("|").split("|")]
         if len(cells) < 3 or not cells[0].isdigit():
             continue
-        num, stem, beat = int(cells[0]), cells[1], cells[2]
+        num, stem, scene = int(cells[0]), cells[1], cells[2]
         title = stem.split("_", 1)[1].replace("_", " ").title() if "_" in stem else stem.title()
-        rows.append({"num": num, "stem": stem, "title": title, "beat": beat})
+        rows.append({"num": num, "stem": stem, "title": title, "scene": scene})
     return rows
 
 
 def _resolve_scene(args) -> tuple:
-    """Return (title, beat, arc, scene_num, stem) from --storyboard/--scene-num or explicit flags."""
+    """Return (title, scene, arc, scene_num, stem) from --storyboard/--scene-num or explicit flags."""
     if args.storyboard:
         if not args.scene_num:
             raise SystemExit("--scene-num is required with --storyboard")
@@ -782,10 +782,10 @@ def _resolve_scene(args) -> tuple:
         row = next((r for r in arc if r["num"] == args.scene_num), None)
         if row is None:
             raise SystemExit(f"scene {args.scene_num} not found in {args.storyboard}")
-        return row["title"], row["beat"], arc, args.scene_num, row["stem"]
-    if not (args.scene_title and args.beat):
-        raise SystemExit("provide --scene-title and --beat, or --storyboard and --scene-num")
-    return args.scene_title, args.beat, None, None, None
+        return row["title"], row["scene"], arc, args.scene_num, row["stem"]
+    if not (args.scene_title and args.scene):
+        raise SystemExit("provide --scene-title and --scene, or --storyboard and --scene-num")
+    return args.scene_title, args.scene, None, None, None
 
 
 def _write_lines(path: Path, lines: list[str]) -> None:
@@ -802,7 +802,7 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--week", type=int, required=True)
     g.add_argument("--level", default="A1")
     g.add_argument("--scene-title", help="scene title (or use --storyboard/--scene-num)")
-    g.add_argument("--beat", help="narrative beat (or use --storyboard/--scene-num)")
+    g.add_argument("--scene", help="scene description (or use --storyboard/--scene-num)")
     g.add_argument("--storyboard", help="storyboard .md to draw the scene + the week's arc from")
     g.add_argument("--scene-num", type=int, help="which scene number within the storyboard")
     g.add_argument("--grammar", required=True)
@@ -832,14 +832,14 @@ def main(argv: list[str] | None = None) -> int:
 
     args = p.parse_args(argv)
 
-    scene_title = beat = arc = scene_num = stem = None
+    scene_title = scene = arc = scene_num = stem = None
     if args.cmd == "scene":
-        scene_title, beat, arc, scene_num, stem = _resolve_scene(args)
+        scene_title, scene, arc, scene_num, stem = _resolve_scene(args)
 
     if getattr(args, "show_prompt", False):
         if args.cmd == "scene":
             print(scene_prompt(week=args.week, level=args.level, scene_title=scene_title,
-                               beat=beat, grammar=args.grammar, lines=args.lines,
+                               scene=scene, grammar=args.grammar, lines=args.lines,
                                arc=arc, scene_num=scene_num))
         elif args.cmd == "translate":
             lines = [ln for ln in Path(args.infile).read_text(encoding="utf-8").splitlines() if ln.strip()]
@@ -860,7 +860,7 @@ def main(argv: list[str] | None = None) -> int:
             raise SystemExit("--out-stem is required (unless --show-prompt or --storyboard).")
         res = generate_scene(
             client, model=args.model, week=args.week, level=args.level,
-            scene_title=scene_title, beat=beat, grammar=args.grammar,
+            scene_title=scene_title, scene=scene, grammar=args.grammar,
             lines=args.lines, arc=arc, scene_num=scene_num,
         )
         _write_lines(Path(out_stem + ".da"), res["da"])

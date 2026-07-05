@@ -1,6 +1,6 @@
 """Storyboard review gate — a 5-lens panel that reviews a week's storyboard BEFORE generation.
 
-Mirrors `verify_scene`, one tier up:  author beats → REVIEW → revise → pass → generate.
+Mirrors `verify_scene`, one tier up:  author scenes → REVIEW → revise → pass → generate.
 Four mechanical lenses (continuity / narrative-logic / realism+privacy / density+variety)
 carry a prescribed checklist as a FLOOR *plus* explicit agency; a fifth "naive learner" lens has
 NO checklist — it catches what a checklist can't (pacing, monotony, flat mood). The text verifier
@@ -9,7 +9,7 @@ checks the generated Danish; this checks the *design*, before any Danish exists.
 The DENSITY lens (added 2026-06-27) is the root-cause catch: week 4 ("moving into a flat") passed
 this gate clean, then the whole-week text gate forced two scene cuts because the week was one thin
 event (a move-in) micro-sliced 14 ways — static room-description scenes, three evening reflections,
-a smile/glad flood. All of that is visible in the BEATS. The standard is Anna's-week density: each
+a smile/glad flood. All of that is visible in the SCENES. The standard is Anna's-week density: each
 scene a complete mini-vignette that MOVES (a market visit hitting several stalls), not a furniture
 inventory; the week spanning varied situations, not one thin event micro-sliced.
 
@@ -44,14 +44,14 @@ from tandem.gen import (
 )
 
 COMMON = """This is a Danish-for-English-speakers graded AUDIO course (interleaved English→Danish, beginner→up).
-A "week" is a STORYBOARD: a set of scene "beats" (one-paragraph summaries). From each beat a model later
-generates a short scene of Danish sentences + English glosses, then text-to-speech. You are reviewing the
-STORYBOARD (the beats), BEFORE any Danish is generated, to catch design problems while a fix is cheap
-(edit a beat, not regenerate + re-verify + re-render).
+A "week" is a STORYBOARD: a set of SCENES (one-paragraph summaries). From each scene a model later
+generates a short passage of Danish sentences + English glosses, then text-to-speech. You are reviewing the
+STORYBOARD (the scenes), BEFORE any Danish is generated, to catch design problems while a fix is cheap
+(edit a scene, not regenerate + re-verify + re-render).
 
-CONVENTION (do NOT flag): beats are written as 3rd-person summaries ("Maya sits...", "She says...").
+CONVENTION (do NOT flag): scenes are written as 3rd-person summaries ("Maya sits...", "She says...").
 The generator converts them to Maya's 1st-person voice ("Jeg sidder...") — this is enforced in the
-generation prompt and proven across weeks 1–2. So 3rd-person phrasing in the beats is EXPECTED and
+generation prompt and proven across weeks 1–2. So 3rd-person phrasing in the scenes is EXPECTED and
 correct; never report it as an issue.
 
 GROUND TRUTH:
@@ -68,7 +68,7 @@ scene count.)
 --- end curriculum ---
 
 STORYBOARD UNDER REVIEW — {header}:
-{beats}
+{scenes}
 """
 
 _FLOOR_AGENCY = """
@@ -85,7 +85,7 @@ LENSES = [
         "title": "Spec & continuity",
         "lens": "consistency with established story facts, and conformance to the week's curriculum spec",
         "floor": (
-            "(a) Does any beat CONTRADICT a story_bible fact, or RE-INTRODUCE as new something Maya\n"
+            "(a) Does any scene CONTRADICT a story_bible fact, or RE-INTRODUCE as new something Maya\n"
             "    already has/knows/is (housing, address, phone, CPR, job, relationships, recurring cast,\n"
             "    her age/origin)?\n"
             "(b) Does the week hit its curriculum grammar focus and its theme?\n"
@@ -116,7 +116,7 @@ LENSES = [
             "    repeated digit-by-digit)? Are numbers obviously FICTIONAL, not plausibly-real?\n"
             "(c) Dialogue attribution — would each speaker say things appropriate to their role (a clerk\n"
             "    speaking TO Maya, not in Maya's own voice)?\n"
-            "(d) Translation/gloss hazards — beats likely to produce constructions awkward to render in\n"
+            "(d) Translation/gloss hazards — scenes likely to produce constructions awkward to render in\n"
             "    English / another L1 (written-out abbreviations, lexically ambiguous words, inaccurate\n"
             "    inline glosses of culture-specific terms)."
         ),
@@ -134,14 +134,14 @@ LENSES = [
             "(b) WEEK variety — does the week span several DISTINCT situations (different places, people,\n"
             "    tasks), or micro-slice ONE event (a single move-in, a single tour) across many scenes?\n"
             "    FLAG a week that is one thin situation stretched to length. Also FLAG the SAME kind of\n"
-            "    beat repeated (e.g. several 'she meets an unfamiliar thing' scenes) — vary the shape.\n"
+            "    scene repeated (e.g. several 'she meets an unfamiliar thing' scenes) — vary the shape.\n"
             "    (Few scenes is not itself a fault — see the scene-count note above.)\n"
             "(c) CONCRETE texture — does each scene bring its OWN concrete detail — nouns, actions, the\n"
             "    odd sensory note (a smell, warmth, a taste, a small pleasure) — or lean on generic\n"
             "    filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable scenes.\n"
-            "(d) COMMON VOCABULARY — keep the beats in common, everyday words (the axis is common-vs-\n"
+            "(d) COMMON VOCABULARY — keep the scenes in common, everyday words (the axis is common-vs-\n"
             "    technical, not specific-vs-generic: 'rye bread' is great, 'a thermostat' is not). FLAG\n"
-            "    any beat that drags in technical/rare nouns when a common one of the same shape would do."
+            "    any scene that drags in technical/rare nouns when a common one of the same shape would do."
         ),
     },
     {
@@ -154,12 +154,12 @@ LENSES = [
 
 _LEARNER_BODY = """
 YOUR ROLE: You are the LEARNER, hearing this week for the FIRST time — a curious adult beginner.
-There is deliberately NO checklist. Experience the beats in order and REACT honestly, as a person,
+There is deliberately NO checklist. Experience the scenes in order and REACT honestly, as a person,
 not an inspector. We use you precisely to catch what a checklist would miss.
 
 What's confusing? boring or flat? oddly repetitive? Where does your attention drift? What made you
 think "huh, that's weird" or "wait, why would she do that"? Anything emotionally off (a downbeat that
-never resolves, a narrow emotional palette, the same beat or device repeated until it grates)?
+never resolves, a narrow emotional palette, the same scene or device repeated until it grates)?
 Trust your gut; report whatever strikes you, however small or subjective.
 Rate each by gut-strength: High = strong reaction, Med = notable, Low = minor."""
 
@@ -198,8 +198,8 @@ def curriculum_row(curriculum_path: str | Path, week: int | None) -> str:
     return f"(no row found for week {week})"
 
 
-def build_prompt(lens: dict, *, header: str, beats: str, bible: str, curric: str) -> str:
-    common = COMMON.format(bible=bible, curric=curric, header=header, beats=beats)
+def build_prompt(lens: dict, *, header: str, scenes: str, bible: str, curric: str) -> str:
+    common = COMMON.format(bible=bible, curric=curric, header=header, scenes=scenes)
     if lens["key"] == "learner":
         return common + _LEARNER_BODY + _CONTRACT
     body = (
@@ -285,12 +285,12 @@ def main(argv: list[str] | None = None) -> int:
     hdr = parse_storyboard_header(args.storyboard)
     rows = parse_storyboard(args.storyboard)
     header_line = f"Week {hdr['week']} · {hdr['level']} · grammar: {hdr['grammar']} · {len(rows)} scenes"
-    beats = "\n".join(f"{r['num']} {r['stem']}: {r['beat']}" for r in rows)
+    scenes = "\n".join(f"{r['num']} {r['stem']}: {r['scene']}" for r in rows)
     bible = Path(args.bible).read_text(encoding="utf-8") if Path(args.bible).exists() else "(no bible)"
     curric = curriculum_row(args.curriculum, hdr["week"])
 
     client = make_client()
-    prompts = {l["key"]: build_prompt(l, header=header_line, beats=beats, bible=bible, curric=curric)
+    prompts = {l["key"]: build_prompt(l, header=header_line, scenes=scenes, bible=bible, curric=curric)
                for l in LENSES}
 
     findings: list[dict] = []

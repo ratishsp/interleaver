@@ -5,7 +5,7 @@ The loop:  generate  ->  review_storyboard.py (gate)  ->  if blocking Highs, rev
 findings fed back  ->  re-gate  ->  ... up to --max-rounds, then escalate (print best + remaining).
 
 Inputs (deliberately NOT design_notes.md — too long):
-  - the target week's row in curriculum_da.md (theme / grammar / narrative beat)
+  - the target week's row in curriculum_da.md (theme / grammar / brief)
   - story_bible.md (continuity ground-truth, via tandem.gen.load_story_bible)
   - the PREVIOUS week's storyboard.md as a format + style exemplar.
 
@@ -32,7 +32,7 @@ def curriculum_row(week: int) -> dict:
         cells = [c.strip() for c in line.strip("|").split("|")]
         if len(cells) >= 5 and cells[0].isdigit() and int(cells[0]) == week:
             return {"wk": week, "level": cells[1], "theme": cells[2],
-                    "grammar": cells[3], "beat": cells[4]}
+                    "grammar": cells[3], "brief": cells[4]}
     raise SystemExit(f"week {week} not found in {CURRICULUM}")
 
 
@@ -54,7 +54,7 @@ EVERY one of them, while keeping what already worked:
 
 When the panel says a single event is micro-sliced across too many thin scenes, CONDENSE it into
 fewer, richer scenes (each a complete activity that moves), and add other DISTINCT situations so the
-week has genuine variety — do not just renumber the same object-by-object beats.
+week has genuine variety — do not just renumber the same object-by-object scenes.
 """
 
 
@@ -65,11 +65,11 @@ def build_prompt(row: dict, exemplar_text: str, exemplar_wk: int,
     return f"""{bible}
 
 You are authoring the STORYBOARD for one week of a Danish (A1->B2) audio course told as Maya's
-first-person story. A storyboard decomposes the week's one-line narrative beat into an ordered
-sequence of short scenes; each scene is later written as line-aligned Danish/English.
+first-person story. A storyboard decomposes the week's brief into an ordered
+sequence of scenes; each scene is later written as line-aligned Danish/English.
 
 FORMAT + STYLE EXAMPLE — here is the finished storyboard for week {exemplar_wk}. Match its shape and
-craft: a short design-rationale paragraph, then a numbered scene list where each scene's beat names a
+craft: a short design-rationale paragraph, then a numbered scene list where each scene names a
 concrete action AND, in parentheses, the target grammar carried through that action.
 <<<EXAMPLE
 {exemplar_text}
@@ -78,15 +78,15 @@ EXAMPLE
 NOW WRITE THE STORYBOARD FOR WEEK {row['wk']} ({row['level']}).
 Theme: {row['theme']}
 Grammar focus (this week's new structure; earlier weeks recur): {row['grammar']}
-Narrative beat to decompose: {row['beat']}
+Week brief to decompose: {row['brief']}
 {revise}
 Rules:
 - CEFR {row['level']}: weeks 1-15 are PRESENT TENSE ONLY (no past tense).
-- Decompose the beat into a natural sequence of scenes — let the material decide the count. Prefer
+- Decompose the brief into a natural sequence of scenes — let the material decide the count. Prefer
   FEWER, RICHER scenes (each a complete
-  activity that moves) over many thin object-by-object beats. Vary the scene shapes and span several
-  DISTINCT situations so no single kind of beat repeats until it grates.
-- Every scene's beat must carry the week's grammar THROUGH ACTION, never a static "X is at Y" list.
+  activity that moves) over many thin object-by-object scenes. Vary the scene shapes and span several
+  DISTINCT situations so no single kind of scene repeats until it grates.
+- Every scene must carry the week's grammar THROUGH ACTION, never a static "X is at Y" list.
   Make sure any (grammar cue) in parentheses is itself correct, natural Danish.
 - Honor the story bible exactly: continuity, cast, and what is already true. Never re-introduce as
   new something already established; never contradict it (e.g. an "empty" flat then full of
@@ -97,8 +97,8 @@ Return JSON exactly:
 {{"title": "<short title, e.g. 'Maya moves into her own flat'>",
  "grammar": "<the Grammar header line; may name the recurring earlier-week grammar>",
  "target": "~NN min",
- "rationale": "<one paragraph: how the beat becomes this sequence, plus the continuity notes>",
- "scenes": [{{"stem": "<snake_case>", "beat": "<scene beat, with (grammar cues) in parentheses>"}}]}}
+ "rationale": "<one paragraph: how the brief becomes this sequence, plus the continuity notes>",
+ "scenes": [{{"stem": "<snake_case>", "scene": "<the scene, with (grammar cues) in parentheses>"}}]}}
 """
 
 
@@ -110,11 +110,11 @@ def to_markdown(row: dict, data: dict) -> str:
     out.append("")
     out.append(data.get("rationale", "").strip())
     out.append("")
-    out.append("| # | stem | beat |")
+    out.append("| # | stem | scene |")
     out.append("|---|------|------|")
     for i, s in enumerate(data["scenes"], 1):
         stem = f"{i:02d}_{s['stem'].strip().strip('_')}"
-        out.append(f"| {i} | {stem} | {' '.join(s['beat'].split())} |")
+        out.append(f"| {i} | {stem} | {' '.join(s['scene'].split())} |")
     return "\n".join(out) + "\n"
 
 

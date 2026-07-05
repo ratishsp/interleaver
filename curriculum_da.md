@@ -1,6 +1,6 @@
 # Danish — 52-Week Scope & Sequence (Year 1: A1 → B2)
 
-One row = one week (level · grammar focus · theme · narrative beat). This file is the machine-read
+One row = one week (level · grammar focus · theme · brief). This file is the machine-read
 table of record. The length-ramp model, column legend, design principles, and the narrative arc live
 in `design_notes.md` (see "Curriculum — length ramp & how to read the table" and "The narrative arc").
 
@@ -8,7 +8,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 
 ## A1 — Arrival & survival (weeks 1–15): present tense, the immediate world
 
-| Wk | Lvl | Theme | Grammar focus | Narrative beat |
+| Wk | Lvl | Theme | Grammar focus | Brief |
 |----|-----|-------|---------------|----------------|
 | 1 | A1 | Arrival & introducing yourself | Present of *være/hedde/komme fra*; existential *der er*; subject pronouns; *hvad/hvor* questions | Maya lands in Copenhagen for a new job, knowing no one |
 | 2 | A1 | First day & registration | Numbers 0–100; *har*; *være* + age | Her first days: starting at the software company, then sorting the national ID registration and phone number that let her settle in |
@@ -28,7 +28,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 
 ## A2 — Daily life & the past (weeks 16–28): past tense, connecting ideas
 
-| Wk | Lvl | Theme | Grammar focus | Narrative beat |
+| Wk | Lvl | Theme | Grammar focus | Brief |
 |----|-----|-------|---------------|----------------|
 | 16 | A2 | Talking about the past | Preteritum of common verbs; *i går / sidste uge* | Maya recounts her first weeks |
 | 17 | A2 | Exploring Denmark | Past-tense narration; *var/havde/tog*; 3rd-person possessive *sin* vs *hans/hendes*; time expressions | A spring weekend trip to another town — lighter evenings |
@@ -46,7 +46,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 
 ## B1 — Ideas, opinions & belonging (weeks 29–41): subordination, narrative, the conditional
 
-| Wk | Lvl | Theme | Grammar focus | Narrative beat |
+| Wk | Lvl | Theme | Grammar focus | Brief |
 |----|-----|-------|---------------|----------------|
 | 29 | B1 | Memories of home | Extended past; *plejede at*; *da* vs *når* | Comparing childhood there with life here |
 | 30 | B1 | The people in my new life | Adjective nuance; relative clauses *som/der* | Portraits of Nina and new friends |
@@ -64,7 +64,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 
 ## B2 — Nuance & full participation (weeks 42–52): register, complex discourse, idiom
 
-| Wk | Lvl | Theme | Grammar focus | Narrative beat |
+| Wk | Lvl | Theme | Grammar focus | Brief |
 |----|-----|-------|---------------|----------------|
 | 42 | B2 | A career in Denmark (formal) | Register shift; formal passive; nominalisation | Thriving in a Danish workplace |
 | 43 | B2 | Politics & debate | Abstract discourse; *hvorvidt*; concessive *selvom* | A political dinner debate she can now join |

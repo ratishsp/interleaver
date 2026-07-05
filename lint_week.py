@@ -12,7 +12,7 @@ one check is language-agnostic (no per-language stoplist/tokeniser to maintain a
 This is the deterministic backstop to the storyboard DENSITY lens (the real fix is dense, varied
 scenes — then repetition mostly takes care of itself, as in Anna's week). Calibrated for a
 comprehensible-input course: MODERATE repetition of common words is GOOD, so thresholds flag only
-genuinely mechanical reuse (a full sentence repeated across scenes, one beat closing many scenes,
+genuinely mechanical reuse (a full sentence repeated across scenes, one line closing many scenes,
 an element saturating the week), never ordinary function-word frequency.
 
 Run:  .venv/bin/python lint_week.py year1/week04        (or a storyboard.md, or a dir of .en files)

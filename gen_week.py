@@ -100,14 +100,14 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
         try:
             if attempt == 0 or best is None:          # fresh draft (or the prior attempt errored)
                 res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
-                                     scene_title=row["title"], beat=row["beat"], grammar=GRAMMAR,
+                                     scene_title=row["title"], scene=row["scene"], grammar=GRAMMAR,
                                      lines=LINES, arc=arc, scene_num=n)
             else:                                     # revise the rejected draft — fix only what failed
                 res = revise_scene(client, model=GEN_MODEL, level=LEVEL, grammar=GRAMMAR,
-                                   beat=row["beat"], da_lines=best["da"], en_lines=best["en"],
+                                   scene=row["scene"], da_lines=best["da"], en_lines=best["en"],
                                    feedback=format_failures(best_rep))
             rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
-                              da_lines=res["da"], en_lines=res["en"], beat=row["beat"])
+                              da_lines=res["da"], en_lines=res["en"], scene=row["scene"])
         except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
             print(f"[{n:2}/{total}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
                   f"{str(e)[:120]}", flush=True)
@@ -129,11 +129,11 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
     coh = _dim(llm, "coherence").get("pass")
     nat = _dim(llm, "naturalness").get("pass")
     gl = _dim(llm, "gloss_fidelity").get("pass")
-    cov = _dim(llm, "beat_coverage").get("pass")
+    cov = _dim(llm, "scene_coverage").get("pass")
     print(f"[{n:2}/{total}] {stem:24} attempts={attempts} hard={'OK ' if hard_pass(best_rep) else 'FAIL'} "
           f"G={g} CEFR={c} cohere={coh} natural={nat} gloss={gl} cov={cov}", flush=True)
     return {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
-            "grammar": g, "cefr": c, "coherence": coh, "natural": nat, "gloss": gl, "beat_coverage": cov,
+            "grammar": g, "cefr": c, "coherence": coh, "natural": nat, "gloss": gl, "scene_coverage": cov,
             "lines": len(best["da"]),
             "issues": {d: _dim(llm, d).get("issues", []) for d in VERIFY_DIMENSIONS}}
 
@@ -163,7 +163,7 @@ def main() -> int:
         print(f"  {s['n']:2} {s['stem']:24} att={s['attempts']} "
               f"hard={'OK ' if s['hard_pass'] else 'FAIL'} | "
               f"cohere={s['coherence']} natural={s['natural']} gloss={s['gloss']}  "
-              f"[adv G={s['grammar']} CEFR={s['cefr']} cov={s.get('beat_coverage')}]")
+              f"[adv G={s['grammar']} CEFR={s['cefr']} cov={s.get('scene_coverage')}]")
 
     # Deterministic repetition lint over the WHOLE week (cheap, no API) — surfaces mechanical repeats
     # (smile-as-every-closer, an emotion tag in half the scenes, a sentence reused across scenes)

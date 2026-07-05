@@ -62,18 +62,25 @@ def build_prompt(row: dict, exemplar_text: str, exemplar_wk: int,
                  prior_md: str | None = None, findings: list[dict] | None = None) -> str:
     bible = load_story_bible()
     revise = _revise_block(prior_md, findings) if (prior_md and findings) else ""
+    if exemplar_text:
+        fmt_block = (
+            f"FORMAT + STYLE EXAMPLE — here is the finished storyboard for week {exemplar_wk}. Match its shape and\n"
+            "craft: a numbered scene list where each scene names a\n"
+            "concrete action AND, in parentheses, the target grammar carried through that action.\n"
+            f"<<<EXAMPLE\n{exemplar_text}\nEXAMPLE"
+        )
+    else:
+        fmt_block = (
+            "FORMAT — write a numbered scene list where each scene names a\n"
+            "concrete action AND, in parentheses, the target grammar carried through that action."
+        )
     return f"""{bible}
 
 You are authoring the STORYBOARD for one week of a Danish (A1->B2) audio course told as Maya's
 first-person story. A storyboard decomposes the week's brief into an ordered
 sequence of scenes; each scene is later written as line-aligned Danish/English.
 
-FORMAT + STYLE EXAMPLE — here is the finished storyboard for week {exemplar_wk}. Match its shape and
-craft: a short design-rationale paragraph, then a numbered scene list where each scene names a
-concrete action AND, in parentheses, the target grammar carried through that action.
-<<<EXAMPLE
-{exemplar_text}
-EXAMPLE
+{fmt_block}
 
 NOW WRITE THE STORYBOARD FOR WEEK {row['wk']} ({row['level']}).
 Theme: {row['theme']}
@@ -95,20 +102,13 @@ Rules:
 
 Return JSON exactly:
 {{"title": "<short title, e.g. 'Maya moves into her own flat'>",
- "grammar": "<the Grammar header line; may name the recurring earlier-week grammar>",
- "target": "~NN min",
- "rationale": "<one paragraph: how the brief becomes this sequence, plus the continuity notes>",
  "scenes": [{{"stem": "<snake_case>", "scene": "<the scene, with (grammar cues) in parentheses>"}}]}}
 """
 
 
 def to_markdown(row: dict, data: dict) -> str:
     out = [f"# Week {row['wk']} — Storyboard ({data.get('title', '').strip()})", ""]
-    out.append(f"**Level:** {row['level']} · **Grammar:** "
-               f"{data.get('grammar', row['grammar']).strip()} · "
-               f"**Target:** {data.get('target', '').strip()}")
-    out.append("")
-    out.append(data.get("rationale", "").strip())
+    out.append(f"**Level:** {row['level']} · **Grammar:** {row['grammar'].strip()}")
     out.append("")
     out.append("| # | stem | scene |")
     out.append("|---|------|------|")
@@ -132,6 +132,8 @@ def main() -> int:
     ap.add_argument("week", type=int)
     ap.add_argument("--example-week", type=int, default=None,
                     help="storyboard to use as the format exemplar (default: previous week)")
+    ap.add_argument("--no-example", action="store_true",
+                    help="generate with NO format exemplar (week 1 has no predecessor; hand-edit after)")
     ap.add_argument("--cycle", action="store_true",
                     help="run the full generate->gate->revise loop (default: single-shot generate)")
     ap.add_argument("--max-rounds", type=int, default=3)
@@ -141,11 +143,14 @@ def main() -> int:
     a = ap.parse_args()
     os.environ["GOOGLE_CLOUD_LOCATION"] = a.location
 
-    ex_wk = a.example_week or (a.week - 1)
-    ex_path = Path(f"year1/week{ex_wk:02d}/storyboard.md")
-    if not ex_path.exists():
-        raise SystemExit(f"no exemplar storyboard at {ex_path} (pass --example-week)")
-    exemplar = ex_path.read_text(encoding="utf-8")
+    if a.no_example or (a.example_week is None and a.week <= 1):
+        exemplar, ex_wk = None, None       # week 1 has no predecessor — generate without an exemplar
+    else:
+        ex_wk = a.example_week or (a.week - 1)
+        ex_path = Path(f"year1/week{ex_wk:02d}/storyboard.md")
+        if not ex_path.exists():
+            raise SystemExit(f"no exemplar storyboard at {ex_path} (pass --example-week or --no-example)")
+        exemplar = ex_path.read_text(encoding="utf-8")
     row = curriculum_row(a.week)
     client = make_client()
 

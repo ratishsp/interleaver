@@ -18,9 +18,9 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from tandem.gen import (make_client, verify_translation, revise_translation,
-                        format_translation_flags, print_translation_report,
-                        parse_storyboard, DEFAULT_MODEL)
+from tandem.gen import make_client, parse_storyboard, DEFAULT_MODEL
+from tandem.translate import (verify_translation, revise_translation,
+                              format_translation_flags, print_translation_report)
 
 LANG_NAMES = {"ml": "Malayalam", "ta": "Tamil", "es": "Spanish", "hi": "Hindi"}
 

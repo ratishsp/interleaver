@@ -1,7 +1,7 @@
 """Translate a week's scenes from English into other languages, using the aligned Danish as a
 DISAMBIGUATION reference, and write {stem}.{lang} beside the existing {stem}.da / .en.
 
-Thin driver over tandem.gen.translate_lines: English is the source of meaning; the Danish resolves what
+Thin driver over tandem.translate.translate_lines: English is the source of meaning; the Danish resolves what
 English drops (veninde = female friend vs ven; du = singular you vs I = plural; gender/number), and
 that distinction flows into the target language wherever it marks it. English wins on a real conflict.
 
@@ -14,7 +14,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from tandem.gen import make_client, translate_lines, parse_storyboard, DEFAULT_MODEL
+from tandem.gen import make_client, parse_storyboard, DEFAULT_MODEL
+from tandem.translate import translate_lines
 from verify_translation import check_scene_lang
 
 LANG_NAMES = {"ml": "Malayalam", "ta": "Tamil", "es": "Spanish", "hi": "Hindi"}

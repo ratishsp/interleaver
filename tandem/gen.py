@@ -1,4 +1,4 @@
-"""Gemini-backed script generation + context-rich translation.
+"""Gemini-backed graded-scene authoring + QA (the da/en core; the ml/ta translation track is tandem.translate).
 
 One client (google-genai), two interchangeable backends:
   - **Gemini Developer API** (AI Studio) — set ``GEMINI_API_KEY``. Quickest to try; billed via
@@ -8,16 +8,15 @@ One client (google-genai), two interchangeable backends:
 
 Design decisions this encodes (see design_notes.md):
   - **Author graded text natively in Danish**, English alongside as the L1 gloss + fan-out pivot.
-  - **Translation is context-rich**, setting-preserving (translate, don't relocate), and MUST
-    preserve 1-sentence-per-line alignment (the per-sentence segmentation is what the clip cache
-    and pair assembly key on).
+  - **1-sentence-per-line alignment is sacred** — the per-sentence segmentation is what the clip
+    cache and pair assembly key on (the ml/ta translation track in tandem.translate preserves it too).
 
 CLI:
   python -m tandem.gen scene --week 1 --scene-title "Arrival" --scene "Maya lands in Copenhagen" \\
       --grammar "present være/hedde/komme fra; der er; pronouns; hvad/hvor" --lines 14 \\
       --out-stem year1/week01/01_arrival
-  python -m tandem.gen translate --src en --tgt es --context "Maya's first year, Copenhagen" \\
-      --in year1/week01/01_arrival.en --out year1/week01/01_arrival.es
+  python -m tandem.gen verify --da …/01_arrival.da --en …/01_arrival.en --grammar "…"
+(Translation lives in tandem.translate / translate_week.py, not here.)
 """
 from __future__ import annotations
 
@@ -520,7 +519,7 @@ def _write_lines(path: Path, lines: list[str]) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    p = argparse.ArgumentParser(prog="tandem.gen", description="Gemini script generation + translation.")
+    p = argparse.ArgumentParser(prog="tandem.gen", description="Gemini graded-scene authoring + verification.")
     p.add_argument("--model", default=DEFAULT_MODEL, help=f"Gemini model (default: {DEFAULT_MODEL})")
     sub = p.add_subparsers(dest="cmd", required=True)
 
@@ -536,17 +535,6 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--show-prompt", action="store_true",
                    help="print the exact prompt and exit (no API call, no credentials needed)")
 
-    t = sub.add_parser("translate", help="context-rich, alignment-preserving translation")
-    t.add_argument("--src", required=True)
-    t.add_argument("--tgt", required=True)
-    t.add_argument("--in", dest="infile", required=True)
-    t.add_argument("--out", help="output file (required unless --show-prompt)")
-    t.add_argument("--context", default="")
-    t.add_argument("--level", default="")
-    t.add_argument("--glossary", default="")
-    t.add_argument("--show-prompt", action="store_true",
-                   help="print the exact prompt and exit (no API call, no credentials needed)")
-
     v = sub.add_parser("verify", help="QA a generated scene against its spec (exit 1 on failure)")
     v.add_argument("--da", required=True, help="generated Danish file")
     v.add_argument("--en", required=True, help="generated English file")
@@ -556,9 +544,6 @@ def main(argv: list[str] | None = None) -> int:
                    help="print the exact prompt and exit (no API call, no credentials needed)")
 
     args = p.parse_args(argv)
-    # Lazy import: the translation track lives in tandem.translate, which imports gen's infra.
-    # Importing at call-time (not module top) keeps that dependency one-directional.
-    from tandem.translate import translate_prompt, translate_lines
 
     scene_title = scene = arc = scene_num = stem = None
     if args.cmd == "scene":
@@ -569,10 +554,6 @@ def main(argv: list[str] | None = None) -> int:
             print(scene_prompt(week=args.week, level=args.level, scene_title=scene_title,
                                scene=scene, grammar=args.grammar,
                                arc=arc, scene_num=scene_num))
-        elif args.cmd == "translate":
-            lines = [ln for ln in Path(args.infile).read_text(encoding="utf-8").splitlines() if ln.strip()]
-            print(translate_prompt(src_lang=args.src, tgt_lang=args.tgt, lines=lines,
-                                   context=args.context, level=args.level, glossary=args.glossary))
         elif args.cmd == "verify":
             da = [ln for ln in Path(args.da).read_text(encoding="utf-8").splitlines() if ln.strip()]
             en = [ln for ln in Path(args.en).read_text(encoding="utf-8").splitlines() if ln.strip()]
@@ -594,16 +575,6 @@ def main(argv: list[str] | None = None) -> int:
         _write_lines(Path(out_stem + ".da"), res["da"])
         _write_lines(Path(out_stem + ".en"), res["en"])
         print(f"Wrote {out_stem}.da and .en ({len(res['da'])} aligned lines).", file=sys.stderr)
-    elif args.cmd == "translate":
-        if not args.out:
-            raise SystemExit("--out is required (unless --show-prompt).")
-        lines = [ln for ln in Path(args.infile).read_text(encoding="utf-8").splitlines() if ln.strip()]
-        res = translate_lines(
-            client, model=args.model, src_lang=args.src, tgt_lang=args.tgt, lines=lines,
-            context=args.context, level=args.level, glossary=args.glossary,
-        )
-        _write_lines(Path(args.out), res)
-        print(f"Wrote {args.out} ({len(res)} lines, {args.src}→{args.tgt}).", file=sys.stderr)
     elif args.cmd == "verify":
         da = [ln for ln in Path(args.da).read_text(encoding="utf-8").splitlines() if ln.strip()]
         en = [ln for ln in Path(args.en).read_text(encoding="utf-8").splitlines() if ln.strip()]

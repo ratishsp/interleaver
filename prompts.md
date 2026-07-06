@@ -2,13 +2,13 @@
 
 The three prompts that drive script **generation**, **verification**, and **translation**, shown here
 **rendered with real Week-1 values** (the model sees exactly this text). They are built by
-`tandem/gen.py` — `scene_prompt()`, `verify_prompt()`, `translate_prompt()`. This file is a readable
-mirror; edit the prompts in `gen.py`, then regenerate this doc. Print any prompt live (no API call):
+`scene_prompt()`/`verify_prompt()` in `tandem/gen.py` and `translate_prompt()` in `tandem/translate.py`.
+This file is a readable mirror; edit the prompts in code, then regenerate this doc. Print a prompt live
+(no API call):
 
 ```
-python -m tandem.gen scene     ... --show-prompt
-python -m tandem.gen verify    ... --show-prompt
-python -m tandem.gen translate ... --show-prompt
+python -m tandem.gen scene  ... --show-prompt
+python -m tandem.gen verify ... --show-prompt
 ```
 
 **Design split (see `design_notes.md`):** generation = lean positive *intent* (who Maya is, the scene,

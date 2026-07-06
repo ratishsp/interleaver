@@ -36,9 +36,9 @@ import os
 import re
 from pathlib import Path
 
+from tandem.llm import make_client
 from tandem.gen import (
     DEFAULT_MODEL,
-    make_client,
     parse_storyboard,
     parse_storyboard_header,
 )

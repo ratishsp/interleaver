@@ -8,7 +8,8 @@ abbreviation list). Kept apart so gen.py stays the authoring/QA core and this st
 from __future__ import annotations
 import re
 
-from tandem.gen import _json_call, load_story_bible, _ABBREVS
+from tandem.gen import load_story_bible, _ABBREVS
+from tandem.llm import _json_call
 
 
 def translate_prompt(*, src_lang: str, tgt_lang: str, lines: list[str], context: str = "",

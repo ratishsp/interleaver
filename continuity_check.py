@@ -19,7 +19,8 @@ import os
 import re
 from pathlib import Path
 
-from tandem.gen import DEFAULT_MODEL, make_client, parse_storyboard
+from tandem.gen import DEFAULT_MODEL, parse_storyboard
+from tandem.llm import make_client
 from review_storyboard import _call_findings, _SEV_RANK
 
 YEAR = "year1"

@@ -19,7 +19,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-from tandem.gen import make_client, _json_call, load_story_bible, DEFAULT_MODEL
+from tandem.gen import load_story_bible, DEFAULT_MODEL
+from tandem.llm import make_client, _json_call
 
 CURRICULUM = "curriculum_da.md"
 

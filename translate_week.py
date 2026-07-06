@@ -14,7 +14,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from tandem.gen import make_client, parse_storyboard, DEFAULT_MODEL
+from tandem.gen import parse_storyboard, DEFAULT_MODEL
+from tandem.llm import make_client
 from tandem.translate import translate_lines
 from verify_translation import check_scene_lang
 

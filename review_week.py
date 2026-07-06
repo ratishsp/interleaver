@@ -27,7 +27,8 @@ import json
 import os
 from pathlib import Path
 
-from tandem.gen import DEFAULT_MODEL, make_client, parse_storyboard, parse_storyboard_header
+from tandem.gen import DEFAULT_MODEL, parse_storyboard, parse_storyboard_header
+from tandem.llm import make_client
 from review_storyboard import _call_findings, _SEV_RANK, _FLOOR_AGENCY, _CONTRACT, curriculum_row
 
 COMMON = """This is a Danish-for-English-speakers graded AUDIO course (interleaved English→Danish). A

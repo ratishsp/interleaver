@@ -16,8 +16,9 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from tandem.gen import (make_client, generate_scene, revise_scene, verify_scene, format_failures,
+from tandem.gen import (generate_scene, revise_scene, verify_scene, format_failures,
                         parse_storyboard, parse_storyboard_header, VERIFY_DIMENSIONS, ADVISORY_DIMS)
+from tandem.llm import make_client
 
 
 def _parse_scene_sel(s: str | None) -> set[int] | None:

@@ -20,8 +20,9 @@ import re
 from pathlib import Path
 
 import tandem.gen as gen
-from tandem.gen import (make_client, parse_storyboard, parse_storyboard_header, load_story_bible,
+from tandem.gen import (parse_storyboard, parse_storyboard_header, load_story_bible,
                         generate_scene, revise_scene, verify_scene, format_failures, DEFAULT_MODEL)
+from tandem.llm import make_client
 
 HARD_DIMS = tuple(d for d in gen.VERIFY_DIMENSIONS if d not in gen.ADVISORY_DIMS)
 

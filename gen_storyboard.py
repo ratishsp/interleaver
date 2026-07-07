@@ -66,14 +66,14 @@ def build_prompt(row: dict, exemplar_text: str, exemplar_wk: int,
     if exemplar_text:
         fmt_block = (
             f"FORMAT + STYLE EXAMPLE — here is the finished storyboard for week {exemplar_wk}. Match its shape and\n"
-            "craft: a numbered scene list where each scene names a\n"
-            "concrete action AND, in parentheses, the target grammar carried through that action.\n"
+            "craft: a numbered scene list where each scene names a concrete action that carries the\n"
+            "target grammar.\n"
             f"<<<EXAMPLE\n{exemplar_text}\nEXAMPLE"
         )
     else:
         fmt_block = (
-            "FORMAT — write a numbered scene list where each scene names a\n"
-            "concrete action AND, in parentheses, the target grammar carried through that action."
+            "FORMAT — write a numbered scene list where each scene names a concrete action that carries\n"
+            "the target grammar."
         )
     return f"""{bible}
 
@@ -94,8 +94,7 @@ Rules:
   FEWER, RICHER scenes (each a complete
   activity that moves) over many thin object-by-object scenes. Vary the scene shapes and span several
   DISTINCT situations so no single kind of scene repeats until it grates.
-- Every scene must carry the week's grammar THROUGH ACTION, never a static "X is at Y" list.
-  Make sure any (grammar cue) in parentheses is itself correct, natural Danish.
+- Every scene must carry the week's grammar through action, never a static "X is at Y" list.
 - Honor the story bible exactly: continuity, cast, and what is already true. Never re-introduce as
   new something already established; never contradict it (e.g. an "empty" flat then full of
   furniture). End the week warm (never on loneliness or a low note).
@@ -103,7 +102,7 @@ Rules:
 
 Return JSON exactly:
 {{"title": "<short title, e.g. 'Maya moves into her own flat'>",
- "scenes": [{{"stem": "<snake_case>", "scene": "<the scene, with (grammar cues) in parentheses>"}}]}}
+ "scenes": [{{"stem": "<snake_case>", "scene": "<the scene>"}}]}}
 """
 
 

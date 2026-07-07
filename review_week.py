@@ -219,27 +219,35 @@ def run_fix(client, model, args, *, hdr, rows, bible, curric):
         print("\n  whole-week issues (agreed on, but not scene-local — handle by hand / regen):")
         for w in weekly:
             print(f"    [{w['severity']}] {w['votes']}/{args.votes} votes — {w['issues'][0]}")
-    if not scenes:
-        print("\n  no scene survived the vote — nothing to auto-fix.")
-        return 0
     by_num = {str(r["num"]): r for r in rows}
-    changed = []
+    results = []
     for s in scenes:
         row = by_num.get(s["scene"])
         if not row:
             continue
         res = apply_fix(client, model, row, level=hdr["level"], grammar=hdr["grammar"],
                         wdir=wdir, issues=s["issues"], bible=bible)
+        results.append({"scene": s["scene"], "stem": row["stem"], "votes": s["votes"],
+                        "severity": s["severity"], **res})
         tag = f"scene {s['scene']} ({row['stem']}) {s['votes']}/{args.votes} votes {s['severity']}"
         if res["status"] == "fixed":
             print(f"  ✓ {tag}: revised ({res['n0']}→{res['n1']} lines)")
-            changed.append(row["stem"])
         else:
             print(f"  ✗ {tag}: revision rejected ({res.get('err', 'misaligned')}) — left unchanged")
+    changed = [r["stem"] for r in results if r["status"] == "fixed"]
+    if not scenes:
+        print("\n  no scene survived the vote — nothing to auto-fix.")
     if changed:
         print(f"\n=== revised {len(changed)} scene(s): {', '.join(changed)} ===")
         print("  ⚠ line counts may have shifted — re-run translate_week for these scenes (ml/ta "
               "re-align) + rebuild audio, then re-run this gate to confirm the fixes held.")
+    # Persist the vote results — the whole-week findings + per-scene survivors/revisions.
+    out_path = args.out or str(wdir / "review_summary.json")
+    Path(out_path).write_text(json.dumps(
+        {"mode": "fix", "votes": args.votes, "min_votes": args.min_votes,
+         "whole_week": weekly, "scene_survivors": scenes, "revised": results},
+        indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"  findings → {out_path}")
     return 0
 
 

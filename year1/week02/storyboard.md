@@ -4,7 +4,7 @@
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_morning_commute | Maya walks briskly through the chilly morning air, looking for her new workplace. She checks the large numbers on the buildings along the street until she spots the software company's logo next to number forty-four. (Jeg har en varm jakke på. Hvor er kontoret? Her er nummer fireogfyrre.) |
+| 1 | 01_morning_commute | Maya walks briskly through the chilly morning air, looking for her new workplace. She checks the large numbers on the buildings along the street until she spots the software company's logo next to number forty-four. (Hvor er kontoret? Her er nummer fireogfyrre.) |
 | 2 | 02_meeting_peter | Inside the bright office, a smiling colleague introduces himself as Peter. He shakes her hand, hands her a new laptop, and leads her through the open-plan workspace to her assigned desk. (Velkommen! Jeg hedder Peter. Du har et skrivebord her, og du har en computer.) |
 | 3 | 03_the_phone_shop | On her lunch break, Maya ducks into a telecom shop to buy a local SIM card. She hands the clerk her phone, and he activates it, reading her brand-new local number aloud as she saves it. (Har du telefonen? Ja. Dit nye nummer er tolv, fireogtredive, seksoghalvtreds, otteoghalvfjerds.) |
 | 4 | 04_queue_ticket | The next morning, Maya enters the crowded public registration office. She presses a button on a red terminal, pulls a paper ticket, and checks her high number before finding a seat to wait. (Jeg har mit pas og mine papirer. Jeg har nummer nioghalvtreds.) |

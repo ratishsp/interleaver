@@ -176,19 +176,34 @@ def main() -> int:
         print(f"  → {len(data['scenes'])} scenes  ({sb_path})", flush=True)
 
         rc = run_gate(sb_path, fp_path, a.model, a.location)
-        if rc == 0:
-            print(f"\n✓ GATE CLEARED on round {rnd}. Final storyboard at {sb_path}\n")
-            sys.stdout.write(md)
-            return 0
         if rc == 2:
             print(f"\n⚠ Gate INCOMPLETE (a lens errored) on round {rnd} — escalating to a human.\n")
             return 2
         findings = json.loads(fp_path.read_text(encoding="utf-8"))
+        # Revise while anything ACTIONABLE remains — blocking Highs (rc != 0) OR non-advisory Meds.
+        # The gate only *blocks* on High, but _revise_block already rewrites for Meds too, so acting
+        # on them here (not only when a High forces a round) is the whole point of the loop. `advisory`
+        # stays the single "leave it to the human/ear" knob. Single-run, no vote gate — but the
+        # storyboard re-gates every round and is git-tracked, so a bad revision is caught next round.
+        med_actionable = [f for f in findings
+                          if f.get("severity") == "Med" and not f.get("advisory")]
+        if rc == 0 and not med_actionable:
+            print(f"\n✓ GATE CLEARED on round {rnd}. Final storyboard at {sb_path}\n")
+            sys.stdout.write(md)
+            return 0
+        kind = "blocking High" if rc != 0 else f"{len(med_actionable)} non-advisory Med"
+        print(f"  → revising ({kind} finding(s))", flush=True)
         prior_md = md
 
-    print(f"\n✗ ESCALATE: still blocking after {a.max_rounds} rounds. "
-          f"Best draft + remaining findings at {sb_path} / {fp_path}\n")
-    return 1
+    # Rounds exhausted: a remaining High is a real escalation; Med-only residue we accept (advisory).
+    if rc != 0:
+        print(f"\n✗ ESCALATE: still blocking after {a.max_rounds} rounds. "
+              f"Best draft + remaining findings at {sb_path} / {fp_path}\n")
+        return 1
+    print(f"\n⚠ Cleared of blocking Highs; non-advisory Med finding(s) persisted after "
+          f"{a.max_rounds} rounds — accepting. Review the residue at {fp_path}.\n")
+    sys.stdout.write(md)
+    return 0
 
 
 if __name__ == "__main__":

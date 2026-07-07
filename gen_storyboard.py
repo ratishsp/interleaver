@@ -158,7 +158,6 @@ def main() -> int:
     work = Path(a.workdir)
     work.mkdir(parents=True, exist_ok=True)
     sb_path = work / f"wk{a.week:02d}_storyboard.md"
-    fp_path = work / f"wk{a.week:02d}_findings.json"
 
     prior_md: str | None = None
     findings: list[dict] | None = None
@@ -172,11 +171,12 @@ def main() -> int:
         round_path.write_text(md, encoding="utf-8")
         print(f"  → {len(data['scenes'])} scenes  ({round_path})", flush=True)
 
-        rc = run_gate(sb_path, fp_path, a.model, a.location)
+        fp_round = work / f"wk{a.week:02d}_findings_r{rnd}.json"   # per-round findings, preserved
+        rc = run_gate(sb_path, fp_round, a.model, a.location)
         if rc == 2:
             print(f"\n⚠ Gate INCOMPLETE (a lens errored) on round {rnd} — escalating to a human.\n")
             return 2
-        findings = json.loads(fp_path.read_text(encoding="utf-8"))
+        findings = json.loads(fp_round.read_text(encoding="utf-8"))
         # Revise while anything ACTIONABLE remains — blocking Highs (rc != 0) OR non-advisory Meds.
         # The gate only *blocks* on High, but _revise_block already rewrites for Meds too, so acting
         # on them here (not only when a High forces a round) is the whole point of the loop. `advisory`
@@ -195,10 +195,10 @@ def main() -> int:
     # Rounds exhausted: a remaining High is a real escalation; Med-only residue we accept (advisory).
     if rc != 0:
         print(f"\n✗ ESCALATE: still blocking after {a.max_rounds} rounds. "
-              f"Best draft + remaining findings at {sb_path} / {fp_path}\n")
+              f"Best draft + remaining findings at {sb_path} / {fp_round}\n")
         return 1
     print(f"\n⚠ Cleared of blocking Highs; non-advisory Med finding(s) persisted after "
-          f"{a.max_rounds} rounds — accepting. Review the residue at {fp_path}.\n")
+          f"{a.max_rounds} rounds — accepting. Review the residue at {fp_round}.\n")
     sys.stdout.write(md)
     return 0
 

@@ -270,7 +270,7 @@ def verify_prompt(*, level: str, grammar: str, scene: str, da_lines: list[str],
 SPEC:
 - CEFR level: {level}
 - Grammar FOCUS this week (the new structures introduced): {grammar}
-- ALSO always allowed (never flag these): the basic function words every sentence needs — articles (en/et), conjunctions (og, men), common possessives (min/din/sin), prepositions, negation (ikke), and ordinary adverbs. Only count SUBSTANTIVE structures beyond the level as violations.
+- ALSO always allowed (never flag these): the basic function words every sentence needs. Only count SUBSTANTIVE structures beyond the level as violations.
 {sb_line}
 
 The Danish is the language being learned — judge it as real, native Danish; the English is its faithful gloss.
@@ -279,11 +279,11 @@ SCENE (line-aligned Danish / English):
 {pairs}
 
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
-1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus.
-2. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
-3. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish. It's an audio course, so also flag a line that won't read cleanly aloud.
-4. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
-5. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.
+1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures ONLY when clearly beyond {level} and not part of this week's focus.
+2. coherence — read the lines in order: do they hold together? Flag ONLY hard logical breaks — not taste or pacing.
+3. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong — genuinely un-native Danish or translationese. Do NOT flag matters of taste, or a line you would merely phrase differently. If a native could naturally say it, it passes.
+4. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
+5. show_dont_tell — flag a narrator line that LABELS a scene's mood instead of showing it — a character stating their own plain feeling is fine.
 6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.
 
 Return JSON exactly:

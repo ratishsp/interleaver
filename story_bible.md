@@ -9,7 +9,6 @@ locked. The continuity lens treats everything here as established truth: a new w
   a job at a software company here; the job is *why* she came. Gradually settling in.
 - First-person narrator throughout (her own voice).
 - Tone: warm, hopeful
-- **Winter clothing** — arrives from warm Mexico under-dressed for the Danish winter (a thin jacket, not real winter gear) and feels the cold through the early weeks. She buys proper warm clothing — a warm coat, boots, cold-weather accessories — in **week 10**; that shopping is *why* wk10 exists. Before wk10, don't dress her warmly against the cold (no *varm jakke på* etc.) — the cold is something she feels, not something she's equipped for.
 
 ## Recurring cast
 - **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives next door. Kind, helpful.

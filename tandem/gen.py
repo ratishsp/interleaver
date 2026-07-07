@@ -281,7 +281,7 @@ SCENE (line-aligned Danish / English):
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures ONLY when clearly beyond {level} and not part of this week's focus.
 2. coherence — read the lines in order: do they hold together? Flag ONLY hard logical breaks — not taste or pacing.
-3. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong — genuinely un-native Danish or translationese. Do NOT flag matters of taste, or a line you would merely phrase differently. If a native could naturally say it, it passes.
+3. naturalness — would a native speaker actually say this? Flag ONLY lines that do not sound natural.
 4. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
 5. show_dont_tell — flag a narrator line that LABELS a scene's mood instead of showing it — a character stating their own plain feeling is fine.
 6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.

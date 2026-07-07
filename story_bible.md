@@ -30,8 +30,7 @@ locked. The continuity lens treats everything here as established truth: a new w
 - She does **NOT yet have**: a Danish phone number, a CPR number, an *official/registered* address.
 - Foreshadowed (not yet true): her **own flat in week 4** — the temp flat is **already in Nina's
   building** (Nina is her neighbour from day 1), so week 4 is a *permanent* flat opening up
-  in the **same building**: she leaves the temporary room for her own real home and **stays next to
-  Nina**. CPR + phone + registration **and her first day at the software company** in **week 2**.
+  in the **same building**: she leaves the temporary room for her own real home. CPR + phone + registration **and her first day at the software company** in **week 2**.
 
 ## Cross-cutting rules (every week)
 - **Privacy** — the CPR number is sensitive (like an SSN). Never read it out / repeat it digit-by-digit;

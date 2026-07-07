@@ -105,9 +105,7 @@ def main() -> int:
         da = (wdir / f"{r['stem']}.da").read_text(encoding="utf-8").splitlines()
         en = (wdir / f"{r['stem']}.en").read_text(encoding="utf-8").splitlines()
         feedback = ("A whole-week review found these CROSS-SCENE problems involving this scene. Revise "
-                    "THIS scene to help fix them, keeping it natural, warm and consistent with the rest "
-                    "of the week. Vary a repeated cue rather than blanking all emotion — a single "
-                    "natural instance across the week is fine:\n" + "\n".join(targets[k]))
+                    "THIS scene to help fix them:\n" + "\n".join(targets[k]))
         print(f"[revise] scene {k} {r['stem']} ({len(targets[k])} finding(s))", flush=True)
         try:
             res = revise_scene(client, model=a.model, level=level, grammar=grammar, scene=r["scene"],

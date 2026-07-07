@@ -88,7 +88,7 @@ Rules:
   activity that moves) over many thin object-by-object scenes. Vary the scene shapes and span several
   DISTINCT situations so no single kind of scene repeats until it grates.
 - Every scene must carry the week's grammar through action, not a static inventory.
-- Honor the story bible exactly — never contradict it or re-introduce as new something already established. End the week warm.
+- Honor the story bible exactly — never contradict it or re-introduce as new something already established.
 - Give each scene a short snake_case stem with no number, e.g. "the_keys", "first_dinner".
 
 Return JSON exactly:

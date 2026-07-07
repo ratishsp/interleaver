@@ -9,8 +9,8 @@ Completes the verification matrix:
 repetition/monotony across scenes, cross-scene continuity, and pacing. This panel reads every scene
 in order and checks those — pushing that human pass into the pipeline so it holds at scale.
 
-Mood/warmth is deliberately NOT gated here: it's the most ear-judged property, left to the bible's
-tone + the human listen. A per-scene "must end warm / lift" rule used to live here but was removed —
+Mood/warmth is deliberately NOT gated here: it's the most ear-judged property, left to the human
+listen. A per-scene "must end warm / lift" rule used to live here but was removed —
 it manufactured robotic smiling (every scene tacking on "jeg smiler, jeg er glad" to satisfy it).
 
 Reuses review_storyboard's panel machinery (the robust judge call, severity rank, floor+agency and
@@ -60,8 +60,7 @@ YOUR ROLE: You are the LEARNER, listening to this ENTIRE week back-to-back for t
 curious adult beginner. There is deliberately NO checklist. Take the scenes in order as one sitting
 and REACT honestly, as a person.
 
-Where did your attention drift? What dragged or felt repetitive from scene to scene? Did the week feel
-warm and hopeful, or a bit flat / sad? Did a later scene clash with an earlier one? What would make
+Where did your attention drift? What dragged or felt repetitive from scene to scene? Did a later scene clash with an earlier one? What would make
 you stop listening? Trust your gut and report whatever strikes you about the WEEK AS A WHOLE (not
 single lines — the per-scene check already covered those). Rate by gut-strength: High / Med / Low."""
 

@@ -27,7 +27,7 @@ import json
 import os
 from pathlib import Path
 
-from tandem.gen import DEFAULT_MODEL, parse_storyboard, parse_storyboard_header
+from tandem.gen import DEFAULT_MODEL, parse_storyboard, parse_storyboard_header, revise_scene
 from tandem.llm import make_client
 from review_storyboard import _call_findings, _SEV_RANK, _FLOOR_AGENCY, _CONTRACT, curriculum_row
 
@@ -137,6 +137,112 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
     return out
 
 
+def _build_prompts(header_line, week_text, bible, curric):
+    return {l["key"]: build_prompt(l, header=header_line, week_text=week_text, bible=bible, curric=curric)
+            for l in LENSES}
+
+
+def run_panel(client, model, prompts, workers):
+    """One full 3-lens panel pass → (findings, failed_lens_titles). Shared by the gate and the fixer."""
+    findings, failed = [], []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, workers)) as ex:
+        futs = {ex.submit(run_lens, client, model, l, prompts[l["key"]]): l for l in LENSES}
+        for fut in concurrent.futures.as_completed(futs):
+            try:
+                findings.extend(fut.result())
+            except Exception as exc:
+                failed.append(futs[fut]["title"])
+                print(f"  [warn] lens '{futs[fut]['title']}' failed: {exc}")
+    return findings, failed
+
+
+# ---- vote-gated auto-fix (prototype) --------------------------------------------------
+# One panel run is flaky: LLM-judge variance flags different subsets each run (we watched wk1 give
+# 3 findings, then 6). Auto-editing on a single run acts on that noise. So --fix runs the panel N
+# times and only revises a scene that ≥K runs INDEPENDENTLY flag — majority vote / self-consistency
+# (Wang 2023; jury-beats-one-judge, PoLL/Verga 2024). Voting IS the precision guard (no separate
+# refute pass until voting is shown to over-fix). A bad revision is a reviewable git diff, not a
+# silent corruption — that reversibility is why no in-loop verify gate is needed. Votes bucket per
+# SCENE (the fix unit); whole-week findings (the smile/ready refrain) aren't scene-local, so they're
+# reported for a human, never auto-fixed.
+
+def collect_votes(client, model, prompts, *, votes, min_votes, workers):
+    """Panel ×votes, tallied by scene. Returns (scene_survivors, week_survivors); each survivor is
+    {scene, votes, severity, issues[]}. A scene survives when ≥min_votes distinct runs flag it."""
+    tally: dict[str, dict] = {}
+    for i in range(votes):
+        fs, _ = run_panel(client, model, prompts, workers)
+        print(f"  vote {i + 1}/{votes}: {len(fs)} findings")
+        for f in fs:
+            b = tally.setdefault(f["scene"], {"scene": f["scene"], "runs": set(), "issues": [], "sev": "Low"})
+            b["runs"].add(i)
+            b["issues"].append(f"[{f['severity']}/{f['lens']}] {f['issue']}"
+                               + (f" — {f['why']}" if f["why"] else ""))
+            if _SEV_RANK.get(f["severity"], 1) < _SEV_RANK.get(b["sev"], 1):
+                b["sev"] = f["severity"]
+    kept = [{"scene": b["scene"], "votes": len(b["runs"]), "severity": b["sev"], "issues": b["issues"]}
+            for b in tally.values() if len(b["runs"]) >= min_votes]
+    scenes = sorted((k for k in kept if k["scene"] not in ("week", "?")),
+                    key=lambda k: (_SEV_RANK.get(k["severity"], 1), k["scene"]))
+    weekly = [k for k in kept if k["scene"] in ("week", "?")]
+    return scenes, weekly
+
+
+def apply_fix(client, model, row, *, level, grammar, wdir, issues, bible):
+    """Revise one scene from its pooled feedback and write it back. revise_scene raises if it breaks
+    the 1:1 alignment, so a broken revision is caught and the scene is left untouched."""
+    stem = row["stem"]
+    da_p, en_p = wdir / f"{stem}.da", wdir / f"{stem}.en"
+    da = da_p.read_text(encoding="utf-8").splitlines()
+    en = en_p.read_text(encoding="utf-8").splitlines()
+    feedback = ("The whole-week review panel flagged this scene (fix only what is named, keep the rest, "
+                "1 sentence per line, stay in scope):\n" + "\n".join(f"- {x}" for x in issues))
+    try:
+        rev = revise_scene(client, model=model, level=level, grammar=grammar, scene=row["scene"],
+                           da_lines=da, en_lines=en, feedback=feedback, bible=bible)
+    except (Exception, SystemExit) as exc:
+        return {"stem": stem, "status": "rejected", "n0": len(da), "n1": len(da), "err": str(exc)[:80]}
+    da_p.write_text("\n".join(rev["da"]) + "\n", encoding="utf-8")
+    en_p.write_text("\n".join(rev["en"]) + "\n", encoding="utf-8")
+    return {"stem": stem, "status": "fixed", "n0": len(da), "n1": len(rev["da"])}
+
+
+def run_fix(client, model, args, *, hdr, rows, bible, curric):
+    """Vote → revise the scenes the panel agrees on. One pass; re-run the command to iterate."""
+    wdir = Path(args.storyboard).parent
+    header_line = f"Week {hdr['week']} · {hdr['level']} · grammar: {hdr['grammar']} · {len(rows)} scenes"
+    prompts = _build_prompts(header_line, assemble_week(args.storyboard), bible, curric)
+    print(f"\n--- vote-gated fix: {args.votes} panel runs, revise scenes flagged by ≥{args.min_votes} ---")
+    scenes, weekly = collect_votes(client, model, prompts,
+                                   votes=args.votes, min_votes=args.min_votes, workers=args.workers)
+    if weekly:
+        print("\n  whole-week issues (agreed on, but not scene-local — handle by hand / regen):")
+        for w in weekly:
+            print(f"    [{w['severity']}] {w['votes']}/{args.votes} votes — {w['issues'][0]}")
+    if not scenes:
+        print("\n  no scene survived the vote — nothing to auto-fix.")
+        return 0
+    by_num = {str(r["num"]): r for r in rows}
+    changed = []
+    for s in scenes:
+        row = by_num.get(s["scene"])
+        if not row:
+            continue
+        res = apply_fix(client, model, row, level=hdr["level"], grammar=hdr["grammar"],
+                        wdir=wdir, issues=s["issues"], bible=bible)
+        tag = f"scene {s['scene']} ({row['stem']}) {s['votes']}/{args.votes} votes {s['severity']}"
+        if res["status"] == "fixed":
+            print(f"  ✓ {tag}: revised ({res['n0']}→{res['n1']} lines)")
+            changed.append(row["stem"])
+        else:
+            print(f"  ✗ {tag}: revision rejected ({res.get('err', 'misaligned')}) — left unchanged")
+    if changed:
+        print(f"\n=== revised {len(changed)} scene(s): {', '.join(changed)} ===")
+        print("  ⚠ line counts may have shifted — re-run translate_week for these scenes (ml/ta "
+              "re-align) + rebuild audio, then re-run this gate to confirm the fixes held.")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Review a whole week's generated content with the 3-lens panel.")
     ap.add_argument("storyboard", help="path to the week's storyboard.md (its dir holds the .da/.en)")
@@ -148,6 +254,11 @@ def main(argv: list[str] | None = None) -> int:
                     help="Vertex location (default 'global' — required for gemini-3 models)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--out", help="also write the findings list as JSON to this path (for the week-revise loop)")
+    ap.add_argument("--fix", action="store_true",
+                    help="vote-gated auto-fix: run the panel N times and revise scenes ≥K runs agree on")
+    ap.add_argument("--votes", type=int, default=3, help="panel runs per fix (self-consistency samples)")
+    ap.add_argument("--min-votes", type=int, default=2, dest="min_votes",
+                    help="revise a scene only if ≥ this many runs flag it (default 2 of 3 = majority)")
     args = ap.parse_args(argv)
     if args.location:
         os.environ["GOOGLE_CLOUD_LOCATION"] = args.location
@@ -160,20 +271,11 @@ def main(argv: list[str] | None = None) -> int:
     curric = curriculum_row(args.curriculum, hdr["week"])
 
     client = make_client()
-    prompts = {l["key"]: build_prompt(l, header=header_line, week_text=week_text, bible=bible, curric=curric)
-               for l in LENSES}
+    if args.fix:
+        return run_fix(client, args.model, args, hdr=hdr, rows=rows, bible=bible, curric=curric)
 
-    findings: list[dict] = []
-    failed: list[str] = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.workers)) as ex:
-        futs = {ex.submit(run_lens, client, args.model, l, prompts[l["key"]]): l for l in LENSES}
-        for fut in concurrent.futures.as_completed(futs):
-            lens = futs[fut]
-            try:
-                findings.extend(fut.result())
-            except Exception as exc:
-                failed.append(lens["title"])
-                print(f"  [warn] lens '{lens['title']}' failed: {exc}")
+    prompts = _build_prompts(header_line, week_text, bible, curric)
+    findings, failed = run_panel(client, args.model, prompts, args.workers)
 
     findings.sort(key=lambda f: (_SEV_RANK.get(f["severity"], 1), f["lens"]))
     highs = [f for f in findings if f["severity"] == "High" and not f["advisory"]]

@@ -11,7 +11,7 @@ locked. The continuity lens treats everything here as established truth: a new w
 - Tone: warm, hopeful
 
 ## Recurring cast
-- **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives next door. Kind, helpful.
+- **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives in the same building. Kind, helpful.
 - **Peter** — a colleague at Maya's software company; an easy, friendly workmate (met on her **first
   day, week 2**; recurs at the week-6 canteen lunch). Use him when a work colleague is needed rather
   than an anonymous *en kollega*.
@@ -29,7 +29,7 @@ locked. The continuity lens treats everything here as established truth: a new w
   She has **not started yet**: her first day at the office is in **week 2**.
 - She does **NOT yet have**: a Danish phone number, a CPR number, an *official/registered* address.
 - Foreshadowed (not yet true): her **own flat in week 4** — the temp flat is **already in Nina's
-  building** (Nina is her next-door neighbour from day 1), so week 4 is a *permanent* flat opening up
+  building** (Nina is her neighbour from day 1), so week 4 is a *permanent* flat opening up
   in the **same building**: she leaves the temporary room for her own real home and **stays next to
   Nina**. CPR + phone + registration **and her first day at the software company** in **week 2**.
 

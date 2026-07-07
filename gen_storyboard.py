@@ -131,6 +131,8 @@ def main() -> int:
     ap.add_argument("--workdir", default=str(Path(tempfile.gettempdir()) / "tandem_storyboards"))
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--location", default="global")
+    ap.add_argument("--show-prompt", action="store_true",
+                    help="print the generation prompt and exit (no API call)")
     a = ap.parse_args()
     os.environ["GOOGLE_CLOUD_LOCATION"] = a.location
 
@@ -143,6 +145,9 @@ def main() -> int:
             raise SystemExit(f"no exemplar storyboard at {ex_path} (pass --example-week or --no-example)")
         exemplar = ex_path.read_text(encoding="utf-8")
     row = curriculum_row(a.week)
+    if a.show_prompt:
+        print(build_prompt(row, exemplar, ex_wk))
+        return 0
     client = make_client()
 
     if not a.cycle:

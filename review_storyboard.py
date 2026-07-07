@@ -267,6 +267,8 @@ def main(argv: list[str] | None = None) -> int:
                     help="Vertex location (default 'global' — required for gemini-3 models; not us-central1)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--out", help="also write the findings list as JSON to this path (for the autonomous loop)")
+    ap.add_argument("--show-prompt", action="store_true",
+                    help="print each lens's prompt and exit (no API call)")
     args = ap.parse_args(argv)
     if args.location:
         os.environ["GOOGLE_CLOUD_LOCATION"] = args.location  # make_client() reads this
@@ -277,6 +279,12 @@ def main(argv: list[str] | None = None) -> int:
     scenes = "\n".join(f"{r['num']} {r['stem']}: {r['scene']}" for r in rows)
     bible = Path(args.bible).read_text(encoding="utf-8") if Path(args.bible).exists() else "(no bible)"
     curric = curriculum_row(args.curriculum, hdr["week"])
+
+    if args.show_prompt:
+        for l in LENSES:
+            print(f"\n{'=' * 70}\nLENS: {l['title']}\n{'=' * 70}\n"
+                  + build_prompt(l, header=header_line, scenes=scenes, bible=bible, curric=curric))
+        return 0
 
     client = make_client()
     prompts = {l["key"]: build_prompt(l, header=header_line, scenes=scenes, bible=bible, curric=curric)

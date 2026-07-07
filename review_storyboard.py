@@ -236,13 +236,16 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
     raw = _call_findings(client, model, prompt)
     out = []
     for f in raw:
+        severity = (f.get("severity") or "Med").strip().capitalize()
         out.append({
             "lens": lens["title"],
             "scene": str(f.get("scene", "?")),
             "issue": (f.get("issue") or f.get("reaction") or "").strip(),
-            "severity": (f.get("severity") or "Med").strip().capitalize(),
+            "severity": severity,
             "why": (f.get("why") or "").strip(),
-            "advisory": lens.get("floor") is None,   # the open naive lens is a human signal, never blocks
+            # The open naive-learner lens is normally a soft signal (advisory) — EXCEPT when it reacts
+            # strongly: a High from any lens is treated as blocking. (Its Med/Low stay advisory.)
+            "advisory": lens.get("floor") is None and severity != "High",
         })
     return out
 

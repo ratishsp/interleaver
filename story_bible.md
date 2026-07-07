@@ -12,8 +12,9 @@ locked. The continuity lens treats everything here as established truth: a new w
 
 ## Recurring cast
 - **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives next door. Kind, helpful.
-- **Peter** — a colleague at Maya's software company; an easy, friendly workmate (named in **week 6**,
-  the canteen lunch). Use him when a work colleague is needed rather than an anonymous *en kollega*.
+- **Peter** — a colleague at Maya's software company; an easy, friendly workmate (met on her **first
+  day, week 2**; recurs at the week-6 canteen lunch). Use him when a work colleague is needed rather
+  than an anonymous *en kollega*.
 - **Family** — back home in Mexico, contact by video call: parents (*mor/far*), sister **Sofía**,
   brother **Diego**, and the family dog **Lola** (siblings + dog established in wk3's family call).
 

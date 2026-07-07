@@ -168,7 +168,9 @@ def main() -> int:
         data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, prior_md, findings))
         md = to_markdown(row, data)
         sb_path.write_text(md, encoding="utf-8")
-        print(f"  → {len(data['scenes'])} scenes  ({sb_path})", flush=True)
+        round_path = work / f"wk{a.week:02d}_storyboard_r{rnd}.md"   # per-round copy, preserved for inspection
+        round_path.write_text(md, encoding="utf-8")
+        print(f"  → {len(data['scenes'])} scenes  ({round_path})", flush=True)
 
         rc = run_gate(sb_path, fp_path, a.model, a.location)
         if rc == 2:

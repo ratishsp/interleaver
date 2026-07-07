@@ -49,13 +49,8 @@ YOUR PREVIOUS DRAFT for this week was reviewed and did NOT pass. Here it is:
 {prior_md}
 PRIOR_DRAFT
 
-A strict review panel returned these problems. Rewrite the WHOLE storyboard from scratch and fix
-EVERY one of them, while keeping what already worked:
+A strict review panel returned these problems. Modify the storyboard to address the issues:
 {items}
-
-When the panel says a single event is micro-sliced across too many thin scenes, CONDENSE it into
-fewer, richer scenes (each a complete activity that moves), and add other DISTINCT situations so the
-week has genuine variety — do not just renumber the same object-by-object scenes.
 """
 
 
@@ -66,14 +61,12 @@ def build_prompt(row: dict, exemplar_text: str, exemplar_wk: int,
     if exemplar_text:
         fmt_block = (
             f"FORMAT + STYLE EXAMPLE — here is the finished storyboard for week {exemplar_wk}. Match its shape and\n"
-            "craft: a numbered scene list where each scene names a concrete action that carries the\n"
-            "target grammar.\n"
+            "craft: a numbered scene list where each scene names a concrete action.\n"
             f"<<<EXAMPLE\n{exemplar_text}\nEXAMPLE"
         )
     else:
         fmt_block = (
-            "FORMAT — write a numbered scene list where each scene names a concrete action that carries\n"
-            "the target grammar."
+            "FORMAT — write a numbered scene list where each scene names a concrete action."
         )
     return f"""{bible}
 
@@ -91,13 +84,11 @@ Week brief to decompose: {row['brief']}
 Rules:
 - CEFR {row['level']}: weeks 1-15 are PRESENT TENSE ONLY (no past tense).
 - Decompose the brief into a natural sequence of scenes — let the material decide the count. Prefer
-  FEWER, RICHER scenes (each a complete
+  8-10 RICHER scenes (each a complete
   activity that moves) over many thin object-by-object scenes. Vary the scene shapes and span several
   DISTINCT situations so no single kind of scene repeats until it grates.
-- Every scene must carry the week's grammar through action, never a static "X is at Y" list.
-- Honor the story bible exactly: continuity, cast, and what is already true. Never re-introduce as
-  new something already established; never contradict it (e.g. an "empty" flat then full of
-  furniture). End the week warm (never on loneliness or a low note).
+- Every scene must carry the week's grammar through action, not a static inventory.
+- Honor the story bible exactly — never contradict it or re-introduce as new something already established. End the week warm.
 - Give each scene a short snake_case stem with no number, e.g. "the_keys", "first_dinner".
 
 Return JSON exactly:

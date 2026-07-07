@@ -49,10 +49,7 @@ generates a short passage of Danish sentences + English glosses, then text-to-sp
 STORYBOARD (the scenes), BEFORE any Danish is generated, to catch design problems while a fix is cheap
 (edit a scene, not regenerate + re-verify + re-render).
 
-CONVENTION (do NOT flag): scenes are written as 3rd-person summaries ("Maya sits...", "She says...").
-The generator converts them to Maya's 1st-person voice ("Jeg sidder...") — this is enforced in the
-generation prompt and proven across weeks 1–2. So 3rd-person phrasing in the scenes is EXPECTED and
-correct; never report it as an issue.
+CONVENTION (do NOT flag): scenes are 3rd-person summaries ("Maya sits..."); the generator converts them to Maya's 1st-person Danish. Never flag the 3rd-person phrasing.
 
 GROUND TRUTH:
 --- story_bible.md (established story facts + cross-cutting rules) ---
@@ -61,10 +58,6 @@ GROUND TRUTH:
 
 --- this week's curriculum row (level / grammar focus / theme) ---
 {curric}
-(Scene count: right-size to the TOPIC — there is NO minimum. A small topic at 4–5 scenes is fine; a
-rich one runs longer. Length comes from how much genuinely happens, not a quota; if a week feels short,
-a second activity/topic is added rather than padding one topic. Do NOT flag a week merely for a low
-scene count.)
 --- end curriculum ---
 
 STORYBOARD UNDER REVIEW — {header}:
@@ -99,7 +92,7 @@ LENSES = [
         "lens": "internal logic, ordering, redundancy, and dramatic sense within the week",
         "floor": (
             "(a) Redundancy / over-repetition — the same information, fact, number, phrase, or\n"
-            "    scene-shape delivered more than once (e.g. a plan stated, then restated).\n"
+            "    scene-shape delivered more than once.\n"
             "(b) Logic gaps — does any action presuppose something not yet true (contacting someone\n"
             "    before you could have their contact details)?\n"
             "(c) Ordering / cause-effect plausibility across scenes.\n"
@@ -126,15 +119,12 @@ LENSES = [
         "title": "Density, activity & variety",
         "lens": "whether each scene is a real activity that moves and the week is varied, not one thin situation micro-sliced to fill a scene count",
         "floor": (
-            "(a) ACTIVITY per scene — each scene should be a complete mini-vignette that MOVES (like a\n"
-            "    market visit: several stalls, a small exchange at each), with a small beginning→middle→\n"
-            "    end — NOT a static description of a place, an inventory of objects, or a feeling\n"
-            "    restated. FLAG every description-only scene; a smooth, ordinary task done well IS the\n"
-            "    standard.\n"
+            "(a) ACTIVITY per scene — each scene should be a complete mini-vignette that MOVES (a small\n"
+            "    beginning→middle→end), not a static description, object inventory, or restated feeling.\n"
+            "    FLAG description-only scenes; an ordinary task done well IS the standard.\n"
             "(b) WEEK variety — does the week span several DISTINCT situations (different places, people,\n"
-            "    tasks), or micro-slice ONE event (a single move-in, a single tour) across many scenes?\n"
-            "    FLAG a week that is one thin situation stretched to length. Also FLAG the SAME kind of\n"
-            "    scene repeated (e.g. several 'she meets an unfamiliar thing' scenes) — vary the shape.\n"
+            "    tasks)?\n"
+            "    FLAG a week that is one thin situation stretched to length.\n"
             "(c) CONCRETE texture — does each scene bring its OWN concrete detail — nouns, actions, the\n"
             "    odd sensory note (a smell, warmth, a taste, a small pleasure) — or lean on generic\n"
             "    filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable scenes.\n"

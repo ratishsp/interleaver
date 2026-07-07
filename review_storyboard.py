@@ -243,9 +243,9 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
             "issue": (f.get("issue") or f.get("reaction") or "").strip(),
             "severity": severity,
             "why": (f.get("why") or "").strip(),
-            # The open naive-learner lens is normally a soft signal (advisory) — EXCEPT when it reacts
-            # strongly: a High from any lens is treated as blocking. (Its Med/Low stay advisory.)
-            "advisory": lens.get("floor") is None and severity != "High",
+            # The naive-learner lens's reactions count like any other lens: a High (any lens) blocks the
+            # gate, and a Med drives a revise round in the loop. Only its Low stays advisory (soft signal).
+            "advisory": lens.get("floor") is None and severity == "Low",
         })
     return out
 

@@ -107,7 +107,7 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
                                    scene=row["scene"], da_lines=best["da"], en_lines=best["en"],
                                    feedback=format_failures(best_rep))
             rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
-                              da_lines=res["da"], en_lines=res["en"])
+                              da_lines=res["da"], en_lines=res["en"], scene=row["scene"])
         except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
             print(f"[{n:2}/{total}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
                   f"{str(e)[:120]}", flush=True)

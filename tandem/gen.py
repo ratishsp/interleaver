@@ -194,10 +194,10 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
 
 # Dimensions the LLM reviewer scores (order = display order).
 VERIFY_DIMENSIONS = ("grammar_whitelist", "coherence", "naturalness",
-                     "gloss_fidelity", "show_dont_tell")
+                     "gloss_fidelity", "show_dont_tell", "faithfulness")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
 # grammar_whitelist = scope: correct-but-slightly-advanced Danish is fine (judged by level, not a strict whitelist).
-ADVISORY_DIMS = ("grammar_whitelist", "show_dont_tell")
+ADVISORY_DIMS = ("grammar_whitelist", "show_dont_tell", "faithfulness")
 
 # CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
 # These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
@@ -254,7 +254,7 @@ def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None 
     return {"level": level, "band": band, "out_of_band": out}
 
 
-def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
+def verify_prompt(*, level: str, grammar: str, scene: str, da_lines: list[str],
                   en_lines: list[str]) -> str:
     """Build the independent-QA prompt (also used by --show-prompt).
 
@@ -263,12 +263,15 @@ def verify_prompt(*, level: str, grammar: str, da_lines: list[str],
     """
     pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
+    sb_line = (f"- The storyboard's line for this scene (what it should depict): {scene}"
+               if scene.strip() else "- (No storyboard line provided — skip the faithfulness check.)")
     return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
 
 SPEC:
 - CEFR level: {level}
 - Grammar FOCUS this week (the new structures introduced): {grammar}
 - ALSO always allowed (never flag these): the basic function words every sentence needs — articles (en/et), conjunctions (og, men), common possessives (min/din/sin), prepositions, negation (ikke), and ordinary adverbs. Only count SUBSTANTIVE structures beyond the level as violations.
+{sb_line}
 
 The Danish is the language being learned — judge it as real, native Danish; the English is its faithful gloss.
 
@@ -278,21 +281,23 @@ SCENE (line-aligned Danish / English):
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures (verb tenses, modal verbs, subordinate/relative clauses, the passive, comparatives) ONLY when clearly beyond {level} and not part of this week's focus.
 2. coherence — read the lines in order: do they hold together? Flag ONLY hard breaks — a reply that doesn't answer its question, a fact re-introduced as if new, or a contradiction — not taste or pacing.
-3. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish.
+3. naturalness — would a native speaker actually say this? Flag ONLY lines that are CLEARLY wrong: translationese (word-for-word from English), constructions a native would not use, or errors that make it sound foreign. Do NOT flag matters of taste — register ("too abrupt/formal"), rhetorical choices, or a line you would merely phrase differently. If a native could naturally say it, it passes — reserve a fail for genuinely un-native Danish. It's an audio course, so also flag a line that won't read cleanly aloud.
 4. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word or preposition choices (e.g. "ved" as "at" vs "by") or natural rewordings that keep the meaning.
 5. show_dont_tell — flag a narrator line that LABELS a scene or event's mood (sums it up with an evaluative word) instead of showing it — a character stating their own plain feeling is fine.
+6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
  "coherence": {{"pass": true, "issues": []}},
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}},
- "show_dont_tell": {{"pass": true, "issues": []}}}}
+ "show_dont_tell": {{"pass": true, "issues": []}},
+ "faithfulness": {{"pass": true, "issues": []}}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 
 def verify_scene(client, *, model: str, level: str, grammar: str,
-                 da_lines: list[str], en_lines: list[str]) -> dict:
+                 da_lines: list[str], en_lines: list[str], scene: str = "") -> dict:
     """Programmatic checks + an independent LLM review. Returns a report dict."""
     multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
     report = {
@@ -304,7 +309,7 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
         "distinct_da_words": len(_distinct_words(da_lines)),
         "band": band_check(da_lines, level=level),
     }
-    prompt = verify_prompt(level=level, grammar=grammar, da_lines=da_lines, en_lines=en_lines)
+    prompt = verify_prompt(level=level, grammar=grammar, scene=scene, da_lines=da_lines, en_lines=en_lines)
     report["llm"] = _json_call(client, model, prompt)
     return report
 

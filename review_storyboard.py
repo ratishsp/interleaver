@@ -56,7 +56,7 @@ GROUND TRUTH:
 {bible}
 --- end bible ---
 
---- this week's curriculum row (level / grammar focus / theme) ---
+--- this week's curriculum spec ---
 {curric}
 --- end curriculum ---
 
@@ -161,29 +161,23 @@ Use an empty list if you find nothing. Do not summarize the content back."""
 
 
 def curriculum_row(curriculum_path: str | Path, week: int | None) -> str:
-    """Pull the week's table row (+ its section header and the table's own column header) from the curriculum, for context."""
+    """Pull the week's row as LABELED fields (level / grammar / theme / brief), for review context.
+
+    The brief is the week's intended shape — labeling it (rather than leaving it an unlabeled
+    trailing cell of the raw markdown row) lets the reviewer weigh it as the design intent.
+    """
     if not curriculum_path or week is None:
         return "(curriculum not provided)"
-    text = Path(curriculum_path).read_text(encoding="utf-8")
     section = ""
-    header = ""                                     # the table's column-header row, read from the file
-    for line in text.splitlines():
+    for line in Path(curriculum_path).read_text(encoding="utf-8").splitlines():
         if line.startswith("## "):
             section = line.lstrip("# ").strip()
-            header = ""                             # each section has its own table; don't carry one over
             continue
-        stripped = line.strip()
-        if not stripped.startswith("|"):
-            continue
-        cells = [c.strip() for c in stripped.strip("|").split("|")]
-        if all(set(c) <= {"-", ":"} for c in cells):   # |---|:--:| separator row — skip
-            continue
-        if cells and cells[0].isdigit():               # a data row (first cell is the week number)
-            if int(cells[0]) == week:
-                head = f"{header}\n" if header else ""
-                return f"[{section}]\n{head}{stripped}"
-            continue
-        header = stripped                              # non-separator, non-data |-row = the column header
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) >= 5 and cells[0].isdigit() and int(cells[0]) == week:
+            return (f"[{section}] Week {cells[0]} · Level {cells[1]} · Theme: {cells[2]}\n"
+                    f"Grammar focus: {cells[3]}\n"
+                    f"Brief (the week's intended shape — the storyboard should realize THIS): {cells[4]}")
     return f"(no row found for week {week})"
 
 

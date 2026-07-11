@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Uses out-of-scope definite nouns with adjectives.",
+    "severity": "High",
+    "why": "The brief explicitly excludes definite nouns modified by adjectives, as they require a different grammatical structure in Danish (den/det + adjective + bare noun). Yet the storyboard uses 'the staffed bakery counter' (Scene 5), 'the cold dairy section' (Scene 6), 'the international aisle' (Scene 7), and 'the moving belt' (Scene 8). These must be simplified to bare definite nouns (e.g., 'the bakery counter', 'the belt') so the generator doesn't produce advanced grammar.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "09 & 10",
+    "issue": "Uses out-of-scope definite plurals ('the groceries', 'the beans').",
+    "severity": "High",
+    "why": "The brief strictly limits the grammar focus to singular definite nouns (the -en/-et suffix), explicitly stating plurals are out of scope. In Scene 9, Maya unpacks 'the groceries' and puts away 'the beans', and in Scene 10 she opens 'the beans', all of which require the definite plural suffix (-erne/-ne) in Danish. To keep the grammar in scope, she should unpack 'the bag' (singular) and put away/open 'the can' (singular).",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "3",
+    "issue": "Out-of-scope tense (Present perfect)",
+    "severity": "High",
+    "why": "The phrasing 'something she has never eaten before' forces the present perfect tense. The A1 curriculum (weeks 1–15) is restricted to the present tense. Rephrase to present tense, such as 'a vegetable she does not know'.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "9",
+    "issue": "Out-of-scope grammar (Definite plural)",
+    "severity": "High",
+    "why": "The curriculum spec explicitly states that plurals taking a definite form are out of scope. Putting away 'the beans' requires the definite plural ('bønnerne'). Change this to a singular noun like 'the can' ('dåsen') to cleanly target the singular bare definite focus (-en/-et).",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "week",
+    "issue": "Risk of out-of-scope definite adjectives",
+    "severity": "High",
+    "why": "The spec notes that adjectives taking definite forms are out of scope. However, several scenes use 'the + adjective + noun' constructions in English (Scene 5: 'the staffed bakery counter', Scene 6: 'the cold dairy section', Scene 7: 'the international aisle', Scene 8: 'the moving belt'). This will likely force the translator into the out-of-scope 'den/det + adjective + noun' structure. Remove these English adjectives so the generator produces bare definite nouns (e.g., 'the bakery counter', 'the dairy section', 'the belt').",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Relies on abstract, internal reasoning rather than concrete action.",
+    "severity": "Med",
+    "why": "Stating that she 'wants a healthy base for her dinners' is abstract and static. The scene should replace this with a concrete action—such as picking up some familiar, everyday vegetables (like carrots or potatoes)—to actively demonstrate that she likes them, which also provides a better contrast for the unfamiliar parsnip in Scene 3.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Leans on generic emotional filler ('smiles', 'happily').",
+    "severity": "Low",
+    "why": "Instead of stating she smiles and happily adds the item, give the scene more physical texture. Focus on a concrete detail, like recognizing the familiar label or dusting off the heavy tin, to convey the feeling of finding a taste of home.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "05",
+    "issue": "Awkward English phrasing for the dialogue prompt.",
+    "severity": "Low",
+    "why": "The phrase 'politely asks that she would like to have a cinnamon pastry' is a bit of a tangled sentence in English. Changing it to 'politely says she would like a cinnamon pastry' reads much more naturally while still perfectly cueing the generator for the target 'jeg vil gerne have' construction.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Telepathic recognition of an unknown vegetable",
+    "severity": "Low",
+    "why": "If Maya has genuinely never seen or eaten a parsnip before, she wouldn't instantly recognize it by sight. A brief mention that she reads the label/sign would close this tiny logic gap.",
+    "advisory": false
+  }
+]

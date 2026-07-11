@@ -1,0 +1,26 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "The disappearing pastry",
+    "severity": "Low",
+    "why": "Maya goes out of her way to ask the staff for a cinnamon pastry, but it completely vanishes from the story. She doesn't unpack it in scene 9 or eat it in scene 10; I was waiting for her to reward herself with it after cooking.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "10",
+    "issue": "Chaotic flavor profile",
+    "severity": "Low",
+    "why": "She is making a 'taste of home' Mexican meal, but the only vegetables we saw her buy to chop up with her black beans are carrots and a parsnip. It makes for a hilariously weird recipe, though it's undeniably realistic for a chaotic first grocery run!",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Maya never actually takes the milk.",
+    "severity": "Low",
+    "why": "The scene ends with the employee pointing her to the dairy section, but it misses the beat where she actually retrieves a carton. Since the milk later appears in her bag in Scene 9, explicitly having her grab it here would close that minor logic gap.",
+    "advisory": false
+  }
+]

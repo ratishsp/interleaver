@@ -1,0 +1,66 @@
+[
+  {
+    "lens": "Spec & continuity",
+    "scene": "3, 7",
+    "issue": "Out-of-scope definite plural and adjective constructions.",
+    "severity": "High",
+    "why": "The curriculum spec strictly limits definite nouns to singular bare forms (-en/-et), explicitly excluding adjectives and plurals. Scene 3's 'the familiar vegetables' forces a definite plural + adjective, and Scene 7's 'the next aisle' forces a definite adjective construction. These must be revised to use bare singulars or indefinites.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Repetitive 'spot and basket' sequence across the shopping aisles.",
+    "severity": "Med",
+    "why": "Scenes 2, 3, 4, and 7 all fall into the exact same mechanical rhythm of spotting an item and putting it into the basket, making the middle of the week feel interchangeable. Differentiating the physical actions—such as hefting the dense weight of the rye bread in Scene 4 or reaching to the back of a shelf in Scene 7—would restore variety.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Reliance on generic emotional filler instead of concrete detail.",
+    "severity": "Med",
+    "why": "The scene leans heavily on generic cues like 'smiles' and 'happily adds' rather than grounding Maya's discovery. Anchoring the moment with a concrete detail, like recognizing the familiar brightly colored label of the tin, would provide the required sensory texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Logical contradiction regarding the parsnip.",
+    "severity": "Med",
+    "why": "The summary states she 'realizes it is a parsnip', but immediately follows with 'a vegetable she does not know'. If she doesn't know it, she wouldn't spontaneously realize what it is. It would feel more natural if she reads a sign to learn its name.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Missed opportunity for concrete sensory action with an unfamiliar object.",
+    "severity": "Low",
+    "why": "Maya encounters a 'strange root' she doesn't know, yet somehow realizes it is a parsnip without a clear physical action. Having her inspect its rough texture or read the unfamiliar name on a shelf label would give the scene a stronger, more logical mini-activity.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "10",
+    "issue": "Slightly jarring culinary combination.",
+    "severity": "Low",
+    "why": "She is cooking her first real meal using the ingredients we just watched her buy: carrots, a mystery parsnip, and black beans. As a listener, my brain immediately tried to picture this recipe and thought it sounded like a very strange, unappetizing combination!",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Minor logic gap regarding recognizing an unknown vegetable.",
+    "severity": "Low",
+    "why": "The summary states Maya 'realizes it is a parsnip, a vegetable she does not know.' If she doesn't know what it is, she wouldn't inherently realize it is a parsnip unless she reads a label or sign, which would be clearer to specify.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "3",
+    "issue": "Illogical realization about an unknown vegetable.",
+    "severity": "Low",
+    "why": "Maya 'realizes it is a parsnip, a vegetable she does not know.' If she doesn't know the vegetable, she wouldn't recognize it as a parsnip without reading a sign or label, which would be clearer to mention.",
+    "advisory": false
+  }
+]

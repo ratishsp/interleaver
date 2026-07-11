@@ -7,6 +7,26 @@ other for it.
 from __future__ import annotations
 import json
 import os
+import threading
+
+_TRACE_LOCK = threading.Lock()          # the judge panels call the model from a thread pool
+
+
+def trace(stage: str, model: str, prompt: str, response) -> None:
+    """Append this call's INPUT and OUTPUT to the JSONL at $TANDEM_TRACE (no-op if unset).
+
+    Full provenance for release: every model call in the pipeline funnels through either _json_call
+    below (storyboards, scene generate/revise/verify, the ml/ta track) or review_storyboard's
+    _call_findings (both judge panels), so tracing those two captures a whole run in call order —
+    including subprocesses, which inherit the env var.
+    """
+    path = os.environ.get("TANDEM_TRACE")
+    if not path:
+        return
+    rec = json.dumps({"stage": stage, "model": model, "prompt": prompt, "response": response},
+                     ensure_ascii=False)
+    with _TRACE_LOCK, open(path, "a", encoding="utf-8") as f:
+        f.write(rec + "\n")
 
 
 def make_client():
@@ -71,7 +91,7 @@ def _parse_json_object(text: str) -> dict | None:
     return None
 
 
-def _json_call(client, model: str, prompt: str, *, retries: int = 1) -> dict:
+def _json_call(client, model: str, prompt: str, *, retries: int = 1, stage: str = "") -> dict:
     """Call the model forcing a JSON object response and parse it (salvage + one retry).
 
     Temperature is left UNSET so the model's own default applies (1.0 for current Gemini, which
@@ -93,5 +113,6 @@ def _json_call(client, model: str, prompt: str, *, retries: int = 1) -> dict:
         last = (resp.text or "").strip()
         parsed = _parse_json_object(last)
         if parsed is not None:
+            trace(stage, model, prompt, parsed)
             return parsed
     raise SystemExit(f"Model did not return valid JSON after {retries + 1} tries:\n{last[:500]}")

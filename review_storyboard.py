@@ -36,7 +36,7 @@ import os
 import re
 from pathlib import Path
 
-from tandem.llm import make_client
+from tandem.llm import make_client, trace
 from tandem.gen import (
     DEFAULT_MODEL,
     parse_storyboard,
@@ -192,7 +192,7 @@ def build_prompt(lens: dict, *, header: str, scenes: str, bible: str, curric: st
     return common + body + _CONTRACT
 
 
-def _call_findings(client, model: str, prompt: str) -> list[dict]:
+def _call_findings(client, model: str, prompt: str, stage: str = "") -> list[dict]:
     """Call the judge for a JSON {findings:[...]} and return the list, robust to truncation.
 
     A reasoning model can run long and get its JSON cut off mid-array. Rather than crash the whole
@@ -208,7 +208,9 @@ def _call_findings(client, model: str, prompt: str) -> list[dict]:
     )
     text = (resp.text or "").strip()
     try:
-        return json.loads(text).get("findings", []) or []
+        findings = json.loads(text).get("findings", []) or []
+        trace(stage, model, prompt, findings)
+        return findings
     except json.JSONDecodeError:
         pass
     # Salvage: scan balanced {...} objects inside the findings array; keep the parseable ones.
@@ -229,11 +231,12 @@ def _call_findings(client, model: str, prompt: str) -> list[dict]:
                 start = None
     if not objs:
         raise RuntimeError(f"unparseable JSON from judge ({len(text)} chars)")
+    trace(stage, model, prompt, objs)
     return objs
 
 
 def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
-    raw = _call_findings(client, model, prompt)
+    raw = _call_findings(client, model, prompt, stage=f"storyboard_gate.{lens['key']}")
     out = []
     for f in raw:
         severity = (f.get("severity") or "Med").strip().capitalize()

@@ -124,7 +124,7 @@ def build_prompt(lens: dict, *, header: str, week_text: str, bible: str, curric:
 
 def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
     out = []
-    for f in _call_findings(client, model, prompt):
+    for f in _call_findings(client, model, prompt, stage=f"review_week.{lens['key']}"):
         out.append({
             "lens": lens["title"],
             "scene": str(f.get("scene", "?")),

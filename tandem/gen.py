@@ -100,7 +100,7 @@ def generate_scene(client, *, model: str, week: int, level: str, scene_title: st
     """Author a graded scene natively in Danish + an English gloss. Returns {'da': [...], 'en': [...]}."""
     prompt = scene_prompt(week=week, level=level, scene_title=scene_title, scene=scene,
                           grammar=grammar, arc=arc, scene_num=scene_num, bible=bible)
-    out = _json_call(client, model, prompt)
+    out = _json_call(client, model, prompt, stage=f"generate_scene.{scene_num or '?'}")
     da, en = out.get("da", []), out.get("en", [])
     if len(da) != len(en):
         raise SystemExit(f"Alignment broken: {len(da)} DA lines vs {len(en)} EN lines.")
@@ -135,7 +135,7 @@ def revise_scene(client, *, model: str, level: str, grammar: str, scene: str,
     """Revise a rejected draft to fix the QA problems, keeping the rest. Returns {'da': [...], 'en': [...]}."""
     prompt = revise_prompt(level=level, grammar=grammar, scene=scene,
                            da_lines=da_lines, en_lines=en_lines, feedback=feedback, bible=bible)
-    out = _json_call(client, model, prompt)
+    out = _json_call(client, model, prompt, stage="revise_scene")
     da, en = out.get("da", []), out.get("en", [])
     if len(da) != len(en):
         raise SystemExit(f"Alignment broken: {len(da)} DA lines vs {len(en)} EN lines.")
@@ -310,7 +310,7 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
         "band": band_check(da_lines, level=level),
     }
     prompt = verify_prompt(level=level, grammar=grammar, scene=scene, da_lines=da_lines, en_lines=en_lines)
-    report["llm"] = _json_call(client, model, prompt)
+    report["llm"] = _json_call(client, model, prompt, stage="verify_scene")
     return report
 
 

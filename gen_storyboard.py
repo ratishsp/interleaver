@@ -151,7 +151,7 @@ def main() -> int:
     client = make_client()
 
     if not a.cycle:
-        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk))
+        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk), stage="storyboard")
         sys.stdout.write(to_markdown(row, data))
         return 0
 
@@ -164,7 +164,8 @@ def main() -> int:
     for rnd in range(1, a.max_rounds + 1):
         tag = "GENERATE" if rnd == 1 else f"REVISE (round {rnd})"
         print(f"\n{'=' * 70}\n[{tag}] week {a.week}\n{'=' * 70}", flush=True)
-        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, prior_md, findings))
+        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, prior_md, findings),
+                          stage=f"storyboard.r{rnd}")
         md = to_markdown(row, data)
         sb_path.write_text(md, encoding="utf-8")
         round_path = work / f"wk{a.week:02d}_storyboard_r{rnd}.md"   # per-round copy, preserved for inspection

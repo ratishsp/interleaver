@@ -62,7 +62,7 @@ def translate_lines(client, *, model: str, src_lang: str, tgt_lang: str, lines: 
     prompt = translate_prompt(src_lang=src_lang, tgt_lang=tgt_lang, lines=lines,
                               context=context, level=level, glossary=glossary,
                               ref_lang=ref_lang, ref_lines=ref_lines, bible=bible)
-    out = _json_call(client, model, prompt)
+    out = _json_call(client, model, prompt, stage=f"translate.{tgt_lang}")
     res = out.get("lines", [])
     if len(res) != len(lines):
         raise SystemExit(f"Alignment broken: {len(lines)} in vs {len(res)} out.")
@@ -162,7 +162,7 @@ def verify_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_
         prompt = verify_translation_prompt(src_lang=src_lang, tgt_lang=tgt_lang, ref_lang=ref_lang,
                                            en_lines=en_lines, ref_lines=ref_lines, tgt_lines=tgt_lines,
                                            context=context)
-        report["llm"] = _json_call(client, model, prompt)
+        report["llm"] = _json_call(client, model, prompt, stage=f"verify_translation.{tgt_lang}")
     return report
 
 
@@ -252,7 +252,7 @@ def revise_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_
     prompt = revise_translation_prompt(src_lang=src_lang, tgt_lang=tgt_lang, ref_lang=ref_lang,
                                        en_lines=en_lines, ref_lines=ref_lines, tgt_lines=tgt_lines,
                                        feedback=feedback, context=context)
-    out = _json_call(client, model, prompt)
+    out = _json_call(client, model, prompt, stage=f"revise_translation.{tgt_lang}")
     res = out.get("lines", [])
     if len(res) != len(tgt_lines):
         raise SystemExit(f"Alignment broken: {len(tgt_lines)} in vs {len(res)} out.")

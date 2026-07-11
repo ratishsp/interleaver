@@ -1,0 +1,80 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[Low/Naive whole-week listener (no checklist)] The cinnamon pastry vanishes without a payoff. — Maya makes a point of buying a cinnamon pastry because she loves cakes, but after the checkout, it is never put away in scene 9 or eaten as dessert in scene 10, leaving a minor narrative thread hanging.",
+        "[Med/Repetition & monotony] Robotic repetition of the exact same 'kan lide' phrases in consecutive scenes. — While drilling the grammar focus is expected, repeating identical declarations back-to-back creates an unnatural echo. Scene 3 restates 'Jeg kan godt lide gulerødder' from Scene 2, and Scene 6 opens with 'Jeg kan godt lide kager' immediately after she declared it in Scene 5. The grammar can be reinforced without her restating the exact same preference seconds later.",
+        "[High/Repetition & monotony] Identical templates/refrains for the kitchen scenes (1, 9, and 10). — Scenes 1, 9, and 10 all rely on the exact same cluster of statements to establish the scene: 'Jeg står i køkkenet', 'Jeg er (ret) sulten', and 'Jeg vil gerne have/spise mad nu'. This creates listener-noticeable monotony and makes the narrative feel like it is resetting rather than progressing.",
+        "[High/Repetition & monotony] Mechanical and repetitive non-sequitur insertions of 'Jeg kan godt lide [noun]'. — While 'kan lide' is the grammar focus, it is repeatedly injected using the exact same nouns in ways that disrupt the flow: 'grøntsager' is stated in scenes 1, 3, 9, and 10; 'bønner' in 7, 9, and 10. Most glaringly, Scene 6 opens with 'Jeg kan godt lide kager' serving no narrative purpose, right after a pastry was bought in Scene 5.",
+        "[Med/Naive whole-week listener (no checklist)] Mechanical, overly robotic use of the target grammar 'Jeg kan godt lide...' — While repetition is pedagogically expected, Maya states the exact phrase 'Jeg kan godt lide grøntsager' (I like vegetables) out of nowhere in scenes 1, 3, 9, and 10. Combined with identical declarations for bread, cakes, and beans, she sounds less like a person and more like a vocabulary flashcard."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "10",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] Redundant scene opening that recaps the state from scene 9. — Scene 10 opens by restating that Maya is hungry, wants to eat, and is standing in the kitchen. Since Scene 9 already established she was in the kitchen and ended with her saying she was quite hungry and wanted dinner, this feels like an unnatural, verbatim reset of her immediate state.",
+        "[High/Repetition & monotony] Near-verbatim recap of the physical state and thoughts from Scene 9. — Scene 10 entirely resets and restates Maya's situation from the previous scene, repeating 'Jeg står i køkkenet', 'Jeg er sulten', 'Jeg kan godt lide grøntsager', and her preference for beans. Because learners listen in one continuous session, this reads as an accidental script reset rather than the next step in the narrative."
+      ]
+    },
+    {
+      "scene": "6",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Naive whole-week listener (no checklist)] Jarring opening line about cakes. — Starting the milk hunt with 'Jeg kan godt lide kager' is a complete non-sequitur. She just successfully bought her pastry in Scene 5, so randomly restating this fact before looking for a completely unrelated item (milk) feels like a robotic grammar-injection rather than a natural thought.",
+        "[Low/Naive whole-week listener (no checklist)] Abrupt scene opener. — Starting the milk-hunting scene abruptly with 'Jeg kan godt lide kager' (I like cakes) feels like a disjointed thought left over from the bakery. It makes the transition slightly jarring for the listener before getting to the milk.",
+        "[Low/Cross-scene continuity & consistency] Abrupt non-sequitur opening line. — The scene opens with 'Jeg kan godt lide kager.' (I like cakes) before immediately pivoting to needing milk. While good for grammar repetition, it feels like an awkward copy-paste from Scene 5's bakery context into the dairy search; a smoother transition or a different 'kan lide' example would flow better.",
+        "[High/Naive whole-week listener (no checklist)] Disjointed scene transition — Starting a scene about searching for milk with 'I like cakes' is a jarring non-sequitur. Even though she just bought a pastry in Scene 5, using it to pivot to the dairy aisle feels like forced grammar insertion rather than a natural narrative flow."
+      ]
+    },
+    {
+      "scene": "8",
+      "votes": 3,
+      "severity": "Med",
+      "issues": [
+        "[Med/Naive whole-week listener (no checklist)] Missing key items on the checkout belt. — Maya meticulously lists specific items she places on the belt (bread, milk, parsnip, pastry) but completely omits the black beans and carrots. Since the beans were the emotional climax of her shopping trip ('taste of home') just one scene prior, leaving them off the belt feels like an accidental continuity drop.",
+        "[Med/Naive whole-week listener (no checklist)] Action flow broken by a generic grammar-drill statement. — Interjecting 'Jeg kan godt lide dansk mad' right between placing the rye bread and the milk on the checkout belt feels quite robotic. It unnecessarily halts the steady physical momentum of unloading the basket.",
+        "[Low/Naive whole-week listener (no checklist)] Continuity gap at the checkout belt — Maya lists the specific items she puts on the belt (bread, milk, parsnip) and then says 'Finally I put the pastry on the belt.' Because she explicitly says 'finally', the listener notices she completely skipped the black beans—the emotional 'taste of home' climax of the previous scene."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "10",
+      "stem": "10_first_home_cooked_meal",
+      "votes": 2,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 20,
+      "n1": 15
+    },
+    {
+      "scene": "6",
+      "stem": "06_finding_the_milk",
+      "votes": 3,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 19,
+      "n1": 19
+    },
+    {
+      "scene": "8",
+      "stem": "08_the_checkout",
+      "votes": 3,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 20,
+      "n1": 20
+    }
+  ]
+}

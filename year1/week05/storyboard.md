@@ -13,4 +13,4 @@
 | 7 | 07_taste_of_home | Exploring another section, Maya hunts for a taste of Mexico because she really likes beans. She recognizes a bright tin of black beans on a low shelf and reaches all the way to the back to pull it out. |
 | 8 | 08_the_checkout | Maya brings the basket to the checkout. She places the food on the belt, holds her card over the machine, and packs the bag quickly. No amount is ever spoken or shown — nobody says a price and no total is read out; prices arrive in week 9. |
 | 9 | 09_putting_away | Back in the flat, Maya empties the bag on the counter. She puts the milk and the parsnip in the fridge, and she places the bread and the tin in the cupboard. |
-| 10 | 10_first_home_cooked_meal | Ready to eat, Maya chops some vegetables and opens the tin. She cooks dinner on the stove, finally making a proper meal in the flat. |
+| 10 | 10_first_home_cooked_meal | Ready to eat, Maya chops some vegetables and opens the tin. She cooks dinner on the stove, finally making a proper meal in the flat — and afterwards she has the pastry from the bakery counter for dessert. |

@@ -88,6 +88,8 @@ Rules:
   activity that moves) over many thin object-by-object scenes. Vary the scene shapes and span several
   DISTINCT situations so no single kind of scene repeats until it grates.
 - Every scene must carry the week's grammar through action, not a static inventory.
+- Where the brief rules something OUT, say so inside the scene it would otherwise turn up in — that
+  scene's text is all the writer of the scene ever sees.
 - Honor the story bible exactly — never contradict it or re-introduce as new something already established.
 - Give each scene a short snake_case stem with no number, e.g. "the_keys", "first_dinner".
 

@@ -108,7 +108,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("mode", choices=["brief", "diff", "text"])
-    ap.add_argument("target", nargs="?", help="week number (brief) or path (text)")
+    ap.add_argument("target", nargs="?", help="week number (brief), git ref (diff), or path (text)")
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--location", default="global")
     ap.add_argument("--show-prompt", action="store_true", help="print the prompt and exit (no API call)")
@@ -123,8 +123,10 @@ def main() -> int:
                    f"Brief: {row['brief']}")
         extra = f"THE GENERATOR'S STANDING RULES (already in its prompt):\n{standing_rules()}"
     elif a.mode == "diff":
-        subject = subprocess.run(["git", "diff", "-U2", "HEAD", "--", "*.py", "*.md"],
-                                 capture_output=True, text=True, check=False).stdout
+        ref = a.target or "HEAD"          # default: the working diff; pass a ref to judge past commits
+        subject = subprocess.run(  # only text WE write — never the generated weeks under year1/
+            ["git", "diff", "-U2", ref, "--", "*.py", "*.md", ":!year1"],
+            capture_output=True, text=True, check=False).stdout
         if not subject.strip():
             print("nothing in the working diff.")
             return 0

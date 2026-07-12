@@ -74,7 +74,7 @@ def scene_prompt(*, week: int, level: str, scene_title: str, scene: str, grammar
     and wk6 invented "normalt … klokken syv", both ruled out in the brief the generator never saw.
     """
     bible = bible if bible is not None else load_story_bible()
-    brief_block = f"\nThe week overall: {brief}\nWrite ONLY this scene, and respect what the brief rules out.\n" if brief else ""
+    brief_block = f"\nThe week overall: {brief}\n" if brief else ""
     arc_block = ""
     if arc:
         rows = "\n".join(

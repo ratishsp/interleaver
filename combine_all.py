@@ -1,8 +1,8 @@
-"""Combine weeks 1-10 into two phone-ready MP3s for a language pair, both interleave directions.
+"""Combine a range of weeks into two phone-ready MP3s for a language pair, both interleave directions.
 
 src is the L2 (the language being learned), tgt is the L1 gloss. Produces:
-  weeks01-10_<tgt>-then-<src>.mp3   (gloss first — recall practice)
-  weeks01-10_<src>-then-<tgt>.mp3   (target first — comprehension)
+  weeks01-08_<tgt>-then-<src>.mp3   (gloss first — recall practice)
+  weeks01-08_<src>-then-<tgt>.mp3   (target first — comprehension)
 Reuses the persistent clip cache (per-week audio already voiced every line), so no new TTS.
 Run:  set -a; . ./.env; set +a;  .venv/bin/python combine_all.py --src ml --tgt ta
 """
@@ -28,10 +28,14 @@ def main() -> int:
     ap.add_argument("--tgt", default="en", help="L1 gloss")
     ap.add_argument("--speaker", default="Sulafat")
     ap.add_argument("--out", default="combined")
+    ap.add_argument("--weeks", default="1-8", help="e.g. '1-8' (default) or '1,4,7'")
     a = ap.parse_args()
     src, tgt = a.src, a.tgt
 
-    weeks = [Path(f"year1/week{w:02d}") for w in range(1, 11)]
+    nums = sorted({n for part in a.weeks.split(",") for n in (
+        range(int(part.split("-")[0]), int(part.split("-")[1]) + 1) if "-" in part else [int(part)])})
+    weeks = [Path(f"year1/week{w:02d}") for w in nums]
+    span = f"weeks{nums[0]:02d}-{nums[-1]:02d}"
     out_dir = Path(a.out)
     scratch = out_dir / "_scenes"
     scratch.mkdir(parents=True, exist_ok=True)
@@ -42,8 +46,8 @@ def main() -> int:
         speed={src: 1.0, tgt: 1.0})
 
     directions = [
-        (f"weeks01-10_{LANG_NAME[tgt]}-then-{LANG_NAME[src]}.mp3", False),  # gloss (L1) first
-        (f"weeks01-10_{LANG_NAME[src]}-then-{LANG_NAME[tgt]}.mp3", True),   # target (L2) first
+        (f"{span}_{LANG_NAME[tgt]}-then-{LANG_NAME[src]}.mp3", False),  # gloss (L1) first
+        (f"{span}_{LANG_NAME[src]}-then-{LANG_NAME[tgt]}.mp3", True),   # target (L2) first
     ]
 
     for fname, src_first in directions:

@@ -152,8 +152,15 @@ def main() -> int:
         summary = [process_scene(client, arc, outdir, r) for r in todo]
     summary.sort(key=lambda s: s["n"])
 
-    (outdir / "verify_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False),
-                                                encoding="utf-8")
+    # A --scenes run must not erase the rest of the week's record: merge over what is already there.
+    sfile = outdir / "verify_summary.json"
+    if SCENES is not None and sfile.exists():
+        prior = {s["n"]: s for s in json.loads(sfile.read_text(encoding="utf-8"))}
+        prior.update({s["n"]: s for s in summary})
+        merged = [prior[n] for n in sorted(prior)]
+    else:
+        merged = summary
+    sfile.write_text(json.dumps(merged, indent=2, ensure_ascii=False), encoding="utf-8")
     sel = f" (scenes {sorted(SCENES)})" if SCENES is not None else ""
     print(f"\n=== WEEK {WEEK} SUMMARY{sel} ===")
     for s in summary:

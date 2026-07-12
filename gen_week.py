@@ -18,6 +18,7 @@ from pathlib import Path
 
 from tandem.gen import (generate_scene, revise_scene, verify_scene, format_failures,
                         parse_storyboard, parse_storyboard_header, VERIFY_DIMENSIONS, ADVISORY_DIMS)
+from gen_storyboard import curriculum_row
 from tandem.llm import make_client
 
 
@@ -58,6 +59,7 @@ _SPEC = parse_storyboard_header(STORYBOARD)            # single source: the stor
 WEEK = _SPEC["week"]
 LEVEL = _SPEC["level"]
 GRAMMAR = _SPEC["grammar"]
+BRIEF = curriculum_row(WEEK)["brief"]      # the generator ELABORATES, so the week's prohibitions must reach IT
 
 GEN_MODEL = "gemini-3.1-pro-preview"      # gen + revise on the strongest model — best first drafts, fewest
                                           # hand-fixes (user choice 2026-06-27). Needs location='global'.
@@ -101,7 +103,7 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
             if attempt == 0 or best is None:          # fresh draft (or the prior attempt errored)
                 res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
                                      scene_title=row["title"], scene=row["scene"], grammar=GRAMMAR,
-                                     arc=arc, scene_num=n)
+                                     arc=arc, scene_num=n, brief=BRIEF)
             else:                                     # revise the rejected draft — fix only what failed
                 res = revise_scene(client, model=GEN_MODEL, level=LEVEL, grammar=GRAMMAR,
                                    scene=row["scene"], da_lines=best["da"], en_lines=best["en"],

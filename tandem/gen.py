@@ -64,13 +64,17 @@ def load_story_bible(path: str | Path | None = None) -> str:
 
 def scene_prompt(*, week: int, level: str, scene_title: str, scene: str, grammar: str,
                  arc: list | None = None, scene_num: int | None = None,
-                 bible: str | None = None) -> str:
+                 bible: str | None = None, brief: str | None = None) -> str:
     """Build the exact generation prompt (also used by --show-prompt for inspection).
 
     Scene length is not a caller quota — the prompt steers toward a rich ~15-20 line-pair situation.
     `bible` defaults to the stable sections of story_bible.md (single source of truth with the gates).
+    `brief` is the week's curriculum brief: this model is the one that ELABORATES, so a prohibition has
+    to reach it here. Routing them through the storyboard failed twice — wk5 invented a checkout price
+    and wk6 invented "normalt … klokken syv", both ruled out in the brief the generator never saw.
     """
     bible = bible if bible is not None else load_story_bible()
+    brief_block = f"\nThe week overall: {brief}\nWrite ONLY this scene, and respect what the brief rules out.\n" if brief else ""
     arc_block = ""
     if arc:
         rows = "\n".join(
@@ -83,7 +87,7 @@ def scene_prompt(*, week: int, level: str, scene_title: str, scene: str, grammar
 
 TASK: Write ONE scene for WEEK {week} (CEFR level {level}) of the Danish course.
 Scene title: "{scene_title}". Scene: {scene}
-{arc_block}
+{brief_block}{arc_block}
 The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss.
 
 - Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural Danish first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
@@ -95,11 +99,11 @@ Return JSON: {{"da": [...], "en": [...]}}."""
 
 
 def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, scene: str,
-                   grammar: str, arc: list | None = None,
-                   scene_num: int | None = None, bible: str | None = None) -> dict:
+                   grammar: str, arc: list | None = None, scene_num: int | None = None,
+                   bible: str | None = None, brief: str | None = None) -> dict:
     """Author a graded scene natively in Danish + an English gloss. Returns {'da': [...], 'en': [...]}."""
     prompt = scene_prompt(week=week, level=level, scene_title=scene_title, scene=scene,
-                          grammar=grammar, arc=arc, scene_num=scene_num, bible=bible)
+                          grammar=grammar, arc=arc, scene_num=scene_num, bible=bible, brief=brief)
     out = _json_call(client, model, prompt, stage=f"generate_scene.{scene_num or '?'}")
     da, en = out.get("da", []), out.get("en", [])
     if len(da) != len(en):

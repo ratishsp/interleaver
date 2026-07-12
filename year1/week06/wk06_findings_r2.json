@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Past tense action ('bought earlier') in a present-tense week.",
+    "severity": "High",
+    "why": "This week's grammar focuses exclusively on present-tense regular verbs. Including 'bought earlier' will force the generator into past tense, breaking the curriculum constraint. (Also, 'parsnip' is a slightly obscure A1 noun; swapping to 'cooking vegetables from the fridge' solves both).",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Extremely repetitive sentence structure to force the V2 rule.",
+    "severity": "High",
+    "why": "Every single scene starts with a time or place phrase ('In the morning...', 'In the kitchen...', 'Down on the street...', 'At her desk...', etc.). While I get this is to practice the V2 grammar rule, having nine consecutive scenes use the exact same structural rhythm feels incredibly robotic and monotonous to listen to.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "7",
+    "issue": "Uses past-tense action (\"she bought earlier\").",
+    "severity": "High",
+    "why": "The description forces a past-tense verb (\"bought\"), but past tense has not been introduced yet (this week focuses purely on present-tense regular verbs). It should be changed to a present-tense phrasing, such as \"the strange parsnip she has in the fridge\".",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "7",
+    "issue": "Implies a past tense verb ('bought') in a strictly present-tense week.",
+    "severity": "Med",
+    "why": "The phrase 'she bought earlier' will force the generator to use the past tense (e.g., 'som hun købte'), breaking the week's strict present-tense constraint. It should be rephrased to remain in the present tense (e.g., 'a parsnip from the fridge').",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Metaphorical/technical phrasing ('wrestles with a stubborn line of code').",
+    "severity": "Med",
+    "why": "Abstract metaphors like 'wrestles with' and 'stubborn line' often force the AI generator to output complex, non-A1 vocabulary. Simplifying to something like 'works hard on a difficult problem' ensures common, translation-robust vocabulary.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Unestablished reference ('the' strange parsnip).",
+    "severity": "Med",
+    "why": "Phrasing it as 'the strange parsnip she bought earlier' implies this was established in a previous scene, which makes the listener feel they missed something. It should just be 'a parsnip' or a general reference to groceries.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Slight time contradiction.",
+    "severity": "Low",
+    "why": "The scene opens 'Late in the afternoon' but ends with her enjoying the 'crisp evening air' as she leaves the building. It's a minor disconnect that momentarily tripped me up.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "References an unseen event that breaks the step-by-step flow of the day.",
+    "severity": "Low",
+    "why": "Since we are following her continuously through her daily routine, suddenly mentioning a strange parsnip 'she bought earlier' made me wonder if I missed a scene where she went to the supermarket. It feels slightly jarring.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "2",
+    "issue": "Scattered physical action / ordering.",
+    "severity": "Low",
+    "why": "Maya is in the kitchen pouring coffee, then chooses warm clothes, then drinks her coffee looking out the window. It would be more logical for her to dress before heading to the kitchen, or to clearly bring her coffee to her wardrobe.",
+    "advisory": false
+  }
+]

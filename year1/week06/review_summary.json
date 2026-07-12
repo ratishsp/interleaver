@@ -1,0 +1,18 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 2,
+      "severity": "Low",
+      "issues": [
+        "[Low/Naive whole-week listener (no checklist)] Heavy reliance on 'Bagefter' to transition between actions. — Scenes 1, 2, 4, 5, and 9 all use 'Bagefter [verb] jeg...' to sequence events. While this is fantastic for drilling the grammar focus (V2 rule after a time adverb), hearing the exact same transition word in almost every scene starts to feel slightly formulaic.",
+        "[Low/Naive whole-week listener (no checklist)] Slight over-reliance on the word 'Bagefter' to transition between actions — The word 'Bagefter' (afterwards) is used to sequence actions in 5 out of the 9 scenes. While pedagogically useful for A1, relying on it this heavily across the whole sitting makes the narrative feel slightly robotic, like a checklist."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

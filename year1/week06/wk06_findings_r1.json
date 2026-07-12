@@ -1,0 +1,18 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The emotional tone and narrative feel very robotic and monotonous.",
+    "severity": "Med",
+    "why": "While I know the brief asks for an 'ordinary weekday', going through nine scenes of a completely frictionless, generic routine (wake, dress, bus, code, eat, code, cook, read, sleep) makes my attention drift. It feels like watching a Sims character rather than a person settling into a new life.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "07_cooking_dinner",
+    "issue": "A missed opportunity for a tiny bit of character flavor.",
+    "severity": "Low",
+    "why": "She 'chops fresh vegetables' and makes a 'simple dinner', which is very generic. Since she's settling into Denmark, it would be fun or relatable if she were cooking a Mexican dish to feel at home, giving a little hint of her background without breaking the routine.",
+    "advisory": true
+  }
+]

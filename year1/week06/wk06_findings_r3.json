@@ -1,0 +1,90 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Abstract task description with potential vocabulary slip.",
+    "severity": "Med",
+    "why": "Phrases like 'difficult problem for her software project' and 'types the right solution' are abstract and risk generating complex, non-A1 vocabulary (e.g., 'løsning', 'projekt'). Replacing this with concrete office actions, such as writing an email or fixing a code error, ensures everyday vocabulary.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Literary/poetic phrasing ('the city hums quietly').",
+    "severity": "Med",
+    "why": "The phrase 'the city hums quietly outside' is poetic and forces a potentially rare or awkward translation for an A1 learner (e.g., 'summer'). A concrete sensory detail, like hearing a car pass by or simply looking at the street lights, provides better, common vocabulary.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Noticeable overuse of the word 'warm' across the first half of the week.",
+    "severity": "Med",
+    "why": "In scenes 1, 2, 3, and 5, we get 'warm water', 'warm clothes', 'warm seat', and 'laughing warmly'. As a learner, encountering the same adjective so many times in quick succession makes the phrasing feel a bit repetitive and artificial.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "09_turning_in",
+    "issue": "Potential breach of the 'no frequency words' negative constraint",
+    "severity": "Med",
+    "why": "The summary describes her settling into her 'new daily rhythm'. Because frequency words are explicitly banned this week (reserved for Week 7), using 'daily' here risks the generator translating it to 'hver dag' (every day) or 'daglig'. Changing it to 'new routine' or 'new life' avoids the trap.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "3",
+    "issue": "Awkward translation mapping for 'hurries a few quick steps'.",
+    "severity": "Med",
+    "why": "If aiming to use the common A1 reflexive verb for hurry ('skynde sig'), it cannot take 'steps' as a direct object in Danish ('jeg skynder mig et par skridt' is ungrammatical). Suggest rephrasing to separate the actions, such as 'She hurries, taking a few quick steps' to ensure clean translation.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Reliance on generic and poetic filler.",
+    "severity": "Low",
+    "why": "Opening with 'A productive day ends' and closing with 'enjoying the crisp evening air' leans on literary filler rather than concrete, simple A1 observations. Grounding the scene in tangible actions (putting on a coat, walking out the door) works better for this level.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Clunky description of software engineering.",
+    "severity": "Low",
+    "why": "Saying she 'eventually types the right solution' to a difficult software problem sounds a bit cartoonish. It would feel more authentic to say she 'finally fixes the bug' or 'figures out the code'.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Odd culinary phrasing with 'roasts them in a pan'.",
+    "severity": "Low",
+    "why": "In English, you generally 'fry' or 'sauté' vegetables in a pan, while 'roasting' implies using an oven. This might cause slight confusion or an awkward prompt for the translation step.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Noticeable repetition of specific descriptive adjectives/adverbs ('warm' and 'quiet')",
+    "severity": "Low",
+    "why": "The concept 'warm' is heavily repeated in the first half (warm water in 1, warm clothes in 2, warm seat in 3, laughing warmly in 5), and 'quiet/quietly' appears in consecutive evening scenes (8 and 9). Diversifying these will improve the vocabulary range for the learner and avoid feeling redundant.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "7",
+    "issue": "Idiomatic English 'something comforting' for food.",
+    "severity": "Low",
+    "why": "The English culinary concept of 'comforting' food lacks a direct, simple A1 equivalent in Danish (a literal translation like 'trøstende' sounds unnatural applied to a meal). Consider using 'something warm' or 'delicious' instead to keep it translation-robust.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "8",
+    "issue": "Idiomatic phrase 'losing herself in the story'.",
+    "severity": "Low",
+    "why": "A literal translation of 'losing herself' would be nonsensical or imply losing weight in Danish. While the natural Danish equivalent ('fordyber sig') works well, it introduces an extra, fairly advanced reflexive verb. Consider simplifying to 'completely enjoys the story' to stay strictly within the A1 scope.",
+    "advisory": false
+  }
+]

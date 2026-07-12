@@ -59,10 +59,9 @@ Use an empty findings list if you find nothing."""
 
 CATEGORIES = [
     {"key": "absolute_time", "title": "Absolute time / season",
-     "focus": "Season or time-of-year drift, or any named month. The course is deliberately all-winter "
-              "through these weeks and NEVER names a month; spring comes much later. Flag a later week "
-              "implying a warmer or different season than an earlier one, any explicitly named month, or "
-              "a daylight/weather cue that contradicts the established winter. Winter simply deepening is fine."},
+     "focus": "Maya arrives in January and the weeks run about one week apart, deep in winter; spring "
+              "comes much later. Months MAY be named. Flag anything that contradicts that timeline. "
+              "Winter deepening is fine."},
     {"key": "memory_knowledge", "title": "Memory & knowledge",
      "focus": "A person re-introduced as if newly met when an earlier week already established them (e.g. "
               "meeting Nina 'for the first time' after Week 1), or Maya knowing / not-knowing something "

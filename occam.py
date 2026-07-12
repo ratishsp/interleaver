@@ -19,7 +19,8 @@ import sys
 from pathlib import Path
 
 from tandem.gen import DEFAULT_MODEL
-from tandem.llm import make_client, _json_call
+from tandem.llm import make_client
+from review_storyboard import _call_findings
 
 CURRICULUM = "curriculum_da.md"
 
@@ -142,8 +143,9 @@ def main() -> int:
     if a.show_prompt:
         print(prompt)
         return 0
-    out = _json_call(make_client(), a.model, prompt, stage=f"occam.{a.mode}")
-    findings = out.get("findings", []) if isinstance(out, dict) else out   # it sometimes returns a bare list
+    # _call_findings caps the output and SALVAGES a truncated findings array — a long file (e.g.
+    # continuity_check.py) overflowed the plain JSON call and killed the whole run.
+    findings = _call_findings(make_client(), a.model, prompt, stage=f"occam.{a.mode}")
     return report(findings or [])
 
 

@@ -195,16 +195,17 @@ def build_prompt(lens: dict, *, header: str, scenes: str, bible: str, curric: st
 def _call_findings(client, model: str, prompt: str, stage: str = "") -> list[dict]:
     """Call the judge for a JSON {findings:[...]} and return the list, robust to truncation.
 
-    A reasoning model can run long and get its JSON cut off mid-array. Rather than crash the whole
-    panel on one flaky lens, we salvage every COMPLETE finding object and drop the truncated tail.
-    Only a total parse failure raises — so main() can mark that lens incomplete (never a silent pass).
+    No output cap: on a reasoning model the THINKING tokens count against max_output_tokens, so a cap
+    big enough for the findings could still be spent thinking and return an EMPTY response (it did, on a
+    whole source file). Salvage stays as the safety net: keep every COMPLETE finding object, drop a
+    truncated tail. Only a total parse failure raises — so main() can mark that lens incomplete
+    (never a silent pass).
     """
     from google.genai import types
 
     resp = client.models.generate_content(
         model=model, contents=prompt,
-        config=types.GenerateContentConfig(response_mime_type="application/json",
-                                           max_output_tokens=8192),
+        config=types.GenerateContentConfig(response_mime_type="application/json"),
     )
     text = (resp.text or "").strip()
     try:

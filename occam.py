@@ -123,12 +123,13 @@ def main() -> int:
                    f"Brief: {row['brief']}")
         extra = f"THE GENERATOR'S STANDING RULES (already in its prompt):\n{standing_rules()}"
     elif a.mode == "diff":
-        ref = a.target or "HEAD"          # default: the working diff; pass a ref to judge past commits
+        # default: the working diff. A ref judges past commits; "cached" judges what is STAGED (the hook).
+        ref = "--cached" if a.target == "cached" else (a.target or "HEAD")
         subject = subprocess.run(  # only text WE write — never the generated weeks under year1/
             ["git", "diff", "-U2", ref, "--", "*.py", "*.md", ":!year1"],
             capture_output=True, text=True, check=False).stdout
         if not subject.strip():
-            print("nothing in the working diff.")
+            print("nothing to judge in the diff.")
             return 0
         extra = ""
     else:

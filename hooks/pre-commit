@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Occam gate on every commit that touches the text WE write (prompts, specs, briefs — not year1/).
+# A memory of the rule does not stop the bloated draft getting written; this does.
+#
+# Install:  git config core.hooksPath hooks
+# Bypass:   git commit --no-verify        (offline, or when the judge is wrong — it is a lens, not an oracle)
+set -u
+
+root="$(git rev-parse --show-toplevel)"
+cd "$root" || exit 0
+
+# Only our own text. A content-only commit (year1/**.da/.en/storyboard) needs no Occam pass.
+staged="$(git diff --cached --name-only --diff-filter=ACM -- '*.py' '*.md' ':!year1')"
+[ -z "$staged" ] && exit 0
+
+[ -f .env ] || { echo "occam: no .env — skipping (commit allowed)"; exit 0; }
+set -a; . ./.env; set +a
+export GOOGLE_CLOUD_LOCATION="${GOOGLE_CLOUD_LOCATION:-global}"
+
+echo "occam: judging staged prompt/spec text…"
+.venv/bin/python occam.py diff cached
+rc=$?
+
+# Exit 1 means a must-cut finding. Block, and say how to proceed anyway.
+if [ "$rc" -eq 1 ]; then
+    echo "occam: must-cut finding(s) above. Cut them, or 'git commit --no-verify' if the judge is wrong."
+    exit 1
+fi
+exit 0

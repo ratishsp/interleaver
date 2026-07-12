@@ -137,7 +137,8 @@ def main() -> int:
         print(prompt)
         return 0
     out = _json_call(make_client(), a.model, prompt, stage=f"occam.{a.mode}")
-    return report(out.get("findings", []) or [])
+    findings = out.get("findings", []) if isinstance(out, dict) else out   # it sometimes returns a bare list
+    return report(findings or [])
 
 
 if __name__ == "__main__":

@@ -163,6 +163,7 @@ def main() -> int:
 
     prior_md: str | None = None
     findings: list[dict] | None = None
+    best: tuple[tuple[int, int], int, str, Path] | None = None   # (score, round, md, findings path)
     for rnd in range(1, a.max_rounds + 1):
         tag = "GENERATE" if rnd == 1 else f"REVISE (round {rnd})"
         print(f"\n{'=' * 70}\n[{tag}] week {a.week}\n{'=' * 70}", flush=True)
@@ -183,10 +184,16 @@ def main() -> int:
         # Revise while anything ACTIONABLE remains — blocking Highs (rc != 0) OR non-advisory Meds.
         # The gate only *blocks* on High, but _revise_block already rewrites for Meds too, so acting
         # on them here (not only when a High forces a round) is the whole point of the loop. `advisory`
-        # stays the single "leave it to the human/ear" knob. Single-run, no vote gate — but the
-        # storyboard re-gates every round and is git-tracked, so a bad revision is caught next round.
+        # stays the single "leave it to the human/ear" knob.
         med_actionable = [f for f in findings
                           if f.get("severity") == "Med" and not f.get("advisory")]
+        # A revise can REGRESS a good draft (wk6: r1 had 0 blocking Highs, r3 had 5 — the revise rounds
+        # invented them). So score every round and keep the BEST, not the last one.
+        highs = [f for f in findings if f.get("severity") == "High" and not f.get("advisory")]
+        score = (len(highs), len(med_actionable))
+        if best is None or score < best[0]:
+            best = (score, rnd, md, fp_round)
+
         if rc == 0 and not med_actionable:
             print(f"\n✓ GATE CLEARED on round {rnd}. Final storyboard at {sb_path}\n")
             sys.stdout.write(md)
@@ -195,13 +202,16 @@ def main() -> int:
         print(f"  → revising ({kind} finding(s))", flush=True)
         prior_md = md
 
-    # Rounds exhausted: a remaining High is a real escalation; Med-only residue we accept (advisory).
-    if rc != 0:
+    # Rounds exhausted. Ship the BEST round (fewest blocking Highs, then fewest actionable Meds).
+    (n_high, n_med), rnd, md, fp_round = best
+    sb_path.write_text(md, encoding="utf-8")
+    print(f"\n→ best round was r{rnd} ({n_high} blocking High, {n_med} actionable Med)", flush=True)
+    if n_high:
         print(f"\n✗ ESCALATE: still blocking after {a.max_rounds} rounds. "
-              f"Best draft + remaining findings at {sb_path} / {fp_round}\n")
+              f"Best draft (r{rnd}) + its findings at {sb_path} / {fp_round}\n")
         return 1
-    print(f"\n⚠ Cleared of blocking Highs; non-advisory Med finding(s) persisted after "
-          f"{a.max_rounds} rounds — accepting. Review the residue at {fp_round}.\n")
+    print(f"\n⚠ Cleared of blocking Highs; {n_med} non-advisory Med finding(s) persisted after "
+          f"{a.max_rounds} rounds — accepting r{rnd}. Review the residue at {fp_round}.\n")
     sys.stdout.write(md)
     return 0
 

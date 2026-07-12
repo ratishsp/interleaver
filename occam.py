@@ -119,6 +119,12 @@ def main() -> int:
     a = ap.parse_args()
     os.environ["GOOGLE_CLOUD_LOCATION"] = a.location
 
+    # These calls shape the specs the whole course is generated from, so they belong in the provenance:
+    # a brief judgement with its week, everything else with the tools. An explicit TANDEM_TRACE wins.
+    if not os.environ.get("TANDEM_TRACE"):
+        os.environ["TANDEM_TRACE"] = (f"year1/week{int(a.target):02d}/trace.jsonl"
+                                      if a.mode == "brief" else "tools.trace.jsonl")
+
     if a.mode == "brief":
         row = curriculum_row(int(a.target))
         subject = (f"Week {row['wk']} · Level {row['level']}\n"

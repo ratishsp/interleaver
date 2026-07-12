@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Contradiction in appointment times.",
+    "severity": "High",
+    "why": "Scene 6 states the haircut and coffee are at 'exactly the same time', but they were booked for a quarter past four (Scene 3) and four o'clock (Scene 5). The times must be identical for the conflict to make sense.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "The phrase 'exactly the same time' contradicts the booked times.",
+    "severity": "High",
+    "why": "The haircut was booked for 4:15 (scene 3) and the coffee for 4:00 (scene 5). Since this week specifically teaches telling the time, saying they are at 'exactly the same time' will make a learner think they mistranslated the earlier clock times. The text should just note that the times clash or overlap.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6 and 7",
+    "issue": "Micro-sliced, static activity.",
+    "severity": "Med",
+    "why": "Scene 6 is just an internal realization at a desk, and Scene 7 is merely tapping out a text message. This stretches a single minor administrative adjustment across two thin scenes lacking distinct, concrete physical vignettes.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Logic contradiction regarding 'exactly the same time'.",
+    "severity": "Med",
+    "why": "Scene 6 states the coffee date and the haircut are scheduled at 'exactly the same time', but Scene 3 booked the haircut for a quarter past four (4:15) and Scene 5 booked the coffee for four o'clock (4:00). To use 'exactly the same time', the times in scene 3 or 5 need to match perfectly, or scene 6 should just state they overlap or conflict.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "6",
+    "issue": "Logical contradiction with specific appointment times",
+    "severity": "Med",
+    "why": "The scene states the coffee and haircut are at 'exactly the same time', but the haircut was booked for 4:15 (Scene 3) and the coffee for 4:00 (Scene 5). The phrasing should be adjusted to say they overlap or are scheduled during the same hour.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "6",
+    "issue": "The summary states the appointments are at 'exactly the same time', which contradicts the previous scenes.",
+    "severity": "Low",
+    "why": "The haircut was booked for 4:15 and the coffee was scheduled for 4:00. While they definitely conflict, they aren't at 'exactly' the same time; tweaking the wording to 'at almost the same time' or 'overlapping' would make the continuity tighter.",
+    "advisory": false
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "Med",
+      "issues": [
+        "[Low/Repetition & monotony] Overuse of 'smiling' as a dialogue tag/action. — Almost every interaction in the week relies on someone smiling: the mechanic (Scene 2, Scene 7), Nina (Scene 5), Maya herself (Scene 6), and the hairdresser (Scene 8). While positive, it becomes a slightly monotonous structural crutch for interactions.",
+        "[Med/Repetition & monotony] Overuse of smiling as a conversational refrain — Almost every character interaction uses a smile as the default reaction (the mechanic in scenes 2 and 7, Nina in scene 5, Maya in scenes 6 and 8, the hairdresser in scene 8). While positive, it becomes a highly noticeable, monotonous crutch across the week.",
+        "[Low/Repetition & monotony] Overuse of 'smiling' as a reaction tag. — Almost every interaction in the week relies on smiling to convey friendliness (the mechanic smiles in S2 and S7, Nina smiles in S5, Maya smiles in S6 and S8, the hairdresser smiles in S8). While acceptable for beginner input, it becomes a noticeable, slightly monotonous crutch."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "3",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Cross-scene continuity & consistency] Timeline ambiguity / contradiction regarding the hairdresser call. — In Scene 1 (Monday morning), Maya states 'Jeg ringer også til frisøren i dag' (I also call the hairdresser today). Scene 2 moves forward to Tuesday morning. Scene 3 takes place during her lunch break, where she makes the call. If Scene 3 is Monday, it breaks the forward chronological progression of the scenes; if it is Tuesday, it contradicts her statement in Scene 1.",
+        "[Med/Cross-scene continuity & consistency] Chronological inconsistency / out-of-order sequencing. — In Scene 1 (Monday), Maya explicitly says she will call the hairdresser 'today'. Scene 2 then advances the timeline to Tuesday morning. Scene 3 features the phone call during her lunch break. If Scene 3 takes place on Monday, it breaks the chronological flow for a listener; if it takes place on Tuesday, it contradicts her stated plan from Scene 1."
+      ]
+    },
+    {
+      "scene": "5 and 6",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Repetition & monotony] Verbatim repetition of an action across a scene boundary. — Scene 5 effectively ends with Maya entering her apartment ('Jeg går ind i min lejlighed.'). Scene 6 then immediately starts by restating the exact same action. This creates a clunky, repetitive 'rewind' effect for a listener playing the scenes back-to-back.",
+        "[Med/Naive whole-week listener (no checklist)] Back-to-back repetition of entering the apartment. — Scene 5 ends with 'Jeg går ind i min lejlighed.' and Scene 6 immediately begins with 'Jeg går ind i min lejlighed.' When listening to the course in one sitting, hearing her walk into her apartment twice in a row feels like a glitch in the matrix.",
+        "[Med/Repetition & monotony] Verbatim repetition across scene boundary — Scene 5 ends with Maya going into her apartment ('Jeg går ind i min lejlighed'). Scene 6 then immediately starts by restating the exact same action and phrasing, creating a redundant and clunky restart for the listener."
+      ]
+    },
+    {
+      "scene": "6",
+      "votes": 3,
+      "severity": "Med",
+      "issues": [
+        "[Med/Naive whole-week listener (no checklist)] Duplicated action across scene boundary — Scene 5 ends with Maya walking into her apartment ('Jeg går ind i min lejlighed.'). Scene 6 immediately starts with the exact same line and action. When listening to the course back-to-back, this feels like an editing glitch.",
+        "[Low/Cross-scene continuity & consistency] Clunky scene transition / exact repetition of an action. — Scene 5 ends with Maya walking into her apartment ('Jeg går ind i min lejlighed.'). Scene 6 immediately restarts by stating the exact same action ('Jeg går ind i min lejlighed.'). Removing this line from Scene 6 would make the sequence flow more naturally without backtracking.",
+        "[Med/Cross-scene continuity & consistency] Redundant action across the boundary of Scene 5 and Scene 6. — Scene 5 ends with Maya stating 'Jeg går ind i min lejlighed.' (I go into my apartment). Scene 6 then immediately begins with the exact same line. This consecutive repetition makes the transition between scenes feel jarring and stitched together.",
+        "[Low/Cross-scene continuity & consistency] Redundant action duplicated across the scene boundary. — Scene 5 ends with Maya walking into her apartment ('Jeg går ind i min lejlighed.'). Scene 6 immediately begins with the exact same line. When played back-to-back, it reads as if she enters the apartment twice."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "3",
+      "stem": "03_booking_a_haircut",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 20,
+      "n1": 20
+    },
+    {
+      "scene": "6",
+      "stem": "06_scheduling_conflict",
+      "votes": 3,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 15,
+      "n1": 15
+    }
+  ]
+}

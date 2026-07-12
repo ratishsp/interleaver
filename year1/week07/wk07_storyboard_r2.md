@@ -4,7 +4,7 @@
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_planning_the_week | On Monday morning, Maya makes a cup of tea and opens her calendar at the kitchen table — she always plans the week here. She works through it: the bike goes to the repair shop, the salon needs a phone call, the gym is on Wednesday. She writes each one in, and February fills up. |
+| 1 | 01_planning_the_week | On Monday morning, Maya sits at her kitchen table with a cup of tea. It is now February, and she always writes her plans carefully in her calendar for the week. |
 | 2 | 02_dropping_off_the_bike | On Tuesday morning at a quarter past eight, Maya wheels her bicycle to the local repair shop. She hands the bike to the mechanic, leaves the shop, and walks the rest of the way to the office. |
 | 3 | 03_booking_a_haircut | During her lunch break, Maya calls a hair salon on her mobile phone. She speaks to the hairdresser and books an appointment for Thursday at half past four. |
 | 4 | 04_evening_gym | On Wednesday evening, Maya visits the local gym. She usually trains there twice a week, so she lifts weights and runs on the treadmill for an hour before heading home. |

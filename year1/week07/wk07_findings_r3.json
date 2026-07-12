@@ -1,0 +1,66 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "5",
+    "issue": "Ambiguity of 'hallway' for Danish translation",
+    "severity": "Med",
+    "why": "In English, 'hallway' could mean the shared space, but it often translates into Danish as 'gangen' (the private corridor inside an apartment). If she is inside her own flat, unexpectedly meeting Nina doesn't make sense. Changing it to 'stairwell' or 'building entrance' ensures it correctly translates to 'opgangen', which is the shared space where Danish centralized mailboxes are actually located.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Inconsistent calendar format between scenes 1 and 6.",
+    "severity": "Med",
+    "why": "In scene 1, Maya writes her classes on a physical paper calendar page with a pen. In scene 6, she checks a 'calendar app' on her phone. Choosing one format (e.g., her phone for both) avoids a confusing switch in her daily objects.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Inconsistent calendar format (paper vs. app)",
+    "severity": "Med",
+    "why": "In Scene 1, Maya explicitly uses a physical paper calendar ('turns her calendar page', 'finds a pen', 'fresh page'). But in Scene 6, she opens her 'calendar app' on her phone to check her schedule and add the coffee date. It feels like a minor continuity error within the same storyline.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Inconsistent calendar medium (paper vs. digital app).",
+    "severity": "Med",
+    "why": "In Scene 1, Maya explicitly turns a page and uses a pen to write in a physical paper calendar. In Scene 6, she relies on a 'calendar app' to check her schedule and notice the conflict. The medium should remain consistent within the week to maintain narrative logic.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "6",
+    "issue": "Calendar consistency (physical vs. app).",
+    "severity": "Med",
+    "why": "In Scene 1, Maya establishes she is using a physical paper calendar with a pen. In Scene 6, she checks a 'calendar app' and notices the conflict. To avoid a logical gap about how the app knows her schedule, it would be smoother to just refer to her 'calendar' in both places, or make both scenes digital/physical.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Reliance on generic adjectives for texture.",
+    "severity": "Low",
+    "why": "The scene leans heavily on generic descriptors ('cozy neighborhood cafe', 'warm drinks', 'small table', 'long, relaxing evening') instead of concrete details. Specifying a distinct drink (like black coffee or tea) or a specific sensory detail would provide better concrete texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Odd causal link with the time",
+    "severity": "Low",
+    "why": "The phrasing 'It is a quarter past two, so she calls a local hair salon' reads a bit strangely, making it sound as if 2:15 is the specific reason or trigger for calling a salon.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Odd causal link with the frequency adverb",
+    "severity": "Low",
+    "why": "The sentence 'She usually trains twice a week, so she stretches her arms...' forces a weird logical connection, implying that her overall training frequency is the direct reason she is stretching her arms right now.",
+    "advisory": true
+  }
+]

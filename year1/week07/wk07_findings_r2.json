@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Static description rather than an active vignette",
+    "severity": "Med",
+    "why": "The scene is mostly a static snapshot of a habit ('sits with tea', 'is February', 'always writes') rather than a sequence that moves. Grounding it in a small beginning-to-end action (e.g., she finishes breakfast, opens her new February calendar, and writes her first entry) would give it the required narrative movement.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Relentless 'to-do list' pacing",
+    "severity": "Med",
+    "why": "Every single scene revolves around a logistical transaction or an errand (dropping off a bike, booking a salon, scheduling coffee). While I know it's teaching the clock, listening to a nonstop itinerary of chores starts to feel a bit dry compared to a more natural slice-of-life story.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Potentially specific/niche vocabulary",
+    "severity": "Low",
+    "why": "The word 'treadmill' translates to a slightly specific compound noun (*løbebånd*) that might be a bit niche for early A1. Keeping it to a more foundational everyday phrase like 'runs' or 'uses the running machines' better fits the common-vocabulary rule.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Forced upbeat adverbs mask a flat emotional tone",
+    "severity": "Low",
+    "why": "Because the tasks are so mundane, the narrative leans heavily on telling us everything is happy ('chat cheerfully', 'happily agrees', 'rides happily'). It feels a little artificial; it would be more relatable to feel tired after the gym or actively relieved when the calendar clash is fixed.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "06_scheduling_conflict",
+    "issue": "Anticlimactic resolution to the schedule clash",
+    "severity": "Low",
+    "why": "The double-booking is a fun, relatable setup! But because she spots it, texts Nina, and Nina agrees to move it all within the exact same breath, there's zero suspense or friction. It's over before I even had time to wonder how she'd fix it.",
+    "advisory": true
+  }
+]

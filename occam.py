@@ -66,7 +66,9 @@ that write it natively is noise; flag anything phrased as an instruction.
 """
 
 _DIFF_LENS = """
-These are lines we just ADDED to the pipeline's own prompts and specs. Judge ONLY the added lines (+).
+Lines we just ADDED. Judge ONLY the added lines (+), and ONLY the text a MODEL will read: prompt
+strings, judge criteria, curriculum specs. Code, comments and log messages are read by people, not
+models — say nothing about them.
 """
 
 

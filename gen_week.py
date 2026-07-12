@@ -144,6 +144,16 @@ def main() -> int:
     outdir = Path(STORYBOARD).parent
     todo = [row for row in arc if SCENES is None or row["num"] in SCENES]
 
+    # A regen that renames the stems leaves the old scenes behind, and everything downstream reads the
+    # whole DIRECTORY — so the dead files are graded, linted and voiced as part of the week.
+    stems = {r["stem"] for r in arc}
+    orphans = sorted(p for p in outdir.glob("*.[de][an]") if p.stem not in stems)
+    for p in orphans:
+        p.unlink()
+    if orphans:
+        print(f"\n⚠ removed {len(orphans)} stale scene file(s) not in this storyboard: "
+              + ", ".join(p.name for p in orphans) + "\n")
+
     workers = min(WORKERS, len(todo)) or 1
     if workers > 1:
         with ThreadPoolExecutor(max_workers=workers) as ex:

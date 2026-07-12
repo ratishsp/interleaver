@@ -71,8 +71,16 @@ def translate_lines(client, *, model: str, src_lang: str, tgt_lang: str, lines: 
 
 # Translation verification — the mirror of gen.py's verify_scene, but for a TRANSLATED target
 # (.ml/.ta/...): it sees the English source (meaning), the Danish reference (the distinctions English
-# drops), and the target under test. Triage, not a gate — a per-line issue list. For Malayalam the user
-# is ground truth (they hear every line); the machine's unique value is the Tamil gloss they cannot check.
+# drops), and the target under test. Triage, not a gate — a per-line issue list.
+#
+# THE PREMISE IS WEAKER THAN IT LOOKS (the user, 2026-07-12): "I'm not the best judge for Malayalam
+# either." This was built assuming he is ground truth for ml (he hears every line) and the machine only
+# has to carry the ta gloss he cannot check. He will hear a GROSS error; a wrong honorific or a drifted
+# nuance sails past. So this track has a WEAKER human backstop than da/en and therefore needs a HIGHER
+# machine bar — the opposite of how it is built. Owed: back-translation (round-trip the target to English
+# and compare with the source — independent of the model that produced it) and a vote-gated auto-revise,
+# as review_week --fix does for the Danish.
+#
 # no_relocation was cut (Occam): it duplicated translate_prompt's TRANSLATE-DON'T-RELOCATE rule, guarded
 # the single most human-trivially-visible error (a relocated proper noun), and never fired.
 TRANSLATION_VERIFY_DIMENSIONS = ("fidelity", "disambiguation_carried", "naturalness")

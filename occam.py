@@ -55,17 +55,18 @@ This is one WEEK of a Danish course. The BRIEF steers the storyboard generator, 
 scenes; the generator sees the brief, the theme and the grammar together, exactly as shown below.
 
 A brief should be a SUMMARY of the week we want — what happens, narrated — plus a trailing clause for the
-ABSENCES (what must NOT appear, and which week owns it), because an absence is the one thing a summary of
-the built week could never carry. It is a steer, not a shot-list: the storyboard's job is to invent the
-scenes. Roughly four short sentences.
+ABSENCES (what must NOT appear, and which week owns it). It is a steer, not a shot-list. Roughly four
+short sentences.
 
-Judge the brief against that, and against the standing rules the generator ALREADY has (below) — anything
-the brief repeats from them is dead weight.
+Judge the brief against that, and against the standing rules the generator ALREADY has (below) — flag
+anything the brief repeats.
+
+Judge the GRAMMAR FOCUS too. It names the week's target and nothing more. Explaining Danish to models
+that write it natively is noise; flag anything phrased as an instruction.
 """
 
 _DIFF_LENS = """
 These are lines we just ADDED to the pipeline's own prompts and specs. Judge ONLY the added lines (+).
-Prompt text rots by accretion: each addition looks reasonable alone, and the sum narrows the model.
 """
 
 

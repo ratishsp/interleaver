@@ -37,13 +37,13 @@ distinction into {tgt_lang} wherever {tgt_lang} marks it. On a genuine MEANING c
 
 TASK: Translate the following {len(lines)} lines from {src_lang} into {tgt_lang} for this course.
 {f'Scene context: {context}' if context else ''}
-{f'Target CEFR level: {level} — keep the translation in-level, do not drift up or down.' if level else ''}
+{f'Target CEFR level: {level} — keep the translation in-level.' if level else ''}
 
 RULES:
 - Translate naturally and idiomatically in {tgt_lang}.
 - TRANSLATE, DON'T RELOCATE: keep the Danish setting and render proper nouns (København, Nina, Mexico) faithfully by sound — never swap them for a target-culture equivalent (no Copenhagen -> Madrid, no Nina -> María) or auto-localize.
 - Keep names consistent.{f' Glossary: {glossary}' if glossary else ''}
-- Preserve sentence segmentation EXACTLY: return the SAME number of lines ({len(lines)}), one translation per input line, in order. Do not merge or split lines.
+- Preserve sentence segmentation EXACTLY: return EXACTLY {len(lines)} lines, one translation per input line, in order.
 {ref_block}
 INPUT:
 {numbered}
@@ -122,8 +122,8 @@ LINES ({src_lang} source / {ref_lang} reference / {tgt_lang} under test):
 {triples}
 
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
-1. fidelity — does each {tgt_lang} line convey the meaning of its {src_lang} source? Flag SUBSTANTIVE divergence — added, dropped, or mistranslated meaning — NOT defensible word/preposition choices or natural rewordings that keep the meaning.
-2. disambiguation_carried — where the {ref_lang} line marks a distinction {src_lang} leaves open (gender, formal/informal "you", number), does the {tgt_lang} line carry that SAME distinction wherever {tgt_lang} grammatically marks it? Flag a line that picks the wrong gender/register/number, or defaults to one when {ref_lang} clearly marks the other. Ignore distinctions {tgt_lang} does not mark.
+1. fidelity — does each {tgt_lang} line convey the meaning of its {src_lang} source? Flag SUBSTANTIVE divergence, NOT natural rewordings that keep the meaning.
+2. disambiguation_carried — where the {ref_lang} line marks a distinction {src_lang} leaves open, does the {tgt_lang} line carry that SAME distinction wherever {tgt_lang} grammatically marks it? Flag a line that carries the wrong distinction, or defaults when {ref_lang} clearly marks it. Ignore distinctions {tgt_lang} does not mark.
 3. naturalness — would a native {tgt_lang} speaker actually say this? Flag translationese (word-for-word from {src_lang}), constructions a native would not use, and register that jumps around from line to line. Do NOT flag mere taste.
 
 Return JSON exactly:
@@ -239,7 +239,7 @@ DRAFT ({src_lang} source / {ref_lang} reference / {tgt_lang} under review):
 PROBLEMS TO FIX:
 {feedback}
 
-Return JSON: {{"lines": ["...", ...]}} with EXACTLY {len(tgt_lines)} entries — the {tgt_lang} translation only, one per source line, in order. Do NOT merge, split, add, or drop lines; the count must stay {len(tgt_lines)}."""
+Return JSON: {{"lines": ["...", ...]}} with EXACTLY {len(tgt_lines)} entries — the {tgt_lang} translation only, one per source line, in order."""
 
 
 def revise_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_lang: str,

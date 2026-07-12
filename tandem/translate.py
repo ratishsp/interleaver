@@ -76,10 +76,10 @@ def translate_lines(client, *, model: str, src_lang: str, tgt_lang: str, lines: 
 # THE PREMISE IS WEAKER THAN IT LOOKS (the user, 2026-07-12): "I'm not the best judge for Malayalam
 # either." This was built assuming he is ground truth for ml (he hears every line) and the machine only
 # has to carry the ta gloss he cannot check. He will hear a GROSS error; a wrong honorific or a drifted
-# nuance sails past. So this track has a WEAKER human backstop than da/en and therefore needs a HIGHER
-# machine bar — the opposite of how it is built. Owed: back-translation (round-trip the target to English
-# and compare with the source — independent of the model that produced it) and a vote-gated auto-revise,
-# as review_week --fix does for the Danish.
+# nuance sails past. So this track has a WEAKER human backstop than da/en, and its triage-not-a-gate
+# design leans on an ear that is not really there. Back-translation was proposed as the independent check
+# and DECLINED by the user (2026-07-12) — so the honest position is that a subtle ml/ta error can ship.
+# The real answer is the crowdsource route: publish, disclaim, invite native-speaker corrections.
 #
 # no_relocation was cut (Occam): it duplicated translate_prompt's TRANSLATE-DON'T-RELOCATE rule, guarded
 # the single most human-trivially-visible error (a relocated proper noun), and never fired.

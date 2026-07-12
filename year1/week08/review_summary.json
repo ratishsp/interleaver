@@ -1,0 +1,34 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] Repetitive bridging between scenes — Multiple scenes begin by almost exactly echoing the line that ended or established the previous scene (e.g., Scene 1 ends 'Jeg begynder min gåtur...' and Scene 2 starts 'Jeg begynder min gåtur.'; Scene 3 establishes 'stor plads. Der er mange mennesker.' and Scene 4 immediately repeats 'store plads. Der er mange mennesker her.'). This creates a stuttering, 'two steps forward, one step back' flow across the week.",
+        "[High/Repetition & monotony] Cross-scene contradiction regarding the woman's directions (Station vs. Museum). — In Scene 5, the helpful woman tells Maya to turn left at the station ('drej til venstre ved stationen'). However, in Scene 6, Maya arrives at the museum, explicitly recalls the woman's words as 'Drej til venstre', and turns at the museum ('ved museet'). 'Stationen' is never mentioned again.",
+        "[Med/Repetition & monotony] Spatial continuity error on the return route (Park and Bakery order). — In Scene 2, Maya turns at the park and *then* passes the bakery on her way to the square. In Scene 8 (walking home), the order is reversed: she reaches the park, turns, and *then* passes the bakery. To maintain spatial logic, she should pass the bakery *before* reaching the park to turn.",
+        "[Low/Repetition & monotony] Inconsistent spelling of 'ligeud' (straight ahead). — The term is spelled as one word ('ligeud') in Scenes 1, 2, and 6, but split into two words ('lige ud') in Scenes 5, 7, and 8. It should be standardized across the week's curriculum.",
+        "[Med/Naive whole-week listener (no checklist)] Inconsistent vocabulary for the central landmark — In Scenes 3, 4, and 6, the square is consistently referred to as 'pladsen' (en stor plads). In Scene 5, both the woman and Maya suddenly call it 'torvet'. While synonymous, swapping the noun for a critical anchor point while the protagonist is lost adds unnecessary friction for an A1 learner trying to follow the route.",
+        "[Med/Repetition & monotony] Scenes start by repeating the exact end-state of the previous scene. — Scene 1 ends with 'Jeg begynder min gåtur mod vandet' and Scene 2 opens with 'Jeg begynder min gåtur'. Similarly, Scene 4 ends with 'Jeg er helt faret vild' and Scene 5 opens with 'Jeg er faret vild'. Because the learner listens to these back-to-back in a single sitting, these literal recaps feel like unnatural resets.",
+        "[Low/Repetition & monotony] Identical phrasing for recalling directions. — In Scene 2, Maya says 'Jeg husker Ninas ord', and in Scene 6 she repeats the exact template with 'Jeg husker kvindens ord'. Varying the narration slightly would make the storytelling feel less mechanical."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "5 and 6",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[High/Naive whole-week listener (no checklist)] Mismatched landmarks in directions (station vs. museum) — In Scene 5, the woman tells Maya to turn left at the station ('ved stationen'). However, in Scene 6, Maya remembers the woman's words as turning left at the museum ('ved museet') and does so. This breaks continuity and will confuse a learner who is actively trying to follow the directional vocabulary.",
+        "[High/Cross-scene continuity & consistency] Inconsistent landmarks in directions — In Scene 5, the woman tells Maya to return to the square ('torvet') and turn left by the station ('stationen'). However, in Scene 6, Maya returns to the square ('pladsen'), remembers the woman's directions, and turns left at the museum ('museet'). Scene 5's dialogue must use 'pladsen' and 'museet' so the directions logically match Maya's execution in Scene 6.",
+        "[High/Cross-scene continuity & consistency] Inconsistent landmark in directions (Station vs. Museum) — In Scene 5, the young woman tells Maya to turn left 'ved stationen' (by the station). However, in Scene 6, Maya remembers the woman's words simply as 'turn left' and executes the turn 'ved museet' (at the museum), with no station ever appearing. This breaks continuity and will confuse learners trying to follow the spatial logic."
+      ]
+    }
+  ],
+  "revised": []
+}

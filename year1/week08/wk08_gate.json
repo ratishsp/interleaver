@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Repetition & monotony",
+    "scene": "week",
+    "issue": "Severe structural monotony (relentless 'Jeg [verb]' sentence starts)",
+    "severity": "High",
+    "why": "Across all 8 scenes, almost every single line of narration begins with 'Jeg går...', 'Jeg ser...', or 'Jeg kigger...'. While A1 sentences should be simple, the near-total lack of basic variation (like starting sentences with 'Nu', 'Her', or 'Så' to trigger inversion) makes the narrator's voice sound incredibly robotic and repetitive for a listener sitting through the week.",
+    "advisory": false
+  },
+  {
+    "lens": "Cross-scene continuity & consistency",
+    "scene": "8",
+    "issue": "Spatial contradiction with the park and bakery",
+    "severity": "Med",
+    "why": "In Scene 2 (outbound), Maya turns at the park and THEN passes the bakery. In Scene 8 (inbound retracing her steps home), she should pass the bakery BEFORE turning back at the park. Scene 8 has her turn at the park and then pass the bakery, which spatially places the bakery on her home street, contradicting Scene 2.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive whole-week listener (no checklist)",
+    "scene": "week",
+    "issue": "Extreme monotony of 'Jeg går...' as a sentence starter",
+    "severity": "Med",
+    "why": "While 'gå' is the grammatical focus, starting over 20 sentences across the 8 scenes with 'Jeg går [preposition/direction]' creates a highly robotic rhythm. Varying the sentence structure slightly (e.g., 'Bagefter går jeg...', 'Vejen går...') would ease the fatigue when listening to the whole week.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive whole-week listener (no checklist)",
+    "scene": "5",
+    "issue": "Confusing synonym swap for the main landmark (plads vs. torv)",
+    "severity": "Med",
+    "why": "Scenes 3, 4, and 6 consistently refer to the central square as 'pladsen'. In Scene 5, the dog walker suddenly tells Maya to go back to 'torvet'. For an A1 learner trying to map out the directions, swapping nouns for the exact same location mid-route is confusing.",
+    "advisory": true
+  },
+  {
+    "lens": "Cross-scene continuity & consistency",
+    "scene": "5",
+    "issue": "Inconsistent vocabulary for the square",
+    "severity": "Low",
+    "why": "In scenes 3, 4, and 6, the square is consistently called 'plads'/'pladsen'. In scene 5, the dog walker and Maya suddenly refer to it as 'torvet'. For an A1 learner, it is best to stick to a single term for a specific landmark across scenes.",
+    "advisory": false
+  }
+]

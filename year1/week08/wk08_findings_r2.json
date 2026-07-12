@@ -1,0 +1,34 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Unearned navigation skills / continuity jump.",
+    "severity": "High",
+    "why": "In scene 4, Maya takes 'two random turns' and gets completely lost and disoriented. It feels very weird and jarring that she can magically retrace her steps and walk all the way home confidently without asking for directions just a couple of hours later.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Lexical ambiguity with the word 'right'.",
+    "severity": "Med",
+    "why": "The phrase 'turns the right corners' is confusing. In a week heavily focused on the directions 'left' and 'right', it's unclear if this means she is physically turning right, or if 'right' just means 'correct'. This will translate awkwardly.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Slightly repetitive directional instructions.",
+    "severity": "Low",
+    "why": "The dog walker's instruction ('Go straight to the end... and then turn right') is almost identical to Nina's instruction in scene 1 ('Go straight ahead, and turn right'). Mixing up the landmark or the direction here would make the drill feel a bit fresher.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "5",
+    "issue": "Repetitive directional instructions between scenes 1 and 5.",
+    "severity": "Low",
+    "why": "The dog walker in Scene 5 gives Maya the exact same core instruction ('go straight... and turn right') that Nina gave in Scene 1. Varying the dog walker's directions (e.g., to 'turn left' or 'cross the street') would provide slightly more variety when drilling the target grammar.",
+    "advisory": false
+  }
+]

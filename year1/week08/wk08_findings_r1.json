@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Generic filler lacking concrete texture",
+    "severity": "Med",
+    "why": "Phrases like 'enjoys the fresh air' and 'beautiful architecture' are vague and generic. Give the walk real texture by replacing these with concrete A1 nouns, such as watching bicycles speed by or smelling coffee from a café.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "\"Completely lost\" feels like an overreaction to making one wrong turn.",
+    "severity": "Med",
+    "why": "Since she just turned left too early off a main square, she could logically just turn around and walk back to the square. Feeling \"completely lost\" and needing to ask a stranger for a whole new route feels artificial.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3-5",
+    "issue": "Contradictory directions create spatial confusion.",
+    "severity": "Med",
+    "why": "In Scene 3, the old man at the square tells Maya to 'walk past the museum and turn left' to reach the harbour. When she gets lost and asks the dog walker in Scene 5, she is told to 'go back to the square, cross the street, and go straight ahead'. This contradicts the old man's directions and muddles the spatial logic. The dog walker should either guide her back to the museum to complete the old man's route, or give a correction that doesn't contradict the earlier layout.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Internal/summary conclusion rather than active scene",
+    "severity": "Low",
+    "why": "'Feels happy that she can finally picture the city map in her head' is a purely internal realization. Anchor her new confidence in the city with a concrete action or sight, like recognizing the bakery near her own street or spotting her building's front door.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Contradictory action regarding turning \"too early\".",
+    "severity": "Low",
+    "why": "The man in Scene 3 told her to walk past the museum. If she \"walks past a large building\" but turns \"too early\", the sequence of events is confusing. Usually, turning too early means you haven't passed the landmark yet.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The ping-pong structure between getting directions and walking is very predictable.",
+    "severity": "Low",
+    "why": "The scenes strictly alternate: get directions (1), walk (2), get directions (3), walk (4), get directions (5), walk (6). It feels slightly mechanical, like a grammar drill, rather than a fluid weekend stroll.",
+    "advisory": true
+  }
+]

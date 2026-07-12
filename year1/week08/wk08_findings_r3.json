@@ -1,0 +1,34 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Robotic 'instruction-then-execution' repetition",
+    "severity": "Med",
+    "why": "The narrative structure repeats itself closely: in Scene 1 she gets directions and in Scene 2 the narrative describes her executing those exact verbs. Then in Scene 5 she gets directions, and Scene 6 repeats the exact actions again. While good for vocabulary reinforcement, as a listener it feels a bit like a textbook drill ('Turn left' -> 'She turns left') rather than a natural story flow.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "8",
+    "issue": "Spatial logic contradiction",
+    "severity": "Med",
+    "why": "In scenes 1-4, Maya's route establishes that the park is inland (she passes it, then a square, then a museum, before finally reaching the water). In scene 8, she 'follows the road along the water' to find the park from the morning, which contradicts the geography since the water and the park are far apart.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "05",
+    "issue": "Slightly confusing spatial sequence in the directions",
+    "severity": "Low",
+    "why": "The older man says the museum is just past the square. When Maya is lost further down the street, the dog walker tells her to 'go straight back to the square, and turn left by the museum'. Since the museum is between her and the square, getting to the square means she has already passed the museum. It's a minor cognitive bump for a learner trying to visualize the map.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Redundant scene-shape / Over-repetition",
+    "severity": "Low",
+    "why": "Scenes 2 and 6 repeat the exact step-by-step directions given in the immediately preceding scenes almost word-for-word (e.g., 'turn left at the park' -> 'turns left at the park'). While repetition aids language learning, doing this back-to-back multiple times feels narratively redundant; the action scenes could instead just describe the walk and the sights without repeating the navigation commands verbatim.",
+    "advisory": false
+  }
+]

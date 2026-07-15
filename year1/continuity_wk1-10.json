@@ -1,0 +1,12 @@
+[
+  {
+    "category": "other",
+    "lens": "Anything else (open — no checklist)",
+    "severity": "Low",
+    "fact_quote": "I put the mugs in the cupboard.",
+    "location": "Week 4 · Scene 4",
+    "contradiction_quote": "The cupboard is also empty.",
+    "contradiction_location": "Week 5 · Scene 1",
+    "why": "In Week 4, Maya unpacks her favorite mugs and stores them in the kitchen cupboard. In Week 5, when searching for food, she states the cupboard is completely empty (though functionally she means it is empty of food)."
+  }
+]

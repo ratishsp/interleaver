@@ -21,8 +21,14 @@ from tandem.gen import parse_storyboard
 EN_VOICE = "en-US-Chirp3-HD-Sulafat"
 INNER = AudioSegment.silent(duration=700)    # Sanskrit -> English gap
 OUTER = AudioSegment.silent(duration=1100)   # between lines (A1 breathing room)
+TARGET_DBFS = -18.0    # the parler Sanskrit wavs come out quieter than Google's English;
+                       # normalise both to one loudness so the ear doesn't lurch between them
 
 _client = tts.TextToSpeechClient()
+
+
+def _norm(seg: AudioSegment) -> AudioSegment:
+    return seg if seg.dBFS == float("-inf") else seg.apply_gain(TARGET_DBFS - seg.dBFS)
 
 
 def synth_en(text: str) -> AudioSegment:
@@ -55,7 +61,7 @@ def main() -> int:
             if not sa_wav.exists():
                 print(f"  [warn] {stem} line {i}: missing sa wav — skipped")
                 continue
-            scene += AudioSegment.from_wav(sa_wav) + INNER + synth_en(en) + OUTER
+            scene += _norm(AudioSegment.from_wav(sa_wav)) + INNER + _norm(synth_en(en)) + OUTER
             n_lines += 1
         scene.export(str(weekdir / f"{stem}_saen.mp3"), format="mp3")
         full += scene

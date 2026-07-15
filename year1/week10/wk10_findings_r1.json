@@ -1,0 +1,18 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Giving up on buying a coat so quickly",
+    "severity": "Low",
+    "why": "Since the premise is that she's freezing and desperately needs a winter coat, it feels slightly illogical that she tries exactly one coat, finds they lack her size, and immediately abandons the idea of buying a coat altogether. As a listener, I wondered why she didn't just look for a different style of coat on the next rack.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Stuffing a thick sweater under a thin jacket",
+    "severity": "Low",
+    "why": "It's a minor logistical detail, but putting a 'thick' sweater under the thin jacket she was already wearing paints a funny mental picture of her looking stuffed or being unable to zip the jacket. Saying she puts the jacket on *over* the sweater, or just leaves the jacket open, might feel more natural.",
+    "advisory": true
+  }
+]

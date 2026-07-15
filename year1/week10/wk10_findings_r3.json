@@ -1,0 +1,90 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "8",
+    "issue": "Breach of curriculum brief constraint.",
+    "severity": "High",
+    "why": "The brief explicitly specifies that the week should be 'Solo — Maya and the shop assistant', but this scene introduces a video call with her family members (Sofía and Diego).",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Missing the 'asking for a different size' brief requirement; micro-sliced action.",
+    "severity": "High",
+    "why": "The curriculum brief explicitly requests 'asking for a different size', but Maya never asks the assistant for one—she just puts her old clothes back on and finds a new jacket herself. This also stretches the fitting room logistics thinly across Scenes 3 and 4; instead, she could step out of the fitting room to ask the assistant for a larger size, consolidating the action and fulfilling the brief.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Major time zone contradiction for the family call.",
+    "severity": "High",
+    "why": "Scene 6 establishes that she is out for a walk on Saturday morning. Mexico is 7 hours behind Denmark, meaning she is enthusiastically video calling her siblings at 2 or 3 AM their time.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "8",
+    "issue": "Time zone and setting logic gap.",
+    "severity": "High",
+    "why": "Scene 6 establishes this walk is on a Saturday morning. Copenhagen is 7 hours ahead of Mexico, meaning her family would be asleep in the middle of the night. Furthermore, sitting still on a freezing park bench is an impractical way to hold a video call in midwinter.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Maya never asks for a different size.",
+    "severity": "Med",
+    "why": "The curriculum brief explicitly specifies 'asking for a different size', but Maya simply walks back to the shop floor and finds a new jacket herself. This misses the intended grammar/vocab prompt.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Video calling from a freezing park bench with thick gloves.",
+    "severity": "Med",
+    "why": "Sitting still on a cold bench in midwinter is freezing, and it's practically impossible to operate a smartphone screen while wearing the thick wool gloves she just bought.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "Illogical action for trying on a coat.",
+    "severity": "Med",
+    "why": "The scene states Maya 'puts her own clothes back on' after trying on the blue coat. Winter coats are tried on over regular clothes, so she wouldn't need to get dressed again, only put her thin jacket back on.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "3",
+    "issue": "Missing curriculum brief requirement: asking for a different size.",
+    "severity": "Med",
+    "why": "The brief explicitly requests that Maya is 'asking for a different size' to practice that specific phrasing. In the current storyboard, she simply discards the small coat in the cubicle and finds a different jacket herself.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "3",
+    "issue": "Unrealistic store etiquette.",
+    "severity": "Low",
+    "why": "In Denmark, it is considered rude to leave unwanted clothes behind inside the fitting room cubicle. Customers are generally expected to bring them out and hang them on a designated return rack or hand them back to the assistant.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Maya leaves the rejected coat in the fitting room cubicle.",
+    "severity": "Low",
+    "why": "It makes our protagonist seem a bit rude or lazy to just abandon clothes in the dressing room. Handing it back to the assistant would be more polite and create a natural moment for interaction.",
+    "advisory": true
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "8",
+    "issue": "Deviation from the brief's cast constraint.",
+    "severity": "Low",
+    "why": "The curriculum brief specifies the week's cast as 'Solo — Maya and the shop assistant.' Introducing the family video call with Sofía and Diego drifts slightly from this scoping, although it does function well as a thematic payoff.",
+    "advisory": false
+  }
+]

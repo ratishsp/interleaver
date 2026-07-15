@@ -1,0 +1,82 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Micro-sliced situation stretching one 20-minute shopping trip across seven scenes.",
+    "severity": "High",
+    "why": "Scenes 2-8 slice a single visit to a shop into tiny standalone steps (entering, fitting room, coat rack, jacket rack, accessories, register, exiting). Condense the shopping trip into 3-4 denser scenes to free up the rest of the week for distinct situations, such as her actually enjoying a freezing weekend walk in her new gear.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Misses the specific brief requirement 'one that doesn't fit so she leaves it'.",
+    "severity": "Med",
+    "why": "The brief explicitly asks for a garment left behind because of its fit. Here, the coat is left behind because it is too expensive (and the tight sweater in scene 3 is swapped, not left). Adjusting this will hit the spec exactly and can help combine the trying-on scenes.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Static object inventory lacking a complete activity.",
+    "severity": "Med",
+    "why": "Picking up a scarf and gloves on the way to the register does not contain enough beginning-to-end movement for a standalone scene. It should be folded into the final purchasing action to create a denser, more active vignette.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Heavy clustering of large transaction numbers in the second half.",
+    "severity": "Med",
+    "why": "Danish numbers are notoriously difficult for beginners. Hearing 'two thousand', 'eight hundred', and 'one thousand three hundred' spelled out in scenes 4, 5, and 7 feels a bit like a sudden math drill.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Maya walks around the shop wearing unpaid merchandise.",
+    "severity": "Med",
+    "why": "She puts the green jacket on 'over her new sweater'. It feels slightly unnatural and awkward that she left the fitting room and is browsing the shop floor still wearing a sweater she hasn't bought yet.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Maya abandons her original clothes and belongings in the fitting room.",
+    "severity": "Med",
+    "why": "In Scene 4, Maya steps out of the fitting room wearing the unpurchased sweater to look at outerwear, and then proceeds directly to the accessories and the register. She never returns to the fitting room to retrieve her original shirt, her thin Mexican jacket, or her bag/wallet (which she would need in order to pay).",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "The prices are unrealistically low for Copenhagen.",
+    "severity": "Low",
+    "why": "If the jacket alone is 800 kr, getting a thick winter sweater, a wool scarf, and winter gloves for the remaining 500 kr total breaks the immersion of Denmark's notoriously high cost of living.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "The Mexican jacket from Scene 1 vanishes.",
+    "severity": "Low",
+    "why": "She walks out wearing all her new gear, which is a great emotional payoff, but my attention drifted wondering what she did with the old jacket she wore into the store. Did the shop assistant put it in a bag?",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Unresolved 'pile of clothes'.",
+    "severity": "Low",
+    "why": "Maya takes a 'pile of clothes' into the fitting room, but the narrative only mentions her trying on one red sweater. The rest of the pile is unaccounted for.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "5",
+    "issue": "Premature ownership of the sweater.",
+    "severity": "Low",
+    "why": "The text says Maya puts the jacket on over 'her new sweater'. Since she doesn't actually buy the sweater until Scene 7, it is still the shop's property at this point.",
+    "advisory": false
+  }
+]

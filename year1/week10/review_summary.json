@@ -1,0 +1,30 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [],
+  "scene_survivors": [
+    {
+      "scene": "7",
+      "votes": 3,
+      "severity": "Med",
+      "issues": [
+        "[Low/Naive whole-week listener (no checklist)] Re-introducing the shop assistant with 'En ekspedient står bag kassen'. — Maya has been continuously interacting with the assistant ('ekspedienten') in almost every scene prior. Using the indefinite 'En ekspedient' and repeating the exact sentence from Scene 2 makes it feel like she's meeting a new person or the story reset, momentarily breaking the otherwise excellent continuity.",
+        "[Low/Naive whole-week listener (no checklist)] The shop assistant is introduced with the indefinite article ('En ekspedient') as if she is a new character. — Maya has been interacting with 'the' shop assistant throughout scenes 2, 4, 5, and 6. Re-introducing her as 'A shop assistant' at the register feels like a slight narrative reset, rather than continuing the established interaction.",
+        "[Med/Repetition & monotony] Re-introduction of the shop assistant with the exact phrase from Scene 2. — The line 'En ekspedient står bag kassen' is a verbatim repeat of the staging from Scene 2. More importantly, using the indefinite 'En' jarringly resets the character, ignoring the fact that Maya has just been interacting with 'ekspedienten' (definite) in scenes 4, 5, and 6.",
+        "[Med/Naive whole-week listener (no checklist)] Re-introducing the shop assistant as a stranger — The text states 'En ekspedient står bag kassen' (A shop assistant stands behind the counter), repeating the exact introductory phrase from Scene 2. Because Maya has been actively interacting with her throughout the shop (Scenes 4, 5, and 6), reverting to the indefinite 'En ekspedient' feels like a continuity reset rather than a continuous narrative; it should be 'Ekspedienten' (The shop assistant)."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "7",
+      "stem": "07_paying_for_the_clothes",
+      "votes": 3,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 20,
+      "n1": 20
+    }
+  ]
+}

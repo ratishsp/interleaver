@@ -17,7 +17,7 @@ year1/**/audio_slow/
 year1/**/verify_summary.json
 
 # Provenance traces (TANDEM_TRACE) — kept local, published via a separate repo, not here
-trace.jsonl
+trace*.jsonl
 *.trace.jsonl
 
 # Logs

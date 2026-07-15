@@ -50,6 +50,9 @@ _ap.add_argument("--workers", type=int, default=4,
 _ap.add_argument("--location", default="global",
                  help="Vertex location (default 'global' — required for gemini-3.1-pro, used for both "
                       "generation and the verify judge)")
+_ap.add_argument("--model", default="gemini-3.1-pro-preview",
+                 help="model for BOTH generate/revise and the verify self-check (default "
+                      "gemini-3.1-pro-preview; e.g. gemini-3.5-flash when the preview pool is starved)")
 _args = _ap.parse_args()
 os.environ["GOOGLE_CLOUD_LOCATION"] = _args.location   # gen + verify (both gemini-3.1-pro) run in global
 STORYBOARD = _args.storyboard
@@ -61,9 +64,9 @@ LEVEL = _SPEC["level"]
 GRAMMAR = _SPEC["grammar"]
 BRIEF = curriculum_row(WEEK)["brief"]      # the generator ELABORATES, so the week's prohibitions must reach IT
 
-GEN_MODEL = "gemini-3.1-pro-preview"      # gen + revise on the strongest model — best first drafts, fewest
+GEN_MODEL = _args.model                   # gen + revise on the strongest model — best first drafts, fewest
                                           # hand-fixes (user choice 2026-06-27). Needs location='global'.
-VERIFY_MODEL = "gemini-3.1-pro-preview"   # same model as the generator now, so per-scene verify is a
+VERIFY_MODEL = _args.model                # same model as the generator now, so per-scene verify is a
                                           # SELF-CHECK, not an independent audit. The real independent
                                           # checks are the human read-through + the whole-week gate
                                           # (review_week.py) — lean on those, since a model is weakest at

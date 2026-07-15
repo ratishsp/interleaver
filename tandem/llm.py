@@ -8,8 +8,29 @@ from __future__ import annotations
 import json
 import os
 import threading
+import time
 
 _TRACE_LOCK = threading.Lock()          # the judge panels call the model from a thread pool
+
+_THROTTLE_LOCK = threading.Lock()       # serialize call STARTS to smooth traffic (DSQ mitigation)
+_next_call_at = [0.0]                    # monotonic time the next call is allowed to start
+
+
+def throttle() -> None:
+    """Space model-call STARTS at least $TANDEM_MIN_INTERVAL seconds apart, process-wide.
+
+    Google's first remedy for dynamic-shared-quota 429s is to smooth traffic and avoid spikes. The
+    pipeline fires calls in parallel (5 gate lenses at once, 4 scenes at once), so a per-thread sleep
+    would not smooth anything — all threads sleep, then burst. Holding one lock across the wait paces
+    every call start evenly, whatever the thread count. Default 0 = off (unchanged behaviour)."""
+    delay = float(os.environ.get("TANDEM_MIN_INTERVAL", "0") or 0)
+    if delay <= 0:
+        return
+    with _THROTTLE_LOCK:
+        wait = _next_call_at[0] - time.monotonic()
+        if wait > 0:
+            time.sleep(wait)
+        _next_call_at[0] = time.monotonic() + delay
 
 
 def trace(stage: str, model: str, prompt: str, response) -> None:
@@ -105,6 +126,7 @@ def _json_call(client, model: str, prompt: str, *, retries: int = 1, stage: str 
 
     last = ""
     for _ in range(retries + 1):
+        throttle()
         resp = client.models.generate_content(
             model=model,
             contents=prompt,

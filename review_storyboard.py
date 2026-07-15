@@ -36,7 +36,7 @@ import os
 import re
 from pathlib import Path
 
-from tandem.llm import make_client, trace
+from tandem.llm import make_client, trace, throttle
 from tandem.gen import (
     DEFAULT_MODEL,
     parse_storyboard,
@@ -203,6 +203,7 @@ def _call_findings(client, model: str, prompt: str, stage: str = "") -> list[dic
     """
     from google.genai import types
 
+    throttle()
     resp = client.models.generate_content(
         model=model, contents=prompt,
         config=types.GenerateContentConfig(response_mime_type="application/json"),

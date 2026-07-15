@@ -218,11 +218,18 @@ def run_fix(client, model, args, *, hdr, rows, bible, curric):
         print("\n  whole-week issues (agreed on, but not scene-local — handle by hand / regen):")
         for w in weekly:
             print(f"    [{w['severity']}] {w['votes']}/{args.votes} votes — {w['issues'][0]}")
-    by_num = {str(r["num"]): r for r in rows}
+    # The judge labels a survivor by NUMBER ("5"), zero-padded ("05"), or STEM
+    # ("05_buying_warm_socks") — accept all three, and never drop a survivor silently (a stem-labeled
+    # 3-vote fix once vanished here because the index was number-only).
+    index = {}
+    for r in rows:
+        index[str(r["num"])] = index[f"{r['num']:02d}"] = index[r["stem"]] = r
     results = []
     for s in scenes:
-        row = by_num.get(s["scene"])
+        sid = str(s["scene"]).strip()
+        row = index.get(sid) or next((r for r in rows if r["stem"] in sid or sid in r["stem"]), None)
         if not row:
+            print(f"  ⚠ survivor '{s['scene']}' {s['votes']}/{args.votes} matched no scene — SKIPPED (fix lost)")
             continue
         res = apply_fix(client, model, row, level=hdr["level"], grammar=hdr["grammar"],
                         wdir=wdir, issues=s["issues"], bible=bible)

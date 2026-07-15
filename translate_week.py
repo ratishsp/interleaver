@@ -19,7 +19,8 @@ from tandem.llm import make_client
 from tandem.translate import translate_lines
 from verify_translation import check_scene_lang
 
-LANG_NAMES = {"ml": "Malayalam", "ta": "Tamil", "es": "Spanish", "hi": "Hindi", "fr": "French"}
+LANG_NAMES = {"ml": "Malayalam", "ta": "Tamil", "es": "Spanish", "hi": "Hindi", "fr": "French",
+              "sa": "Sanskrit"}
 
 
 def _lines(path: Path) -> list[str]:

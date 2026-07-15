@@ -112,6 +112,44 @@ def _parse_json_object(text: str) -> dict | None:
     return None
 
 
+_TRANSIENT_STATUS = {429, 500, 502, 503, 504}     # capacity + momentary upstream/gateway errors
+
+
+def _is_transient(exc) -> bool:
+    """A retryable server-side blip: 429 (RESOURCE_EXHAUSTED) or a 5xx (502 Bad Gateway etc.).
+
+    These are not our bug and not a permanent state — Google's own remedy is backoff-and-retry.
+    They spike on concurrent bursts (the 5 gate lenses, the parallel scenes) and over a proxied
+    egress; a single one used to fail a whole gate lens or scene."""
+    code = getattr(exc, "code", None)
+    if isinstance(code, int) and code in _TRANSIENT_STATUS:
+        return True
+    s = str(exc)
+    return any(t in s for t in ("RESOURCE_EXHAUSTED", "Bad Gateway", "Service Unavailable",
+                                "Internal error", "502", "503", "504"))
+
+
+def generate_retrying(client, model: str, prompt: str, config, *, tries: int = 5):
+    """throttle()d generate_content that backs off and retries transient 429/5xx.
+
+    Distinct from _json_call's parse-retry: this catches the HTTP-level blip BEFORE a response
+    exists. Backoff is 1,2,4,8s (capped), which clears the 'try again in 30 seconds' 502s and the
+    burst 429s without a human re-running the whole cycle."""
+    import time
+    last = None
+    for attempt in range(tries):
+        throttle()
+        try:
+            return client.models.generate_content(model=model, contents=prompt, config=config)
+        except Exception as exc:                       # noqa: BLE001 — re-raised unless transient
+            last = exc
+            if attempt < tries - 1 and _is_transient(exc):
+                time.sleep(min(2 ** attempt, 16))
+                continue
+            raise
+    raise last
+
+
 def _json_call(client, model: str, prompt: str, *, retries: int = 1, stage: str = "") -> dict:
     """Call the model forcing a JSON object response and parse it (salvage + one retry).
 
@@ -124,14 +162,10 @@ def _json_call(client, model: str, prompt: str, *, retries: int = 1, stage: str 
     """
     from google.genai import types
 
+    cfg = types.GenerateContentConfig(response_mime_type="application/json")
     last = ""
     for _ in range(retries + 1):
-        throttle()
-        resp = client.models.generate_content(
-            model=model,
-            contents=prompt,
-            config=types.GenerateContentConfig(response_mime_type="application/json"),
-        )
+        resp = generate_retrying(client, model, prompt, cfg)
         last = (resp.text or "").strip()
         parsed = _parse_json_object(last)
         if parsed is not None:

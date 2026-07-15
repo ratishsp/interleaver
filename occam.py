@@ -82,10 +82,15 @@ def curriculum_row(week: int) -> dict:
     raise SystemExit(f"week {week} not found in {CURRICULUM}")
 
 
-def standing_rules() -> str:
-    """The rules gen_storyboard already gives the model — the brief must not repeat these."""
+def standing_rules(row: dict) -> str:
+    """The rules gen_storyboard already gives the model — the brief must not repeat these. Read
+    from source, so render the f-string placeholders the generator fills at runtime (e.g. the level);
+    an unrendered {row['level']} would show occam a false copy of the generator's actual prompt."""
     src = Path("gen_storyboard.py").read_text(encoding="utf-8")
-    return src.split("Rules:\n", 1)[1].split('\n\nReturn JSON', 1)[0] if "Rules:\n" in src else ""
+    if "Rules:\n" not in src:
+        return ""
+    block = src.split("Rules:\n", 1)[1].split('\n\nReturn JSON', 1)[0]
+    return block.replace("{row['level']}", row["level"])
 
 
 def build_prompt(kind: str, subject: str, extra: str = "") -> str:
@@ -131,7 +136,7 @@ def main() -> int:
                    f"Theme: {row['theme']}\n"
                    f"Grammar focus: {row['grammar']}\n"
                    f"Brief: {row['brief']}")
-        extra = f"THE GENERATOR'S STANDING RULES (already in its prompt):\n{standing_rules()}"
+        extra = f"THE GENERATOR'S STANDING RULES (already in its prompt):\n{standing_rules(row)}"
     elif a.mode == "diff":
         # default: the working diff. A ref judges past commits; "cached" judges what is STAGED (the hook).
         ref = "--cached" if a.target == "cached" else (a.target or "HEAD")

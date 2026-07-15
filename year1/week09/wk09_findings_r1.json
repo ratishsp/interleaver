@@ -1,0 +1,66 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Logic/math error regarding the exact change.",
+    "severity": "High",
+    "why": "Maya receives 25 kroner in change in Scene 6, but Scene 7 states she uses these \"new coins\" to pay \"exact change\" for a coffee that costs 30 kroner.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "07_exact_change_for_coffee",
+    "issue": "Maya pays 30 kroner using the 25 kroner change she just received.",
+    "severity": "High",
+    "why": "In scene 6, a big point is made about her receiving exactly 25 kroner in change and putting it in her pocket. Here she uses those 'new coins' to pay exactly 30 kroner. As a listener trying to follow the numbers, this immediately pulled me out of the story because the math doesn't add up.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Mathematical continuity error regarding the change from Scene 6.",
+    "severity": "High",
+    "why": "In Scene 6, Maya receives exactly 25 kroner in change, which she puts in her pocket. In Scene 7, the coffee costs 30 kroner and she supposedly pays 'exact change' using the 'new coins from her pocket'. She is 5 kroner short.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "7",
+    "issue": "Mathematical continuity error with the exact change.",
+    "severity": "Med",
+    "why": "Maya receives 25 kroner in change in scene 6, but scene 7 says she uses these 'new coins' to pay 'exact change' for a coffee that costs 30 kroner. Changing the coffee's price to 'femogtyve kroner' would fix the logic and create a satisfying payoff.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "5 and 6",
+    "issue": "Micro-sliced transaction.",
+    "severity": "Med",
+    "why": "Handing over the banknote (Scene 5) and receiving the goods and change (Scene 6) is a single, thin transaction stretched across two scenes. They should be combined to make room for another distinct market interaction.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Lacks a distinct action (static reflection).",
+    "severity": "Med",
+    "why": "The scene is mostly static wrap-up and restated feelings (\"watches the busy market\", \"knows how to ask for prices now\") rather than a vignette with its own concrete activity.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "06_the_change",
+    "issue": "One transaction is stretched across two full scenes.",
+    "severity": "Med",
+    "why": "Scene 5 has Maya hand over the money for the apples, and Scene 6 is just her receiving the apples and the change. This makes Scene 6 feel incredibly thin and stalls the momentum of her walking through the market.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "7",
+    "issue": "Mathematical inconsistency with exact change.",
+    "severity": "Med",
+    "why": "In scene 6, Maya receives exactly 25 kroner in change. In scene 7, she uses 'the new coins' to pay for a 30-kroner coffee with 'exact change'. To fix this and maximize number variety, consider making the apples cost 'tyve kroner' (so the change from her 'halvtreds kroner' note is 'tredive kroner'), matching the coffee price perfectly.",
+    "advisory": false
+  }
+]

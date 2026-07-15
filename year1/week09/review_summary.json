@@ -1,0 +1,24 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "Med",
+      "issues": [
+        "[Med/Repetition & monotony] Over-repetition of vendors smiling — In six out of the seven stall interactions, the vendor is described as smiling, with four scenes using the exact or near-exact phrase '[Sælgeren/Bageren] smiler til mig'. This makes the interactions feel like an identical template rather than varied natural encounters.",
+        "[Low/Repetition & monotony] Over-repetition of pointing at items — In four different scenes (2, 3, 6, and 8), Maya initiates the transaction by pointing at the goods ('Jeg peger på...'). While simple language is good for A1, repeating this specific micro-action so often across the stalls creates minor structural monotony.",
+        "[Med/Repetition & monotony] Constant refrain of vendors smiling. — In scenes 3, 4, 5, 6, 7, and 8, the vendor 'smiles at me' (e.g., 'Sælgeren smiler til mig', 'Bageren smiler til mig', 'Baristaen smiler'). This identical reaction across six different stalls creates a noticeably unnatural refrain.",
+        "[Low/Repetition & monotony] Identical dialogue tags for asking and answering prices. — Every transaction features the exact structure of '... spørger jeg' followed by '... svarer han/sælgeren'. While drilling the question 'Hvor meget koster...?' is pedagogically correct here, using the exact same dialogue tags for six scenes makes the exchanges feel like a robotic template.",
+        "[Med/Naive whole-week listener (no checklist)] Every single vendor smiles in almost exactly the same way. — In scenes 3, 4, 5, 6, 7, and 8, the text explicitly notes that the vendor/baker/barista smiles (usually 'smiler til mig'). Hearing this identical descriptive beat six scenes in a row feels robotic and draws attention to the template, rather than the story.",
+        "[Med/Repetition & monotony] Robotic repetition of vendors smiling before every answer. — In Scenes 3, 4, 5, 6, 7, and 8, almost every vendor reacts in the exact same way before giving the price ('Sælgeren smiler til mig', 'Bageren smiler til mig', 'Baristaen smiler'). While the transaction mechanics (coins, cards, weights) vary nicely per the brief, this identical character action makes the encounters feel like a copy-paste template.",
+        "[Med/Naive whole-week listener (no checklist)] Every single vendor smiles at Maya, often using the exact same phrasing. — Across scenes 3, 4, 5, 6, 7, and 8, the text explicitly notes that the vendor/baker/barista smiles (e.g., 'Sælgeren smiler til mig'). In a single listening session, this stands out as highly repetitive and makes the interactions feel a bit copy-pasted.",
+        "[Low/Naive whole-week listener (no checklist)] Overuse of 'Jeg peger på [item]' to indicate what she wants. — In scenes 2, 3, 6, and 8, Maya points at the item right before asking the price. While it is a natural action, repeating this specific physical gesture in half of the scenes feels slightly formulaic when heard back-to-back."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

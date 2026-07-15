@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "6",
+    "issue": "Order of payment operations and translation hazard for 'taps'.",
+    "severity": "Med",
+    "why": "Maya taps her card before the baker charges her, which reverses how card terminals physically work. Additionally, 'taps her payment card' is an English idiom for contactless payment that may translate awkwardly; 'pays contactlessly' or 'pays with her card' is more translation-robust.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Interrupted narrative payoff with the pocketed change.",
+    "severity": "Med",
+    "why": "Maya pockets exactly 30 kroner in coins in Scene 5 and uses them perfectly for coffee in Scene 7. Putting a completely unrelated card transaction (Scene 6) right between them awkwardly disrupts this satisfying little micro-continuity.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Extremely high density of unique numbers.",
+    "severity": "Med",
+    "why": "Across the 8 scenes, the learner has to process 10 distinct numbers (12, 20, 24, 30, 35, 40, 50, 55, 70, 200). Given the notorious difficulty of the Danish number system for beginners, this sheer barrage of different prices in a single lesson might cause cognitive overload.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "4",
+    "issue": "Lexical ambiguity / translation hazard.",
+    "severity": "Low",
+    "why": "The phrase 'too dear' is a primarily British/Commonwealth idiom for 'too expensive'. To ensure reliable n-way translation, using 'too expensive' is safer.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "1",
+    "issue": "Danish market realism.",
+    "severity": "Low",
+    "why": "Vendors broadly 'calling out their prices to the crowd' is characteristic of Southern European or British markets; Danish markets tend to be somewhat quieter, though shouting a closing offer does occasionally happen.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Description-heavy and static scene.",
+    "severity": "Low",
+    "why": "The scene is mostly an inventory of the setting (cold morning, inviting stalls) and observation, lacking a complete mini-task or active sequence. Giving Maya a small, concrete action to perform upon arrival (like checking a shopping list or organizing her bags) would add movement and prevent it from being just a static description.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Payment action occurs before the vendor rings up the price.",
+    "severity": "Low",
+    "why": "Maya points to the bread and immediately 'taps her payment card' before the baker actually charges her. Logically, the baker must ring up the price on the terminal before a customer can tap to pay.",
+    "advisory": false
+  }
+]

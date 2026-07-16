@@ -38,7 +38,7 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 21 | A2 | Buying clothes | Comparatives *større/mindre*; *prøve*; sizes | Shopping and returns |
 | 22 | A2 | Cooking & local food | Imperative sequences; quantities; *først/så/derefter* | Trying local recipes for new friends |
 | 23 | A2 | Making plans & friends | Future *skal/vil*; *har tænkt mig at*; *synes/tror/føler at* + subordinate *at* word order | Invited to a colleague's home for the first time |
-| 24 | A2 | Looking after Nina's dog | Imperatives + object pronouns *den/ham/hende*; *skal/må* (rules) | Nina is away for a weekend, so Maya dog-sits — park walks |
+| 24 | A2 | Looking after Nina's dog | Imperatives + object pronouns *den/ham/hende*; *skal/må* (rules) | Nina is away for a weekend, so Maya dog-sits Nina's dog Ludwig — park walks |
 | 25 | A2 | A Sunday in the city | Demonstratives *denne/dette/disse*; *for … siden* (ago); time adverbs | A slow weekend Sunday — a second-hand market, a museum, some downtime |
 | 26 | A2 | Danish summer & traditions | Perfect tense; customs (*Sankt Hans*, *sommerferie*, *fødselsdag*) | Her first Danish summer — *Sankt Hans* bonfires and a birthday |
 | 27 | A2 | Phones, internet & admin online | *pleje at*; instructions; passive *-s* + *blive* + participle | Navigating self-service government online |

@@ -8,6 +8,8 @@ locked. The continuity lens treats everything here as established truth: a new w
 - 31, from Mexico. A **software engineer** — she moved to Copenhagen in **January** because she landed
   a job at a software company here; the job is *why* she came. Gradually settling in.
 - First-person narrator throughout (her own voice).
+- **Commute**: she takes the **bus** to work (wk6/7). She owns a **bicycle** but rides it mostly at
+  weekends (wk7).
 
 ## Recurring cast
 - **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives in the same building. Kind, helpful.

@@ -1,0 +1,54 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] The phrase 'den anden side af byen' is used as a repetitive refrain. — The exact phrase appears in scenes 1, 2, 3, and 5 (e.g., 'Jeg skal til den anden side af byen i dag'). Restating her destination this many times creates a monotonous refrain across the first half of the week.",
+        "[Med/Repetition & monotony] Maya repeatedly recaps her immediate itinerary across the first three scenes. — Scene 1 clearly establishes the travel plan ('Først skal jeg med en bus... Så skal jeg køre med metroen'). Scenes 2 and 3 then unnecessarily recite this exact same sequence ('Jeg skal tage med bussen først. Bagefter skal jeg køre med metroen' / 'Først kører jeg med bus. Bagefter tager jeg metroen'), acting as repetitive summaries rather than advancing the action.",
+        "[Med/Repetition & monotony] The trip itinerary is recited almost verbatim across the first three scenes. — Scene 1 establishes the route to the other side of the city (bus, then metro, then boat). Scenes 2 and 3 then unnecessarily repeat 'I am going to the other side of the city today. First I take the bus, afterwards the metro.' This reads like a recap of the plot rather than natural progression, slowing down the story.",
+        "[Low/Repetition & monotony] Over-announcing the harbour bus across scenes 6, 7, and 8. — Maya states her upcoming transport repeatedly ('Min næste tur er med havnebussen' in Scene 6, 'Jeg skal med havnebussen' in Scene 7, 'Jeg skal med havnebussen nu' in Scene 8). While grammar repetition is good, stating the exact same intention in three consecutive scenes feels slightly monotonous.",
+        "[Med/Naive whole-week listener (no checklist)] Excessive recapping of the travel itinerary across scene transitions. — Because the learner listens in one sitting, ending a scene by stating the next step and starting the next scene by repeating it stalls the pacing. For example, Scene 2 ends with 'bus first, then metro' and Scene 3 immediately restates 'bus first, then metro'. Additionally, the phrase 'den anden side af byen' (the other side of the city) is repeated four times across the first five scenes.",
+        "[Low/Naive whole-week listener (no checklist)] Over-description of the travel card's color. — The travel card is explicitly described as 'blå' (blue) in almost every scene where it is used (Scenes 1, 2, 5, and 8). While repeating the noun 'rejsekort' is good for reinforcement, continuously reminding the listener that it is blue becomes slightly unnatural over the course of the week.",
+        "[High/Repetition & monotony] Constant verbatim restating of the travel itinerary and destination. — Scenes 1, 2, and 3 all repeat variations of 'Jeg skal til den anden side af byen i dag', 'Først skal jeg med bus', and 'Bagefter/så skal jeg køre med metroen'. The constant recapping of the exact same schedule across consecutive scenes stalls the pacing and feels robotic, rather than a natural narrative flow.",
+        "[Med/Naive whole-week listener (no checklist)] Excessive exact repetition of the itinerary and destination across consecutive scenes. — Scene 2 and Scene 3 both feature the exact same Danish line 'Jeg skal til den anden side af byen i dag.' Furthermore, Scene 2 ends by stating she will take the bus first and then the metro, and Scene 3 immediately repeats this exact sequence. While repetition is good for learning, doing it back-to-back without narrative advancement stalls the pacing."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "4",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[High/Cross-scene continuity & consistency] Maya says it is her first trip on the bus. — This contradicts the Story Bible, which explicitly establishes that Maya commutes to work by bus (weeks 6/7). While it might be her first time on this *specific* route, the phrasing 'min første tur med bussen' implies it is her first time taking a bus at all, breaking established character facts.",
+        "[High/Naive whole-week listener (no checklist)] Contradicts established continuity regarding Maya's commute. — Maya tells the older woman, 'Det er min første tur med bussen' (It is my first trip on the bus). However, the Story Bible explicitly states that Maya's regular commute to work is by bus, established in weeks 6 and 7. By week 14, she is an experienced bus rider."
+      ]
+    },
+    {
+      "scene": "Scene 4",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Naive whole-week listener (no checklist)] Artificial confusion contradicts Scene 1. — In Scene 1, Maya meticulously maps out her transit route on an app and confirms 'Det er en god plan'. However, in Scene 4 she is suddenly 'not completely sure about the route' just to force a dialogue with a passenger, which feels jarring and out of character.",
+        "[High/Cross-scene continuity & consistency] Contradiction regarding Maya's experience with buses. — Maya says 'Det er min første tur med bussen' (It is my first trip on the bus), but the Story Bible explicitly states her daily commute is by bus (established in weeks 6/7). It should be changed to 'med denne bus' (on this bus) or similar to refer to the specific route rather than buses in general.",
+        "[High/Cross-scene continuity & consistency] Contradiction regarding Maya's bus usage — Maya says 'Det er min første tur med bussen' (It is my first trip on the bus), but the Story Bible establishes in Weeks 6/7 that her regular commute to work is by bus. Changing the line to 'med denne bus' (on this bus route) would resolve the contradiction while maintaining the context of her being unsure about the route."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "4",
+      "stem": "04_asking_a_passenger",
+      "votes": 2,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 20,
+      "n1": 20
+    }
+  ]
+}

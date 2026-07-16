@@ -227,6 +227,8 @@ def run_fix(client, model, args, *, hdr, rows, bible, curric):
     results = []
     for s in scenes:
         sid = str(s["scene"]).strip()
+        if sid.lower().startswith("scene"):
+            sid = sid[5:].strip()                      # the judge sometimes labels 'Scene 4'
         row = index.get(sid) or next((r for r in rows if r["stem"] in sid or sid in r["stem"]), None)
         if not row:
             print(f"  ⚠ survivor '{s['scene']}' {s['votes']}/{args.votes} matched no scene — SKIPPED (fix lost)")

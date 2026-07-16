@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "2",
+    "issue": "Inaccurate physical interaction with Danish travel card machines",
+    "severity": "Med",
+    "why": "The Danish Rejsekort (travel card) is contactless, and the ticket vending machines do not have a slot to 'insert' the card. Instead, the card is placed in a plastic cradle or on a reader pad on the front panel. Using 'places' or 'rests' will ensure a physically accurate Danish verb (e.g., 'lægger') rather than an incorrect translation like 'indsætter'.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "10",
+    "issue": "Reliance on generic filler adjectives rather than concrete texture.",
+    "severity": "Med",
+    "why": "Phrases like 'friendly seller', 'happily collects', and 'beautiful' rob the scene of physical reality. Replace the generic emotions with concrete sensory details or actions, such as the seller handing over a heavy brass lamp and Maya carrying it away under her arm.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1",
+    "issue": "Unnatural motivation for the route.",
+    "severity": "Med",
+    "why": "Saying she \"plans a route with three different types of public transport\" sounds like a forced course requirement. It would feel more natural if the app simply suggests a route that happens to involve a bus, metro, and boat.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "9",
+    "issue": "Tapping out without ever tapping in.",
+    "severity": "Med",
+    "why": "Maya explicitly taps her travel card to finish her journey (checking out) here, but we never saw her tap in when she boarded the bus in scene 3. As a learner, this makes the transit system's rules feel inconsistent or confusing.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Missing 'check in' action on the travel card.",
+    "severity": "Med",
+    "why": "Maya tops up her travel card in Scene 2 and explicitly 'checks out' to end the journey in Scene 9, but she never actually checks in (taps her card) when boarding the bus in Scene 3. For a public transit-themed narrative, missing the initial check-in is a noticeable logic gap.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "9",
+    "issue": "Use of rare/formal synonym.",
+    "severity": "Low",
+    "why": "Using 'vessel' instead of 'boat' risks prompting the Danish generator to use a less common, higher-level noun (like 'fartøj') rather than sticking to everyday A1 vocabulary ('båd' or 'havnebus').",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "2",
+    "issue": "Implies a single city trip costs 200 kroner.",
+    "severity": "Low",
+    "why": "She tops up 200 kroner \"for the long journey,\" which makes it sound like this one trip costs that much—a confusingly high fare. It would be clearer if she just adds money so her balance is high enough before travelling.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "2",
+    "issue": "Slightly convoluted route logic regarding 'the station'.",
+    "severity": "Low",
+    "why": "Maya walks to a ticket machine at 'the station' (Scene 2) just to top up, but then waits at a bus 'stop' (Scene 3) to take a bus to a metro station (Scene 5). It feels a bit circular to walk to a station for a machine, leave to catch a bus, to travel to another station; it might flow better if she tops up via her app in Scene 1, or tops up when she reaches the metro in Scene 5.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "9",
+    "issue": "Travel card reader location on the harbour bus",
+    "severity": "Low",
+    "why": "In Copenhagen, the Rejsekort (travel card) readers for the harbour bus are located on the pier/pontoon, not on the boat itself. For local authenticity, it would be better if Maya tapped out on the pier after stepping off the vessel.",
+    "advisory": false
+  }
+]

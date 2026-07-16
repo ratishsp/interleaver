@@ -1,0 +1,66 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "09_checking_out",
+    "issue": "Card reader location on the pier vs. on the boat",
+    "severity": "Med",
+    "why": "In Copenhagen, the harbour buses (havnebusser) operate like regular yellow buses: the Rejsekort card readers for checking in and out are located on board the boat itself right by the doors, not on the pier/dock (which is how the Metro works). Maya should tap to check out just before stepping off the vessel.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Repetitive card-tapping mechanics.",
+    "severity": "Med",
+    "why": "Maya taps or scans her travel card in scenes 2, 3, 5, and 9. While very realistic to how the Danish transit system works, hearing the mechanics of tapping the card four separate times in one short story feels a bit repetitive and mechanical.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Contradictory/forced dialogue.",
+    "severity": "Med",
+    "why": "Maya just meticulously planned her route on a travel app in Scene 1, so it feels odd that she immediately asks a passenger if the bus goes to the metro. It makes it feel like the dialogue was forced in just to check a box rather than being a natural character action.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Over-repetition of the physical action of tapping the travel card.",
+    "severity": "Med",
+    "why": "Maya taps or scans her travel card in scenes 2, 3, 5, and 9. While procedurally accurate for public transit, having the protagonist perform the exact same physical action in four different scenes is narratively repetitive. One or two of these instances (like the transfer in Scene 5) could easily be omitted to focus more on the environment or the journey.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "9",
+    "issue": "Elevated/unnecessary vocabulary ('vessel', 'penalty fee').",
+    "severity": "Low",
+    "why": "Words like 'vessel' invite rare or technical translations (like 'fartøj') rather than the common A1 'boat' (båd). 'Penalty fee' (kontrolafgift/bøde) is also slightly bureaucratic for this level; she can simply remember to check out.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "10",
+    "issue": "Leans heavily on generic filler adjectives.",
+    "severity": "Low",
+    "why": "The scene relies on 'friendly', 'happily', and 'beautiful' to describe the resolution. Replacing these with a concrete detail—like the weight or material of the lamp (e.g., heavy brass), or the physical exchange of handing it over—would provide better texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "9",
+    "issue": "Oddly bureaucratic/negative focus.",
+    "severity": "Low",
+    "why": "Checking out 'to avoid a penalty fee' feels like a weirdly dry and bureaucratic note to end her scenic harbour trip on. It might also require clunky A1 vocabulary compared to just checking out to complete her journey.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "Slight logic gap: asking for route confirmation immediately after using a navigation app.",
+    "severity": "Low",
+    "why": "In Scene 1, Maya confidently plans her specific three-leg route using an app, making her question to the passenger in Scene 4 ('does this bus go to the metro?') feel a bit like an artificial excuse to speak. Framing it as Maya nervously double-checking her route, or asking if the passenger is *also* heading to the metro, would make the interaction feel more natural.",
+    "advisory": false
+  }
+]

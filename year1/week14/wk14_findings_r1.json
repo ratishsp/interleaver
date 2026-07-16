@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "9",
+    "issue": "Omission of checking out (check ud) at the end of the journey.",
+    "severity": "Med",
+    "why": "Using a Rejsekort (travel card) in Denmark strictly requires passengers to 'check out' at a card reader at the end of their trip to avoid a penalty fee. Including this step is vital for Danish transit realism.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Disproportionate journey for a mundane errand.",
+    "severity": "Med",
+    "why": "Taking a bus, a metro, AND a boat just to pick up a standard 'package' at a corner shop feels completely contrived. If the errand was something specific and unique (e.g., a specialty import, a second-hand marketplace purchase, or a specific niche shop), this epic 3-leg journey would feel earned rather than forced.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "2",
+    "issue": "Tapping the travel card on the screen.",
+    "severity": "Low",
+    "why": "On Danish Rejsekort vending machines, the card is placed into a designated physical blue reader/pocket below the display, rather than tapped on the touch screen itself.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "4",
+    "issue": "Ambiguous pronoun in 'if she travels'.",
+    "severity": "Low",
+    "why": "'Maya politely asks if she travels with this bus' is lexically ambiguous in English (does Maya mean herself, the older woman, or is she asking if the *bus* goes there?). Clarifying this will ensure the intended Danish translation is generated.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "06_riding_the_metro",
+    "issue": "Poetic/advanced verb phrase ('blur past')",
+    "severity": "Low",
+    "why": "Phrases like 'lights blur past' can force awkward or overly advanced translations at the A1 level. It is safer to use a simpler, concrete action like 'watching the lights pass by'.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "09_arriving_for_the_errand",
+    "issue": "Unnecessarily rare noun ('vessel')",
+    "severity": "Low",
+    "why": "Using 'vessel' instead of simply repeating 'boat' or 'ferry' pushes the vocabulary into less common/more formal territory, which should be avoided at the A1 level.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Contrived dialogue contradicting the earlier app usage.",
+    "severity": "Low",
+    "why": "Maya meticulously planned her route on a travel app in Scene 1. Having her ask a random passenger if the bus goes to the metro in Scene 4 makes it seem like she immediately forgot the route she just looked up, making the dialogue feel awkwardly forced in.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "2",
+    "issue": "Odd location for a physical ticket machine.",
+    "severity": "Low",
+    "why": "Maya finds a physical ticket machine 'nearby' before walking to a bus stop. Ticket machines are typically located at train or metro stations, not randomly on the street near bus stops, which makes the sequence feel slightly unnatural for a city transit system.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "Slight narrative redundancy between app planning and asking for directions.",
+    "severity": "Low",
+    "why": "Since Maya just planned her exact route on a travel app in Scene 1, asking a passenger if the bus goes to the metro station in Scene 4 feels slightly contradictory. The scene logic is tighter if framed as her double-checking to confirm she boarded the correct bus.",
+    "advisory": false
+  }
+]

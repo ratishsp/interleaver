@@ -1,0 +1,22 @@
+[
+  {
+    "category": "absolute_time",
+    "lens": "Absolute time / season",
+    "severity": "Med",
+    "fact_quote": "It is February now.",
+    "location": "Week 7 · Scene 1",
+    "contradiction_quote": "It is midwinter in Denmark.",
+    "contradiction_location": "Week 11 · Scene 1",
+    "why": "The weeks progress chronologically about one week apart. If Week 7 is February, Week 11 would take place in March, contradicting the assertion that it is 'midwinter' with extreme early-afternoon darkness."
+  },
+  {
+    "category": "other",
+    "lens": "Anything else (open — no checklist)",
+    "severity": "Low",
+    "fact_quote": "I put the mugs in the cupboard.",
+    "location": "Week 4 · Scene 4",
+    "contradiction_quote": "I look in the cupboard. The cupboard is also empty.",
+    "contradiction_location": "Week 5 · Scene 1",
+    "why": "In Week 4, Maya explicitly unpacks her mugs and places them in the kitchen cupboard. In the following week, she states the cupboard is empty (though contextually she means empty of food, the textual statement ignores the objects she just placed there)."
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Static information inventory (reading an app).",
+    "severity": "High",
+    "why": "Standing by a window to read an app's output does not constitute a vignette that moves (beginning→middle→end). The forecast check needs to be woven into a physical task, such as shivering while eating her breakfast oatmeal or making coffee as the wind rattles the glass.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Internal realization instead of physical activity.",
+    "severity": "Med",
+    "why": "\"Realizing the mornings are dark\" is a restated feeling and static observation rather than a moving scene. Ground the moment in a concrete action, like fumbling to turn on a bedside lamp because her body thinks it is the middle of the night.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Dusk vs. Pitch Black after work.",
+    "severity": "Med",
+    "why": "In Copenhagen midwinter, it is typically completely dark by 4:00 or 4:30 PM. If she works standard software engineer hours and leaves at 5:00 PM, dusk wouldn't be 'falling'—it would already be pitch black. Stepping out into complete night might feel more authentic to the Danish winter shock.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Illogical character reaction (surprise at early dusk).",
+    "severity": "Med",
+    "why": "Since Maya woke up to a pitch-black morning and has been living and working in Denmark for several weeks during winter, being 'surprised' that dusk falls early contradicts her established daily routine. It would make more sense for her to simply observe or resign herself to the early darkness.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Awkward phrasing 'near her software company'.",
+    "severity": "Low",
+    "why": "Saying she gets off the bus 'near her software company' sounds a bit stilted in English. Saying 'near her office' or 'near work' flows much better and is more natural for a beginner to translate.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Odd singular 'bathroom tile'.",
+    "severity": "Low",
+    "why": "Leaving the umbrella on the 'bathroom tile' reads awkwardly in the singular and could lead to strange translations. 'Bathroom floor' (badeværelsesgulv) is a much more natural A1 vocabulary target.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Unexplained wet gear (dripping umbrella and wet coat).",
+    "severity": "Low",
+    "why": "Scene 7 notes Maya's umbrella is 'dripping' and her coat is 'wet', but she was inside working all day and Scene 6 only mentions falling dusk on her walk to the evening bus. The narrative needs a brief mention in Scene 6 that it is still raining to explain why her gear is soaked again upon reaching her apartment.",
+    "advisory": false
+  }
+]

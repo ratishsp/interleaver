@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Reads as a static object inventory.",
+    "severity": "Med",
+    "why": "Listing 'thick red sweater, her blue scarf, and her warm black gloves' feels like a drilled vocabulary list. Give the scene more concrete action by focusing on the physical act of bundling up or wrapping the scarf tightly against the chilly hallway draft.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Thin activity relying on generic filler.",
+    "severity": "Med",
+    "why": "The vignette consists only of turning on a lamp and stating the room is 'cozy and inviting', which lacks concrete texture. It can be made into a moving scene by adding the physical transition of arriving indoors—such as peeling off her wet winter layers or hanging up the dripping umbrella—before seeking the lamplight.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Repetitive 'cold outside, warm inside' emotional beat.",
+    "severity": "Med",
+    "why": "In scenes 4, 6, and 9, the scene resolves with Maya reflecting on how bad the weather is outside compared to how warm and safe she feels inside (or in her clothes). Hitting this exact same contrast three times makes the narrative feel a bit stuck on one note.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Maya seems oddly surprised by winter for someone in Week 11.",
+    "severity": "Low",
+    "why": "In Scene 1 she 'realizes' the mornings are incredibly dark, and in Scene 7 she is 'surprised' by the early dusk. While it makes sense she's still adjusting as an expat, treating these as brand new revelations feels slightly naive for someone who has been commuting in this weather for weeks.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Illogical character reaction (surprise at the early dusk).",
+    "severity": "Low",
+    "why": "Maya is 'surprised to see that dusk is already falling.' However, she woke up in pitch blackness that morning (Scene 1) and noted it is midwinter, so she shouldn't be surprised that the sun also sets very early. Removing the surprise makes her observation more logically coherent.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Narrative redundancy with Scene 9.",
+    "severity": "Low",
+    "why": "Scene 6 and Scene 9 rely on the exact same narrative contrast: Maya observing the stormy/harsh weather outside while feeling comfortably warm/safe inside. To avoid repetition, Scene 6 could focus purely on her looking out the window and contrasting the winter weather with summer, saving the 'cozy inside' payoff for the end of the day in Scene 9.",
+    "advisory": false
+  }
+]

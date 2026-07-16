@@ -1,0 +1,26 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Pacing slump",
+    "severity": "Med",
+    "why": "After the dynamic, physical action of wrestling her umbrella in the wind in Scene 5, Scene 6 drops back to her passively looking at the gray rain out the window. It halts the momentum and feels slightly repetitive.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "Timeline disconnect between the forecast and the weather arriving",
+    "severity": "Med",
+    "why": "In Scene 2, the app says it will become wet 'later in the day', but in Scene 4 it is already 'raining heavily' the moment she steps out for her morning commute. To better match the brief ('the day turns — rain on the way to the bus'), the rain should start while she is walking, or the Scene 2 forecast should indicate rain is imminent.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Repetitive staging (window-gazing)",
+    "severity": "Low",
+    "why": "Maya's main action for observing the weather is looking out a window in Scenes 1, 2, and 6. Relying on the same framing device three times makes the visual pacing feel a bit static.",
+    "advisory": true
+  }
+]

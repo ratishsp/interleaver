@@ -1,0 +1,25 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] Over-repetition of the standalone declaration 'Det er vinter (i Danmark)' across the first half of the week. — Scenes 1 through 5 explicitly state 'Det er (midt)vinter (i Danmark)' as a standalone factual sentence. While practicing the 'det er + season' grammar focus is intended, dropping the exact same declaration into five consecutive scenes feels noticeably robotic. Removing or varying it in a couple of those scenes would improve the natural flow.",
+        "[Med/Naive whole-week listener (no checklist)] Over-repetition of the general rule 'it gets dark early in winter'. — Scenes 6, 7, and 8 all explicitly state variations of 'Det bliver mørkt meget tidligt om vinteren'. While pedagogical, hearing this exact sentiment three scenes in a row feels a bit like a broken record, especially in Scene 8 where the darkness has already been well-established by the action in Scene 7.",
+        "[High/Cross-scene continuity & consistency] Forecast in Scenes 2/3 contradicts the immediate weather in Scene 4. — In Scene 2, Maya reads that it will rain in the afternoon ('Det regner i eftermiddag'), and in Scene 3 she expects it to get wet 'later' ('senere'). However, as soon as she steps outside for her morning commute in Scene 4, it is already raining heavily. The forecast in Scene 2 needs to match the immediate morning rain.",
+        "[Med/Repetition & monotony] Excessive refrain of 'Det er vinter (i Danmark)' across the first five scenes. — Scenes 1, 2, 3, 4, and 5 all explicitly state 'Det er (midt)vinter (i Danmark)'. While the theme is winter weather, explicitly restating this overarching fact in almost every single scene becomes a noticeable, robotic refrain rather than helpful pedagogical reinforcement.",
+        "[Med/Repetition & monotony] Near-verbatim repetition of the observation that it gets dark early in winter across scenes 6, 7, and 8. — Scene 6 ('Det bliver mørkt tidligt på denne årstid'), Scene 7 ('Det bliver mørkt meget tidligt om vinteren'), and Scene 8 ('Det bliver meget tidligt mørkt om vinteren') all make the exact same statement in consecutive scenes. Repeating the identical sentiment three times stalls the narrative progression.",
+        "[Low/Naive whole-week listener (no checklist)] Over-repetition of the exact phrase 'Det er vinter'. — The phrase 'Det er vinter' (or 'Det er vinter i Danmark') is explicitly stated in Scenes 1, 2, 4, and 5. While repetition of grammar is expected, stating 'It is winter' four times in the span of a single morning commute feels slightly unnatural and breaks the narrative illusion.",
+        "[Med/Repetition & monotony] The explicit statement 'Det er vinter (i Danmark)' is repeated as a refrain across six consecutive scenes. — Scenes 1, 2, 3, 4, 5, and 6 all explicitly announce that 'it is winter' or 'it is winter in Denmark'. While establishing the season is important for the grammar focus, doing so in almost every scene feels mechanical and unnatural.",
+        "[High/Naive whole-week listener (no checklist)] Unnatural restatement of the season across almost every scene — Maya explicitly declares 'Det er vinter' or 'Det er vinter i Danmark' in scenes 1, 2, 3, 4, 5, and 6. While reinforcing winter weather vocabulary is pedagogically good, repeating this exact declarative fact over and over breaks the narrative flow and makes her sound like she has amnesia.",
+        "[High/Cross-scene continuity & consistency] Weather timeline contradiction between forecast and reality — In Scenes 2 and 3, Maya establishes that it is currently dry and the forecast predicts rain and strong wind 'later' and 'this afternoon' (i eftermiddag). However, in Scenes 4 and 5 (her morning commute immediately following), it is already raining heavily and blowing hard, directly contradicting the established forecast without any acknowledgment that the weather changed earlier than expected."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

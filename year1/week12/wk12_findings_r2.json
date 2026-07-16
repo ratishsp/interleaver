@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "3",
+    "issue": "Unrealistic representation of Danish sports club (forening) registration.",
+    "severity": "Med",
+    "why": "In typical Danish 'foreningsliv' (club culture), community sports halls do not have volunteer-manned front desks taking on-the-spot sign-ups and renting out rackets. Normally, a player arranges a trial ('prøvetræning') online, meets the organizer directly inside the hall, and might borrow a club racket for free.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Repetitive emotional beat regarding being active.",
+    "severity": "Med",
+    "why": "Maya's internal monologue hits the exact same note in scenes 1, 5, 7, and 8 ('stay active', 'loves to play', 'likes to be active', 'play her favorite sport again'). Even to drill the grammar, stating the same sentiment four times makes her sound a bit robotic.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Over-repetition of Maya's love for badminton.",
+    "severity": "Med",
+    "why": "Scenes 1, 5, and 8 all reiterate that she loves playing badminton or that it is her favorite sport. While practicing 'godt kan lide at' is the goal, narratively stating this three separate times feels redundant and should be varied or consolidated.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Slightly confusing club sign-up transaction.",
+    "severity": "Low",
+    "why": "She 'signs up to join the club' but the only transaction mentioned is paying 50 kroner to rent a racket. It made me pause and wonder if she actually paid a membership/guest fee or just bought a rental and walked in.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "The gameplay description is a bit sterile.",
+    "severity": "Low",
+    "why": "Running fast, keeping the shuttlecock in the air, and breathing heavily reads more like a serious cardio drill than a fun first game. Having her miss a shot and laugh with Kasper and Sara would make the scene warmer and more human.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Compressed timeline / logical mismatch with Scene 7.",
+    "severity": "Low",
+    "why": "Scene 1 has Maya browsing at home to decide on and find a club, but Scene 7 frames this outing as happening 'after a long day at work'. It feels implausibly rushed to finish work, go home, research a new club from scratch, travel there, register, and play a full match all in one evening.",
+    "advisory": false
+  }
+]

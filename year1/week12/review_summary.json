@@ -1,0 +1,25 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Repetition & monotony] Extreme repetition of the phrases 'Jeg kan (godt) lide at spille badminton' and 'være aktiv / dyrke sport i vinteren'. — Maya states her love for badminton and her desire to be active in the winter in almost every single scene (Scenes 1, 3, 4, 5, 6, 7, and 8). While the grammar focus is 'godt kan lide at', this level of verbatim refrain breaks the narrative flow and makes her sound robotic.",
+        "[Med/Repetition & monotony] Redundant statements about being tired and meeting Kasper/Sara across Scenes 7 and 8. — Both Scenes 7 and 8 explicitly state 'Mine ben er meget trætte', 'Jeg kan (rigtig) godt lide at møde nye mennesker', and how nice Kasper and Sara are. Scene 8 feels like a recap of the feelings already established in Scene 7.",
+        "[Med/Naive whole-week listener (no checklist)] Overuse of the exact phrase 'Jeg kan (rigtig) godt lide at spille badminton'. — Maya says or thinks this almost exact phrase in 7 out of the 8 scenes. While the grammar focus is 'godt kan lide at', having her repeatedly declare her love for playing badminton in every single phase of the evening feels unnatural and robotic; the grammar could be better reinforced by varying the activities she likes (e.g., liking to run, liking to compete, liking the fast pace).",
+        "[High/Repetition & monotony] The exact phrase 'Jeg kan (rigtig) godt lide at spille badminton' is repeated in 7 out of 8 scenes. — While reinforcing the grammar focus ('godt kan lide at') is pedagogically correct and expected, pairing it almost exclusively with the exact same object ('spille badminton') in nearly every single scene creates a highly noticeable, robotic refrain. The protagonist awkwardly declares this same sentence in both internal monologue and out loud to different people. The grammar structure should be varied with other verbs (e.g., 'godt lide at vinde', 'godt lide at røre mig', 'godt lide at svede').",
+        "[Med/Repetition & monotony] The thesis statement of 'being active/doing sports in the dark winter' is heavily reiterated. — While it establishes the brief's premise, explicitly restating variations of 'være aktiv i den mørke vinter' or 'dyrke sport om vinteren' in scenes 1, 5, 6, 7, and 8 feels less like natural narrative and more like a forced theme being restated in every other scene.",
+        "[Med/Naive whole-week listener (no checklist)] Overuse of the exact phrase 'Jeg kan (rigtig) godt lide at spille badminton'. — While I know repetition of the grammar focus is good, Maya says this exact 6-word sentence seven times across the eight scenes (in both inner monologue and dialogue). Hearing it back-to-back makes her sound a bit like a robot stuck on a loop. Keeping the target structure ('godt kan lide at') but varying the end of the sentence (e.g., 'at svede', 'at bevæge mig', 'denne sport') would reinforce the grammar more naturally.",
+        "[High/Repetition & monotony] Extreme repetition of the phrase 'Jeg kan (rigtig) godt lide at spille badminton'. — While reinforcing the target grammar is expected, having Maya say or think the exact same sentence 'Jeg kan (rigtig) godt lide at spille badminton' in 7 out of the 8 scenes is overly monotonous and feels like a broken record rather than natural repetition.",
+        "[Med/Repetition & monotony] Recurring refrain about being active in the 'dark winter'. — The phrasing 'være aktiv i den mørke vinter' or 'dyrke sport om vinteren' is heavily repeated as a concluding thought across scenes 1, 5, 6, 7, and 8. Varying the expression of why she is enjoying the exercise would make the internal monologue feel less scripted.",
+        "[High/Naive whole-week listener (no checklist)] Extreme repetition of 'Jeg kan godt lide at spille badminton' and 'dyrke sport'. — Maya says some variation of 'I (really) like to play badminton' in 7 out of the 8 scenes, and talks about 'doing sports in the winter' almost as often. While repetition is good for A1, hitting the exact same robotic phrasing in almost every scene feels like a grammar drill rather than a narrative, which will pull the learner right out of the story."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

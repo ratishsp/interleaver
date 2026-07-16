@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Micro-sliced situation stretching one activity over too many scenes.",
+    "severity": "High",
+    "why": "Scenes 4 through 8 slice a single casual badminton game into tiny, static increments (meeting, warming up, playing, drinking water, and packing up). This violates the density and variety lens by stretching one thin situation to fill the week's back half instead of providing complete, distinct vignettes.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Niche sports vocabulary.",
+    "severity": "Med",
+    "why": "Phrases like 'keep the rally going' require technical sports translations that are too niche for an A1 level. The vocabulary should remain focused on common, everyday verbs and nouns (e.g., 'keep the ball in the air' or 'continue playing').",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Missing the 'sign up' action and a logical transition to the specific court.",
+    "severity": "Med",
+    "why": "The curriculum brief specifies that Maya 'signs up', but the scene only mentions she *wants* to join and then rents a racket. Having the volunteer actually register her and then direct her to Court 3 would fulfill the brief and logically explain why she approaches Kasper and Sara in Scene 4 instead of wandering onto a random court.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Signing up before trying the sport",
+    "severity": "Low",
+    "why": "It feels like a slightly weird commitment to declare she wants to 'join the club today' at the front desk before she's even held a racket or met anyone. Asking to 'try a session' or 'play a game today' feels like a more natural first step.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Niche sports terminology ('keep the rally going')",
+    "severity": "Low",
+    "why": "The word 'rally' is a specific sports term. As an A1 learner, it makes me worry I have to learn niche vocabulary just to talk about playing a game; a simpler phrasing like 'keep the game going' or 'keep hitting it back' would feel more approachable.",
+    "advisory": true
+  }
+]

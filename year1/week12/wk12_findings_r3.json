@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Micro-sliced timeline stretching one event across seven scenes.",
+    "severity": "High",
+    "why": "Scenes 2 through 8 depict a single 1- to 2-hour evening broken down into minute-by-minute beats (arriving, borrowing a racket, warming up, playing, drinking water, packing up, waiting for the bus). This violates the 'WEEK variety' rule; the match beats should be condensed to allow for different situations (e.g., jumping to the next day where she shops for her own racket, or waking up with sore muscles).",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Description-heavy and lacks a complete action arc.",
+    "severity": "Med",
+    "why": "After walking in, Maya only stands and passively listens to echoes and shouts. It acts more like an object/sensory inventory than a complete vignette that moves from beginning to middle to end.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Overly specific sports vocabulary for an A1 level.",
+    "severity": "Med",
+    "why": "Terms like 'shuttlecocks' (Scenes 2 and 5), 'canvas bag' (Scene 3), and 'high shot' (Scene 5) feel very specialized for a beginner. It might be better to focus on the general actions of running, hitting, and playing rather than technical badminton gear.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Unnecessarily specific noun ('canvas bag').",
+    "severity": "Low",
+    "why": "Specifying the material 'canvas' introduces a relatively rare/technical noun for A1. A common everyday word of the same shape like 'sports bag' (sportstaske) or simply 'large bag' is better suited for this level.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Odd action sequence regarding her clothes.",
+    "severity": "Low",
+    "why": "Maya is chatting on the bench in Scene 6, then in Scene 7 she 'packs her sweaty sports clothes into her bag'. This makes it sound like she changed out of them right there on the court. It would make more sense to pack her water bottle and the borrowed racket.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Timeline gap between inquiry and attendance",
+    "severity": "Low",
+    "why": "Scene 1 has Maya write a message to arrange a trial, and Scene 2 has her immediately traveling to the hall. This implies she leaves for the sports hall right after hitting send, without waiting for a reply. Consider having her read a confirmation message from the club in Scene 1 instead.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Packing clothes implies a missing locker-room scene",
+    "severity": "Low",
+    "why": "Maya 'packs her sweaty sports clothes into her bag' directly after chatting on the courtside bench, which accidentally implies she took them off right there. Suggest changing this to packing away her racket and towel, or simply packing her sports bag.",
+    "advisory": false
+  }
+]

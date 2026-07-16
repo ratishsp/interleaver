@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "2",
+    "issue": "Travel card terminology translation hazard",
+    "severity": "Low",
+    "why": "In Denmark, using a Rejsekort on public transport is universally referred to as 'checking in' (at checke ind). Using the word 'scans' in the English summary might lead the generator to produce a literal but unnatural translation like 'scanner mit rejsekort'.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "4",
+    "issue": "Corporate canteen realism",
+    "severity": "Low",
+    "why": "Software companies in Denmark typically use a subsidized monthly 'kantineordning' (canteen scheme/buffet) deducted from salary, rather than having employees pay cash at a register for individual items like a single smørrebrød. While fine for practicing prices, it's slightly un-Danish for this specific work setting.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Relies on an abstract feeling to resolve the scene instead of a concrete action.",
+    "severity": "Low",
+    "why": "Ending the scene with 'feels happy and completely at home' acts as a static emotional inventory. Grounding this transition with a concrete physical action (like checking her mailbox, hanging up her keys, or taking off her coat) would maintain the active, sensory texture of the rest of the week.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4 and 6",
+    "issue": "Slightly repetitive transaction phrasing",
+    "severity": "Low",
+    "why": "Both scenes resolve with almost the exact same mechanical action ('and pays fyrre kroner at the register' / 'and pays femogtres kroner to the smiling baker'). It feels a little formulaic so close together; varying the phrasing for one of the purchases would make it feel more natural.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Repetitive scene shape (transaction and payment)",
+    "severity": "Low",
+    "why": "Both Scenes 4 and 6 resolve with the exact same structural beat: Maya orders a food item and explicitly 'pays [spelled-out number] kroner'. Omitting the explicit payment in one of them (e.g., just receiving the boxed cake with a smile) would make the narrative less formulaic while still reviewing shop vocabulary.",
+    "advisory": false
+  }
+]

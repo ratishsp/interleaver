@@ -1,0 +1,59 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 2,
+      "severity": "Low",
+      "issues": [
+        "[Low/Repetition & monotony] Over-reliance on 'smiling' to convey positive interactions. — From Scene 4 to 8, almost every interaction is marked by someone smiling (the clerk smiler, the tourist smiler, the baker is smilende, Maya smiler leaving the shop, Maya smiler to herself, Nina smiler). While friendly, it becomes a slight structural refrain across the second half of the week.",
+        "[Low/Naive whole-week listener (no checklist)] The narrative wrap-up beat is used twice in a row, dulling the final scene. — Scene 7 ends with 'Jeg føler mig helt hjemme i mit nye kvarter' and Scene 8 immediately ends with 'Jeg føler mig hjemme her i min nye by'. Repeating the exact same emotional resolution back-to-back makes the week's final closing thought feel slightly redundant rather than impactful.",
+        "[Low/Repetition & monotony] Verbatim repetition of 'Jeg kigger ud på byen' — Scene 1 and Scene 2 both use the exact sentence 'Jeg kigger ud på byen.' While repeating vocabulary is good, using the identical sentence across consecutive scenes can feel slightly repetitive.",
+        "[Low/Repetition & monotony] Repeated closing sentiment — Scene 7 ends with 'Jeg føler mig helt hjemme i mit nye kvarter' and Scene 8 ends with 'Jeg føler mig hjemme her i min nye by.' While it nicely reinforces the theme of the week, putting it at the very end of both consecutive scenes makes the emotional beat a bit repetitive.",
+        "[Low/Naive whole-week listener (no checklist)] Repetitive closing sentiment across the final two scenes. — Both Scene 7 and Scene 8 end with almost the exact same emotional beat ('Jeg føler mig helt hjemme i mit nye kvarter' vs 'Jeg føler mig hjemme her i min nye by'). Using the same concluding thought back-to-back slightly dulls the impact of the final scene's wrap-up."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "6",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Low/Naive whole-week listener (no checklist)] Slight narrative reset at the start of the scene. — Scene 5 ends with Maya explicitly stating she is heading towards the bakery ('Jeg går videre mod bageriet'). Scene 6 then begins by re-establishing that she is walking down the street 'after work' and 'sees' a bakery, which momentarily makes it feel like she just stumbled upon it rather than arriving at the destination she just announced.",
+        "[Med/Naive whole-week listener (no checklist)] Narrative reset with 'efter arbejde'. — Scene 5 already established that Maya is off work and explicitly ends with her heading toward the bakery. Starting Scene 6 by restating she is walking down the street 'after work' feels like a continuity stutter, as if the story briefly forgot she was already on her way."
+      ]
+    },
+    {
+      "scene": "7 and 8",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Repetition & monotony] Repeated emotional resolution at the end of consecutive scenes — Scene 7 ends with 'Jeg føler mig helt hjemme i mit nye kvarter.' and Scene 8 ends with 'Jeg føler mig hjemme her i min nye by.' Hitting the exact same emotional conclusion twice in a row feels redundant.",
+        "[Med/Repetition & monotony] Near-identical concluding lines back-to-back. — Scene 7 ends with 'Jeg føler mig helt hjemme i mit nye kvarter.' and Scene 8 ends with 'Jeg føler mig hjemme her i min nye by.' Repeating the exact same emotional resolution in consecutive scenes feels monotonous and weakens the final capstone."
+      ]
+    },
+    {
+      "scene": "1 and 2",
+      "votes": 2,
+      "severity": "Low",
+      "issues": [
+        "[Low/Repetition & monotony] Identical descriptive line used in back-to-back scenes — Both scenes feature the exact line 'Jeg kigger ud på byen.' While repeating vocabulary is good, using the exact same full sentence as a standalone action in consecutive scenes feels slightly monotonous.",
+        "[Low/Repetition & monotony] Echoed lines and identical scene resolutions. — Scene 1 features 'Jeg kigger ud på byen.' and ends with 'Nu er jeg klar til dagen.' Scene 2 repeats the exact line 'Jeg kigger ud på byen.' and ends with a very similar 'Jeg er klar til en ny arbejdsdag.' It makes the transition feel a bit repetitive."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "6",
+      "stem": "06_buying_a_cake",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 20,
+      "n1": 19
+    }
+  ]
+}

@@ -44,6 +44,7 @@ def trace(stage: str, model: str, prompt: str, response) -> None:
     path = os.environ.get("TANDEM_TRACE")
     if not path:
         return
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)   # a brand-new week has no dir yet
     rec = json.dumps({"stage": stage, "model": model, "prompt": prompt, "response": response},
                      ensure_ascii=False)
     with _TRACE_LOCK, open(path, "a", encoding="utf-8") as f:

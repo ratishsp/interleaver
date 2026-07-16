@@ -4,7 +4,7 @@
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_a_cold_morning | It is a freezing morning in Copenhagen. Maya walks to work, but she only wears a thin jacket. She shivers in the cold wind and realizes she desperately needs warm winter clothes to survive the Danish winter. |
+| 1 | 01_a_cold_morning | It is a freezing morning in Copenhagen. Maya walks to the bus stop on her way to work, but she only wears a thin jacket. She shivers in the cold wind and realizes she desperately needs warm winter clothes to survive the Danish winter. |
 | 2 | 02_entering_the_shop | After work, Maya enters a brightly lit clothing shop on the main shopping street. She greets the smiling shop assistant and explains that she is very cold and wants to look for some warm things. |
 | 3 | 03_the_red_sweater | Maya browses the shelves and finds a thick, red sweater. She takes a medium size into the fitting room, puts it on, and looks in the mirror. It is incredibly warm and costs three hundred kroner, so she decides to buy it. |
 | 4 | 04_the_tight_green_coat | Next, Maya looks for a new winter coat. She finds a beautiful green coat and tries it on, but it is too small and tight across the shoulders. The shop assistant checks the stock, but they do not have a large size, so Maya leaves it on the rack. |

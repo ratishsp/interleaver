@@ -1,0 +1,39 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [],
+  "scene_survivors": [
+    {
+      "scene": "8 and 9",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Naive whole-week listener (no checklist)] Exact dialogue repetition across scene boundaries — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner'. Scene 9 almost immediately has him saying the exact same line. When listening back-to-back in one sitting, this feels like an editing glitch rather than a natural continuation.",
+        "[Med/Repetition & monotony] Verbatim dialogue overlap across scenes — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner,' and Scene 9 begins by repeating this exact line verbatim. Since the audio is played continuously, this back-to-back repetition feels like a copy-paste error rather than a natural continuation.",
+        "[High/Repetition & monotony] Exact dialogue repeated across scene boundary — Scene 8 ends with the barista stating the price ('Det bliver femogfirs kroner') and Maya taking out her card. Scene 9 inexplicably opens with the barista repeating this exact line again, which sounds like an audio editing glitch when the scenes are listened to sequentially.",
+        "[Med/Repetition & monotony] Verbatim repetition of the barista stating the price. — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner' and Maya getting her card out. Scene 9 immediately starts with him saying the exact same line again. This creates an unnatural echo across the scene boundary rather than a seamless progression."
+      ]
+    },
+    {
+      "scene": "9",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Naive whole-week listener (no checklist)] Redundant dialogue repeating the exact end of Scene 8. — Scene 8 concludes with the barista saying 'Det bliver femogfirs kroner' and Maya taking out her card. Scene 9 immediately begins with the barista repeating this exact line. When listening continuously, it sounds like an accidental audio skip backward rather than a natural flow of time.",
+        "[Low/Naive whole-week listener (no checklist)] Repetition of the barista's price line from the end of Scene 8. — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner'. Scene 9 immediately has him repeat the exact same line. While useful as a recap for split listening, a learner listening back-to-back will notice the slight stutter in the continuous dialogue flow."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "9",
+      "stem": "09_paying_and_leaving",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 19,
+      "n1": 18
+    }
+  ]
+}

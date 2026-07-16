@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Spec & continuity",
+    "scene": "4",
+    "issue": "Past tense verb (\"just chose\") used in a present-tense-only week.",
+    "severity": "High",
+    "why": "Level A1 (Weeks 1–15) is strictly restricted to the present tense. The phrase 'she just chose' will force a past or present-perfect translation in Danish; it should be changed to present tense, such as 'the cinnamon roll she wants'.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "8",
+    "issue": "Unrealistic café payment flow (counter service vs. paying at the end).",
+    "severity": "Med",
+    "why": "In typical Danish cafés, if you order at the counter and carry your own tray (as in scenes 4-5), you pay immediately at the time of ordering. Asking for 'the bill' (regningen) at the end implies table service. If the curriculum requires asking to pay later, it would be more natural to either have table service from the start, or have her go to the counter simply to say 'I would like to pay' rather than asking for a formal bill.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Thin situation stretched to length (micro-slicing)",
+    "severity": "Med",
+    "why": "While the brief specifies a single café visit, spreading a brief sequence over 9 scenes results in extreme micro-slicing. Dedicating full scenes to 'looking at pastries' (3), 'ordering' (4), and 'carrying a tray' (5), or splitting 'asking for the bill' (8) and 'tapping a card to pay' (9) into two separate events creates slow-motion filler rather than substantial, moving vignettes.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Awkward café mechanics (counter service vs. asking for a bill).",
+    "severity": "Med",
+    "why": "Because Maya ordered at the register and carried her own tray to the table (Scenes 4-5), she realistically would have paid upfront at that exact moment. Going back to the counter later just to 'ask for the bill' feels unnatural for this specific type of café setup.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Overuse of the word 'politely'/'polite' across multiple scenes.",
+    "severity": "Med",
+    "why": "The word 'politely' or 'polite' is explicitly written into the summaries for scenes 4, 5, 7, and 8. While politeness is the grammar focus of the week, repeating the modifier in the prompt will likely cause the generator to unnaturally repeat the Danish word for politely ('høfligt') in Maya's first-person narration, rather than just demonstrating the polite phrases naturally.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "7",
+    "issue": "Asking a busser for tap water.",
+    "severity": "Low",
+    "why": "In counter-service Danish cafés, tap water (postevand) is almost universally found at a self-service station with glasses and carafes. While asking a staff member works for practicing the language, a self-serve station is the realistic Danish norm.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Idiomatic phrasing ('settle her tab') and counter-logic",
+    "severity": "Low",
+    "why": "The English idiom 'settle her tab' glosses awkwardly into Danish; simple, direct phrasing like 'pay' is more robust. Additionally, in standard Danish café culture, if you order at the register (Scene 4), you pay immediately rather than returning to ask for a bill later, though this can be overlooked if necessary for the grammar target.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Seasonal timeline feels stuck in deep winter.",
+    "severity": "Low",
+    "why": "The story bible establishes Maya moved to Copenhagen in January. By Week 13, it should be roughly late March or early April. While it can still be cold, emphasizing a 'freezing winter wind' (Scene 1) and 'snow fall' (Scene 6) makes it feel as though no time has passed since she arrived.",
+    "advisory": true
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "8",
+    "issue": "Idiomatic English phrasing (\"settle her tab\") is not translation-robust.",
+    "severity": "Low",
+    "why": "The word 'tab' is a somewhat idiomatic English concept for a bill/check. To ensure clean n-way translation, it is safer to rephrase to something universally translatable like 'pay for her order' or simply end the sentence at 'asks the barista for the bill'.",
+    "advisory": false
+  }
+]

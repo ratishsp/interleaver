@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "04",
+    "issue": "Ordering at the table contradicts the curriculum brief and Danish realism.",
+    "severity": "High",
+    "why": "The curriculum brief explicitly states Maya 'orders a drink and a bite at the counter', which is also the realistic norm in casual Danish cafés. Scene 4 incorrectly features a waiter approaching her table with a notepad to take the order.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "04",
+    "issue": "Internal continuity error regarding the food choice.",
+    "severity": "High",
+    "why": "In Scene 3, Maya inspects the pastry case and settles on a cinnamon roll, but in Scene 4, she inexplicably orders a cheese sandwich. The item she orders needs to match what she just decided on.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Ordering at the table contradicts the brief and the previous scene.",
+    "severity": "High",
+    "why": "The curriculum brief specifies that Maya should 'order a drink and a bite at the counter.' Instead, a waiter approaches her table. Additionally, she suddenly orders a cheese sandwich after having just picked out a cinnamon roll at the counter in scene 3.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Maya orders at her table instead of the counter.",
+    "severity": "High",
+    "why": "The curriculum brief explicitly specifies that Maya 'orders a drink and a bite at the counter.' Having a waiter come to her table with a notepad contradicts the brief and changes the dynamic of the scene.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "The cinnamon roll she chose in scene 3 completely disappears.",
+    "severity": "High",
+    "why": "In scene 3, Maya looks at the pastry case and specifically 'settles on a cinnamon roll.' But in scene 4, she orders a black coffee and a cheese sandwich, and the cinnamon roll is never mentioned again. It makes the previous scene feel pointless and left me confused as a listener.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "04",
+    "issue": "Continuity error regarding Maya's food choice.",
+    "severity": "High",
+    "why": "In scene 3, Maya explicitly chooses a cinnamon roll from the pastry case, but in scene 4, she orders a cheese sandwich instead. The cinnamon roll is completely forgotten.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Contradicts the curriculum brief's instruction to order at the counter.",
+    "severity": "High",
+    "why": "The brief explicitly specifies that Maya 'orders a drink and a bite at the counter'. However, scenes 3 and 4 have her return to her seat and order from a waiter who comes to her table.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "4",
+    "issue": "Maya orders at the table instead of the counter, contradicting the spec (and her own choice in Scene 3).",
+    "severity": "High",
+    "why": "The curriculum brief explicitly requires Maya to order 'a drink and a bite at the counter.' Instead, Scene 3 has her return to her seat without ordering, and Scene 4 has her ordering from a waiter at the table. Furthermore, she decides on a cinnamon roll in Scene 3 but orders a cheese sandwich in Scene 4.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Aborted action at the pastry case.",
+    "severity": "Med",
+    "why": "Maya walks to the counter, decides on a cinnamon roll, and then inexplicably returns to her seat without buying it or speaking to staff. She should just place her order at the counter here, as the brief requires, rather than splitting the thought and the action across two disconnected scenes.",
+    "advisory": false
+  }
+]

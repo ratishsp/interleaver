@@ -1,0 +1,66 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "08_asking_for_the_bill",
+    "issue": "Confusing café mechanics (ordering vs. paying).",
+    "severity": "High",
+    "why": "In a counter-service café where you carry your own tray (Scene 5), you almost always pay right when you order. Walking up to the counter at the very end just to ask for the bill feels artificial; usually, you'd just clear your tray and leave, or if it was table service, you'd ask the waiter at your table.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "8",
+    "issue": "Unrealistic payment flow for a Danish counter-service café",
+    "severity": "Med",
+    "why": "In Denmark, if you order and pick up your food at the counter, you pay immediately per transaction. Returning to the counter at the end of the visit to 'ask for the bill' (bede om regningen) is culturally inaccurate for counter service; this phrase and flow belong to table service.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Overuse of generic filler adjectives.",
+    "severity": "Med",
+    "why": "The storyboard leans heavily on generic, interchangeable adjectives across the scenes (cozy café, delicious cakes, friendly barista, tasty sandwich, nice visit) instead of relying on specific nouns, actions, or distinct sensory textures.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Scene is a static object inventory.",
+    "severity": "Med",
+    "why": "Maya walks up and looks at food behind the glass, which functions as a static observation. The scene needs a small beginning-middle-end action, such as catching the barista's eye or reacting to a specific item, to be a complete vignette that moves.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Repetitive yo-yoing between the table and the counter.",
+    "severity": "Med",
+    "why": "Maya goes up to the counter three separate times (Scene 3 to order, Scene 7 for cake, Scene 8 to pay). It starts to feel like a contrived loop just to create more dialogue.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Over-repetition of the adverb 'politely'",
+    "severity": "Med",
+    "why": "The word 'politely' is prescribed in the action summaries for scenes 4, 5, 7, and 8. While the grammatical theme is polite ordering, forcing the actual adverb into the prompt this many times will likely cause the model to generate unnaturally repetitive phrasing (e.g., repeatedly generating the Danish equivalent 'høfligt').",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Redundant description of the same action.",
+    "severity": "Low",
+    "why": "The text restates the act of ordering three times ('states what she would like', 'asks for', 'requests') rather than advancing any physical action or offering a complete mini-vignette of the interaction.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Repetitive staging (walking to the counter)",
+    "severity": "Low",
+    "why": "Maya physically 'walks up to the counter' (scene 3), 'returns to the counter' (scene 7), and 'walks back to the counter' (scene 8). This creates a repetitive, yo-yo effect in the narrative. The staging in scene 8 could easily be smoothed out by having her simply ask for the bill on her way out, without re-stating the walk.",
+    "advisory": false
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Refers to being 'completely past the days of worrying about misunderstanding them'.",
+    "severity": "High",
+    "why": "This violates the strict story bible rule that Maya's growing fluency must only be shown, never stated as a milestone. Explicitly referencing her past struggles to understand people breaks this rule.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "5",
+    "issue": "Explicitly stating language fluency as a milestone.",
+    "severity": "High",
+    "why": "The scene states Maya is 'completely past the days of worrying about misunderstanding them'. The story bible strictly dictates that Maya's growing fluency must be shown through her actions, and never stated as a milestone or a conscious overcoming of a language barrier.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Use of technical vocabulary ('interface elements', 'debug')",
+    "severity": "Med",
+    "why": "Terms like 'interface elements' and 'debug' push into technical jargon that translates poorly or requires rare vocabulary. It is better to use common everyday terms, such as 'looking at the new design' and 'fixing a small mistake'.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Overuse of the 'comparing now to the past' device.",
+    "severity": "Med",
+    "why": "The brief asks for the 'odd backward glance' at January, but this device is used in almost every scene (Scene 1's commute, Scene 3's energy, Scene 4's weather, Scene 5's worries). It starts to feel repetitive and formulaic rather than a subtle, threaded reflection.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "5",
+    "issue": "Explicit reference to language fluency progress.",
+    "severity": "Med",
+    "why": "The story bible strictly states: 'The story never depicts Maya learning Danish... Her growing fluency is shown, never stated as a milestone.' The phrase 'completely past the days of worrying about misunderstanding them' directly references her language progress. This should be removed, leaving only the action of her chatting easily to show her comfort.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "4",
+    "issue": "Unrealistic dry-cleaning price",
+    "severity": "Low",
+    "why": "Eighty-five kroner is extremely cheap for getting a heavy winter coat dry-cleaned in Denmark (prices are typically 150-300 DKK). Consider raising it to a more realistic figure, such as one hundred and eighty-five kroner.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Relies on abstract, generic adjectives over concrete actions",
+    "severity": "Low",
+    "why": "Phrases like 'highly competitive match' and 'intense physical exercise' lack sensory or concrete texture. Grounding the scene in physical actions (like sweating, swinging the racket, or scoring a tough point) would provide better everyday A2 vocabulary.",
+    "advisory": false
+  }
+]

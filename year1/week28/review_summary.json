@@ -1,0 +1,45 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] Repetitive use of 'føles' / 'føler' to summarize emotional state. — Scenes 1, 2, 3, 4, 6, and 8 all explicitly tell the listener how things feel (e.g., 'alting føles helt anderledes', 'Arbejdet føles som en tryg', 'Det føles fantastisk', 'Jeg føler mig virkelig hjemme'). This creates a monotonous emotional refrain rather than letting the settled mood emerge naturally from the events.",
+        "[Med/Repetition & monotony] Mechanical, roll-call scene opening templates. — Half the scenes (3, 4, 5, and 8) open with the exact same syntactic formula: 'Det er [Day/Time], og jeg [Action/Location]' (e.g., 'Det er torsdag aften, og jeg er i sportshallen'). This makes the progression of the week feel structural and repetitive.",
+        "[Med/Repetition & monotony] Overuse of smiling to punctuate scenes — Almost every scene features someone smiling as a reaction or to end an interaction (e.g., \"Jeg smiler og læner mig tilbage\", \"smiler varmt\", \"smiler over nettet\", \"med et smil\", \"stort smil\"). With 9 mentions across 8 scenes, it becomes a noticeable narrative crutch.",
+        "[Med/Repetition & monotony] Repetitive scene opening structures — Scenes 3, 4, 5, and 8 all open with the exact same syntactic template: 'Det er [day/time], og jeg [am at location / doing action]'. This makes the transitions feel slightly formulaic.",
+        "[Low/Naive whole-week listener (no checklist)] Formulaic emotional wrap-ups using 'føles' / 'føler' — Scenes 1, 2, 3, 4, 6, and 8 all use 'det føles...' or 'jeg føler mig...' to explicitly state the emotional takeaway of the activity (e.g., 'Arbejdet føles som en tryg rutine', 'Det føles fantastisk', 'Det føles dejligt'). While great for vocabulary reinforcement, relying on this exact construction to conclude almost every scene is slightly repetitive structurally.",
+        "[High/Repetition & monotony] Overuse of \"føles\" to explicitly state the settled emotional arc. — Almost every scene includes a line with \"føles\" / \"føler\" to hammer home the brief (e.g., S1: \"alting føles helt anderledes nu\", S2: \"arbejdet føles som en tryg...\", S3: \"Det føles fantastisk...\", S4: \"Det føles dejligt...\", S6: \"føles det også som mit hjem\", S8: \"Januar føles...\", \"Jeg føler mig...\"). This makes the thematic reflection heavy-handed and monotonous rather than natural.",
+        "[Med/Repetition & monotony] Formulaic scene openings using \"Det er [Time], og jeg...\" — Scenes 3, 4, 5, and 8 all open with the exact same syntactic template (\"Det er torsdag aften, og jeg...\", \"Det er fredag eftermiddag, og jeg...\", \"Det er lørdag morgen, og jeg...\", \"Det er søndag morgen, og jeg...\"). This creates a noticeable roll-call rhythm that should be varied.",
+        "[Med/Repetition & monotony] Repetitive physical reaction (smiling in every scene). — The words \"smil\" or \"smiler\" appear in every single scene, often as the default closing beat or reaction (S1, S2, S3, S4, S5, S7, S8). While the tone should be warm, this specific action becomes a monotonous refrain."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "8",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Cross-scene continuity & consistency] Time-zone mismatch for the family video call. — The scene is set on 'Sunday morning' in Copenhagen (e.g., 9:00 AM - 11:00 AM). Because Mexico is 7-8 hours behind Denmark, it would be 1:00 AM - 4:00 AM in Mexico. It is highly unlikely her entire family and the dog are awake and energetic for a video call in the middle of the night. Changing this to Sunday evening ('søndag aften') would correctly align with daytime in Mexico.",
+        "[High/Cross-scene continuity & consistency] Time-zone mismatch for family call. — Maya states it is Sunday morning in Denmark while she is on a video call with her whole family in Mexico. Denmark is 7-8 hours ahead of Mexico, meaning a morning call in Copenhagen would be between 1:00 AM and 4:00 AM in Mexico, when her family would be asleep. Changing it to Sunday evening/late afternoon ('søndag aften/eftermiddag') would fix this, and since Scene 1 established it is summer, the sun could still realistically be shining into her living room.",
+        "[High/Cross-scene continuity & consistency] Time zone mismatch for family call. — Maya has a video call with her entire family in Mexico on Sunday morning ('søndag morgen') Copenhagen time. Since Copenhagen is 7-8 hours ahead of Mexico, it would be the middle of the night (approx. 2:00-3:00 AM) for her family. Changing the time to Sunday afternoon ('søndag eftermiddag') or evening would make the family gathering realistic."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "8",
+      "stem": "08_family_update",
+      "votes": 3,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 19,
+      "n1": 19
+    }
+  ]
+}

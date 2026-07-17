@@ -1,0 +1,34 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "4",
+    "issue": "Unrealistic price for dry cleaning a winter coat in Denmark.",
+    "severity": "Med",
+    "why": "Eighty-five kroner is far too cheap for dry cleaning a heavy winter coat in Copenhagen; it would typically cost around 200 to 350 DKK. Consider changing the price to something like 'two hundred and fifty kroner' to maintain everyday economic realism.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Relies heavily on generic descriptors rather than concrete action.",
+    "severity": "Med",
+    "why": "Phrases like 'highly competitive match', 'thoroughly enjoying the fast-paced game', and 'satisfying physical exercise' are abstract filler. Replace these with concrete physical actions or sensory details (e.g., swinging the racket, scoring a tough point, or stopping to drink water and catch her breath).",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Unrealistically low price for dry cleaning.",
+    "severity": "Med",
+    "why": "Dry cleaning a heavy winter coat in Copenhagen for 85 kroner is remarkably cheap (it would likely cost upwards of 150-250 kroner). It might distract a learner familiar with Danish prices.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Formulaic and heavy use of double adjectives.",
+    "severity": "Low",
+    "why": "Almost every scene relies on predictable adjective-noun pairs ('warm sunlight', 'comfortable, everyday routine', 'fast-paced game', 'satisfying physical exercise', 'steaming cups', 'warm pastries', etc.). It makes the summaries feel a bit artificial and repetitive to read.",
+    "advisory": true
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Missing explicit triggers for past tense practice.",
+    "severity": "Med",
+    "why": "The curriculum focus heavily emphasizes 'past tense', but scenes 2 through 8 describe immediate, present-moment actions (cooking, playing badminton, wiping counters). Without a prompt to recount a past event—such as telling Nina or her family what she actually did earlier in the week—the AI generator will likely default to the present tense.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Badminton actions might be too idiom-heavy for A2.",
+    "severity": "Low",
+    "why": "Phrases like 'return a difficult shot' and 'score a tough point' often rely on sport-specific jargon that doesn't translate neatly or simply. It might be easier for a beginner to understand something like 'she hits the shuttlecock hard and wins the game'.",
+    "advisory": true
+  }
+]

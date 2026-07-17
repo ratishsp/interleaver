@@ -1,0 +1,62 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Repetition & monotony] Identical scene templates causing severe structural monotony — While the grammar focus is 'først/så/derefter', Scenes 1, 2, 3, 4, and 6 all use the exact same rigid template of 'First I do X, then Y, afterwards Z, finally W'. Doing this in five separate scenes creates a highly robotic, listener-noticeable 'roll-call' effect rather than a natural narrative flow.",
+        "[Med/Repetition & monotony] Unnatural verbatim repetition of full quantity phrases — The exact phrase 'fem hundrede gram hakket svinekød' and 'to gule løg' are repeated verbatim across Scenes 1, 2, and 3. While reinforcing vocabulary is good, repeating the full measurements at every step (planning, shopping, opening the package) feels like recapping a math problem; she could just refer to 'kødet' or 'løgene' once bought.",
+        "[Med/Repetition & monotony] Excessive exact restatement of quantities across Scenes 1, 2, and 3. — While repeating food vocabulary is good, restating the exact measurements ('five hundred grams of minced pork', 'two yellow onions', 'one kilo of small potatoes') across the planning, shopping, and prep scenes feels monotonous. In Scene 3, saying 'I open the package with the five hundred grams of minced pork' rather than just 'the pork' is particularly unnatural.",
+        "[Med/Repetition & monotony] Robotic template of sequential adverbs (Først -> Så/Derefter -> Til sidst). — Although 'først/så/derefter' is the week's grammar focus, Scenes 1, 2, 3, 4, and 6 all fall into an identical structural template (a rigid 4- or 5-step list using these exact markers in order). Distributing these markers more organically rather than framing every single scene as a rigid step-by-step list would reduce the repetitive 'roll-call' feel.",
+        "[High/Naive whole-week listener (no checklist)] Continuity error with the butter. — In Scene 1, Maya checks her cabinets and explicitly notes 'Fortunately, I already have salt, pepper, and butter.' However, in Scene 2, she says 'Finally, I take a large package of butter' at the supermarket. The learner will be confused why she is buying something she just said she already had."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "8",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Cross-scene continuity & consistency] Sudden appearance of sauce — Maya tells her guests to take a little more sauce ('Tag også lidt mere sovs'), but she did not buy ingredients for sauce, nor did she make any in the preceding cooking scenes.",
+        "[High/Naive whole-week listener (no checklist)] Maya offers sauce (\"Tag også lidt mere sovs\") that she never cooked. — The preceding five scenes painstakingly detail every single ingredient Maya bought and every step she took to prepare the food. Because she never made or bought sauce, its sudden appearance on the table is a glaring continuity error.",
+        "[Med/Cross-scene continuity & consistency] Maya offers sauce to her guests despite never making any. — Maya says 'Tag også lidt mere sovs' (Take a little more sauce too), but the preceding scenes meticulously detailed the recipe and cooking process, and she only made meatballs and boiled potatoes. The sudden appearance of sauce is a continuity error.",
+        "[Low/Naive whole-week listener (no checklist)] Unexplained appearance of sauce. — Maya tells her guests to take more sauce ('sovs'), but the exhaustive step-by-step shopping and cooking instructions in Scenes 1 through 5 never mention making or buying sauce. As a listener following the recipe narrative closely, it feels like a missing step.",
+        "[Med/Naive whole-week listener (no checklist)] The sudden appearance of 'sovs' (sauce). — During the dinner in Scene 8, Maya tells her guests to 'Take a little more sauce too.' However, through five scenes of meticulous planning, shopping, and step-by-step cooking, no sauce or sauce ingredients were ever mentioned. It feels like a skipped step in the narrative."
+      ]
+    },
+    {
+      "scene": "2",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Cross-scene continuity & consistency] Contradiction regarding butter — In Scene 1, Maya explicitly states she already has butter ('Jeg har heldigvis allerede salt, peber og smør'). However, in Scene 2, she buys a large package of butter at the supermarket.",
+        "[Med/Naive whole-week listener (no checklist)] Maya buys butter after establishing she already had it. — In Scene 1, Maya deliberately checks her cabinets and says 'Fortunately, I already have salt, pepper, and butter.' However, in Scene 2, she puts a large package of butter in her basket, directly contradicting the previous scene's setup."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "8",
+      "stem": "08_eating_together",
+      "votes": 3,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 18,
+      "n1": 18
+    },
+    {
+      "scene": "2",
+      "stem": "02_shopping_for_amounts",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 17,
+      "n1": 16
+    }
+  ]
+}

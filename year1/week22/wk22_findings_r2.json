@@ -1,0 +1,34 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Bakery bread is a strange host gift for a meat-and-potatoes dinner.",
+    "severity": "Med",
+    "why": "Serving a fresh loaf of bread alongside meatballs and boiled potatoes is a huge carb overload and not culturally typical for this specific hot meal. Guests arriving for Friday dinner would much more naturally bring wine, local beer, or perhaps a dessert.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "7",
+    "issue": "Unrealistic hostess gift / side dish for the meal",
+    "severity": "Low",
+    "why": "In Danish food culture, a hot traditional meal of frikadeller (meatballs) and boiled potatoes is not eaten with a loaf of bread on the side. Guests arriving for dinner would be much more likely to bring a bottle of wine, flowers, or a dessert (like cake or pastry).",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Static object inventory",
+    "severity": "Low",
+    "why": "The scene is primarily an inventory of tableware (plates, forks, knives, napkins) rather than a vignette with a clear narrative motion. To give it a beginning, middle, and end, ground it in a small action—for instance, having Maya clear her work laptop or mail away from her small table to make room before setting it.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The cooking narrative feels a bit robotic and perfectly frictionless.",
+    "severity": "Low",
+    "why": "Maya plans, shops, and executes a foreign traditional recipe completely flawlessly on her first try, reading commands like an instruction manual. Adding a tiny, relatable moment of friction—like tearing up while chopping the onions in scene 3, or struggling to form perfectly round meatballs in scene 5—would make her feel much more human.",
+    "advisory": true
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "9",
+    "issue": "Recapping the cooking process is narratively repetitive.",
+    "severity": "High",
+    "why": "I just spent Scenes 3, 4, and 5 listening to Maya make the dish step-by-step. Having her verbally summarize those exact same steps to her guests at the end feels like an artificial language drill rather than a natural conversation, making the conclusion fall flat.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "9",
+    "issue": "Awkward English phrasing ('meat dough') creates a translation hazard.",
+    "severity": "Med",
+    "why": "While the Danish word 'fars' translates literally as 'meat dough', this is highly unnatural in English. The storyboard should use 'meat mixture' (as it did in scene 5) to ensure a smooth, idiomatic English gloss.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1",
+    "issue": "Kasper and Sara appear out of nowhere with no context.",
+    "severity": "Med",
+    "why": "As a learner, I'm invested in Maya's established friends like Nina or Eva. If introducing two new named characters, briefly tying them to her established life (like her Thursday badminton club) would make the story world feel much more cohesive.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "09",
+    "issue": "Narrative redundancy.",
+    "severity": "Med",
+    "why": "Maya recounts the exact step-by-step cooking process we just watched her perform in Scenes 3-5. To avoid repetition, the scene could focus on the guests' reaction, making future dinner plans, or offering to share the written recipe later instead of verbally recapping the steps.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "7",
+    "issue": "Culturally unusual food pairing for this traditional dish.",
+    "severity": "Low",
+    "why": "Frikadeller with boiled potatoes is a classic hot dinner typically served with brown gravy (brun sovs) or pickled red cabbage. Fresh bakery bread is usually paired with cold frikadeller for lunch (smørrebrød); dinner guests would more realistically bring wine, flowers, or a dessert.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Heavy reliance on reading a recipe aloud feels didactic.",
+    "severity": "Low",
+    "why": "Because it's a 1st-person narrative, having Maya read imperative commands aloud to herself for three consecutive scenes (Scenes 3, 4, and 5) to hit the grammar focus might sound a bit unnatural.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "07",
+    "issue": "Slight culinary logic gap (double carbs).",
+    "severity": "Low",
+    "why": "The guests bring a fresh loaf of bakery bread to share, but the meal is already centered around boiled potatoes. Serving bread alongside a hot potato dish is somewhat unusual; it might make more sense for them to bring a drink, a dessert, or flowers.",
+    "advisory": false
+  }
+]

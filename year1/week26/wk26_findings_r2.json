@@ -1,0 +1,66 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "6",
+    "issue": "Astronomical inaccuracy regarding Danish daylight in February.",
+    "severity": "Med",
+    "why": "The scene states it was 'pitch black at four o'clock back in February'. In Denmark, the sun sets between 16:30 and 17:30 in February, so it is no longer pitch black at 16:00. Changing this to 'January' (when she started her commute, and sunset is around 15:45) would be much more accurate for Danish realism.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "4",
+    "issue": "Lacks physical activity; relies on internal thought and a text message.",
+    "severity": "Med",
+    "why": "Maya simply 'realizes' something and texts Nina, which makes for a very thin vignette. The scene should be grounded in the physical end of her café shift—like taking off her apron, wiping the last table, or stepping out into the bright Saturday afternoon—before she pulls out her phone to text.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Unnatural 'realization' about Midsummer",
+    "severity": "Med",
+    "why": "The summary states Maya 'realizes she has never experienced a traditional Danish Midsummer.' Since she only moved to Denmark in January, it's obvious she hasn't. It feels a bit silly to frame this as a sudden realization rather than her simply looking forward to her first one.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "False cause-and-effect / logic gap regarding the Midsummer plans.",
+    "severity": "Med",
+    "why": "The scene states Maya 'realizes she has never experienced' Midsummer, which prompts her to 'quickly text Nina to confirm their plans'. It is logically awkward to suddenly 'realize' you haven't experienced an event you already made specific plans to attend. Framing it as 'feeling excited for her first Midsummer' would restore a natural cause-and-effect for confirming the plans.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Static opening scene dominated by internal feeling.",
+    "severity": "Low",
+    "why": "Waking up and reading messages in bed is quite static. Adding a small, concrete morning action, such as brewing her first cup of coffee or opening the blinds to the early light while scrolling, would give the vignette better physical movement.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Heavy reliance on internal summary to close the week.",
+    "severity": "Low",
+    "why": "The scene leans heavily on abstract feelings ('deep sense of peace', 'realizes she has built a wonderful life'). Anchoring this reflection in a final physical action—like saying a warm goodnight to her friends or turning her key in the apartment door—will give the scene a more satisfying, concrete end.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Administrative filler scene",
+    "severity": "Low",
+    "why": "Scene 4 is mostly Maya finishing her café shift and texting Nina to confirm evening plans. Because Scene 5 is just Nina showing up for those exact plans, Scene 4 feels like a functional bridge rather than an interesting narrative beat on its own.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Overcrowded 'cast reunion' feel",
+    "severity": "Low",
+    "why": "Every single named character in the story bible is squeezed into this week (Nina, Peter, Eva, Parents, Sofia, Diego, and the dog Lola). Peter and Eva appearing at the office and then again at the weekend bonfire makes her social circle feel a bit repetitive and small.",
+    "advisory": true
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Contradicts established commute method.",
+    "severity": "Med",
+    "why": "Maya recalls biking home at 4 PM in February, implying a weekday commute, but the story bible explicitly states she commutes to work by bus and mostly uses her bike on weekends.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Repetitive thematic contrast with Scene 1.",
+    "severity": "Med",
+    "why": "In Scene 1, Maya reflects on the dark, freezing winter versus the bright summer. In Scene 6, she makes the exact same comparison (pitch-black February vs endless evening) aloud to Nina. Hitting this specific contrast twice makes the narrative feel slightly repetitive; it might be better to save the winter contrast entirely for the bike ride.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Redundant thematic contrast (winter darkness vs. summer light)",
+    "severity": "Med",
+    "why": "Scene 6 repeats the exact same reflection made in Scene 1 (contrasting the dark, freezing winter months with the endless summer light). It would be more impactful to save this observation for Scene 6 where she is actively experiencing the bright evening sky, leaving Scene 1 to focus purely on the milestone of waking up on her first birthday away from home.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Awkward logic regarding her 'realization' about Midsummer.",
+    "severity": "Low",
+    "why": "The scene says Maya 'realizes she has never experienced a traditional Danish Midsummer' right before texting Nina to confirm their pre-existing plans for the Midsummer bonfire. Since she already has plans to go, it feels odd for this to be a sudden realization rather than simple excitement or anticipation for her first one.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Subtle contradiction of her established commuting habits.",
+    "severity": "Low",
+    "why": "Maya reminisces about biking home at four o'clock in pitch-black February. However, the story bible establishes she commutes to work by bus and mostly rides her bike on weekends. Reminiscing about a 4 PM winter bike ride sounds like a daily work commute, slightly bumping against the continuity rules.",
+    "advisory": true
+  }
+]

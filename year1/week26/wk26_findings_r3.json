@@ -1,0 +1,26 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "2",
+    "issue": "Danish workplace birthday tradition is reversed.",
+    "severity": "Med",
+    "why": "In Danish office culture, there is a very strong tradition that the person whose birthday it is brings the cake or pastries to share with their colleagues. Having Peter and Eva buy it for Maya runs contrary to standard Danish realism, unless they are explicitly bailing her out because she didn't know the rule.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Unnatural exposition in a text message.",
+    "severity": "Med",
+    "why": "Maya texting Nina to say she 'finished work early today unlike last weekend when she stayed late' feels incredibly unnatural. People don't text their friends their work-schedule comparisons to set up an evening plan; it reads transparently like a forced way to insert the perfect vs preteritum grammar.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Odd verb choice ('packed') for a neighborhood walk.",
+    "severity": "Low",
+    "why": "Nina asks if Maya has 'packed' a warm jacket, but they are just walking out of their shared apartment building down to the local waterfront. You wouldn't 'pack' a jacket for a walk down the street—you would just bring, grab, or wear it.",
+    "advisory": true
+  }
+]

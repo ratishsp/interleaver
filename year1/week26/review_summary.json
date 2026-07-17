@@ -1,0 +1,21 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[Low/Repetition & monotony] Overuse of 'smiler' / 'smiler stort' as a reaction — Almost every scene features a variation of smiling as the primary reaction (e.g., 'smilede stort' in Scene 1, 'smiler stort' in Scene 2, and 'smiler' appearing in almost all subsequent scenes), making the emotional staging a bit monotonous.",
+        "[High/Naive whole-week listener (no checklist)] Timeline contradiction regarding Maya's birthday. — Scene 1 establishes 'today is my birthday', followed by a workday at the office (Scene 2) and an evening call (Scene 3). Scene 4 then clearly jumps forward to 'Saturday morning', yet at the end of the Saturday night bonfire in Scene 8, Maya concludes 'It is my birthday'. The birthday seems to span across a workday and a Saturday without explanation.",
+        "[High/Cross-scene continuity & consistency] Timeline contradiction regarding Maya's birthday — The scenes cannot form a logical timeline. If her birthday is on a weekday (which explains the office workday in Scene 2 and the evening call in Scene 3), then saying 'It is my birthday' in Scene 8 (late Saturday night) is a contradiction. Conversely, if her birthday is on Saturday, then Scenes 1-3 (morning to evening) followed by Scene 4 ('Saturday morning') creates a backward time jump, and she would not be working a regular office day on the same day as her Saturday morning café shift.",
+        "[High/Naive whole-week listener (no checklist)] Timeline contradiction regarding which day is her birthday. — Scenes 1-3 establish it is her birthday on a day she works at the software office. Scene 4 explicitly jumps to 'Saturday morning' at the café. However, at midnight on Saturday in Scene 8, she concludes by saying 'It is my birthday,' which contradicts the progression of the week.",
+        "[Low/Naive whole-week listener (no checklist)] Slightly redundant narrative beat regarding the dark January contrast. — In Scene 6, Maya reflects on waiting for the bus in the freezing dark in January. In Scene 8, Peter essentially repeats this exact realization ('It was very dark and cold in January'). While good for vocabulary reinforcement, repeating the same thematic revelation within 10 minutes of audio feels a bit unnatural."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

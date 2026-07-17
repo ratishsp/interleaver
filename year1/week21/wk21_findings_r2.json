@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "One thin situation heavily micro-sliced to fill the scene count.",
+    "severity": "High",
+    "why": "While following the brief, stretching a single purchase, a quick trip home, and an immediate return to the same store across 9 scenes violates the variety lens. It forces scenes to be artificially split (like separating picking a shirt, paying, and walking back into their own scenes).",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Pure transit scene functioning as filler.",
+    "severity": "Med",
+    "why": "Walking back to the store immediately after arriving home is a static transit scene without a distinct beginning-middle-end vignette. It lacks its own concrete activity and should be folded into the actual store return.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Abstract/evaluative phrasing rather than concrete texture.",
+    "severity": "Med",
+    "why": "The phrase 'properly evaluate the fit' is abstract and slightly formal. The scene needs more concrete, everyday physical actions—such as buttoning the shirt or moving her shoulders—to ground the 'større/mindre' grammar in real activity.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Inconsistent sizing terminology",
+    "severity": "Med",
+    "why": "In scene 3 Maya buys a 'size medium', but here she asks for a 'size forty'. Switching from letter sizing (M) to number sizing (40) halfway through the story is jarring and makes me wonder how the two systems relate, distracting from the language.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Inconsistent sizing scales across scenes.",
+    "severity": "Med",
+    "why": "Scenes 3 and 5 establish the original shirt as 'size medium', but here she explicitly requests a 'size forty'. Mixing letter (Medium) and number (40) sizing systems breaks internal continuity; it would be clearer to upgrade from Medium to Large, or from size 38 to 40.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Disappearing crowds",
+    "severity": "Low",
+    "why": "In scene 3 Maya skipped the fitting room because the line was 'very long', but when she returns shortly after on the same Saturday afternoon, she easily waltzes into an 'empty fitting room'. It feels a bit inconsistent.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Contradictory phrasing regarding the shirt's condition.",
+    "severity": "Low",
+    "why": "The scene describes Maya holding the 'unworn' shirt, but she just explicitly put it on in Scene 5 to test the fit. Describing it as 're-folded' or simply 'the shirt' avoids this minor logical bump.",
+    "advisory": false
+  }
+]

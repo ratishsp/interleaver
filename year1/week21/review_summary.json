@@ -1,0 +1,88 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Low/Repetition & monotony] Forced physical scene-to-scene bridges — Several scenes end and begin with overlapping micro-actions rather than trusting the listener to follow a natural cut. For example, Scene 3 ends walking to the register, and Scene 4 begins walking to the register; Scene 8 ends taking shirts out of the fitting room, and Scene 9 begins walking out of the fitting room.",
+        "[Med/Repetition & monotony] Overlapping scene transitions (action resets) — Multiple scenes begin by redundantly restating the exact movement that ended the previous scene. For example, Scene 3 ends with Maya walking to the register, and Scene 4 starts with her walking to the register again. Scene 6 ends with her already standing at the counter facing the clerk, but Scene 7 resets the action by having her walk over to the clerk again.",
+        "[Low/Repetition & monotony] Monotonous emphasis on keeping the receipt safe — Scenes 4, 5, and 6 all specifically dwell on how safely the receipt is stored in her wallet ('sikkert ned i min pung', 'trygt i min pung', 'passet godt på den lille papirkvittering'). Repeating this identical sentiment three scenes in a row feels repetitive beyond simple vocabulary reinforcement.",
+        "[Med/Repetition & monotony] Over-fixation on safekeeping the receipt in the wallet — Scenes 4, 5, 6, and 9 all explicitly narrate Maya placing or keeping the receipt safely in her wallet ('sikkert ned i min pung', 'trygt i min pung', 'passet godt på', 'lægger bonen i min pung'). While the receipt is an important plot point, repeating the exact sentiment of its safe storage in her wallet across four scenes feels monotonous.",
+        "[Med/Repetition & monotony] Redundant scene transitions (micro-recaps) — Multiple scenes begin by needlessly repeating the action that ended the previous scene, stalling the pacing. Scene 1 ends with deciding to enter the store, Scene 2 begins by walking into it; Scene 3 ends by walking to the register, Scene 4 begins by walking to the register; Scene 6 ends with Maya standing at the counter with the clerk, Scene 7 begins by having her walk over to the clerk again.",
+        "[High/Repetition & monotony] Inconsistent clerk gender between Scenes 6 and 7 — In Scene 6, the clerk at the counter is established as male ('Han kigger op og smiler til mig'). In the direct continuation in Scene 7, the clerk immediately switches to female ('viser hende den blå skjorte...'). This is a cross-scene continuity error that must be fixed.",
+        "[Low/Naive whole-week listener (no checklist)] Comically melodramatic focus on the receipt. — Across scenes 4, 5, and 6, there is an unusually heavy, dramatic emphasis on how carefully she handles the receipt (folding it 'very carefully', putting it 'safely' in her wallet, it lying 'safely' there, and 'taking good care' of the tiny paper). It drags the pacing slightly by making a mundane action feel like a high-stakes heist."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "6",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[High/Cross-scene continuity & consistency] Clerk's gender changes between Scene 6 and Scene 7/9 — In Scene 6, the Monday clerk is introduced as male ('Han kigger op og smiler til mig'). However, in Scene 7 and Scene 9, the exact same clerk is suddenly referred to as female ('viser hende', 'Hun går over', 'giver... til hende'). The gender of the clerk must remain consistent across these scenes.",
+        "[High/Cross-scene continuity & consistency] Shop assistant gender changes between scenes. — At the end of Scene 6, the shop assistant is introduced as a man ('Han kigger op og smiler til mig'). However, in the direct continuation in Scene 7 (and Scene 9), the same assistant is referred to as a woman ('viser hende', 'siger hun'). This is a jarring continuity error."
+      ]
+    },
+    {
+      "scene": "6 and 7",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[High/Naive whole-week listener (no checklist)] The store clerk's gender abruptly changes between scenes. — In Scene 6, the clerk behind the counter is established as male ('Han kigger op og smiler til mig'). In the very next scene, continuing the exact same interaction, the clerk suddenly becomes female ('viser hende den blå skjorte', 'Hun går over til hylderne').",
+        "[High/Naive whole-week listener (no checklist)] The clerk's gender suddenly swaps between scenes. — In Scene 6, the clerk behind the counter is introduced as male ('Han kigger op og smiler'). In Scene 7, Maya approaches that same clerk but they are suddenly female ('viser hende', 'Hun går over')."
+      ]
+    },
+    {
+      "scene": "7",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[High/Cross-scene continuity & consistency] Shop assistant's gender abruptly changes from male to female across the scene boundary. — In Scene 6, the clerk behind the counter is established as male ('Han kigger op og smiler til mig'). In Scene 7, Maya approaches the exact same clerk but the text switches to female pronouns ('...viser hende...', 'Hun går over...'), which continues into Scene 9. This breaks continuity and will confuse learners trying to track pronouns.",
+        "[High/Naive whole-week listener (no checklist)] Clerk gender abruptly changes from male to female. — In Scene 6, the clerk at the register is introduced as a man ('Han kigger op'). In Scene 7, continuing the exact same interaction, the clerk is suddenly referred to with female pronouns ('viser hende', 'Hun går over')."
+      ]
+    },
+    {
+      "scene": "8",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Naive whole-week listener (no checklist)] Unnatural behavior: trying on the too-small shirt again. — Maya already tried the small shirt on at home, confirmed it was painfully tight, and brought it back specifically to exchange it. Putting it on again in the store's fitting room before trying the new one feels like bizarre, robotic behavior inserted just to force the grammar comparison.",
+        "[Low/Naive whole-week listener (no checklist)] Illogical character action (trying on the small shirt again). — Maya actually puts the small shirt on again in the fitting room before trying the large one. Since she just experienced how uncomfortably tight it is at home in Scene 5 (to the point of barely lifting her arms), putting it on her body again here feels unnatural, even if it sets up the comparative grammar."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "6",
+      "stem": "06_returning_with_receipt",
+      "votes": 2,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 18,
+      "n1": 18
+    },
+    {
+      "scene": "7",
+      "stem": "07_asking_for_exchange",
+      "votes": 2,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 17,
+      "n1": 17
+    },
+    {
+      "scene": "8",
+      "stem": "08_fitting_room_comparison",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 17,
+      "n1": 17
+    }
+  ]
+}

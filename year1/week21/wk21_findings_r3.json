@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Magically empty fitting room.",
+    "severity": "High",
+    "why": "In Scene 3, Maya skips trying the shirt on because the fitting room queue is 'incredibly long.' Returning 'straight away' on the same busy Saturday afternoon to suddenly find an 'empty fitting room' feels too perfectly convenient and breaks the reality of the bustling store.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Illogical wardrobe choice for the second trip.",
+    "severity": "High",
+    "why": "Maya originally buys the light jacket because her winter coat is too warm. After she goes home and unpacks, why would she wear the miserably hot winter coat back to town for the exchange? Having her dramatically change into the new green jacket at the store in Scene 8 makes it seem like she forgot she already owned it when leaving her apartment.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "8",
+    "issue": "Continuity error regarding the location of the jacket and coat.",
+    "severity": "High",
+    "why": "Scene 8 describes Maya putting on her new jacket 'instead of packing her other purchase away' and stowing her winter coat, which reads as if she is leaving the store for the first time. However, she already went home, unpacked her bags, and left her apartment again in Scenes 4-5 just to exchange the shirt, meaning the coat and jacket would either be at her apartment or she'd already be wearing the new jacket.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "7",
+    "issue": "Automatically receiving a fresh paper bag.",
+    "severity": "Low",
+    "why": "Due to environmental laws, Danish retail stores must charge for carrier bags. A clerk would rarely automatically provide a 'fresh paper bag' for a simple size exchange; it is more realistic that Maya reuses the bag she brought or carries the shirt out.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "8",
+    "issue": "Stuffing a heavy winter coat into a tote bag.",
+    "severity": "Low",
+    "why": "A standard fabric tote bag (mulepose) is generally too small and flat to hold a bulky, heavy winter coat. It would be more physically realistic for Maya to carry the heavy coat over her arm.",
+    "advisory": false
+  }
+]

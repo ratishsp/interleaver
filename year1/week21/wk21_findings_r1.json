@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Missing actual size vocabulary despite curriculum focus.",
+    "severity": "Med",
+    "why": "The curriculum specifies 'sizes' as a grammar focus, but the scenes only vaguely mention 'usual size' and 'next size up'. As a learner, I would expect at least one scene to actually name a size (like 'Medium' or 'Size 40') so I learn how to ask for it.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Unnecessary time jump to Monday breaks the brief's Saturday framing.",
+    "severity": "Med",
+    "why": "The brief frames the episode around a Saturday shopping trip. Shifting the return to Monday afternoon introduces a time jump and commute details that dilute the focused storyline. Additionally, saying she stops at the main-street store 'after taking the bus home' creates a slight geographic inconsistency. Having her return to the store later that same Saturday afternoon keeps the narrative tighter.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "6",
+    "issue": "Confusing sequence of actions",
+    "severity": "Low",
+    "why": "The phrasing 'after taking the bus home..., Maya stops by...' is slightly contradictory (if she already took the bus home, she is home). It should be clarified that she stops by the store on her way home from work, perhaps after getting off the bus.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Minor spatial/chronological ambiguity.",
+    "severity": "Low",
+    "why": "The phrasing 'after taking the bus home... Maya stops by the same clothing store' is slightly contradictory. If she has already taken the bus 'home', she is at home. It would be clearer to say she stops by the store 'on her way home from the software company' or 'after taking the bus into town'.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Slightly confusing sequence of actions on the commute.",
+    "severity": "Low",
+    "why": "The text says 'after taking the bus home... Maya stops by the same clothing store.' If she has already taken the bus home, she is home. It would feel more natural to say she stops at the store 'on her way home' from work.",
+    "advisory": true
+  }
+]

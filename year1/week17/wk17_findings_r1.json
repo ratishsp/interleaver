@@ -1,0 +1,66 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Unnatural repetition of 'own' to force reflexive possessives",
+    "severity": "High",
+    "why": "Phrases like 'her own backpack', 'his own book', 'its own basket', 'his own garden', and 'her own bag' appear in half the scenes. While clearly a trick to guide the AI generator to use 'sin/sit/sine', it makes the English summaries read like a robotic grammar drill. The AI will naturally use 'sin' for 'his/her' when the subject owns the object, so drop 'own' to make the storytelling feel organic again.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "The scene is entirely static description and summarization of feelings/time passing.",
+    "severity": "Med",
+    "why": "It lacks a concrete, physical mini-vignette. Anchor her reflection in a physical action to give the scene movement, such as opening a window to feel the new warmth or actually putting pen to paper in the fading sunlight.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Over-repetition of 'own [noun]' and grammatical logic gap.",
+    "severity": "Med",
+    "why": "The phrase 'own [noun]' is heavily repeated across the week (scenes 2, 4, 5, 7, 10) to heavily signal the 'sin vs. hans/hendes' grammar point. However, applying this to Maya's actions in scenes 2 and 10 is logically flawed: because the text will be generated in Maya's 1st-person voice, she will use 'min/mit/mine' (my), not the 3rd-person reflexive 'sin/sit/sine', making the awkward repetitive phrasing in her scenes unnecessary for the grammar goal.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "8",
+    "issue": "Translation hazard with 'invented'",
+    "severity": "Low",
+    "why": "Using 'invented' for a literary character often translates awkwardly to 'opfandt' in Danish, which usually implies a mechanical or scientific invention. Changing the prompt to 'created' or 'wrote' ensures a more natural translation like 'skabte' or 'skrev'.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Heavy reliance on generic/filler adjectives (spectacular, very long, large, blue, small).",
+    "severity": "Low",
+    "why": "While crossing the bridge is a good setting, the description feels interchangeable. Add a specific sensory detail to give it concrete texture, like the glare of the sun on the glass or the rhythmic sound of the tracks.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Cartoonish train behavior",
+    "severity": "Low",
+    "why": "The dog runs away with the father's left shoe on the train. It's quite funny, but it made me pause and wonder why the father's shoe was off on a short daytime train ride, or if the tiny dog somehow yanked it off his foot.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Slightly voyeuristic sightseeing",
+    "severity": "Low",
+    "why": "Maya stopping in the old quarter to watch a local man paint his house and his wife drink tea feels a little odd—like she's staring into their private garden rather than taking in a tourist sight. It works for the 'sin vs. hans' grammar contrast, but feels a bit unnatural in context.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Delayed establishment of the narrative framing device.",
+    "severity": "Low",
+    "why": "Scene 1 introduces Maya writing in her diary but does not ground the reader in where she is. Scene 10 later reveals she is doing this on the evening train back home. Establishing that she is sitting on the return train in Scene 1 would create a much stronger and more logical bookend frame before she flashes back to the Sunday morning excursion.",
+    "advisory": false
+  }
+]

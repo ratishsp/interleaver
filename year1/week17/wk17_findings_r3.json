@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Static tableau contrived for grammar drill",
+    "severity": "Med",
+    "why": "Maya simply stopping to watch a man painting and a woman drinking tea reads like a frozen textbook diorama designed solely to drill 3rd-person possessives (his house/her tea). It lacks a beginning-middle-end; the scene needs a small sequence of action (e.g., the man dropping his brush, the woman pouring him a cup of tea) to move like a real vignette.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "2",
+    "issue": "Timeline compression ('Sunday morning' day trip vs 'weekend trip').",
+    "severity": "Med",
+    "why": "The spec outlines a 'weekend train trip' (implying an overnight stay), but Scene 2 restricts it to a 'Sunday morning excursion'. If it's a Sunday day trip, she wouldn't have time to enjoy a relaxed 'long, light evening' boat ride in Odense (Scene 9) and still make it back to Copenhagen to write in her diary while the same evening is still fading into dusk (Scene 10). Making it a Saturday departure solves the physical timeline.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "9",
+    "issue": "Timeline contradiction regarding the time of day.",
+    "severity": "Med",
+    "why": "Maya enjoys the 'long, light evening' on the boat in Odense, but in Scenes 1 and 10 she is already back home in Copenhagen writing her diary during that same 'bright evening sunlight'. Scene 9 should be kept to the late afternoon so she realistically has time to take the 1.5-hour train ride back to Copenhagen before dusk.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "9 and 10",
+    "issue": "Repetitive 'long evening' phrasing.",
+    "severity": "Low",
+    "why": "Scene 9 ends with Maya enjoying the 'long, light evening' on the boat, and Scene 10 immediately follows with her smiling as the 'long evening slowly fades'. Using the exact same phrase back-to-back for two different locations feels slightly repetitive and draws attention to the timeline squish.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Inconsistent trip duration terminology.",
+    "severity": "Low",
+    "why": "Scene 1 introduces this as a 'weekend trip' (which usually implies staying overnight), but Scene 2 establishes it is only a 'Sunday morning excursion'. Changing Scene 1 to 'day trip' or 'Sunday trip' would make the scope clearer.",
+    "advisory": false
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] Camera/phone refrain formula — Scenes 3, 6, and 9 all use the exact same two-step action to conclude an observation: 'Jeg tog mit kamera / min telefon frem fra min taske(n)' followed by 'Jeg tog et [par] billede[r] af...'. This makes the tourist interactions feel structurally identical and formulaic.",
+        "[Low/Repetition & monotony] Repetitive weather establishment — Scenes 2, 3, and 6 all use the exact same syntax to describe the weather: 'Solen skinnede, og [himlen var blå / vandet var meget blåt / jeg nød...]', which becomes slightly monotonous.",
+        "[Low/Repetition & monotony] Back-to-back identical phrases for the evening — Scene 9 ends with 'Aftenen var lang og utrolig lys' and Scene 10 immediately follows up with 'Aftenen er utroligt lang og lys'. While repeating the spring theme is fine, doing so verbatim in consecutive scenes stands out.",
+        "[Med/Repetition & monotony] Repetitive physical refrain (taking camera/phone from bag). — In Scenes 3, 6, and 9, Maya's observations are punctuated by the exact same sequence of actions: 'Jeg tog mit kamera [eller: min telefon] frem fra min taske...' followed by taking a picture. This small mechanical beat becomes a noticeable template across the sightseeing scenes.",
+        "[Low/Repetition & monotony] Repetitive weather phrasing ('Solen skinnede, og...'). — Scenes 2, 3, and 6 all establish the atmosphere using nearly identical phrasing ('Solen skinnede, og himlen var blå' / '...og vandet var meget blåt' / '...og jeg nød den friske forårsluft'). While good for reinforcement, varying the scene-openers slightly would reduce monotony.",
+        "[Low/Repetition & monotony] Near-identical phrasing for the evening light. — Scene 9 ends its narration with 'Aftenen var lang og utrolig lys' and Scene 10 almost immediately repeats 'Aftenen er utroligt lang og lys'. Using a slightly different description in Scene 10 would make the transition feel less repetitive.",
+        "[High/Naive whole-week listener (no checklist)] Timeline contradiction regarding when the trip took place. — In Scene 1, Maya says the trip was yesterday ('i går'). In Scene 2, she says she left on Sunday morning. In Scene 10, she says tomorrow a new week starts and she is ready for Monday, meaning she is writing the diary on Sunday evening. The trip cannot be 'yesterday' if it happened on Sunday and she is writing on Sunday night.",
+        "[Med/Repetition & monotony] Repeated phrasing for taking photos. — In Scenes 3, 6, and 9, Maya takes out a device to take a picture using almost identical phrasing each time ('Jeg tog mit kamera/min telefon frem fra min taske/tasken'). This makes the sightseeing scenes feel a bit templated.",
+        "[Med/Repetition & monotony] Near-identical descriptions of the light evening. — Scene 9 says 'Aftenen var lang og utrolig lys' and Scene 10 says 'Aftenen er utroligt lang og lys'. While reinforcing the spring theme is good, using the exact same adjective string in consecutive scenes feels repetitive.",
+        "[Low/Repetition & monotony] Repetitive weather framing ('Solen skinnede, og...'). — Scenes 2, 3, and 6 all establish the environment with 'Solen skinnede, og...', often followed by something being blue (the sky or the water). Slightly varying how the sunny weather is described would make the narration more engaging."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "6",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Low/Cross-scene continuity & consistency] Unrealistic travel time. — Maya takes the fast train from Copenhagen at 8:00 AM (Scene 2) but states she arrives in Odense 'lidt over middag' (a little after noon). A fast train takes less than 1.5 hours, so she would arrive before 9:30 AM. Adjusting her arrival time or departure time would make the geography more accurate.",
+        "[Low/Naive whole-week listener (no checklist)] Timeline/Geography mismatch — In Scene 2, Maya boards the 'fast train' to Odense at exactly eight o'clock. In Scene 6, she arrives in Odense 'a little after noon' (lidt over middag). The fast train from Copenhagen to Odense only takes about 1 hour and 15 minutes, so arriving past noon makes the journey feel strangely long, though most learners won't notice unless they know Danish geography well.",
+        "[Med/Cross-scene continuity & consistency] Unexplained time gap in the journey — In Scene 2, Maya boards the fast train ('det hurtige tog') at exactly 8:00 AM. In Scene 6, she arrives in Odense 'a little after noon' (lidt over middag). A fast train from Copenhagen to Odense only takes about 1.5 hours (arriving around 9:30 AM), so arriving past noon creates a confusing 2.5+ hour gap in the timeline."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "6",
+      "stem": "06_crooked_colorful_houses",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 18,
+      "n1": 18
+    }
+  ]
+}

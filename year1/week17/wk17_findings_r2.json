@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "1 and 10",
+    "issue": "Narrative framing contradiction regarding Maya's location.",
+    "severity": "High",
+    "why": "In scene 1, Maya is at home in her living room beginning to write about the trip in her diary. In scene 10, she is suddenly on the evening train back home finishing the diary entry. The timeline/location is contradictory; she should either be writing the whole entry on the train, or finishing it at her table at home.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "10",
+    "issue": "Contradicts the physical location established in the Scene 1 framing device.",
+    "severity": "High",
+    "why": "In Scene 1, Maya is sitting at her living room table in Copenhagen writing in her diary. In Scene 10, she is suddenly on the evening train back home closing the diary, breaking the continuity of her writing session.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1 and 10",
+    "issue": "Contradictory framing location",
+    "severity": "High",
+    "why": "In Scene 1, Maya is at home in her living room sitting at her table starting the diary entry. But in Scene 10, she is suddenly on the evening train back home finishing it. As a listener, I'm confused about where she actually is while writing this.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1 and 10",
+    "issue": "Contradiction in the framing location.",
+    "severity": "High",
+    "why": "In scene 1, Maya is at home (she opens her living room window) starting to write her diary entry about the trip. In scene 10, she is suddenly on the evening train back home finishing the same diary entry, which contradicts her already being at home in scene 1.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "10",
+    "issue": "Narrative framing contradiction with Scene 1",
+    "severity": "High",
+    "why": "Scene 1 clearly establishes that Maya is at home ('opens her living room window', 'sits at her table') writing the diary entry after the trip. However, Scene 10 places her 'on the evening train back home' finishing the entry. The framing needs to be physically consistent.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Relies on static description rather than a moving vignette.",
+    "severity": "Low",
+    "why": "The scene is mostly Maya 'looking' and 'admiring' the view. Adding a small physical action—like drinking the warm coffee she bought in Scene 2 as the train rumbles over the tracks—would make it a more active, grounded moment.",
+    "advisory": false
+  }
+]

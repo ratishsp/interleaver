@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Maya serves a completely ruined coffee to a customer.",
+    "severity": "High",
+    "why": "As a listener, I thought, \"Wait, she knows it's completely wrong but hands it over anyway?\" It makes her seem careless or rude rather than just a learning beginner. It would feel much more natural if she threw it out to try again, or if a colleague stepped in.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Lacks concrete activity; reads as internal exposition.",
+    "severity": "Med",
+    "why": "Maya's motivations for volunteering are restated background feelings rather than an active vignette. The scene needs a concrete physical task upon arrival (e.g., being handed her new apron, putting out chairs) to anchor the beginning.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Relies heavily on internal recap instead of physical movement.",
+    "severity": "Med",
+    "why": "Taking stock and feeling proud are static mental states that violate the 'no restated feeling' rule. Adding a definitive closing action, such as hanging up her apron and stepping out into the afternoon, would make it a complete, moving vignette.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The ordinals feel a bit like a rapid-fire drill.",
+    "severity": "Med",
+    "why": "Going straight from 'first coffee' to 'second coffee... third table' to 'fourth table' in consecutive scenes feels a bit robotic and breaks immersion. It draws too much attention to the grammar mechanic, making the café feel like a math problem.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Serving a 'completely wrong' drink to a customer.",
+    "severity": "Med",
+    "why": "Handing a customer a 'completely wrong' coffee with just an apologetic smile defies basic hospitality logic (usually, one would remake an entirely wrong drink). It makes more sense if the coffee simply lacks foam or 'doesn't look perfect', so it is still acceptable to serve despite being a bit flat.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Use of technical/idiomatic jargon ('pull a good shot').",
+    "severity": "Low",
+    "why": "The phrase 'pull a good shot of espresso' introduces specific coffee-making jargon that may gloss awkwardly or require rare vocabulary. It is safer to use a common phrase like 'make a good espresso'.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Jarring tense shift in the English summary.",
+    "severity": "Low",
+    "why": "The summary mixes tenses awkwardly (\"She poured... the drink comes out\"). Even though the grammar focus involves mixing past and perfect, jumping from simple past to present in the same thought feels like an error and might lead to confusing Danish sentences.",
+    "advisory": true
+  }
+]

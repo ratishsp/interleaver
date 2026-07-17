@@ -1,0 +1,26 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Timeline and logic confusion regarding her 'second attempt'.",
+    "severity": "High",
+    "why": "Scene 5 jumps forward to Maya's 'second Saturday shift'. Scene 6 takes place 'Later that morning' (so, week 2), but calls foaming milk her 'second attempt'. It breaks immersion to suggest she only made one single coffee during her entire first week at the café; if Scene 6 is meant to be on the first Saturday, placing it after Scene 5 breaks chronological flow.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Technical vocabulary ('valves')",
+    "severity": "Med",
+    "why": "'Valves' is a rare/technical noun for an A2 learner; replacing it with a common everyday word like 'buttons' or 'handles' aligns better with the common vocabulary rule.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Borderline technical phrasing ('pressure of the hot steam')",
+    "severity": "Low",
+    "why": "'Pressure' borders on being too specific/technical for an A2 everyday scenario; simplifying to 'control the hot steam' keeps the vocabulary strictly common.",
+    "advisory": false
+  }
+]

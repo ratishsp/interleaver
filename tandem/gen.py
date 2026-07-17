@@ -372,8 +372,11 @@ def format_failures(rep: dict) -> str:
         out.append(f"- Line(s) {nums} hold more than one sentence. Put exactly ONE sentence per line, "
                    f'splitting quoted sentences too (e.g. "Hej, mor. Hej, far." becomes two lines).')
     llm = rep.get("llm", {})
+    if not isinstance(llm, dict):                 # the model occasionally returns llm as a list
+        llm = {}
     for d in _HARD_DIMS:
         dd = llm.get(d) or {}
+        dd = dd if isinstance(dd, dict) else {}
         if not dd.get("pass", True):
             for iss in (dd.get("issues") or []):
                 out.append(f"- {d}: line {iss.get('line', '?')} — {iss.get('problem', '')}")

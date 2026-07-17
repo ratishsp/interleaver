@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Maya locks up the café after a morning shift.",
+    "severity": "Med",
+    "why": "The story bible and brief establish she volunteers on Saturday mornings. It's highly unlikely she would be the one locking the front door and closing the café down in the early afternoon on a Saturday.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "8",
+    "issue": "Maya locking the front door when her shift ends.",
+    "severity": "Med",
+    "why": "The story bible establishes that Maya volunteers on Saturday *mornings*. The café would likely still be open when her shift ends in the early afternoon, and as a brand-new volunteer, it is illogical for her to be locking up the premises. She should simply leave or say goodbye to the others.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "week",
+    "issue": "Summaries written in present tense risk missing the past-tense grammar focus",
+    "severity": "Med",
+    "why": "The curriculum specifies 'Past + perfect mixed' and the brief asks for the shifts to be 'told as they happened.' Because the scene summaries are currently written in the present tense (e.g., 'arrives', 'slices', 'asks'), the LLM generator is highly likely to output present-tense Danish. Updating the summaries to past tense ('arrived', 'sliced', 'asked') ensures it hits the target grammar.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "4",
+    "issue": "Use of 'booth' is culturally inaccurate.",
+    "severity": "Low",
+    "why": "Small Danish cafés typically have regular tables and chairs, not American-style diner 'booths' (which lack a direct, natural Danish translation in this context). Changing it to 'corner table' (hjørnebord) improves both realism and translation-robustness.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "2",
+    "issue": "Technical/rare vocabulary ('valves')",
+    "severity": "Low",
+    "why": "The word 'valves' is a highly specific mechanical term that falls outside everyday A2 vocabulary. Replacing it with simpler, common nouns like 'buttons' or 'knobs', or just focusing on the machine generally, keeps the vocabulary useful and accessible.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Odd timeline for her 'second attempt' at foaming milk.",
+    "severity": "Low",
+    "why": "Scene 5 jumps to her second Saturday, and Scene 6 happens 'later that morning'. Framing this as her literal 'second attempt' at milk foaming implies she only made a single coffee during her entire first shift, which feels a bit unnatural for a busy café.",
+    "advisory": true
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "8",
+    "issue": "Logic/Role error: Volunteer locking the café",
+    "severity": "Low",
+    "why": "Maya is a brand-new volunteer working a Saturday morning shift. It is unrealistic that she would be the one holding the keys and locking the café's front door in the afternoon (the café would likely still be open, or a manager would lock up). It is safer to say she simply 'heads out the front door'.",
+    "advisory": false
+  }
+]

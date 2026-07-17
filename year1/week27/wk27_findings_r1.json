@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "1",
+    "issue": "Unrealistic login flow for a Danish municipal portal.",
+    "severity": "High",
+    "why": "In Denmark, any municipal or government portal strictly requires MitID (the secure national digital ID) for access. Logging in with just an email address (as seen in Scene 2) is completely unrealistic for a municipal site. To keep this simple email + SMS verification flow and adhere to the brief's rule to avoid national systems, change the website to a generic utility, housing, or commercial service portal.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "One thin situation stretched to length (micro-slicing).",
+    "severity": "High",
+    "why": "The entire 8-scene week micro-slices a single two-minute web form task (logging in, navigating to settings, waiting for a text, clicking resend, seeing a checkmark). To provide sufficient activity and scene-level texture, the digital admin task should be condensed to 3-4 scenes, allowing the rest of the week's scenes to cover distinct, physical evening activities (e.g., making a snack, preparing her badminton gear, or a quick interaction with Nina).",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Extremely dry, manual-like sequence",
+    "severity": "Med",
+    "why": "Scenes 2 through 7 are essentially just Maya reading UI prompts and system states ('account is located', 'fields must be filled out', 'code is sent'). While it perfectly nails the passive grammar brief, as a listener it feels a bit like reading an IT manual; sprinkling in a tiny bit of physical grounding (a sigh, taking a sip of water, shifting on the sofa) would help it feel like a story again.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1",
+    "issue": "Use of 'municipal' borders on the exclusion rule",
+    "severity": "Low",
+    "why": "The brief explicitly asks to 'Keep the portal generic: no named national systems (those belong to a later week).' While 'municipal self-service portal' isn't explicitly named, it heavily implies the specific Danish e-government system (borger.dk / kommune portals). Keeping it strictly to 'a public service website' or a generic utility provider might be safer for the brief.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Odd modern-tech logic",
+    "severity": "Low",
+    "why": "Since Scene 1 establishes she is doing this directly on her smartphone, she wouldn't normally need to 'memorize' the short number when it arrives—modern phones auto-fill SMS codes, or she just reads it from the drop-down notification banner. It feels slightly disjointed from how we actually use smartphones.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "2",
+    "issue": "Ambiguous translation for 'address'",
+    "severity": "Low",
+    "why": "The text says she 'types her address' right after the instruction to enter an email. Specifying 'email address' avoids the risk of the Danish generator using a physical 'adresse' instead of 'e-mailadresse'.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Slight UX logic quirk with 'memorizing' the code",
+    "severity": "Low",
+    "why": "Since Maya is completing this admin on her smartphone, receiving the text on the same device usually involves autofill or reading it straight from the notification banner. 'Memorizing' sounds slightly more like a two-device workflow, though it's a very minor detail.",
+    "advisory": false
+  }
+]

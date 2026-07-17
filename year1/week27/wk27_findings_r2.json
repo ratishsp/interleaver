@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "5",
+    "issue": "Timeline collision with established weekly fixtures",
+    "severity": "High",
+    "why": "Maya packs for her 'Thursday evening badminton match' but then stays in for the rest of the night (Scene 8). If tonight is Thursday, she is skipping her match; if it's Wednesday, she is violating the Story Bible which establishes she is at the gym on Wednesday evenings.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Timeline contradiction with weekly fixtures",
+    "severity": "High",
+    "why": "Maya packs her gear for her 'Thursday evening badminton match' on an evening she intends to spend entirely at home. If tonight is Thursday, she should be at badminton; if tonight is Wednesday, she should be at her regular Wednesday evening gym session instead of staying in; and packing on Tuesday for a Thursday evening match is unnaturally early.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "5",
+    "issue": "Chronological/logic conflict with established weekly schedule",
+    "severity": "High",
+    "why": "Maya is shown packing for her 'Thursday evening badminton match' during an evening (established in Scene 1), but then she stays home to read for the rest of the night (Scene 8). If it is currently Thursday evening, staying home contradicts her schedule; if it's Wednesday evening, she should be at the gym; and packing for Thursday evening on Monday or Tuesday makes no narrative sense.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "5",
+    "issue": "Timeline contradiction / double-booking conflict.",
+    "severity": "High",
+    "why": "Maya is packing for her 'regular Thursday evening badminton match' while simultaneously settling in to spend the rest of the evening 'completely offline' in her armchair (Scene 8). If it is currently Thursday evening, she should be going to the match, not staying in. If it is Wednesday evening, she is violating the story bible's rule that she has the gym on Wednesday evenings. Avoid specifying the day, or have her pack for a morning workout instead.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "5",
+    "issue": "Schedule conflict with established weekly fixtures.",
+    "severity": "Med",
+    "why": "Maya packs for her 'Thursday evening' match, but Scene 8 establishes she is staying in for the rest of the night. If this is Thursday, she should be leaving to play, not staying offline at home. If it is an earlier weekday, packing for Thursday is awkwardly early, and Wednesday evening is already booked for the gym. Changing this to packing her gym bag for Wednesday (or doing this on a Tuesday) would resolve the logic gap.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Unnatural dialogue summary and generic filler",
+    "severity": "Med",
+    "why": "Nina's summarized dialogue reads like a robotic restatement of the curriculum spec ('self-service portals usually are incredibly frustrating when systems delay the security codes'). The scene then leans on generic placeholder text ('chat comfortably... about their busy work weeks') rather than providing a concrete, active vignette.",
+    "advisory": false
+  }
+]

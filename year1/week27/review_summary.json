@@ -1,0 +1,60 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[Med/Cross-scene continuity & consistency] Inconsistent task goal between Scene 1 and Scene 2. — In Scene 1, Maya says she needs to update her 'payment details' (betalingsoplysninger), but in Scene 2 she specifically updates her 'contact information' (kontaktoplysninger) and enters a new phone number. Scene 1 should likely be changed to say she is updating her contact details to match the action.",
+        "[High/Naive whole-week listener (no checklist)] Unnatural use of passive voice for first-person physical actions. — To hit the passive grammar focus, Maya frequently narrates her own immediate physical chores in the passive voice (e.g., S7: 'First, the bag is fetched... then my shoes are put down into it'; S1: 'The plates are washed'). While passives work perfectly for the website instructions and general package deliveries, applying them to her direct, present-tense personal actions makes the first-person narration sound bizarrely robotic.",
+        "[High/Naive whole-week listener (no checklist)] Narrative voice becomes robotic when passive voice is applied to Maya's personal physical actions. — The passive voice works beautifully for the digital system messages and general rules (like packages being left downstairs). However, using it for Maya's immediate first-person actions in Scenes 1, 7, and 8 ('the bag is fetched', 'the shoes are put down', 'the book is opened') strips away her agency and makes her inner monologue sound like a technical manual."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "8",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] Unnecessary recap of Scene 7's entire resolution. — Scene 8 spends its first three lines restating that the practical tasks are done, the gym bag is packed, and the phone needs to charge. All of this was exactly what the listener just heard happen in Scene 7, stalling the momentum of the final scene.",
+        "[Med/Repetition & monotony] Repetitive recap of Scene 7's ending state and emotional beat. — Scene 7 concludes with Maya putting her phone on the charger, finishing her practical tasks, and looking forward to a quiet evening. Scene 8 immediately re-states all of these exact points in its opening lines (practical things done, bag packed, phone charging) and repeats the exact same 'ready to relax' sentiment, making the narrative feel stalled.",
+        "[High/Repetition & monotony] Heavy recap of the previous scene's events. — The first three lines of Scene 8 directly list the events that just happened in Scene 7 (being done with practical tasks, the gym bag being packed, and the phone charging). This violates the guideline against scenes that recap another and drags out the pacing of the conclusion."
+      ]
+    },
+    {
+      "scene": "6",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Cross-scene continuity & consistency] Unnatural document type for a phone number update. — Nina advises Maya to download a 'receipt' (kvittering) for the website update. Since Scene 2 shows Maya updating her phone number, getting a 'receipt' is unnatural. This should be changed to a 'confirmation' (bekræftelse).",
+        "[Med/Repetition & monotony] Near-verbatim recap of the previous scene's ending. — Scene 5 ends with Maya taking the box with a big smile and saying thank you. Scene 6 immediately opens with 'I take the box with a smile and say thank you,' which creates a stuttering flow for a listener hearing them back-to-back.",
+        "[Med/Repetition & monotony] Redundant action recap from the previous scene. — Scene 6 begins with 'Jeg tager kassen med et smil og siger tak', which is the exact same action and sentiment that concluded Scene 5. This stalls the forward momentum between scenes.",
+        "[Med/Naive whole-week listener (no checklist)] Timeline contradiction regarding the 20 minutes. — Maya tells Nina she just spent 20 minutes on the website, but Scenes 1-4 unfolded in near real-time, showing her logging in, waiting maybe 30 seconds for a code, requesting a new one, and finishing immediately. It feels like a continuity slip."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "8",
+      "stem": "08_offline_reading",
+      "votes": 3,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 17,
+      "n1": 14
+    },
+    {
+      "scene": "6",
+      "stem": "06_practical_advice",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 16,
+      "n1": 16
+    }
+  ]
+}

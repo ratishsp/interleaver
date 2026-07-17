@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Confusing screen description",
+    "severity": "Med",
+    "why": "It says Maya 'watches her blank screen' waiting for the text message. Since she is actively doing the admin on her phone (from Scene 2), she would be staring at the portal's verification page waiting for an SMS notification to drop down, not a blank screen.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Unnatural dialogue/exposition",
+    "severity": "Med",
+    "why": "Nina randomly knowing that Maya's specific electricity provider's website is 'infamous for deleting old messages' feels very clunky. It reads less like natural neighborly chat and more like a forced way to squeeze in extra digital admin vocabulary.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Disjointed staging/blocking between Scene 1 and Scene 2.",
+    "severity": "Med",
+    "why": "Maya deliberately clears her kitchen table in Scene 1, implying she is making space to handle her admin, but then inexplicably settles on the sofa in Scene 2 to actually do it. The table-clearing action is rendered pointless.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Narrative redundancy (recap of immediate past).",
+    "severity": "Med",
+    "why": "Maya tells Nina that she just spent twenty minutes fighting with the utility website. Since the audience just directly experienced this struggle across scenes 1-4, having Maya summarize it again halts the narrative momentum.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1",
+    "issue": "Misleading physical action",
+    "severity": "Low",
+    "why": "Maya clears her kitchen table, which mentally sets up the expectation that she's making space to sit down and do paperwork or use a laptop. However, she immediately goes to the sofa to do the admin on her phone, making the table-clearing feel like an unrelated detail.",
+    "advisory": true
+  }
+]

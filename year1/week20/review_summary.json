@@ -5,36 +5,52 @@
   "whole_week": [
     {
       "scene": "week",
-      "votes": 3,
-      "severity": "Med",
+      "votes": 2,
+      "severity": "High",
       "issues": [
-        "[Med/Repetition & monotony] Over-repetition of Maya explicitly stating she is nervous. — Maya's nerves are asserted in three consecutive scenes: 'jeg er også lidt nervøs' (Scene 1), 'Jeg var lidt nervøs' (Scene 2), and 'Jeg kiggede nervøst' (Scene 3). Asserting the exact same emotional state explicitly across consecutive scenes creates a monotonous emotional loop.",
-        "[Med/Repetition & monotony] Repetitive use of 'aldrig/ikke [gjort noget] før', including an exact duplicate line. — The exact sentence 'Jeg har aldrig arbejdet på/i en café før' is used in both Scene 1 and Scene 4, making it feel like a jarring reset. Additionally, Scenes 2 and 5 use the exact same template ('Jeg har aldrig lavet kaffe... før', 'Jeg havde ikke serveret en gingerbeer før'), turning this into an overused refrain.",
-        "[Low/Repetition & monotony] Explicitly restating nervousness. — Scenes 1, 2, and 3 all explicitly state the exact emotion 'nervøs' ('lidt nervøs', 'lidt nervøs', 'nervøst'). While it makes sense for her first shift, asserting it three scenes in a row is slightly monotonous.",
-        "[Low/Repetition & monotony] Repeated use of the emotion/word 'nervøs' in the first three scenes. — Maya mentions being 'lidt nervøs' in Scene 1, 'lidt nervøs' again in Scene 2, and looking 'nervøst' in Scene 3. Varying the way she expresses her beginner's apprehension would make the emotional arc feel more dynamic."
+        "[High/Cross-scene continuity & consistency] Timeline contradictions regarding the first/second coffees and what she learned 'today'. — Scene 6 explicitly jumps to the 2nd Saturday, which means Scene 7 (where she makes her 'second' coffee and improves her milk frothing) happens a week after her first coffee in Scene 4, awkwardly disrupting the continuous learning progression of her first shift. Furthermore, in Scene 9 (the 3rd Saturday), Maya says she learned to froth milk correctly 'today' ('i dag'), but that breakthrough already happened in Scene 7. Scene 9 should reflect what she learned over all her shifts so far, rather than just that day.",
+        "[Med/Naive whole-week listener (no checklist)] Unrealistic key-holding for a brand new volunteer — In Scene 2, Maya unlocks the café's front door alone on her very first day before the other volunteers arrive, and in Scene 9 she locks up the café alone. It breaks realism slightly that a day-1 volunteer would be given the keys to open and close the shop unsupervised.",
+        "[Med/Cross-scene continuity & consistency] Continuity gap in the 'learning to make coffee' arc between Scenes 4, 6, and 7. — In Scene 4 (first Saturday), Maya's first flawed coffee is a cappuccino. Scene 6 advances the timeline to her second Saturday. Scene 7 then continues the morning, but Maya makes a latte and says 'It was only my second latte today. The first cup was not quite perfect.' Changing the drink from cappuccino to latte and spanning the arc across a week gap makes it sound like she is referring to a new, off-screen mistake made that same morning, which loses the direct payoff of her improving from her first attempt in Scene 4."
       ]
     }
   ],
   "scene_survivors": [
     {
-      "scene": "4",
+      "scene": "2",
       "votes": 3,
       "severity": "High",
       "issues": [
-        "[High/Repetition & monotony] Verbatim repetition of a line from Scene 1. — Maya says 'Jeg har aldrig arbejdet i en café før' (I have never worked in a café before). She already said this exact phrase in Scene 1. Repeating it in Scene 4 reads like an accidental copy-paste and creates jarring narrative amnesia (furthermore, using it to contrast with 'learning to cut bread in half quickly' feels slightly absurd).",
-        "[High/Cross-scene continuity & consistency] Contradiction regarding the volume of coffee made. — In Scene 3, Maya serves her 'very first coffee' and fulfills her 'first order'. Scene 4 happens 'shortly after' and introduces 'the next order', but Maya then states 'I have already made a lot of coffee today.' It is logically impossible for her to have made a lot of coffee between her first and second order of the day.",
-        "[Low/Naive whole-week listener (no checklist)] Redundant narrative premise. — Maya states 'I have never worked in a café before' in Scene 4, which she already explicitly stated in Scene 1. Since both scenes take place during the exact same morning shift, repeating the premise to the listener feels a bit repetitive, even for a language course.",
-        "[Med/Repetition & monotony] Repeated line: 'Jeg har aldrig arbejdet i en café før.' — This exact sentiment and phrasing was already established in Scene 1. Repeating it in Scene 4 feels like a reset, and it creates a clunky transition into 'But I have learned to cut the bread in half quickly'.",
-        "[Med/Naive whole-week listener (no checklist)] Abrupt repetition of exposition mid-action: 'Jeg har aldrig arbejdet i en café før.' — Maya already established this exact fact in Scene 1. Repeating it as an independent thought right in the middle of slicing a sourdough bun breaks the narrative flow and makes the narrator sound like she has amnesia."
+        "[Low/Repetition & monotony] Verbatim line repetition from previous scene — Scene 2 repeats the exact sentence 'Jeg har aldrig arbejdet på en café før.' that was just used at the very end of Scene 1. While reinforcing grammar/vocabulary is good, repeating a full identical sentence verbatim across consecutive scenes can sound like a copy-paste error rather than natural pedagogical recurrence.",
+        "[Low/Cross-scene continuity & consistency] Maya unlocking the café alone on her very first day. — Maya unlocks the heavy front door and starts setting up before the other volunteers arrive on her very first shift. Logistically, it's slightly illogical that a brand-new volunteer would already have the keys to the shop before meeting anyone for her first shift.",
+        "[High/Naive whole-week listener (no checklist)] Maya opens the café alone on her very first day. — She goes into the back room, puts on an apron, and unlocks the heavy front door before any other volunteers arrive. It breaks immersion that a brand-new volunteer showing up for her first shift would already have a key and be opening the venue alone.",
+        "[Low/Repetition & monotony] Exact sentence repetition from the previous scene. — Scene 2 repeats the exact sentence 'Jeg har aldrig arbejdet på en café før' shortly after it was used as the concluding line of Scene 1. While vocabulary repetition is pedagogically useful, repeating a full 9-word sentence verbatim across adjacent scenes can feel slightly like a copy-paste error rather than natural reinforcement."
+      ]
+    },
+    {
+      "scene": "7",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Cross-scene continuity & consistency] Muddled continuity of the 'first vs. second coffee' arc. — In Scene 4, Maya makes a cappuccino (her first coffee) but fails to get thick foam. In Scene 7, she makes a latte, calls it her 'second latte today', but then directly compares it to 'the first cup' not being perfect and celebrates getting 'thick foam' this time. This mixes up the drinks (thick foam is meant for cappuccinos) and makes the connection between her first and second coffee attempts confusing.",
+        "[Med/Naive whole-week listener (no checklist)] Mismatched drink reference for the milk-frothing payoff — In Scene 7, Maya makes a 'latte' and notes 'Den første kop var ikke helt perfekt', which emotionally pays off her struggle with milk foam in Scene 4. However, in Scene 4 she made a 'cappuccino', not a latte. Making them the same drink would make the callback much tighter for the learner."
       ]
     }
   ],
   "revised": [
     {
-      "scene": "4",
-      "stem": "04_bun_with_cheese",
+      "scene": "2",
+      "stem": "02_first_shift_arrival",
       "votes": 3,
       "severity": "High",
+      "status": "fixed",
+      "n0": 18,
+      "n1": 18
+    },
+    {
+      "scene": "7",
+      "stem": "07_second_coffee_progress",
+      "votes": 2,
+      "severity": "Med",
       "status": "fixed",
       "n0": 19,
       "n1": 19

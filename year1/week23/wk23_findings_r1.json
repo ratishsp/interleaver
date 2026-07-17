@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Interchangeable meal description ('beautifully set table', 'lovely vegetarian meal').",
+    "severity": "Med",
+    "why": "The scene leans heavily on generic filler adjectives. Naming a specific item (e.g., a mushroom tart, lit candles on the table, or warm bread) creates a richer vignette and teaches more tangible everyday vocabulary.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The pacing drags with too many solo transit/logistics scenes.",
+    "severity": "Med",
+    "why": "Scenes 2, 3, and 4 are all Maya alone planning her route, shopping, and waiting for transit. It delays the core social interaction with Eva for almost half the week, making the build-up to the dinner feel a bit slow and over-explained.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "Weirdly specific and slightly anxious phrasing about a 'full vase'.",
+    "severity": "Med",
+    "why": "Hoping that Eva 'does not already have a full vase on the table' is an oddly literal thought to have when handing over a gift. It distracts from the warmth of the greeting; usually, you just hope the recipient likes the flowers.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Risk of violating the 'no retelling' constraint.",
+    "severity": "Med",
+    "why": "The brief strictly specifies 'present and future only, no retelling.' Instructing the generator to have them 'discuss Maya's new life since January' is highly likely to prompt past tense or present perfect recounting, violating the grammar constraint.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Relies on generic adverbs rather than concrete action.",
+    "severity": "Low",
+    "why": "Using 'warmly', 'gladly', and 'smiling' makes the interaction feel thin. Grounding the invitation in a tangible office moment (e.g., Eva stopping by Maya's desk or chatting by the coffee machine) would provide better texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "5",
+    "issue": "Abstract description of the apartment ('highly creative, cozy space').",
+    "severity": "Low",
+    "why": "'Creative' and 'cozy' are abstract summaries. Supplying a concrete noun (like colorful posters, a wall of books, or warm lamps) provides better vocabulary and a clearer mental image.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Checking a physical timetable feels redundant and slightly outdated.",
+    "severity": "Low",
+    "why": "Maya is a 31-year-old software engineer who just looked up the digital route on her phone in Scene 2. Having her check a timetable at the bus stop feels a bit anachronistic and repeats the travel-planning beat.",
+    "advisory": true
+  }
+]

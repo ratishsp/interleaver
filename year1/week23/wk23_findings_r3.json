@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Rare vocabulary and static description",
+    "severity": "Med",
+    "why": "\"Spider plants\" is a highly specific noun that translates to niche vocabulary (like \"væddeløber\"), which is not useful at the A2 level. Furthermore, listing prints, plants, and a lamp pauses the vignette for a static object inventory; replace it with one common, concrete detail woven into an action (e.g., Maya admires the many green plants as she steps inside).",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "2",
+    "issue": "Unexplained switch from bringing dessert to bringing flowers.",
+    "severity": "Med",
+    "why": "In Scene 1, Maya explicitly intends to bring dessert, but in Scene 2 she buys flowers 'instead'. If she already told Eva she was bringing dessert, showing up with only flowers makes her seem a bit flaky or forgetful unless a reason is given (like the bakery being closed).",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Repetitive use of Maya's phone as a staging prop.",
+    "severity": "Med",
+    "why": "Maya relies on her phone in half the scenes: checking a schedule app (Sc 1), navigating via a map app (Sc 2), showing photos (Sc 6), and pulling up a calendar app (Sc 7). This over-repetition makes the physical staging feel a bit static and predictable.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Unresolved setup regarding the dessert promise.",
+    "severity": "Med",
+    "why": "Maya 'notes that she intends to bring some dessert' in Scene 1, but buys flowers instead in Scene 2. If she stated the dessert plan aloud to Eva, arriving with tulips in Scene 3 without explaining the change creates a mild logic gap. Clarifying in Scene 1 that this was just a mental note would resolve it.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Repetitive action of checking a calendar app.",
+    "severity": "Low",
+    "why": "Maya checked her 'schedule app' in Scene 1 to accept the dinner, and now pulls up her 'calendar app' in Scene 7 to accept the museum trip. Repeating this specific action makes her interactions feel a bit overly corporate; she could just enthusiastically agree to the museum trip in the moment.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The English translations to force the grammar rule feel slightly unnatural.",
+    "severity": "Low",
+    "why": "Because almost every scene features the 'thinks/feels that [subject] [adverb] [verb]' structure, the English phrasing starts to sound a bit stilted (e.g., 'feels that it definitely sounds like a fun idea', 'thinks that she will probably get lost'). It's noticeable, though understandable if it's strictly for the grammar drill.",
+    "advisory": true
+  }
+]

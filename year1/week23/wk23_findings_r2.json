@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "The dinner visit is one thin situation stretched across six scenes (3-8) with almost no physical movement.",
+    "severity": "High",
+    "why": "Scenes 4, 5, 6, and 7 consist entirely of sitting at a table and talking. To avoid micro-slicing and static dialogue, the scenes need distinct physical actions woven in—such as clearing the plates, looking at photos on a phone during the family chat, or checking a calendar to plan the museum trip—so each scene moves as a vignette.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Generic description of the apartment relies on abstract adjectives.",
+    "severity": "Med",
+    "why": "Describing the apartment as 'highly creative' and 'cozy' tells rather than shows. It needs concrete, translatable visual texture, such as noticing bright posters, a wall of books, or many green plants.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The conversation feels like a series of formal declarations rather than a casual chat.",
+    "severity": "Med",
+    "why": "Because almost every scene features Maya saying 'I believe that...', 'I hope that...', or 'I feel that...', the evening feels oddly stiff. Even though I'm practicing that grammar, hearing it repeated so heavily makes Maya sound like she's giving a speech instead of bonding with a friend.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Maya's reaction to the museum invitation sounds unnaturally robotic.",
+    "severity": "Med",
+    "why": "Saying she 'believes that they will certainly have a fantastic time' reads like a corporate email. A simpler, more enthusiastic reaction ('I think that sounds like a great idea' or 'I really want to do that') would feel much more authentic for two friends over coffee.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "2",
+    "issue": "Seasonality of flowers",
+    "severity": "Low",
+    "why": "Maya arrived in January, making Week 23 roughly early June. In Denmark, tulips are strictly a winter/spring flower in shops and are generally gone by June; swapping this to a generic 'bright bouquet of summer flowers' would better reflect Danish realism for the time of year.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Thin workplace scene lacking physical grounding.",
+    "severity": "Low",
+    "why": "The scene is a purely verbal exchange with generic filler ('smiling', 'gladly accepts'). Grounding it in a concrete workplace action, like grabbing a coffee in the canteen or packing up their laptops, would give the vignette a clearer physical setting.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Repeating her internal thoughts about the flowers stalls the momentum.",
+    "severity": "Low",
+    "why": "In scene 2, we just established that she bought the tulips because she believes Eva likes colorful things. Having her immediately restate her hope that Eva 'actually likes them' when handing them over feels repetitive and slightly unnatural.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "03_arriving_at_evas",
+    "issue": "Awkward social implication in dialogue.",
+    "severity": "Low",
+    "why": "Saying out loud 'I hope you *actually* like them' when handing over a gift sounds insecure or slightly accusatory. Using an adverb like 'really' (virkelig) would still fulfill the grammar constraint for a sentence adverb without the awkward conversational implication.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "08_heading_home",
+    "issue": "Rushed timeline for finalizing plans.",
+    "severity": "Low",
+    "why": "They agree to text 'tomorrow' to 'finalize' a museum trip that isn't happening until 'next month'. It would be more logically paced to text tomorrow simply to say thank you for the evening and begin looking at dates.",
+    "advisory": false
+  }
+]

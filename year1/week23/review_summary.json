@@ -1,0 +1,29 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Naive whole-week listener (no checklist)] Robotic overuse of \"Jeg tror/synes/føler, at...\" — While hitting the grammar target is necessary, having Maya explicitly narrate her internal state ('I feel that...', 'I think that...', 'I believe that...') 3-4 times in almost every scene drags the pacing down. It makes her inner monologue feel less like a story and more like a rigid grammar drill.",
+        "[High/Repetition & monotony] Repeated exposition of Eva's profession — Maya explicitly states that Eva is a (digital) designer in Scene 1, Scene 3, and Scene 8. Because the learner listens to the week in one sitting, re-stating her exact job title three times reads like amnesiac exposition rather than natural narrative.",
+        "[Med/Repetition & monotony] Repetitive 'cozy evening' wrap-ups at scene ends — Scenes 1, 5, and 6 all conclude with Maya asserting nearly identical predictions about the night ('bliver en rigtig hyggelig aften', 'få en fantastisk aften', 'blive en rigtig hyggelig aften'). This creates a monotonous template and flattens the emotional arc by restating the exact same feeling.",
+        "[High/Naive whole-week listener (no checklist)] Narrative amnesia regarding Eva's job title. — Maya explicitly states that Eva is a (digital) designer in Scene 1, Scene 3, and again in Scene 8. Listening back-to-back, being told the exact same fact three times feels unnatural and breaks the illusion of a continuous narrative.",
+        "[Med/Naive whole-week listener (no checklist)] Formulaic scene endings blunt the emotional arc. — Scenes 1, 5, 6, 7, and 8 all conclude with almost identical sentiments: 'I believe/know we will probably have a cozy/fantastic evening/time' (e.g., 'Jeg tror, at det nok bliver en rigtig hyggelig aften'). While grammatical repetition is good, repeating this exact emotional beat as the wrap-up for nearly every scene feels robotic and dragged out.",
+        "[Med/Repetition & monotony] Mechanical distribution of target grammar creates rhythmic monotony — Every single scene features 3-4 variations of 'Jeg synes/tror/føler, at [subject] [adverb]...' and at least one 'Jeg har tænkt mig at...'. While this is the week's grammar focus, distributing these identical sentence structures so evenly and rigidly across all 8 scenes gives Maya's internal monologue a highly formulaic, robotic pacing.",
+        "[Low/Repetition & monotony] Repetitive emotional capstones regarding the evening — Multiple scenes rely on an almost identical prediction or summary of how nice the evening will be/is (e.g., Scene 1: 'nok bliver en rigtig hyggelig aften'; Scene 5: 'nok skal få en fantastisk aften'; Scene 6: 'nok skal blive en rigtig hyggelig aften'; Scene 8: 'var bare helt perfekt'). This causes the emotional arc to feel slightly flat and repetitive.",
+        "[Med/Repetition & monotony] Repeated assertion of Eva's job title. — Maya states that Eva is a 'digital designer' or 'designer on my team' three separate times (Scenes 1, 3, and 8). By Scene 8, re-stating her exact job title feels unnatural and redundant for the listener who has just heard it.",
+        "[Med/Repetition & monotony] Monotonous predictions of a 'cozy/fantastic evening'. — In Scenes 1, 5, and 6, Maya's internal monologue relies on nearly identical predictions to close out thoughts: 'Jeg tror, at det nok bliver en rigtig hyggelig aften', 'Jeg er sikker på, at vi nok skal få en fantastisk aften', and 'Jeg ved, at det nok skal blive en rigtig hyggelig aften'. This makes her emotional arc feel static.",
+        "[High/Naive whole-week listener (no checklist)] Severe overuse of 'Jeg har tænkt mig at' (I intend to) makes Maya sound robotic. — The phrase appears 12 times across the week. While it fits making plans, using it for immediate or abstract actions like 'I intend to write a message to Eva now' (S4) or 'I intend to enjoy this evening' (S5) feels unnatural and drill-like.",
+        "[High/Naive whole-week listener (no checklist)] 'Jeg føler, at' (I feel that) is heavily overused for mundane observations. — Maya uses 'I feel that' for things that aren't emotional, such as traffic being slow (S4), being a bit early (S5), or flowers fitting a room (S3). It makes the narration sound like a therapy session rather than natural thoughts.",
+        "[Med/Naive whole-week listener (no checklist)] Highly predictable, formulaic scene endings. — Almost every scene ends with a variation of 'Now I will/must [do the next step]' (S1: 'Nu vil jeg fortsætte...', S2: 'Nu skal jeg bare finde...', S3: 'Nu skal jeg bare finde...', S8: 'Nu vil jeg gå...'). It makes the transitions feel very mechanical.",
+        "[Low/Naive whole-week listener (no checklist)] Repetitive use of 'nok' to force the grammar target. — Because the grammar requires a sentence adverb in the subordinate clause, 'nok' (probably/surely) is used constantly ('nok bliver', 'nok vil tage', 'nok skal passe', 'nok kommer', 'nok er lidt'). It starts to stick out to the ear over 8 scenes."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

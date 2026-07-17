@@ -1,0 +1,30 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Repetition & monotony] Repetitive scene openings ('Jeg går...') — Almost every scene begins with the exact same structural action: Scene 1 ('Jeg går ud...'), Scene 2 ('Jeg går en tur...'), Scene 3 ('Jeg går videre...'), Scene 4 ('Jeg går væk...', 'Jeg går ind...'), Scene 5 ('Jeg går ovenpå...'), and Scene 7 ('Jeg går hjem...'). This makes the narrative flow feel monotonous.",
+        "[Low/Repetition & monotony] Constant smiling, laughing, and 'glad' refrains — Nearly every interaction is punctuated by smiling or laughing. Scene 2 (vendor smiles), Scene 3 (woman smiles and laughs, Maya laughs), Scene 4 (Maya smiles), Scene 6 (Maya is 'meget glad', sees 'glade ansigter', smiles, writes 'glad besked'), and Scene 7 (woman laughs, Maya laughs back). It flattens the emotional register.",
+        "[Med/Repetition & monotony] Over-reliance on 'Jeg går...' syntax to narrate movement. — Almost every scene moves Maya from place to place using 'Jeg går [retning]' (Scenes 1, 2, 3, 4, 5, and 7). Scene 4 is particularly monotonous, using it for three consecutive sentences ('Jeg går væk...', 'Jeg går ind...', 'Jeg går hen...'). While high-frequency verbs are pedagogically useful, stacking identical sentence structures this densely feels robotic.",
+        "[Low/Repetition & monotony] Redundant weather refrains ('solen skinner'). — The exact phrase 'solen skinner' (the sun is shining) is stated in Scene 1, Scene 2, and Scene 3. Having already established the bright summer morning in the first scene, repeating the identical phrase in the next two consecutive scenes reads as slightly monotonous."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "4 and 5",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[Low/Naive whole-week listener (no checklist)] Dropped narrative thread regarding the guided tour. — Scene 4 ends with a sense of urgency as Maya hurries up the stairs to catch a guided tour that just started. However, Scene 5 immediately portrays her completely alone, quietly reading text next to a photograph at her own pace, with no mention of the tour group she rushed to join.",
+        "[High/Naive whole-week listener (no checklist)] The guided tour is abruptly dropped between scenes. — Scene 4 ends with Maya rushing up the stairs to catch a guided tour group before it's too late. However, Scene 5 completely ignores the group—she is suddenly alone, having a slow, quiet, solitary moment looking at a single photograph for a long time. It clashes with the rushed ending of the previous scene and breaks the continuity."
+      ]
+    }
+  ],
+  "revised": []
+}

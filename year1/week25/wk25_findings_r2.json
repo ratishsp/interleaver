@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "5",
+    "issue": "Static description scene lacking action.",
+    "severity": "Med",
+    "why": "The scene is essentially a static description of a photograph and its caption. It needs a small beginning-middle-end action arc (e.g., stepping closer to read the small text, then looking out a nearby window to compare it to the real waterfront) rather than just an internal observation.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Unnatural phrasing: 'this dessert'.",
+    "severity": "Med",
+    "why": "Calling a waffle ice cream cone 'this dessert' while actively dodging a seagull feels incredibly clunky and robotic. It pulls me out of the story; 'this ice cream' would be a much more natural way to include the demonstrative.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4 and 5",
+    "issue": "Abandoned narrative thread (guided tour).",
+    "severity": "Med",
+    "why": "In Scene 4, the clerk urges Maya to hurry upstairs to join a guided tour that started ten minutes ago. However, Scene 5 shows Maya simply studying a photo and reading a caption on her own, with no mention of the tour she supposedly rushed to catch.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Unnatural vocabulary to force a grammar point.",
+    "severity": "Low",
+    "why": "Having Maya shield 'this dessert' is an unnatural way to force the demonstrative target. It should simply be 'this ice cream' to keep the language everyday and translatable.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Slight contradiction with the relaxed tone.",
+    "severity": "Low",
+    "why": "The week's brief emphasizes a 'slow Sunday with nowhere to be' and exploring at her own pace. Being told to hurry to catch a guided tour slightly interrupts that lazy, wandering vibe, even though it efficiently sets up the 'ten minutes ago' grammar.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "Minor logic gap regarding the ticket.",
+    "severity": "Low",
+    "why": "Maya has just walked into the museum and approached the front desk, so she hasn't purchased a ticket yet. Asking if 'this entrance ticket' includes the exhibition implies she is already holding one, which skips a step.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Repetitive use of the modifier 'exactly'.",
+    "severity": "Low",
+    "why": "The word 'exactly' is overused to force the time/demonstrative grammar framing across multiple scenes ('exactly six months ago' in Sc 1, 'exactly like it' in Sc 3, 'exactly two years ago' in Sc 6), making the narrative voice feel a bit repetitive.",
+    "advisory": false
+  }
+]

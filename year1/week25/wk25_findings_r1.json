@@ -1,0 +1,98 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "3",
+    "issue": "Uses a Danish number in the English storyboard and explicitly mentions language learning.",
+    "severity": "High",
+    "why": "The cross-cutting rules specify that amounts in the storyboard must be in English ('seventy-five kroner', not 'femoghalvfjerds kroner'). Furthermore, explicitly stating that Maya 'struggled to understand spoken prices' violates the rule that her language learning and growing fluency must only be shown, never stated as a milestone.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Danish text used for currency in the English storyboard.",
+    "severity": "High",
+    "why": "The scene writes out the price as 'femoghalvfjerds kroner'. The cross-cutting rules dictate that amounts in the storyboard and gloss must be written in English words ('seventy-five kroner'), reserving Danish spelling exclusively for the generated Danish text.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The use of demonstratives feels incredibly robotic and forced.",
+    "severity": "High",
+    "why": "Phrases like 'this sunny bench', 'this brochure', and 'this new vintage jacket' are awkwardly shoehorned into almost every scene. As a learner, it takes me out of the story because I can hear the grammar checklist overriding a natural narrative flow.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Danish words used for the price in the English storyboard.",
+    "severity": "High",
+    "why": "The cross-cutting rules explicitly state to use English words in the storyboard and glosses (e.g., 'seventy-five kroner'). Danish words for numbers ('femoghalvfjerds') should only appear in the generated Danish translation.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "3",
+    "issue": "Explicit reference to language learning progress.",
+    "severity": "High",
+    "why": "The storyboard states Maya remembers 'how she struggled to understand spoken prices.' The Story Bible strictly dictates: 'The story never depicts Maya learning Danish... Her growing fluency is shown, never stated as a milestone.'",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Repetitive narrative beats (restated feelings) stalling activity.",
+    "severity": "Med",
+    "why": "Scenes 1, 3, 6, and 8 all rely on the exact same internal beat to end the scene: Maya stopping to reflect on how much time has passed and how she has settled since she arrived. While the brief asks to thread this reflection, repeating the exact same internal sentiment four times makes the week feel static and thin rather than active.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Static scene lacking a vignette structure.",
+    "severity": "Med",
+    "why": "The scene is mostly static description (taking a detour, sitting on a bench, watching birds) with no real beginning-to-end movement or task. It functions more as a placeholder for a feeling than a distinct, active vignette.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Confusing reference to 'these small purchases'.",
+    "severity": "Med",
+    "why": "Maya puts away 'these small purchases', but the only thing the story actually had her buy was a warm wool jacket, which isn't particularly small. Did she also buy the vase and plates from scene 2? It feels like a skipped step.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Danish text used in the English storyboard summary.",
+    "severity": "Med",
+    "why": "The summary writes the price out as 'femoghalvfjerds kroner' instead of the English 'seventy-five kroner'. The cross-cutting rules state that amounts should be English words in the storyboard and gloss.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "8",
+    "issue": "Refers to 'these small purchases' but she didn't buy any small items.",
+    "severity": "Med",
+    "why": "In Scene 2, Maya only 'examines' the vase and plates, and in Scene 3 she explicitly buys a wool jacket. Scene 8 mentions putting away 'these small purchases', creating a logic gap. Scene 2 should be updated to state that she buys them, or Scene 8 should be adjusted.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "3",
+    "issue": "Danish number words used in the English storyboard.",
+    "severity": "Med",
+    "why": "The price is written as 'femoghalvfjerds kroner'. The cross-cutting rules specify that amounts should be written in English in the storyboard (e.g., 'seventy-five kroner'), saving the Danish words exclusively for the generated Danish text.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "The jacket price seems unbelievably cheap.",
+    "severity": "Low",
+    "why": "Seventy-five kroner is only about 10 Euros/USD. Even for a flea market, this is so unusually cheap for a 'warm wool jacket' that it distracted me.",
+    "advisory": true
+  }
+]

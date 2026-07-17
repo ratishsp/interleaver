@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "The grammar targets are so heavily drilled that it breaks immersion.",
+    "severity": "High",
+    "why": "Almost every single scene features a demonstrative noun ('these plates', 'this coat', 'this entrance ticket', 'this ice cream') and a timeframe ('six months ago', 'five months ago', 'ten minutes ago', '100 years ago', 'two years ago'). As a listener, it quickly turns into a predictable game of grammar bingo rather than a natural story.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Trivial uses of 'ago' dilute the emotional weight of Maya's reflection.",
+    "severity": "Med",
+    "why": "The brief calls for a reflection on her first months here, but mixing her meaningful milestones (moving 6 months ago) with mundane things like a tourist group leaving '10 minutes ago' undercuts the sentimental, reflective mood of the Sunday.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "7",
+    "issue": "Awkward English phrasing for translation ('waffle ice cream')",
+    "severity": "Low",
+    "why": "The phrase 'waffle ice cream' is likely a literal calque of the expected Danish 'isvaffel'. It is safer to use the natural English term 'ice cream cone' in the storyboard to ensure the English side of the gloss remains idiomatic.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "07_seagull_encounter",
+    "issue": "Bizarre phrasing forced by the grammar target.",
+    "severity": "Low",
+    "why": "Having Maya shield 'this ice cream' from a seagull instead of 'her ice cream' or 'the ice cream' feels incredibly unnatural. It makes it obvious that a grammar checklist is dictating the character's actions.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Repetitive use of the word 'exactly'.",
+    "severity": "Low",
+    "why": "The adverb 'exactly' is used three times across the week to emphasize time or similarity (Scene 1: 'exactly six months ago', Scene 3: 'exactly like it', Scene 6: 'exactly two years ago'), creating minor lexical redundancy.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Minor timezone logic gap regarding Sofía's immediate reply.",
+    "severity": "Low",
+    "why": "If Maya is at a museum café in Copenhagen on a Sunday midday or early afternoon, it would be early morning (around 5:00–7:00 AM) in Mexico. While possible, an 'immediate' casual text reply is slightly improbable at that hour.",
+    "advisory": false
+  }
+]

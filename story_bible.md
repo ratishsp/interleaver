@@ -10,6 +10,7 @@ locked. The continuity lens treats everything here as established truth: a new w
 - First-person narrator throughout (her own voice).
 - **Commute**: she takes the **bus** to work (wk6/7). She owns a **bicycle** but rides it mostly at
   weekends (wk7).
+- **Weekly fixtures** (don't double-book): **gym Wednesday evenings** (wk7); **badminton Thursday evenings** (wk12); **volunteers Saturday mornings at a café** (wk20).
 
 ## Recurring cast
 - **Nina** — Danish neighbour, met day 1 (week 1), Maya's first friend; lives in the same building. Kind, helpful.

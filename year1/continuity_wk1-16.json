@@ -1,0 +1,32 @@
+[
+  {
+    "category": "memory_knowledge",
+    "lens": "Memory & knowledge",
+    "severity": "Med",
+    "fact_quote": "I call my mother in Mexico. ... \"I am in the apartment now.\"",
+    "location": "Week 1 · Scene 5",
+    "contradiction_quote": "My mother also wants to hear about my first evening in the apartment.",
+    "contradiction_location": "Week 16 · Scene 7",
+    "why": "In Week 1, Maya actually calls her mother on her very first evening to tell her about the apartment. However, in Week 16, her mother asks to hear about that first evening as if it's an untold story she wasn't a part of."
+  },
+  {
+    "category": "memory_knowledge",
+    "lens": "Memory & knowledge",
+    "severity": "Low",
+    "fact_quote": "A woman smiles at me. \"Hi,\" she says. \"What is your name?\" she asks.",
+    "location": "Week 1 · Scene 6",
+    "contradiction_quote": "A young woman came out and smiled at me. \"Hi, my name is Nina,\" she said.",
+    "contradiction_location": "Week 16 · Scene 3",
+    "why": "In Week 1, Nina asks for Maya's name first before introducing herself. In Week 16's memory retelling, Maya recalls Nina introducing herself first."
+  },
+  {
+    "category": "memory_knowledge",
+    "lens": "Memory & knowledge",
+    "severity": "Low",
+    "fact_quote": "I find a beautiful, green coat. ... The shop assistant finds another jacket for me.",
+    "location": "Week 10 · Scene 4",
+    "contradiction_quote": "She asked, \"Are you looking for something specific?\" I answered, \"Yes please, I would like to buy your warmest winter jacket.\"",
+    "contradiction_location": "Week 16 · Scene 9",
+    "why": "In Week 10, the assistant tells Maya to look around, and Maya tries on a green coat herself before the assistant helps her find the blue jacket. In Week 16, Maya recalls the assistant explicitly asking what she needed and immediately finding the winter jacket."
+  }
+]

@@ -35,12 +35,12 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 | 18 | A2 | Health & the doctor | *gør ondt*; body parts; *har det godt/dårligt*; *burde* | First visit to the doctor; the public health card |
 | 19 | A2 | Work & colleagues | Present perfect *har arbejdet*; professions | A few months in — a project at the office, getting to know her colleagues and what they each do |
 | 20 | A2 | Volunteering at the café | Past + perfect mixed; *lære at*; ordinals | Starts volunteering at a café on weekends — learning the ropes and making friends there |
-| 21 | A2 | Buying clothes | Comparatives *større/mindre*; *prøve*; sizes | Shopping and returns |
+| 21 | A2 | Buying clothes | Comparatives *større/mindre*; *prøve*; sizes | Spring clothes, and her first return — something doesn't fit at home, so she exchanges it (not a winter rerun; wk10 owns that) |
 | 22 | A2 | Cooking & local food | Imperative sequences; quantities; *først/så/derefter* | Trying local recipes for new friends |
 | 23 | A2 | Making plans & friends | Future *skal/vil*; *har tænkt mig at*; *synes/tror/føler at* + subordinate *at* word order | Invited to a colleague's home for the first time |
 | 24 | A2 | Looking after Nina's dog | Imperatives + object pronouns *den/ham/hende*; *skal/må* (rules) | Nina is away for a weekend, so Maya dog-sits Nina's dog Ludwig — park walks |
 | 25 | A2 | A Sunday in the city | Demonstratives *denne/dette/disse*; *for … siden* (ago); time adverbs | A slow weekend Sunday — a second-hand market, a museum, some downtime |
-| 26 | A2 | Danish summer & traditions | Perfect tense; customs (*Sankt Hans*, *sommerferie*, *fødselsdag*) | Her first Danish summer — *Sankt Hans* bonfires and a birthday |
+| 26 | A2 | Danish summer & traditions | Perfect vs preteritum contrast; customs (*Sankt Hans*, *sommerferie*, *fødselsdag*) | Her first Danish summer — *Sankt Hans* bonfires, and Maya's birthday (she turns 32) |
 | 27 | A2 | Phones, internet & admin online | *pleje at*; instructions; passive *-s* + *blive* + participle | Navigating self-service government online |
 | 28 | A2 | **A2 review** — a week in the new life | Consolidation across all A2 grammar | A full A2 week — her job now part of the everyday |
 

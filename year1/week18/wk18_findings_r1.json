@@ -1,0 +1,74 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "9",
+    "issue": "Continuity breach: café volunteering introduced too early.",
+    "severity": "High",
+    "why": "The Story Bible establishes Maya's Saturday morning café volunteering as a fixture for Week 20. Referencing 'her weekend volunteer shift' as an established routine in Week 18 breaks the established timeline.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "9",
+    "issue": "Prematurely introduces a Week 20 fixture.",
+    "severity": "High",
+    "why": "The story bible lists her Saturday morning volunteer shift at the café as a Week 20 fixture. Having her happily go to 'her weekend volunteer shift' here in Week 18 contradicts the established timeline.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "9",
+    "issue": "Premature inclusion of Saturday volunteering routine.",
+    "severity": "High",
+    "why": "The Story Bible establishes that Maya's Saturday morning café volunteer shift is a weekly fixture introduced in week 20. Featuring it as her normal weekend routine here in week 18 breaks continuity.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "9",
+    "issue": "Premature reference to the café volunteer shift.",
+    "severity": "High",
+    "why": "The story bible establishes that Maya's Saturday morning café volunteer shift is a fixture of Week 20. Referencing it as her usual activity here in Week 18 breaks continuity by introducing it early.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "2",
+    "issue": "Unrealistic Danish medical triage.",
+    "severity": "Med",
+    "why": "A Danish GP receptionist would typically direct a patient with mild allergy symptoms (itchy eyes, dry throat) straight to the pharmacy for over-the-counter medicine, rather than booking a same-day acute appointment. Maya should emphasize her sore throat and heavy head so the receptionist suspects an infection, which justifies the doctor visit.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Didactic, unnatural narrative action explaining the privacy rule.",
+    "severity": "Med",
+    "why": "The cross-cutting privacy rule means the generator should never generate or read out the CPR digits in the final Danish text. However, writing this into the storyboard as a literal narrative action ('holding it securely so nobody else sees her private number') breaks the fourth wall and feels awkward; she should just scan her card normally.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Unnatural 'PSA' behavior regarding the health card.",
+    "severity": "Med",
+    "why": "The phrase 'holding it securely so nobody else sees her private number' feels like a highly unnatural, fourth-wall-breaking instructional PSA. A real person just scans the card without narrating their data-security protocols; just omitting the number from the dialogue is enough.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Unnatural narrative staging to accommodate a meta-rule.",
+    "severity": "Low",
+    "why": "Having Maya consciously hold her card 'securely so nobody else sees her private number' is an awkward, unnatural way to satisfy the privacy rule. Merely scanning the card without narrating the digits is sufficient.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "5",
+    "issue": "Redundant listing of specific symptoms.",
+    "severity": "Low",
+    "why": "The exact same trio of symptoms (heavy head, dry/scratchy throat, itchy/red eyes) is listed out in scene 1 and scene 5. To improve flow, scene 1 could just establish she feels awful and generally achy, saving the specific pointing at body parts for the doctor's office.",
+    "advisory": false
+  }
+]

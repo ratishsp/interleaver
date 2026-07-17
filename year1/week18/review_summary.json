@@ -1,0 +1,23 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Repetition & monotony] Extreme repetition of the exact same list of symptoms across almost all scenes. — Maya restates that she feels bad, her head is heavy, her eyes itch/are red, and her throat hurts in Scenes 1, 2, 3, 4, 5, 7, and 8. While some repetition is good for learning and it makes sense to list symptoms to the receptionist and the doctor, having her internal monologue re-recite the exact same symptom list while walking to the clinic, sitting in the waiting room, and making tea creates a highly monotonous listening experience.",
+        "[Low/Repetition & monotony] Overuse of 'En venlig [profession]' to introduce NPCs. — In Scene 2 we meet 'En venlig receptionist', in Scene 5 'En venlig læge', and in Scene 7 'En venlig farmaceut'. Varying how these interactions begin would make the scenes feel slightly less templated.",
+        "[High/Repetition & monotony] Verbatim refrain of specific symptoms across five consecutive scenes. — Maya states 'Mit hoved er tungt, og mine øjne klør/er røde' in almost exactly the same phrasing in Scenes 1, 2, 3, 4, and 5. While pedagogical repetition of body parts is good, recycling this exact sentence as a recurring litany in every single scene becomes structurally monotonous and feels like a broken record.",
+        "[Med/Repetition & monotony] Constant explicit restatement of 'Jeg har det (rigtig/virkelig) dårligt'. — This exact phrase asserting her unwell state is explicitly stated in Scenes 1, 2, 3, 4, 5, 7, and 8. It violates the rule against asserting the same feeling scene after scene. The text should rely more on her actions or vary the phrasing to carry the emotional state.",
+        "[Med/Naive whole-week listener (no checklist)] Overuse of the exact phrase 'Mit hoved er tungt' across the first five scenes. — Pedagogical repetition is helpful, but having Maya state 'My head is heavy' (often paired identically with her itchy eyes) in scenes 1, 2, 3, 4, and 5 starts to feel robotic. Re-stating her symptoms to the receptionist and doctor makes sense, but having her internally monologue the exact same phrase while walking (Scene 3) and sitting (Scene 4) drags the pacing down.",
+        "[High/Repetition & monotony] The exact litany of symptoms ('Mit hoved er tungt', 'mine øjne klør/er røde') is repeated almost verbatim as a refrain across Scenes 1, 2, 3, 4, and 5. — While reinforcing body parts is the goal, having Maya recite the exact same sentences to herself while walking (Scene 3) and sitting in the waiting room (Scene 4) after already establishing them in Scenes 1, 2, and 5 feels robotic and highly monotonous.",
+        "[Med/Repetition & monotony] Constant narrative restatement of 'Jeg har det (rigtig/virkelig/stadig) dårligt' in almost every scene. — The phrase appears in Scenes 1, 2, 3, 4, 5, 7, and 8. Although 'har det dårligt' is a grammar focus for the week, explicitly declaring this exact phrase in seven out of nine scenes crosses from useful pedagogical repetition into noticeable narrative monotony."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

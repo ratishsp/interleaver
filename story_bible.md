@@ -17,6 +17,7 @@ locked. The continuity lens treats everything here as established truth: a new w
 - **Peter** — a colleague at Maya's software company; an easy, friendly workmate (met on her **first
   day, week 2**; recurs at the week-6 canteen lunch). Use him when a work colleague is needed rather
   than an anonymous *en kollega*.
+- **Eva** — a **digital designer** on Maya's team; warm, creative (met **week 19** on the first big project). **Hosts Maya at her home in week 23.**
 - **Family** — back home in Mexico, contact by video call: parents (*mor/far*), sister **Sofía**,
   brother **Diego**, and the family dog **Lola** (siblings + dog established in wk3's family call).
 

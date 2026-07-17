@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Highly repetitive 'meet and recite' structure in scenes 3, 5, and 6.",
+    "severity": "High",
+    "why": "The boss, Eva, and the tester all deliver the exact same type of exposition: 'I am a [profession] and I have worked in it for [X] years'. It feels like a robotic grammar drill, making the middle of the week quite boring.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Rare/technical vocabulary",
+    "severity": "Med",
+    "why": "The phrase 'quality assurance' will translate to a rare, technical noun (like 'kvalitetssikring'), which violates the rule to stick to common, everyday words. Simplifying this to 'has worked as a tester' or 'has tested software' fits A2 vocabulary much better.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Unnatural internal monologue.",
+    "severity": "Med",
+    "why": "Having Maya reflect on 'her colleagues' different professions' while lifting weights feels incredibly cheesy and forced. It reads like an educational recap shoehorned into the script rather than a genuine human thought.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Static/internal scene lacking concrete activity",
+    "severity": "Low",
+    "why": "Aside from taking the bus, the scene consists entirely of internal feelings ('feels excited', 'nervous') and exposition about the future. Adding a concrete action, such as reviewing her notes for the new project while watching the city go by, would make it a grounded vignette.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "7",
+    "issue": "Reflection-heavy/description-only",
+    "severity": "Low",
+    "why": "Maya lifting weights while summarizing what she learned about her colleagues is essentially a restated feeling to recap the week. Giving the scene its own small narrative arc (like struggling with a new weight machine or interacting briefly with the instructor) would add the required activity and texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Awkward anonymity for 'the tester'.",
+    "severity": "Low",
+    "why": "Maya sits down for a bonding team lunch with Peter, Eva, and 'the tester'. Referring to a coworker purely by their job title in a warm, casual social setting makes him feel like a prop rather than a part of the team.",
+    "advisory": true
+  }
+]

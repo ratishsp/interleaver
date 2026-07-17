@@ -1,0 +1,90 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Repetitive 'resume-reading' exposition.",
+    "severity": "High",
+    "why": "Scenes 2, 5, and 6 all feature a coworker explicitly stating how many years they've done their job or that they've done it before. While I know it's teaching the present perfect, having everyone recite their years of experience back-to-back feels like a rigid textbook drill rather than a natural story.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "1",
+    "issue": "Unrealistic commuter ticket for a local resident",
+    "severity": "Med",
+    "why": "Maya is a resident commuting daily in Copenhagen. She would use a 'Rejsekort' (plastic travel card) or a phone app, rather than a traditional paper ticket. Having her drop her Rejsekort adds authentic Danish realism.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Over-reliance on technical IT jargon.",
+    "severity": "Med",
+    "why": "Scenes 3 and 5 use terms like 'technical database plan', 'complex code', and 'database structures'. These force rare/technical vocabulary at the A2 level; replace them with everyday, common terms like 'the new system', 'the website', or 'the program'.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Unnatural phrasing for the tester's job.",
+    "severity": "Med",
+    "why": "The phrase 'has found digital errors for five years' sounds a bit robotic and clunky. It would feel much more natural for him to simply say he has 'tested software' or 'worked as a tester' for five years, which also reinforces the professions theme.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "Eva does not state how long she has worked as a designer.",
+    "severity": "Med",
+    "why": "The week's brief explicitly requires each introduced colleague (Eva, tester, boss) to explain what they do AND how long they have done it to practice the present perfect grammar focus. Eva's scene misses the 'how long' component.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "4",
+    "issue": "Missing duration of experience for Eva.",
+    "severity": "Med",
+    "why": "The week's brief explicitly specifies that the colleagues (Eva, the tester, the boss) should each explain what they do 'and how long they have done it' to practice the present perfect with duration. Scene 4 misses the opportunity to state how many years Eva has been a designer.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Repetitive physical actions in the middle office scenes.",
+    "severity": "Low",
+    "why": "Scenes 4, 5, and 6 all feature a colleague sitting at a monitor who 'clicks' or 'types rapidly'. Vary the physical activity (e.g., drinking a coffee, pointing at a printout, making notes in a margin) to give each scene a distinct concrete texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6",
+    "issue": "Awkward, pseudo-technical phrasing.",
+    "severity": "Low",
+    "why": "The phrase 'digital errors' reads as an unnatural way to avoid simpler vocabulary. A common noun like 'mistakes' or 'problems' is much more natural and fits the everyday vocabulary rule better.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1",
+    "issue": "Dropping a paper bus ticket feels slightly outdated.",
+    "severity": "Low",
+    "why": "As a tech-savvy software engineer who has been commuting in the city for 19 weeks, she would almost certainly use a transit card or an app, not a physical paper ticket that flutters to the floor. It broke my immersion a little bit.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "She seems to be playing badminton against a ghost.",
+    "severity": "Low",
+    "why": "The scene describes her swinging aggressively and running constantly across the court, but it doesn't mention who she is playing with. Adding a quick mention of an opponent or partner would make the scene feel less like an intense solo drill.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Maya dropping a paper bus ticket is slightly unrealistic for a daily commuter.",
+    "severity": "Low",
+    "why": "As a resident of 5 months who commutes by bus every day, Maya would use a plastic commuter card (Rejsekort) or a phone app rather than a loose paper ticket. Swapping 'ticket' to 'travel card' makes this much more plausible for a local.",
+    "advisory": false
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Extreme repetition of the exact phrase 'has/have worked'.",
+    "severity": "High",
+    "why": "Even though the present perfect 'har arbejdet' is the grammar focus, using the exact same verb phrase in 7 out of 8 scenes (1, 2, 3, 4, 5, 7, 8) feels very heavy-handed. It makes the audio feel like a mechanical textbook drill rather than a natural story.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Static description and restated feelings rather than a moving vignette.",
+    "severity": "Med",
+    "why": "The scene is mostly exposition restating her job history and internal nervousness on the bus. It lacks a true beginning-to-end physical action; adding a small, concrete action during the bus ride would make it an active vignette.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Implausibly fast software development timeline",
+    "severity": "Med",
+    "why": "In Scene 5 (Monday afternoon), Maya and Peter just start coding and spend two hours stuck on a single tiny error. By Scene 6 (the very next day), Maya already has 'finished screens' for the tester to evaluate, which breaks realistic cause-and-effect for software development.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Technical vocabulary risk ('database solutions').",
+    "severity": "Low",
+    "why": "While relevant to her job, 'database solutions' pushes into technical compound nouns that are less useful for general A2 learners. Swapping it for something common like 'the new code' or 'her ideas' keeps the vocabulary everyday.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "8",
+    "issue": "Reliance on generic adjectives for texture.",
+    "severity": "Low",
+    "why": "Phrases like 'cheerful Friday lunch' and 'warm food' lean heavily on generic filler. Replacing 'warm food' with a specific, concrete dish (or a sensory detail like the smell of the canteen) would give the scene much better texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "The tester feels unusually anonymous.",
+    "severity": "Low",
+    "why": "Everyone else on the core team gets a name or title (Peter, Eva, the boss). Interacting directly with 'the tester' in scene 6, and then sitting with 'Peter, Eva, and the tester' at a friendly lunch in scene 8, feels slightly awkward and robotic.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "3",
+    "issue": "Timeline inconsistency regarding project start",
+    "severity": "Low",
+    "why": "Scene 1 establishes that the project 'finally begins' today (Monday), but Scene 3 mentions Maya explaining solutions she has worked on 'over the past few days'. If this is the kickoff, working on it over the prior weekend contradicts the Monday start.",
+    "advisory": false
+  }
+]

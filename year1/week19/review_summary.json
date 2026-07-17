@@ -1,0 +1,54 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[Med/Repetition & monotony] Excessive restatement that Maya and Peter are software engineers. — While reinforcing the professions vocabulary is good, Maya explicitly states that she or Peter are software engineers/developers in 7 out of the 8 scenes (e.g., \"Peter er også softwareingeniør\", \"Som softwareingeniør...\"). This goes beyond pedagogical repetition and becomes a highly noticeable, unnatural refrain.",
+        "[Low/Cross-scene continuity & consistency] Repetitive emotional beat at the end of Scenes 7 and 8 — Scene 7 ends with 'Jeg er endelig en rigtig del af holdet', and Scene 8 closes with almost the exact same epiphany: 'Jeg føler mig endelig som en rigtig del af holdet'. While vocabulary repetition is good, repeating the exact same emotional 'payoff' as the conclusion to two back-to-back scenes slightly stalls the story's forward momentum.",
+        "[High/Naive whole-week listener (no checklist)] Identical recaps and concluding thoughts in Scenes 7 and 8. — Both scenes serve as recaps of the team's professions and both end with almost the exact same realization ('Jeg er endelig en rigtig del af holdet' vs. 'Jeg føler mig endelig som en rigtig del af holdet'). Having two back-to-back recap scenes with the same punchline drags the pacing and feels highly redundant.",
+        "[Med/Naive whole-week listener (no checklist)] Unnatural self-explanation of her own job. — Maya explicitly states she is a software engineer in almost every scene, often using phrases like 'Som softwareingeniør...' (Scenes 3, 5, 8). While drilling the vocabulary is good, having a first-person narrator constantly remind herself of her own job title feels robotic.",
+        "[Low/Cross-scene continuity & consistency] Identical emotional conclusion in Scene 7 and 8 — Scene 7 ends with 'Jeg er endelig en rigtig del af holdet.' and Scene 8 ends with 'Jeg føler mig endelig som en rigtig del af holdet.' While linguistic repetition is helpful, repeating the exact same narrative epiphany as the climax of two consecutive scenes feels slightly redundant structurally.",
+        "[Med/Naive whole-week listener (no checklist)] Robotic re-introductions of 'software engineer'. — Maya states 'I am a software engineer' and 'Peter is also a software engineer' in almost every single scene (Scenes 1, 2, 3, 4, 5, 7, 8). While pedagogical repetition is good, constantly re-stating their own job titles to herself or the listener this late in the week feels unnatural and dragged out."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "7 and 8",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Repetition & monotony] Double recap of the week's events and identical concluding lines. — Scene 7 acts as a full recap of everyone's job and tenure while Maya is at the gym. Scene 8 then repeats this exact same summary over Friday lunch. Additionally, both scenes conclude with an almost verbatim realization (\"Jeg er endelig en rigtig del af holdet\" / \"Jeg føler mig endelig som en rigtig del af holdet\"), making the end of the week highly redundant.",
+        "[High/Naive whole-week listener (no checklist)] Double recap and duplicated emotional payoff — Both scenes serve the exact same narrative function (summarizing everyone's job roles) and end with the exact same emotional realization ('I am finally a real part of the team' in scene 7, and 'I finally feel like a real part of the team' in scene 8). Back-to-back, this makes the Friday conclusion feel highly repetitive and drags out the ending.",
+        "[High/Repetition & monotony] Double recap and near-identical concluding lines. — Scene 7 acts as a recap, explicitly listing the colleagues' roles and tenures introduced in scenes 3-6. Scene 8 then repeats this same summary structure again. To make matters worse, both scenes end with almost the exact same concluding thought: 'Jeg er endelig en rigtig del af holdet' (Scene 7) and 'Jeg føler mig endelig som en rigtig del af holdet' (Scene 8).",
+        "[High/Repetition & monotony] Identical concluding thought and phrasing across consecutive scenes. — Scene 7 ends with 'Jeg er endelig en rigtig del af holdet' and Scene 8 ends with 'Jeg føler mig endelig som en rigtig del af holdet'. Having the exact same emotional payoff and phrasing in back-to-back scenes is highly repetitive for the listener.",
+        "[Med/Repetition & monotony] Back-to-back structural recap scenes. — Both scenes function as full-week summaries, systematically listing the colleagues and their professions (Eva as designer, Peter as engineer, the tester's role). While recapping the grammar/vocabulary is useful, doing a full roll-call twice in a row (once at the gym, then immediately again at lunch) makes the end of the week feel stagnant."
+      ]
+    },
+    {
+      "scene": "2",
+      "votes": 2,
+      "severity": "Med",
+      "issues": [
+        "[Med/Naive whole-week listener (no checklist)] Inconsistent vocabulary for the protagonist's core profession — In Scene 2, Maya calls herself and Peter a 'softwareudvikler' (software developer). In every other scene this week (and in the Story Bible), she uses 'softwareingeniør'. Swapping synonyms for the central job title mid-week creates unnecessary ambiguity for an A2 learner.",
+        "[Low/Naive whole-week listener (no checklist)] Inconsistent job title vocabulary. — The text establishes 'softwareingeniør' as the core vocabulary word in Scene 1 and Scenes 3-8, but randomly switches to 'softwareudvikler' for both Maya and Peter in Scene 2. Sticking to one primary term is usually better for beginner reinforcement."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "2",
+      "stem": "02_first_morning_presentation",
+      "votes": 2,
+      "severity": "Med",
+      "status": "fixed",
+      "n0": 19,
+      "n1": 19
+    }
+  ]
+}

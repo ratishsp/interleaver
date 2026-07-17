@@ -207,7 +207,11 @@ def _call_findings(client, model: str, prompt: str, stage: str = "") -> list[dic
                              types.GenerateContentConfig(response_mime_type="application/json"))
     text = (resp.text or "").strip()
     try:
-        findings = json.loads(text).get("findings", []) or []
+        parsed = json.loads(text)
+        # The model usually returns {"findings": [...]}, but sometimes the bare [...] array — accept both.
+        findings = (parsed.get("findings", []) if isinstance(parsed, dict) else parsed) or []
+        if not isinstance(findings, list):
+            findings = []
         trace(stage, model, prompt, findings)
         return findings
     except json.JSONDecodeError:

@@ -1,0 +1,50 @@
+[
+  {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Repetitive structural crutch leaning on generic adverbs instead of concrete detail.",
+    "severity": "Med",
+    "why": "Almost every scene relies on an adverb attached to a speech verb to convey mood (e.g., 'invitingly commands', 'cheerfully tells', 'excitedly tells', 'playfully tells', 'warmly telling'). Replace this repetitive formula with concrete texture—show the warmth or excitement through physical actions, sensory details, or Ludwig's immediate reactions.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Highly repetitive scene structure due to the grammar focus.",
+    "severity": "Med",
+    "why": "To hit the 'imperatives' target, almost every single scene centers on Maya commanding someone to do something (jump, settle, eat, run, fetch, come, stand still, look, give paw, let). Experiencing this back-to-back will feel like a mechanical drill of gentle orders rather than a naturally flowing story.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "3",
+    "issue": "Canceling her regular volunteer shift makes Maya seem uncharacteristically flaky.",
+    "severity": "Med",
+    "why": "Taking the whole morning off from her new café commitment just to watch a guest dog eat breakfast feels like an awkward, forced excuse to avoid double-booking. It would feel much more natural for her to just feed/walk him early before her shift, or even bring him along.",
+    "advisory": false
+  },
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "week",
+    "issue": "TTS pronunciation hazard with the name 'Ludwig'",
+    "severity": "Low",
+    "why": "Since this is an audio course, it is highly recommended to spell the dog's name as 'Ludvig' (the standard Danish spelling). The 'w' in 'Ludwig' might cause the Danish text-to-speech engine to use a foreign/Germanic 'w' sound instead of the correct Danish 'v' pronunciation.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "3",
+    "issue": "Scene relies heavily on off-screen exposition and has very thin present action.",
+    "severity": "Low",
+    "why": "Acknowledging the Saturday café shift avoids a continuity double-booking, which is great, but the actual on-screen vignette (placing a bowl on the floor) is too brief. Add more concrete activity to the feeding process, such as the sound of the dry food hitting the metal bowl or Ludwig pacing impatiently, so the scene moves nicely on its own.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Grooming a friend's dog during a standard weekend stay feels a bit odd.",
+    "severity": "Low",
+    "why": "Unless the dog got filthy in the forest in Scene 5 (which isn't mentioned), doing a full grooming/brushing session on a 2-day dog-sit feels slightly out of place. It also makes this scene feel very similar in energy to the indoor sofa-cuddling in Scene 2.",
+    "advisory": true
+  }
+]

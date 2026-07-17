@@ -1,0 +1,34 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Leaving the guest dog alone makes me slightly anxious.",
+    "severity": "Med",
+    "why": "It's great continuity to include her recurring Saturday café shift (from Week 20), but leaving a newly-arrived guest dog home alone for hours right after getting him felt a bit irresponsible! As a listener, I was worried Ludwig was going to destroy her apartment while she was gone.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "week",
+    "issue": "Overly repetitive narrative tone (constant firm commands).",
+    "severity": "Med",
+    "why": "Because the grammar focus is imperatives, scenes 2, 3, 4, and 6 all rely on Maya delivering strict, firm commands to Ludwig ('leave it', 'sit', 'wait', 'stay', 'stop'). This makes the narrative beats feel one-note; consider varying the tone by using more playful or inviting imperatives (e.g., encouraging him to play, jump up, or eat) so she doesn't spend the whole weekend acting like a drill sergeant.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Maya comes across a bit like a drill sergeant in the first half.",
+    "severity": "Low",
+    "why": "Scenes 2, 3, and 4 all revolve around Maya issuing strict commands (leave it, sit, wait, stay). While I know we are practicing imperatives, hearing three scenes in a row of her bossing the dog around made the early bonding feel a little harsh before they finally get to play in Scene 5.",
+    "advisory": true
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "4",
+    "issue": "Slight dog-sitting logic gap.",
+    "severity": "Low",
+    "why": "Maya leaves Ludwig alone in her apartment to attend her Saturday morning café shift. While this correctly honours the week-20 story bible fact, leaving a dog alone for hours in an unfamiliar apartment on the very first morning of dog-sitting feels slightly irresponsible; it might be smoother if she explicitly leaves him next door in his own familiar apartment while she is at work.",
+    "advisory": false
+  }
+]

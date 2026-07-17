@@ -1,0 +1,48 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Naive whole-week listener (no checklist)] Highly repetitive scene openings. — Almost every scene (1, 2, 3, 4, 5, and 8) starts with the exact same formula: 'Det er [Day] [Time of day]...'. Hearing this structure over and over makes the week feel like a rigid, monotonous logbook rather than a naturally flowing story.",
+        "[Low/Naive whole-week listener (no checklist)] Frequent repetition of the phrase 'kigger [op] på mig'. — In scenes 1, 2, 3, 4, and 5, Ludwig is described as looking (up) at Maya. While it is natural dog behavior, hearing the same descriptive phrasing in nearly every scene makes the action feel slightly repetitive.",
+        "[Med/Repetition & monotony] Overuse of 'pludselig' as a structural crutch. — Half the scenes (2, 6, 7, and 8) rely on 'Pludselig [action]' to trigger the scene's turning point or interruption (stopping, seeing a bird, hearing a bark, a knock). This creates a repetitive narrative template across the week.",
+        "[Low/Repetition & monotony] Repetitive physical reactions from the dog. — In almost every scene (1, 2, 3, 4, and 5), Ludwig's primary reaction is to 'kigge (op) på mig', sometimes with 'store øjne'. Varying his physical responses would make him feel less like a repeating animation cycle.",
+        "[Med/Naive whole-week listener (no checklist)] Highly formulaic scene openings. — Six out of the eight scenes open with the exact same sentence structure: 'Det er [dag] [tidspunkt]' (e.g., Scenes 1 and 2 even open with the identical 'Det er fredag aften, og...'). While it tracks the weekend timeline clearly, hearing this same phrasing at the start of nearly every track gets noticeable and slightly monotonous in a single sitting.",
+        "[Low/Naive whole-week listener (no checklist)] Overuse of 'Pludselig' (Suddenly) as an event trigger. — The word 'Pludselig' is used to kick off an event in half of the scenes (Scenes 2, 6, 7, and 8). While it's great A2 vocabulary reinforcement, relying on the exact same adverb as a transition crutch so frequently stands out when listening back-to-back.",
+        "[Med/Repetition & monotony] Overuse of 'glad' and 'smiler' creating a single-note emotional tone. — Almost every scene explicitly asserts that someone is 'glad' (7 times across the week) or smiling/laughing (8 times). While reinforcing A2 vocabulary is good, relying on the exact same emotional descriptor in nearly every interaction makes the week feel slightly monotonous and artificially upbeat.",
+        "[High/Repetition & monotony] Almost every scene begins with the exact same 'Det er [Day] [Time]' template. — Scenes 1, 2, 3, 4, 5, and 8 all start with 'Det er fredag aften', 'Det er lørdag formiddag', etc. Having six out of eight scenes open with the identical sentence structure creates a highly noticeable and monotonous 'roll-call' effect for the listener.",
+        "[Low/Repetition & monotony] Repetitive phrasing for the dog's reactions. — Ludwig's physical reactions use identical phrasing in adjacent scenes (e.g., 'logrer med halen' in Scenes 3 and 4; 'kigger på mig med (sine) store øjne' in Scenes 4 and 5). Varying his behaviors slightly would make the interactions feel more natural."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "8",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[Low/Cross-scene continuity & consistency] Lexical inconsistency regarding the location of the walk. — In Scene 8, Maya says they had a good weekend in 'parken' (the park). However, in Scenes 5 and 6, they explicitly went to 'hundeskoven' / 'skoven' (the dog forest / forest).",
+        "[Med/Naive whole-week listener (no checklist)] Inconsistent location reference (park vs. forest). — Maya tells Nina they had a really good weekend in 'parken', but scenes 5 and 6 explicitly took place in 'hundeskoven' / 'skoven'. This sudden vocabulary shift for the main outing might confuse a learner trying to map the recap to what they just heard.",
+        "[Low/Cross-scene continuity & consistency] Inconsistent location reference — Maya says 'Vi havde en rigtig god weekend i parken' (in the park), but in scenes 5, 6, and 7, the location they visited is consistently referred to as 'hundeskoven' or 'skoven' (the dog forest/forest). Changing this to 'i skoven' would maintain consistency.",
+        "[High/Naive whole-week listener (no checklist)] Highly repetitive dialogue tags ('Jeg siger', 'Nina siger'). — Almost every single line of dialogue in this scene is introduced with 'Jeg siger:' or 'Nina siger:'. When listening to this scene, it creates a very robotic, start-and-stop rhythm that ruins the warm, natural feeling of Nina's return.",
+        "[Med/Naive whole-week listener (no checklist)] Inconsistent location reference ('parken' vs 'skoven'). — Maya tells Nina they had a really good weekend in 'parken' (the park). However, the listener just spent scenes 5 and 6 with them in the 'hundeskov' (the dog forest). As a learner paying close attention to vocabulary, this sudden shift in nouns is slightly confusing."
+      ]
+    }
+  ],
+  "revised": [
+    {
+      "scene": "8",
+      "stem": "08_ninas_return",
+      "votes": 2,
+      "severity": "High",
+      "status": "fixed",
+      "n0": 23,
+      "n1": 24
+    }
+  ]
+}

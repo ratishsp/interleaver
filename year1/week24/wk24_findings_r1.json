@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "2 & 5",
+    "issue": "Off-leash dogs in general public parks",
+    "severity": "Med",
+    "why": "In Denmark, strict leash laws apply; dogs cannot be let off the lead in just any 'large' or 'local' park. For Danish realism, Nina should specify that he can run free in the local 'hundeskov' (dog forest) or a designated off-leash zone, which Maya then visits.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "1 and 2",
+    "issue": "Micro-sliced situation (Nina's instructions)",
+    "severity": "Med",
+    "why": "Both scenes cover a single continuous conversation at the door (Nina giving rules). To give each scene a full beginning-to-end arc and better density, these should be combined into one complete handover scene, making room for a distinct Friday night activity (like an evening stroll).",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "6 and 7",
+    "issue": "Micro-sliced incident (the park runaway)",
+    "severity": "Med",
+    "why": "A single brief action—the dog wandering off and Maya recalling him with a treat—is stretched across two scenes. Combining the runaway and the gentle recall into a single vignette would improve the week's density and ensure the scene resolves its own action.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "2",
+    "issue": "Two consecutive scenes of Nina just reciting rules feels static and drill-like.",
+    "severity": "Med",
+    "why": "In Scene 1, Nina stands at the door listing food rules; in Scene 2, she continues listing outdoor rules. As a listener, back-to-back instruction dumps feel a bit like a textbook exercise. It might be more engaging if Scene 2 showed them actually walking out the door or practicing the leash hand-over in motion.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "8",
+    "issue": "Calling Ludwig 'just as calm' right after his park misadventure.",
+    "severity": "Low",
+    "why": "Maya tells her family Ludwig is 'just as calm as their dog Lola' the same day he bolted in the park and ignored her shouts. This is actually quite funny if it's meant as a little joke about how dogs sleep after causing trouble, but I wasn't entirely sure if the irony was intentional!",
+    "advisory": true
+  }
+]

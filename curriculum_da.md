@@ -66,12 +66,12 @@ in `design_notes.md` (see "Curriculum — length ramp & how to read the table" a
 
 | Wk | Lvl | Theme | Grammar focus | Brief |
 |----|-----|-------|---------------|----------------|
-| 42 | B2 | A career in Denmark (formal) | Register shift; formal passive; nominalisation | Thriving in a Danish workplace |
-| 43 | B2 | Politics & debate | Abstract discourse; *hvorvidt*; concessive *selvom* | A political dinner debate she can now join |
-| 44 | B2 | Science & technology | Complex passive; *således at*; cause/effect connectors | A documentary sparks discussion |
-| 45 | B2 | Media & advertising | Rhetorical structures; *ikke kun… men også* | Deconstructing a local ad campaign |
-| 46 | B2 | Art & literature | Interpreting; hypothetical *ville have* | An exhibition with Nina |
-| 47 | B2 | Ethics & dilemmas | Conditional perfect; *hvis… havde…, ville… have* | A moral dilemma at work |
+| 42 | B2 | A career in Denmark (formal) | Register shift; formal passive; nominalisation | Maya takes on something bigger at work: she writes a formal proposal and presents it to management. She's nervous, but she keeps her composure, and the proposal is taken seriously. |
+| 43 | B2 | Politics & debate | Abstract discourse; *hvorvidt*; concessive *selvom* | At a dinner with friends, the talk turns to politics, and Maya joins in — she makes a case, concedes a point, presses on whether one side is really right. The topics stay broad — fairness, how a society shares things out — not party politics. |
+| 44 | B2 | Science & technology | Complex passive; *således at*; cause/effect connectors | A science documentary fascinates Maya, and she can't stop talking about it. She explains it to Nina afterwards — how it works and why. Generic subject, no named programme. |
+| 45 | B2 | Media & advertising | Rhetorical structures; *ikke kun… men også* | The ads are everywhere on Maya's commute. She and Eva, the designer, take one campaign apart — how it persuades, what it promises without quite saying it. Maya understands the tactics for the first time. A generic campaign, no named brand. |
+| 46 | B2 | Art & literature | Interpreting; hypothetical *ville have* | Maya and Nina spend an afternoon at an art exhibition, and Maya talks about it and what it means to her. They enjoy disagreeing. Generic works, no named artist. |
+| 47 | B2 | Ethics & dilemmas | Conditional perfect; *hvis… havde…, ville… have* | A moral dilemma lands on Maya at work — a mistake she could quietly let slide. She weighs it in hindsight: what she might have done differently, and what would have followed. She talks it through with a friend and makes her decision. |
 | 48 | B2 | The Danish model: economy & work culture | Formal register; the language of statistics | Reflecting on the welfare model as an insider |
 | 49 | B2 | History & change | Narrative-past mastery; *indtil/siden*; historic present | Copenhagen and Denmark, then and now |
 | 50 | B2 | Happiness, success & belonging | Nominalisation; abstract subordination | Her first Christmas with Nina and friends — what "home" means to her now |

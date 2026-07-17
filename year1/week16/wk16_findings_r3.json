@@ -1,0 +1,18 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "week",
+    "issue": "Inconsistent framing of the flashbacks ('remembers' vs. 'tells')",
+    "severity": "Med",
+    "why": "Scenes 3 and 7 say Maya 'remembers' the events, while the other flashback scenes explicitly say she 'tells', 'describes', or 'recounts' them. Using 'remembers' might cause the text generator to write an internal monologue, awkwardly dropping the active conversations she is having with her friends and her mother.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Eating dinner from a 'paper bag'",
+    "severity": "Low",
+    "why": "Eating out of a paper bag is a bit of an American television trope for takeout. While perfectly understandable, it might translate awkwardly into Danish culture/phrasing; it might be safer to simply say she ate 'takeout' or 'fast food' on the floor.",
+    "advisory": true
+  }
+]

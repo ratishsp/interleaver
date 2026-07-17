@@ -1,0 +1,26 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Robotic dialogue cue 'private registration number'.",
+    "severity": "Med",
+    "why": "If Maya is telling her mom about her day, saying 'I received my private registration number' sounds extremely formal and unnatural. Since the Bible establishes it as a CPR number, it should just be called her 'CPR number' here so the generator doesn't invent an awkward literal translation like 'privat registreringsnummer'.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7",
+    "issue": "Odd visual of eating 'from a paper bag'.",
+    "severity": "Low",
+    "why": "Eating dinner 'from a paper bag' sounds a bit strange or unappetizing. Changing this to 'takeaway' or 'a takeaway box' paints a much more relatable, universal picture of a classic moving-day dinner.",
+    "advisory": true
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "6",
+    "issue": "Awkward translation risk for 'private registration number'.",
+    "severity": "Low",
+    "why": "The story bible uses the authentic term 'CPR number'. Phrasing it as 'private registration number' risks an unnatural literal translation (like 'privat registreringsnummer') instead of the correct Danish 'CPR-nummer'. It is safe to use 'CPR number' in the prompt as long as the number itself isn't recited.",
+    "advisory": false
+  }
+]

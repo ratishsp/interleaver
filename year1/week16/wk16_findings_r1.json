@@ -1,0 +1,34 @@
+[
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1",
+    "issue": "Disconnect between the friends' question and Maya's answer.",
+    "severity": "Med",
+    "why": "The friends ask 'why she moved' (which expects a direct answer like 'for a job'), but Maya responds in Scene 2 with a long story about the grey sky and taking a taxi. The curriculum brief actually suggested they ask 'how she ended up in Denmark' (or 'about her first days'), which is a much more natural prompt for the story she tells.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1",
+    "issue": "Disconnect between the friends' question and Maya's subsequent story.",
+    "severity": "Med",
+    "why": "The friends ask 'why' she moved to Copenhagen, but Maya responds in the following scenes by recounting the play-by-play of her arrival day, not the reason for her move. Matching the brief's prompt ('ask how she ended up in Denmark' or about her first days) logically sets up her chronological story.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "6",
+    "issue": "Memories are recounted out of chronological order.",
+    "severity": "Med",
+    "why": "Maya recounts her 'bare apartment / empty kitchen' (which aligns with Week 4 when she moved into her permanent flat) before recounting the 'registration queue' (which the Story Bible anchors in Week 2). Reverting to the order in the brief (Registration then Kitchen) maintains a logical chronological progression.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "9",
+    "issue": "Slightly dated/anachronistic action.",
+    "severity": "Low",
+    "why": "It says she 'looked at a map' when she got lost. For a 31-year-old software engineer in 2024, it would feel much more natural and relatable to say she 'checked her phone' or 'looked at a map on her phone' instead of a physical map.",
+    "advisory": true
+  }
+]

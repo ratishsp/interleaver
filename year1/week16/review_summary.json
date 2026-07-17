@@ -1,0 +1,33 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "Med",
+      "issues": [
+        "[Med/Repetition & monotony] Repetitive scene-opening template — Almost every flashback scene begins with the exact same grammatical framing: 'Jeg fortalte [Kasper og Sara / dem / min mor] om...' (Scenes 3, 4, 6, 7, 8, and 9). This creates a highly predictable 'roll-call' structure that makes the transitions feel mechanical rather than naturally conversational.",
+        "[Low/Repetition & monotony] Repetitive video-call visual refrain — During the second half of the week, Scenes 6, 7, 8, and 9 repeatedly use 'på skærmen' or 'gennem skærmen' to anchor the dialogue. Scenes 7 and 9 even share near-identical lines about the mother smiling through the screen.",
+        "[Low/Repetition & monotony] Repetitive 'drinking water' blocking — In the badminton conversation, a refrain of drinking water is used repeatedly to break up dialogue: S1 ('Vi drak bare koldt vand'), S2 ('Sara drak lidt vand'), and S4 ('Jeg drak lidt vand').",
+        "[Med/Repetition & monotony] Repetitive reaction beat: the mother smiling through the screen. — Almost every scene in the family call sequence uses the exact same reaction from the mother. S5: 'siger hun med et stort smil', S6: 'smiler min mor', S7: 'Min mor smilede varmt til mig gennem skærmen', and S9: 'Min mor smilede gennem skærmen'. This makes the scene endings feel formulaic and monotonous.",
+        "[Low/Repetition & monotony] Minor refrain: drinking water on the bench. — To anchor the present-day badminton framing, the characters repeatedly sip water (S1: 'Vi drak bare koldt vand', S2: 'Sara drak lidt vand', S4: 'Jeg drak lidt vand'). While it grounds the scene, spacing it out or varying the physical action would make it feel less like a repetitive stage direction.",
+        "[Med/Repetition & monotony] Repetitive scene-ending template during the family call (Scenes 6-9) — Scenes 6, 7, 8, and 9 all end with the exact same narrative beat: Maya finishes her memory, and a family member immediately reacts 'på skærmen' (on the screen) or 'gennem skærmen' (through the screen), usually by smiling or laughing. This rigid formula makes the back half of the week feel like a predictable roll-call rather than a flowing conversation.",
+        "[Low/Repetition & monotony] Overuse of smiling, nodding, and drinking as conversational filler — Across the 10 scenes, characters smile 14 times, nod 4 times, and take sips of water or tea in nearly every conversational break (Scenes 1, 2, 4, 5, 6, 10). While simple actions are fine for A2, relying on the exact same physical beats in almost every scene creates a noticeable refrain."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "Scenes 7-9",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[High/Naive whole-week listener (no checklist)] Jarring shift in the framing narrative's tense. — The weekend video call with Maya's family is established in the present tense in Scenes 5, 6, and 10 ('Det er lørdag', 'Jeg kigger på min mor', 'Jeg lukker min computer'). However, Scenes 7, 8, and 9 abruptly shift the 'live' framing actions into the past tense ('Jeg fortalte også min mor', 'Jeg grinte og fortalte dem'). This temporal whiplash breaks the continuity of the ongoing conversation.",
+        "[Med/Cross-scene continuity & consistency] Inconsistent tense in the framing narrative. — In Scenes 5 and 6, the framing device of the weekend video call is narrated in the present tense ('Jeg kigger', 'siger jeg'). In Scenes 7, 8, and 9, the framing narrative abruptly shifts to the past tense ('Jeg fortalte også min mor', 'Min mor smilede gennem skærmen', 'Jeg grinte og fortalte dem') even though the call is still happening, before shifting back to the present tense to end the call in Scene 10 ('Jeg lukker min computer'). The framing actions during the call should consistently remain in the present tense."
+      ]
+    }
+  ],
+  "revised": []
+}

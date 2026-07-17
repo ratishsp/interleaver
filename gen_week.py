@@ -79,9 +79,10 @@ MAX_RETRIES = 2                      # up to two revise retries on hard-fail, th
 HARD_DIMS = tuple(d for d in VERIFY_DIMENSIONS if d not in ADVISORY_DIMS)
 
 
-def _dim(llm: dict, d: str) -> dict:
-    """A verify dim's report dict, guarding a malformed non-dict value (e.g. the model returned a list)."""
-    v = llm.get(d)
+def _dim(llm, d: str) -> dict:
+    """A verify dim's report dict, guarding malformed shapes — a non-dict dim value, or (wk16) the
+    whole llm object coming back as a list. Either way the attempt just fails and retries."""
+    v = llm.get(d) if isinstance(llm, dict) else None
     return v if isinstance(v, dict) else {}
 
 

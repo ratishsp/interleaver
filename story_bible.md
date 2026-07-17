@@ -5,8 +5,9 @@ locked. The continuity lens treats everything here as established truth: a new w
 *contradict* it, nor *re-introduce* (as if new) something already true.
 
 ## Maya (protagonist)
-- 31, from Mexico. A **software engineer** — she moved to Copenhagen in **January** because she landed
-  a job at a software company here; the job is *why* she came. Gradually settling in.
+- From Mexico. A **software engineer** — she moved to Copenhagen in **January** because she landed
+  a job at a software company here; the job is *why* she came. **31 when she arrived; turns 32 the
+  following summer** (her birthday, wk26). Gradually settling in.
 - First-person narrator throughout (her own voice).
 - **Commute**: she takes the **bus** to work (wk6/7). She owns a **bicycle** but rides it mostly at
   weekends (wk7).
@@ -34,6 +35,15 @@ locked. The continuity lens treats everything here as established truth: a new w
 - Foreshadowed (not yet true): her **own flat in week 4** — the temp flat is **already in Nina's
   building** (Nina is her neighbour from day 1), so week 4 is a *permanent* flat opening up
   in the **same building**: she leaves the temporary room for her own real home. CPR + phone + registration **and her first day at the software company** in **week 2**.
+
+### End of A2 (≈ week 28)
+- **Fully settled**: her own flat (wk4), a steady work routine, and the weekly fixtures (gym
+  Wed / badminton Thu / café-volunteering Sat). She **cooks local dishes and hosts friends** now (wk22).
+- Timeline: arrived January (deep winter) → **summer** by end of A2 → B1 moves into **autumn**.
+- **Cast — all established, do NOT re-introduce as new:** Nina (+ her dog **Ludwig**, whom
+  Maya dog-sat a weekend, wk24); Peter & **Eva** at work (Eva a digital designer, now a friend — she
+  hosted Maya, wk23); **Kasper & Sara** from badminton (Maya cooked them dinner, wk22). Family video
+  calls continue (mor/far, Sofía, Diego, dog Lola).
 
 ## Cross-cutting rules (every week)
 - **Privacy** — the CPR number is sensitive (like an SSN). Never read it out / repeat it digit-by-digit;

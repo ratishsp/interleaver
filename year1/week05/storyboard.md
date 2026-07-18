@@ -11,6 +11,6 @@
 | 5 | 05_bakery_counter | The bakery counter has a member of staff waiting. Maya catches the eye of the baker and politely says that she would like to have a cinnamon pastry. |
 | 6 | 06_finding_the_milk | Maya searches for the milk without luck. She stops an employee to ask for help, and he points her toward the dairy section at the back. |
 | 7 | 07_taste_of_home | Exploring another section, Maya hunts for a taste of Mexico because she really likes beans. She recognizes a bright can of black beans on a low shelf and reaches all the way to the back to pull it out. |
-| 8 | 08_the_checkout | Maya brings the basket to the checkout. She places the food on the belt, holds her card over the machine, and packs the bag quickly. No amount is ever spoken or shown — nobody says a price and no total is read out; prices arrive in week 9. |
+| 8 | 08_the_checkout | Maya brings the basket to the checkout. She places the food on the belt, holds her card over the machine, and packs the bag quickly. No price is spoken or shown. |
 | 9 | 09_putting_away | Back in the flat, Maya empties the bag on the counter. She puts the milk and the parsnip in the fridge, and she places the bread and the can in the cupboard. |
 | 10 | 10_first_home_cooked_meal | Ready to eat, Maya chops some vegetables and opens the can. She cooks dinner on the stove, finally making a proper meal in the flat — and afterwards she has the pastry from the bakery counter for dessert. |

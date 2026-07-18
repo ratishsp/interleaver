@@ -2,38 +2,39 @@
   "mode": "fix",
   "votes": 3,
   "min_votes": 2,
-  "whole_week": [],
-  "scene_survivors": [
+  "whole_week": [
     {
-      "scene": "8 and 9",
-      "votes": 3,
-      "severity": "High",
-      "issues": [
-        "[Med/Naive whole-week listener (no checklist)] Exact dialogue repetition across scene boundaries — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner'. Scene 9 almost immediately has him saying the exact same line. When listening back-to-back in one sitting, this feels like an editing glitch rather than a natural continuation.",
-        "[Med/Repetition & monotony] Verbatim dialogue overlap across scenes — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner,' and Scene 9 begins by repeating this exact line verbatim. Since the audio is played continuously, this back-to-back repetition feels like a copy-paste error rather than a natural continuation.",
-        "[High/Repetition & monotony] Exact dialogue repeated across scene boundary — Scene 8 ends with the barista stating the price ('Det bliver femogfirs kroner') and Maya taking out her card. Scene 9 inexplicably opens with the barista repeating this exact line again, which sounds like an audio editing glitch when the scenes are listened to sequentially.",
-        "[Med/Repetition & monotony] Verbatim repetition of the barista stating the price. — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner' and Maya getting her card out. Scene 9 immediately starts with him saying the exact same line again. This creates an unnatural echo across the scene boundary rather than a seamless progression."
-      ]
-    },
-    {
-      "scene": "9",
+      "scene": "week",
       "votes": 2,
       "severity": "Med",
       "issues": [
-        "[Med/Naive whole-week listener (no checklist)] Redundant dialogue repeating the exact end of Scene 8. — Scene 8 concludes with the barista saying 'Det bliver femogfirs kroner' and Maya taking out her card. Scene 9 immediately begins with the barista repeating this exact line. When listening continuously, it sounds like an accidental audio skip backward rather than a natural flow of time.",
-        "[Low/Naive whole-week listener (no checklist)] Repetition of the barista's price line from the end of Scene 8. — Scene 8 ends with the barista saying 'Det bliver femogfirs kroner'. Scene 9 immediately has him repeat the exact same line. While useful as a recap for split listening, a learner listening back-to-back will notice the slight stutter in the continuous dialogue flow."
+        "[Med/Repetition & monotony] Constant smiling from the café staff — The barista or waiter smiles at Maya in almost every interaction across scenes 4, 5, 7, 8, and 9. It becomes noticeably repetitive, especially since Scene 5 and Scene 9 both open with the exact same line: 'Baristaen smiler til mig.' The staff begins to feel robotic.",
+        "[Low/Repetition & monotony] Repetitive 'klar til' scene endings — Scenes 3, 5, and 9 all end with a variation of Maya announcing she is 'ready' for the next thing ('klar til at bestille', 'klar til en god pause', 'klar til kulden'). This creates a slightly predictable, formulaic wrap-up for these scenes.",
+        "[Med/Repetition & monotony] The barista/staff member is described as smiling in almost every interaction. — Across scenes 4, 5, 7, 8, and 9, the staff member smiles at Maya seven times (e.g., 'Baristaen smiler til mig' opens both Scene 5 and Scene 9). While politeness is the theme, noting his smile in every single scene becomes a noticeable, monotonous refrain."
+      ]
+    }
+  ],
+  "scene_survivors": [
+    {
+      "scene": "5",
+      "votes": 2,
+      "severity": "High",
+      "issues": [
+        "[High/Naive whole-week listener (no checklist)] Severe English gloss mismatch for 'Jeg finder tilbage til mit bord ved vinduet.' — The Danish means 'I find my way back to my table by the window', but the English gloss says 'The table is close to the radiator.' As a learner, I would wrongly deduce that 'vinduet' means 'radiator' and 'mit bord' means 'close to', severely confusing my vocabulary acquisition.",
+        "[Low/Naive whole-week listener (no checklist)] Excessively drawn-out description of walking back to the table. — There are four back-to-back sentences describing a 5-meter walk ('I walk very carefully. I walk slowly across the floor. I walk back to my table. I find my way back to my table...'). Even for A1 comprehensible input, this makes the pacing feel slightly robotic and drags the action.",
+        "[High/Cross-scene continuity & consistency] Translation mismatch due to cross-scene context bleed — The Danish line 'Jeg finder tilbage til mit bord ved vinduet.' is incorrectly glossed as 'The table is close to the radiator.' The model clearly hallucinated the English gloss by improperly pulling a detail established in Scene 2."
       ]
     }
   ],
   "revised": [
     {
-      "scene": "9",
-      "stem": "09_paying_and_leaving",
+      "scene": "5",
+      "stem": "05_carrying_the_tray",
       "votes": 2,
-      "severity": "Med",
+      "severity": "High",
       "status": "fixed",
-      "n0": 19,
-      "n1": 18
+      "n0": 18,
+      "n1": 16
     }
   ]
 }

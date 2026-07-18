@@ -5,7 +5,7 @@
 | # | stem | scene |
 |---|------|------|
 | 1 | 01_spring_breeze_diary | Maya opens her living room window to feel the warm spring breeze. She sits at her table in the bright evening sunlight and begins to write in her travel diary about her weekend trip. |
-| 2 | 02_sunday_train_trip | She writes about her Sunday morning excursion. She packed a backpack, bought a warm coffee, and took the fast train out of Copenhagen to visit the city of Odense. |
+| 2 | 02_sunday_train_trip | She writes about her Saturday morning excursion. She packed a backpack, bought a warm coffee, and took the fast train out of Copenhagen to visit the city of Odense. |
 | 3 | 03_long_sea_bridge | She describes the spectacular journey as the train crossed the very long bridge over the sea. She looked out the large window and admired the blue water and the small ships. |
 | 4 | 04_stressed_father_train | She watched a stressed father sitting across the aisle. He desperately tried to read his book, but his two young children constantly threw their toys on the floor. |
 | 5 | 05_naughty_little_dog | The family also brought a little dog. The dog suddenly jumped out of its basket and ran away with the father's left shoe, making the children laugh loudly at him. |

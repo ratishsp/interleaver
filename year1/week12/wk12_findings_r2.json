@@ -1,50 +1,74 @@
 [
   {
+    "lens": "Density, activity & variety",
+    "scene": "week",
+    "issue": "Micro-slicing a single event across too many scenes.",
+    "severity": "High",
+    "why": "The actual badminton game is stretched across four separate scenes (5 joining, 6 playing, 7 water break, 8 finishing). This violates the density and variety lens by taking one thin situation and micro-slicing it to fill the scene count. These should be condensed to make room for distinct vignettes (e.g., the locker room, a club cafeteria, or walking out with her new friends).",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1",
+    "issue": "Ignores Maya's established Week 7 gym routine.",
+    "severity": "High",
+    "why": "The scenes frame this as Maya needing to find a way to exercise indoors because she hates running in the cold, but the Story Bible establishes she has already been going to the gym every Wednesday since Week 7. It feels like she forgot her own schedule.",
+    "advisory": false
+  },
+  {
     "lens": "Danish realism, privacy & translation-robustness",
-    "scene": "3",
-    "issue": "Unrealistic representation of Danish sports club (forening) registration.",
+    "scene": "4",
+    "issue": "Unrealistic club sign-up process",
     "severity": "Med",
-    "why": "In typical Danish 'foreningsliv' (club culture), community sports halls do not have volunteer-manned front desks taking on-the-spot sign-ups and renting out rackets. Normally, a player arranges a trial ('prøvetræning') online, meets the organizer directly inside the hall, and might borrow a club racket for free.",
+    "why": "In Denmark, sports clubs (foreninger) are volunteer-run, and season memberships are always handled online (via systems like Holdsport); municipal hall clerks do not sell club memberships over the counter. To maintain Danish realism, Maya should pay a drop-in/Pay & Play fee or state she is there for a trial session (prøvetræning).",
     "advisory": false
   },
   {
-    "lens": "Naive first-time learner (no checklist)",
-    "scene": "week",
-    "issue": "Repetitive emotional beat regarding being active.",
+    "lens": "Density, activity & variety",
+    "scene": "5",
+    "issue": "Unnecessary named character added against the brief.",
     "severity": "Med",
-    "why": "Maya's internal monologue hits the exact same note in scenes 1, 5, 7, and 8 ('stay active', 'loves to play', 'likes to be active', 'play her favorite sport again'). Even to drill the grammar, stating the same sentiment four times makes her sound a bit robotic.",
+    "why": "The brief specifically asks for Maya to hit it off with 'two friendly players, Kasper and Sara'. Introducing 'Emil' as a third named character clutters the A1 vocabulary load with an extra name; Maya can simply join Kasper, Sara, and an unnamed partner or opponent.",
     "advisory": false
-  },
-  {
-    "lens": "Narrative logic & coherence",
-    "scene": "week",
-    "issue": "Over-repetition of Maya's love for badminton.",
-    "severity": "Med",
-    "why": "Scenes 1, 5, and 8 all reiterate that she loves playing badminton or that it is her favorite sport. While practicing 'godt kan lide at' is the goal, narratively stating this three separate times feels redundant and should be varied or consolidated.",
-    "advisory": false
-  },
-  {
-    "lens": "Naive first-time learner (no checklist)",
-    "scene": "3",
-    "issue": "Slightly confusing club sign-up transaction.",
-    "severity": "Low",
-    "why": "She 'signs up to join the club' but the only transaction mentioned is paying 50 kroner to rent a racket. It made me pause and wonder if she actually paid a membership/guest fee or just bought a rental and walked in.",
-    "advisory": true
   },
   {
     "lens": "Naive first-time learner (no checklist)",
     "scene": "5",
-    "issue": "The gameplay description is a bit sterile.",
+    "issue": "Too many new names introduced at once.",
+    "severity": "Med",
+    "why": "Introducing Kasper, Sara, and Emil all in one sentence is a bit heavy on the cognitive load for an A1 learner. Since the brief only highlighted Kasper and Sara, the fourth person for doubles could just be an unnamed player.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "1 and 2",
+    "issue": "Ignores established Week 7 gym routine.",
+    "severity": "Med",
+    "why": "Maya already goes to the gym on Wednesday evenings (established in Week 7). Having her jog to figure out how to exercise, and concluding that she 'prefers indoor sports', makes it sound like she is starting from scratch rather than just seeking a social sport to complement her existing indoor gym habit.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "4",
+    "issue": "Unrealistic upfront commitment.",
     "severity": "Low",
-    "why": "Running fast, keeping the shuttlecock in the air, and breathing heavily reads more like a serious cardio drill than a fun first game. Having her miss a shot and laugh with Kasper and Sara would make the scene warmer and more human.",
+    "why": "She pays for a full season membership before she has even seen the courts or met anyone to play with. Paying a drop-in or guest fee would feel much more natural for her very first night.",
     "advisory": true
   },
   {
     "lens": "Narrative logic & coherence",
-    "scene": "1",
-    "issue": "Compressed timeline / logical mismatch with Scene 7.",
+    "scene": "3",
+    "issue": "Minor travel logic contradiction.",
     "severity": "Low",
-    "why": "Scene 1 has Maya browsing at home to decide on and find a club, but Scene 7 frames this outing as happening 'after a long day at work'. It feels implausibly rushed to finish work, go home, research a new club from scratch, travel there, register, and play a full match all in one evening.",
+    "why": "Maya takes the bus to the sports hall, but the hall is described as being 'in her neighborhood', which typically implies it is within walking distance.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
+    "scene": "5",
+    "issue": "Extraneous named character.",
+    "severity": "Low",
+    "why": "The brief specifically asks to introduce Kasper and Sara. Giving the necessary third player a name (Emil) adds an extra character for the learner to track who will never appear again; he can simply be an unnamed fourth player to keep the focus on the recurring cast.",
     "advisory": false
   }
 ]

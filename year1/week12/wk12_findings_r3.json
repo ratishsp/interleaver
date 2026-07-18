@@ -2,57 +2,81 @@
   {
     "lens": "Density, activity & variety",
     "scene": "week",
-    "issue": "Micro-sliced timeline stretching one event across seven scenes.",
+    "issue": "The situation is severely micro-sliced to stretch the scene count.",
     "severity": "High",
-    "why": "Scenes 2 through 8 depict a single 1- to 2-hour evening broken down into minute-by-minute beats (arriving, borrowing a racket, warming up, playing, drinking water, packing up, waiting for the bus). This violates the 'WEEK variety' rule; the match beats should be condensed to allow for different situations (e.g., jumping to the next day where she shops for her own racket, or waking up with sore muscles).",
+    "why": "It takes five full scenes just to start playing the game (thinking about playing, booking online, traveling/arriving, paying at the kiosk, and changing shoes in the locker room). This stretches the pre-game setup far too thin instead of providing varied situations.",
     "advisory": false
   },
   {
     "lens": "Density, activity & variety",
+    "scene": "1",
+    "issue": "Static scene consisting purely of mental action.",
+    "severity": "Med",
+    "why": "Maya sitting on a Tuesday, liking the gym, wanting to meet people, and deciding to find a sport is an internal thought process, not a vignette with a beginning, middle, and end. It needs concrete action.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "5",
+    "issue": "Description-only inventory scene.",
+    "severity": "Med",
+    "why": "Changing clothes, putting on shoes, and 'feeling excited' functions as a static object inventory and restated feeling rather than a scene that moves. It lacks its own narrative activity.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "1-2",
+    "issue": "Slow, repetitive setup before the main event.",
+    "severity": "Med",
+    "why": "Two consecutive scenes of Maya just sitting at home, first thinking about finding a sport, and then searching and booking it online, feels a bit tedious. It delays the actual action of getting to the sports hall.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "7-8",
+    "issue": "Chatting is stretched across two consecutive scenes.",
+    "severity": "Med",
+    "why": "Having a post-match chat on the court in scene 7, immediately followed by another friendly chat in the cafeteria in scene 8, feels a bit repetitive. It feels like the same conversation stretched out just to fill time.",
+    "advisory": false
+  },
+  {
+    "lens": "Narrative logic & coherence",
     "scene": "2",
-    "issue": "Description-heavy and lacks a complete action arc.",
+    "issue": "Confusing present tense for a past location",
     "severity": "Med",
-    "why": "After walking in, Maya only stands and passively listens to echoes and shouts. It acts more like an object/sensory inventory than a complete vignette that moves from beginning to middle to end.",
+    "why": "The summary states badminton is a sport she 'plays a lot in Mexico', but she currently lives in Denmark. It should reflect past experience (e.g., 'played for years in Mexico') to avoid chronological confusion.",
     "advisory": false
   },
   {
-    "lens": "Naive first-time learner (no checklist)",
-    "scene": "week",
-    "issue": "Overly specific sports vocabulary for an A1 level.",
+    "lens": "Narrative logic & coherence",
+    "scene": "7",
+    "issue": "Redundant backstory reveal",
     "severity": "Med",
-    "why": "Terms like 'shuttlecocks' (Scenes 2 and 5), 'canvas bag' (Scene 3), and 'high shot' (Scene 5) feel very specialized for a beginner. It might be better to focus on the general actions of running, hitting, and playing rather than technical badminton gear.",
+    "why": "Scene 7 repeats the exposition that Maya played badminton back home in Mexico, which was already explicitly established in Scene 2. To avoid redundancy, this scene's dialogue should focus on the match itself or her excitement to be playing again.",
     "advisory": false
   },
   {
     "lens": "Density, activity & variety",
-    "scene": "3",
-    "issue": "Unnecessarily specific noun ('canvas bag').",
+    "scene": "6",
+    "issue": "Potential technical/niche vocabulary.",
     "severity": "Low",
-    "why": "Specifying the material 'canvas' introduces a relatively rare/technical noun for A1. A common everyday word of the same shape like 'sports bag' (sportstaske) or simply 'large bag' is better suited for this level.",
+    "why": "The phrase 'smash the shuttlecock hard' relies on sports-specific verbs. At the A1 level, a simpler phrasing like 'hit the shuttlecock hard' is a safer, more common everyday construction.",
     "advisory": false
   },
   {
     "lens": "Naive first-time learner (no checklist)",
-    "scene": "7",
-    "issue": "Odd action sequence regarding her clothes.",
+    "scene": "5",
+    "issue": "Mundane filler scene.",
     "severity": "Low",
-    "why": "Maya is chatting on the bench in Scene 6, then in Scene 7 she 'packs her sweaty sports clothes into her bag'. This makes it sound like she changed out of them right there on the court. It would make more sense to pack her water bottle and the borrowed racket.",
+    "why": "Dedicating a whole scene to changing clothes and putting on shoes in the locker room stalls the momentum right before the game begins. It feels like an overly step-by-step checklist of going to a gym.",
     "advisory": true
   },
   {
-    "lens": "Narrative logic & coherence",
-    "scene": "1",
-    "issue": "Timeline gap between inquiry and attendance",
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "6",
+    "issue": "Awkward phrasing with 'a fourth person'.",
     "severity": "Low",
-    "why": "Scene 1 has Maya write a message to arrange a trial, and Scene 2 has her immediately traveling to the hall. This implies she leaves for the sports hall right after hitting send, without waiting for a reply. Consider having her read a confirmation message from the club in Scene 1 instead.",
-    "advisory": false
-  },
-  {
-    "lens": "Narrative logic & coherence",
-    "scene": "7",
-    "issue": "Packing clothes implies a missing locker-room scene",
-    "severity": "Low",
-    "why": "Maya 'packs her sweaty sports clothes into her bag' directly after chatting on the courtside bench, which accidentally implies she took them off right there. Suggest changing this to packing away her racket and towel, or simply packing her sports bag.",
-    "advisory": false
+    "why": "Calling the last player 'a fourth person' feels unnatural and oddly clinical. It makes them sound like a prop rather than just 'another player' joining the doubles game.",
+    "advisory": true
   }
 ]

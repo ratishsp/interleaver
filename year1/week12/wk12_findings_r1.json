@@ -1,42 +1,74 @@
 [
   {
-    "lens": "Density, activity & variety",
-    "scene": "week",
-    "issue": "Micro-sliced situation stretching one activity over too many scenes.",
+    "lens": "Danish realism, privacy & translation-robustness",
+    "scene": "5",
+    "issue": "Missing fourth player for a doubles match.",
     "severity": "High",
-    "why": "Scenes 4 through 8 slice a single casual badminton game into tiny, static increments (meeting, warming up, playing, drinking water, and packing up). This violates the density and variety lens by stretching one thin situation to fill the week's back half instead of providing complete, distinct vignettes.",
+    "why": "A badminton doubles match requires four players, but only Maya, Kasper, and Sara (three people) are introduced. Scene 6 mentions 'her partner', but this fourth person is completely unaccounted for, creating a confusing logical hole.",
     "advisory": false
   },
   {
     "lens": "Density, activity & variety",
-    "scene": "6",
-    "issue": "Niche sports vocabulary.",
-    "severity": "Med",
-    "why": "Phrases like 'keep the rally going' require technical sports translations that are too niche for an A1 level. The vocabulary should remain focused on common, everyday verbs and nouns (e.g., 'keep the ball in the air' or 'continue playing').",
+    "scene": "week",
+    "issue": "The entire week is a single thin situation micro-sliced to fill the scene count.",
+    "severity": "High",
+    "why": "Stretching a single two-hour badminton visit over nine scenes results in artificially thin increments (e.g., separate scenes for stretching, a water break, and shaking hands). The week lacks situational variety; the match should be condensed to 4-5 scenes to make room for another context exploring the same grammar/theme.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive first-time learner (no checklist)",
+    "scene": "5",
+    "issue": "There's a missing fourth player for a doubles match.",
+    "severity": "High",
+    "why": "Maya joins Kasper and Sara, which makes three people. When scene 6 mentions 'she and her partner', I was suddenly confused about who she was playing with. The scene needs to mention a fourth person (like a random extra player already with them) to make sense of a doubles game.",
     "advisory": false
   },
   {
     "lens": "Narrative logic & coherence",
-    "scene": "3",
-    "issue": "Missing the 'sign up' action and a logical transition to the specific court.",
+    "scene": "5",
+    "issue": "Missing fourth player for a doubles match.",
+    "severity": "High",
+    "why": "Maya joins Kasper and Sara, making only three people, but a doubles match requires four. Scene 6 suddenly mentions 'she and her partner', but this fourth person is never introduced or accounted for in the setup.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "07",
+    "issue": "Dialogue relies on generic, abstract filler.",
     "severity": "Med",
-    "why": "The curriculum brief specifies that Maya 'signs up', but the scene only mentions she *wants* to join and then rents a racket. Having the volunteer actually register her and then direct her to Court 3 would fulfill the brief and logically explain why she approaches Kasper and Sara in Scene 4 instead of wandering onto a random court.",
+    "why": "Having characters 'chat happily about their favorite ways to stay active' feels like an artificial textbook prompt rather than a real conversation. Grounding the chat in a specific, concrete detail (like complaining about the dark winter or mentioning a specific cycling route) would add necessary texture.",
+    "advisory": false
+  },
+  {
+    "lens": "Density, activity & variety",
+    "scene": "09",
+    "issue": "Static scene driven entirely by restated feelings.",
+    "severity": "Med",
+    "why": "Once Maya steps outside, the scene becomes a pure thought-bubble listing her internal states (exhausted, happy, loves meeting people). It needs a concrete concluding action, such as boarding her bus home in the cold, to be a complete vignette.",
     "advisory": false
   },
   {
     "lens": "Naive first-time learner (no checklist)",
-    "scene": "3",
-    "issue": "Signing up before trying the sport",
-    "severity": "Low",
-    "why": "It feels like a slightly weird commitment to declare she wants to 'join the club today' at the front desk before she's even held a racket or met anyone. Asking to 'try a session' or 'play a game today' feels like a more natural first step.",
-    "advisory": true
+    "scene": "7",
+    "issue": "The conversation topic during the break feels a bit robotic.",
+    "severity": "Med",
+    "why": "Chatting about their 'favorite ways to stay active' sounds like a textbook language drill. It would feel much more natural if they complimented her aggressive playing style (established in the previous scene) or asked where she learned to play.",
+    "advisory": false
+  },
+  {
+    "lens": "Spec & continuity",
+    "scene": "5",
+    "issue": "Missing fourth player for the doubles match.",
+    "severity": "Med",
+    "why": "A badminton doubles match requires four people. Kasper and Sara invite Maya to join them, and Scene 6 mentions 'her partner', but this fourth person is never introduced. Briefly mentioning in Scene 5 that Kasper and Sara are looking for a fourth player to complete their game will fix this logic gap.",
+    "advisory": false
   },
   {
     "lens": "Naive first-time learner (no checklist)",
-    "scene": "6",
-    "issue": "Niche sports terminology ('keep the rally going')",
+    "scene": "1",
+    "issue": "The decision to just walk in and join a club tonight feels a bit ungrounded.",
     "severity": "Low",
-    "why": "The word 'rally' is a specific sports term. As an A1 learner, it makes me worry I have to learn niche vocabulary just to talk about playing a game; a simpler phrasing like 'keep the game going' or 'keep hitting it back' would feel more approachable.",
+    "why": "Usually, you can't just show up randomly on a Thursday and instantly join a structured club. Mentioning that she found an 'open court night' or 'drop-in session' online while packing her bag would make the immediate jump into a game much more plausible.",
     "advisory": true
   }
 ]

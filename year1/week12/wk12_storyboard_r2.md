@@ -1,14 +1,15 @@
-# Week 12 — Storyboard (Maya joins a badminton club)
+# Week 12 — Storyboard (Maya joins a local badminton club)
 
 **Level:** A1 · **Grammar:** Verb + infinitive; *godt kan lide at*; *spille/dyrke*
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_online_search | Maya sits in her apartment and browses the internet. She wants to do sports during the dark winter to stay active. She really likes to play badminton, so she decides to find a local club. |
-| 2 | 02_sports_hall_arrival | Maya takes the bus to a large community sports center. She walks through the main entrance and listens to the loud echoes. She hears people shouting and hitting shuttlecocks across the busy courts. |
-| 3 | 03_signing_up | Maya approaches the front desk to speak to a volunteer. She signs up to join the club and pays fifty kroner to rent a racket. The volunteer registers her name and directs her to court number three. |
-| 4 | 04_meeting_players | Maya walks over to the court with her rented racket. She introduces herself to two friendly members, Kasper and Sara. They welcome her warmly and ask if she wants to play a game with them. |
-| 5 | 05_playing_the_game | Maya steps onto the floor and begins to play. She has to run very fast to hit the shuttlecock and keep it in the air. She breathes heavily but notices that she still loves to play this fun game. |
-| 6 | 06_post_game_chat | The players finish the match and sit on a bench to drink water. Maya chats with Kasper and Sara, explaining that she works as a software engineer. They ask her to return, and she promises to play next week. |
-| 7 | 07_waiting_for_the_bus | Maya leaves the sports center and walks out into the dark evening. She stands at the bus stop and feels the cold wind. Her legs feel tired, but she really likes to be active after a long day at work. |
-| 8 | 08_relaxing_at_home | Maya returns to her apartment and drops her bag on the floor. She puts her sports clothes in the washing machine and takes a hot shower. She feels happy to meet new people and play her favorite sport again. |
+| 1 | 01_jogging_in_the_dark | It is a cold Tuesday evening. Maya wants to exercise, so she tries to jog in the local park. She quickly realizes that she hates to run in the freezing dark weather. |
+| 2 | 02_searching_online | Back in her warm apartment, Maya searches online for a different hobby. She prefers to do sports indoors. She really likes to play badminton, so she finds a local club to join. |
+| 3 | 03_arriving_at_the_hall | On Thursday evening, Maya packs her gym bag. She takes the bus to a large, brightly lit sports hall in her neighborhood to check out the badminton courts. |
+| 4 | 04_renting_gear | Maya walks to the reception desk. She tells the clerk that she wishes to join the club for the season. She pays the membership fee and rents a racket for the evening. |
+| 5 | 05_the_fourth_player | Inside the busy hall, Maya walks over to an open court. Three friendly players, Kasper, Sara, and Emil, stand near the net. They want to play a doubles match but need a fourth person, so Maya offers to join. |
+| 6 | 06_fast_rallies | The match begins, and Maya plays on a team with Emil. She loves to hit the shuttlecock hard across the net. She runs fast to return every shot, showing her strong skills. |
+| 7 | 07_water_break | The players pause the game to drink some water. Sara compliments Maya's fast style and asks how she knows the sport so well. Maya explains that she always plays a lot in Mexico. |
+| 8 | 08_next_thursday | The energetic match finishes, and the four players shake hands. Kasper asks if Maya plans to come back. Maya smiles and promises to return next Thursday to play with them again. |
+| 9 | 09_waiting_for_the_bus | Maya steps outside into the winter night. She stands at the dark bus stop and zips her heavy coat all the way up. She feels physically tired but excited to have a fun new weekly routine. |

@@ -11,6 +11,6 @@
 | 5 | 05_weekend_family_call | Later in the week, Maya relaxes on her sofa and video-calls her family in Mexico. Her mother asks about the most difficult moments in the beginning. |
 | 6 | 06_registration_queue_memory | She tells her mother about a long, boring morning at the citizen center. She waited in a slow queue and finally received her private registration number. |
 | 7 | 07_empty_kitchen_memory | Maya remembers moving into her own bare apartment. She sat on the floor in the empty kitchen, ate a simple dinner from a paper bag, and missed her family. |
-| 8 | 08_getting_lost_memory | She laughs as she recounts a confusing Saturday. She rode the wrong bus, looked at a map, and walked around a strange neighborhood. |
+| 8 | 08_getting_lost_memory | She laughs as she recounts a confusing Saturday walking to the harbour: she followed Nina's route, stopped for a street musician, forgot the way down a quiet side street, and a woman walking a little dog (like Lola) pointed her back to the square. |
 | 9 | 09_cold_snap_shopping_memory | She talks about the sudden freezing weather. The cold bit her cheeks, so she quickly went into a store and bought a thick winter coat and warm boots. |
 | 10 | 10_then_and_now | The video call ends, and Maya smiles. She thinks about the difficult days in January, looks around her cozy living room today, and feels completely at home. |

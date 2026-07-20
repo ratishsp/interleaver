@@ -59,14 +59,18 @@ td {{ padding:1px 6px; vertical-align:top; }}
 td.n {{ color:#bbb; font-size:8pt; text-align:right; width:1.4rem; }}
 td.da {{ font-weight:600; width:47%; }}
 td.en {{ color:{en_color}; font-style:{en_style}; }}
+p.prose {{ margin:.15rem 0 .7rem; text-align:justify; }}
 .warn {{ color:#b00; font-size:9pt; font-weight:normal; font-style:normal; }}
 @media print {{ h2 {{ background:#eee !important; -webkit-print-color-adjust:exact; }} }}
 </style></head>'''
 
 
-def build(weeks, meta, english_only):
-    title = ("Maya — English review, weeks {a}–{b}" if english_only
-             else "Maya — Danish/English review, weeks {a}–{b}").format(a=weeks[0], b=weeks[-1])
+def build(weeks, meta, mode):
+    """mode: 'bi' (bilingual) | 'en' (English, line-numbered) | 'prose' (English paragraphs)."""
+    label = {'bi': 'Danish/English review', 'en': 'English review',
+             'prose': 'English review (prose)'}[mode]
+    english_only = mode in ('en', 'prose')
+    title = f"Maya — {label}, weeks {weeks[0]}–{weeks[-1]}"
     parts = [HEAD.format(title=title,
                          en_color=('#111' if english_only else '#555'),
                          en_style=('normal' if english_only else 'italic')),
@@ -82,6 +86,11 @@ def build(weeks, meta, english_only):
             if not os.path.exists(en_path):
                 continue
             da, en = read_lines(da_path), read_lines(en_path)
+            if mode == 'prose':
+                para = ' '.join(l for l in en if l.strip())
+                parts.append(f'<div class="scene"><h3>{esc(scene_title(stem))}</h3>'
+                             f'<p class="prose">{esc(para)}</p></div>')
+                continue
             warn = '' if len(da) == len(en) else f' <span class="warn">(da {len(da)} / en {len(en)})</span>'
             parts.append(f'<div class="scene"><h3>{esc(scene_title(stem))}{warn}</h3><table>')
             for i in range(max(len(da), len(en))):
@@ -127,8 +136,9 @@ def main():
     if not args.no_pdf and not chrome:
         print("warning: no Chrome/Chromium found — writing HTML only", file=sys.stderr)
 
-    for english_only, stem in [(False, "review_wk1-28"), (True, "review_wk1-28_en")]:
-        html = build(weeks, meta, english_only)
+    for mode, stem in [('bi', "review_wk1-28"), ('en', "review_wk1-28_en"),
+                       ('prose', "review_wk1-28_en_prose")]:
+        html = build(weeks, meta, mode)
         html_path = os.path.join(ROOT, stem + ".html")
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(html)

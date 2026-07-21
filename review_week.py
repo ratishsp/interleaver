@@ -100,7 +100,7 @@ LENSES = [
         "lens": "whether anyone sounds unintentionally rude or cold",
         "advisory": True,   # reports for the human ear — never blocks, never mandates warmth
         "floor": (
-            "Text that is harsher or colder than intended for Maya and the people around her.\n"
+            "Text that is harsher or colder than intended.\n"
             "Do not flag ordinary Danish directness as rude. Reserve High for a genuinely "
             "off-putting exchange."
         ),

@@ -17,7 +17,6 @@ Run:  set -a; . ./.env; set +a
 """
 from __future__ import annotations
 import argparse
-import hashlib
 import re
 from pathlib import Path
 
@@ -25,24 +24,29 @@ import genanki
 
 from tandem.gen import DEFAULT_MODEL, parse_storyboard
 from tandem.llm import make_client, _json_call
+from tandem.tts import GoogleTTS
+from tandem.cache import ClipCache
 
 ROOT = Path(__file__).resolve().parent
 DECK_BASE = 2_059_400_000            # stable base; per-week deck id = DECK_BASE + week
 TOP = "Danish (Maya)"
 MIN_PROD_WORDS = 4                   # skip trivial line pairs ("Ja, tak.") as production cards
 
-# Danish clip cache — reuse the exact voiced lines the course audio uses (build_week_audio's Maya
-# voice at natural speed). Key mirrors ClipCache._key so we can look up by hash without synthesising.
+# Danish audio via the shared ClipCache (build_week_audio's Maya voice, natural speed). Real scene
+# lines (production/cloze) hit the course's existing clips; vocab words are synthesised once and cached.
 CLIP_DIR = ROOT / "cache/clips"
 DA_VOICE, DA_SPEED = "da-DK-Chirp3-HD-Sulafat", 1.0
 
 
-def clip_for(text: str) -> Path | None:
-    """Path to the cached Danish clip for this exact line, or None if not cached (never synthesises)."""
-    descriptor = f"google:{DA_VOICE}:{DA_SPEED}"
-    digest = hashlib.sha256(f"{descriptor}\n{text}".encode("utf-8")).hexdigest()[:32]
-    p = CLIP_DIR / f"{digest}.mp3"
-    return p if p.exists() else None
+def _voice(cache, text: str, media: dict) -> str | None:
+    """Get/synthesise the Danish clip for `text`, register it in `media`, return its filename
+    (None on failure). Real lines hit the cache; new vocab words are voiced once and cached."""
+    try:
+        clip = cache.clip(text, "da")
+    except Exception:
+        return None
+    media[clip.name] = clip
+    return clip.name
 
 # Custom cloze model: the back echoes the blanked QUESTION, then the answer + gloss — so cloze
 # matches the other two types (whose back re-shows the front prompt above the answer).
@@ -74,8 +78,8 @@ The week's grammar focus is: {grammar}.
 From the scene below (Danish line | English gloss), produce two lists:
 
 - "vocab": a few of the most useful words to drill, each as
-  {{"da": <word, natural dictionary form>, "en": <English>}}. Skip proper nouns and trivial function
-  words.
+  {{"da": <citation form (with article or infinitive marker)>, "en": <English>}}. Skip proper nouns
+  and trivial function words.
 
 - "cloze": sentences that exercise the grammar focus. Wrap the target word as Anki cloze markup
   {{{{c1::WORD::HINT}}}}, leaving the rest of the sentence exactly as written. HINT = the English
@@ -146,7 +150,7 @@ def _interleave(*lists):
 
 
 def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use_llm, max_prod,
-                    max_vocab, audio, media):
+                    max_vocab, cache, media):
     deck = genanki.Deck(DECK_BASE + week, f"{TOP}::Week {week:02d}")
     tag = f"week{week:02d}"
     prod, vocab_n, cloze_n = [], [], []
@@ -161,9 +165,8 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
         pairs = [(e, d) for d, e in zip(da, en) if len(d.split()) >= MIN_PROD_WORDS]
         for e, d in _sample_even(pairs, max_prod):
             da_field = d
-            if audio and (clip := clip_for(d)):     # [sound:] on the Danish field → plays whenever DA shows
-                media[clip.name] = clip
-                da_field = f"{d} [sound:{clip.name}]"
+            if cache and (snd := _voice(cache, d, media)):   # [sound:] on Danish field → plays whenever DA shows
+                da_field = f"{d} [sound:{snd}]"
                 n_snd += 1
             prod.append(genanki.Note(genanki.BASIC_AND_REVERSED_CARD_MODEL,
                                      fields=[e, da_field], tags=[tag, "production"]))
@@ -176,8 +179,12 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
                 break
             d, e = (v.get("da") or "").strip(), (v.get("en") or "").strip()
             if d and e:
+                da_field = d
+                if cache and (snd := _voice(cache, d, media)):   # vocab word — synthesised once, then cached
+                    da_field = f"{d} [sound:{snd}]"
+                    n_snd += 1
                 vocab_n.append(genanki.Note(genanki.BASIC_AND_REVERSED_CARD_MODEL,
-                                            fields=[d, e], tags=[tag, "vocab"]))
+                                            fields=[da_field, e], tags=[tag, "vocab"]))
                 added += 1
         for c in cloze:
             made = make_cloze(c, da)
@@ -185,16 +192,15 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
                 continue
             text, blanked, source = made
             back = (c.get("en") or "").strip()
-            if audio and (clip := clip_for(source)):    # full-sentence audio on the back only
-                media[clip.name] = clip
-                back = f"{back} [sound:{clip.name}]".strip()
+            if cache and (snd := _voice(cache, source, media)):    # full-sentence audio on the back only
+                back = f"{back} [sound:{snd}]".strip()
                 n_snd += 1
             cloze_n.append(genanki.Note(CLOZE_QA_MODEL,
                                         fields=[text, back, blanked], tags=[tag, "cloze"]))
     # lead with cloze (the ILO drill), then interleave vocab + production
     for note in _interleave(cloze_n, vocab_n, prod):
         deck.add_note(note)
-    snd = f", {n_snd} with audio" if audio else ""
+    snd = f", {n_snd} with audio" if cache else ""
     print(f"  week{week:02d}: {len(prod)} production, {len(vocab_n)} vocab, {len(cloze_n)} cloze{snd}")
     return deck
 
@@ -212,14 +218,15 @@ def main(argv=None):
     ap.add_argument("--max-vocab-per-scene", type=int, default=5, dest="max_vocab",
                     help="cap vocab cards per scene (default 5; 0 = no cap)")
     ap.add_argument("--audio", action="store_true",
-                    help="attach the cached Danish clip to production + cloze cards (reuse only; "
-                         "never synthesises — a line with no cached clip just gets no audio)")
+                    help="attach Danish audio to all cards: production/cloze reuse the course's cached "
+                         "clips, vocab words are synthesised once (then cached)")
     a = ap.parse_args(argv)
 
     nums = sorted({n for part in a.weeks.split(",") for n in (
         range(int(part.split("-")[0]), int(part.split("-")[1]) + 1) if "-" in part else [int(part)])})
     curriculum = ROOT / a.curriculum
     client = None if a.no_llm else make_client()
+    cache = ClipCache(GoogleTTS(voices={"da": DA_VOICE}, speed=DA_SPEED), str(CLIP_DIR)) if a.audio else None
 
     decks, media = [], {}          # media: clip filename -> path (deduped across weeks)
     for w in nums:
@@ -231,7 +238,7 @@ def main(argv=None):
         decks.append(build_week_deck(client, a.model, w, wdir,
                                      level=level, grammar=grammar, use_llm=not a.no_llm,
                                      max_prod=a.max_prod, max_vocab=a.max_vocab,
-                                     audio=a.audio, media=media))
+                                     cache=cache, media=media))
 
     out_dir = ROOT / a.out
     out_dir.mkdir(parents=True, exist_ok=True)

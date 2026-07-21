@@ -13,6 +13,12 @@ Mood/warmth is deliberately NOT gated here: it's the most ear-judged property, l
 listen. A per-scene "must end warm / lift" rule used to live here but was removed —
 it manufactured robotic smiling (every scene tacking on "jeg smiler, jeg er glad" to satisfy it).
 
+The "register" lens is the one exception, and it's ADVISORY-ONLY (never blocks, never auto-fixes) —
+it flags where a character reads as unintentionally rude/curt against who they're meant to be, but
+leaves the call to the human ear. It reports rudeness; it does NOT mandate warmth, so it can't
+resurrect the robotic-smiling failure. It's calibrated for Danish directness (imperatives / no
+everyday "please" / terse answers are NORMAL, not rude) so it doesn't fire on ordinary Danish.
+
 Reuses review_storyboard's panel machinery (the robust judge call, severity rank, floor+agency and
 output contract). Same gate semantics: High-severity findings block; an incomplete run (a lens errors)
 is never a silent pass.
@@ -89,6 +95,17 @@ LENSES = [
         ),
     },
     {
+        "key": "register",
+        "title": "Register & rudeness",
+        "lens": "whether anyone sounds unintentionally rude or cold",
+        "advisory": True,   # reports for the human ear — never blocks, never mandates warmth
+        "floor": (
+            "Text that is harsher or colder than intended for Maya and the people around her.\n"
+            "Do not flag ordinary Danish directness as rude. Reserve High for a genuinely "
+            "off-putting exchange."
+        ),
+    },
+    {
         "key": "listener",
         "title": "Naive whole-week listener (no checklist)",
         "lens": None,
@@ -131,7 +148,8 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
             "issue": (f.get("issue") or f.get("reaction") or "").strip(),
             "severity": (f.get("severity") or "Med").strip().capitalize(),
             "why": (f.get("why") or "").strip(),
-            "advisory": lens.get("floor") is None,   # the open naive lens is a human signal, never blocks
+            # advisory = never blocks the gate: the open naive lens (no floor), or a lens that opts in explicitly
+            "advisory": lens.get("advisory", lens.get("floor") is None),
         })
     return out
 

@@ -42,7 +42,7 @@ BACK = """{{FrontSide}}
 <hr>
 <div class="answer">Answer: {{Answer}}</div>
 <div class="exp">{{Explanation}}</div>
-{{Audio}}
+<div class="voiced">{{Correct}} {{Audio}}</div>
 """
 CSS = """
 .card{font-family:-apple-system,Segoe UI,sans-serif;font-size:18px;text-align:left;
@@ -51,11 +51,13 @@ CSS = """
 .opts div{margin:5px 0}
 .answer{font-weight:600;color:#2a8a2a;margin-top:6px}
 .exp{margin-top:8px;color:#555}
+.voiced{margin-top:10px;font-weight:500}
 @media (prefers-color-scheme:dark){.card{color:#eee}.exp{color:#bbb}}
 """
 MODEL = genanki.Model(
-    1_607_392_503, "Danish MCQ (eval)",
-    fields=[{"name": n} for n in ("Question", "A", "B", "C", "D", "Answer", "Explanation", "Audio")],
+    1_607_392_504, "Danish MCQ (eval)",
+    fields=[{"name": n} for n in ("Question", "A", "B", "C", "D", "Answer",
+                                  "Explanation", "Correct", "Audio")],
     templates=[{"name": "MCQ", "qfmt": FRONT, "afmt": BACK}], css=CSS,
 )
 
@@ -153,7 +155,7 @@ def build_week_deck(client, model, week, wdir, *, level, grammar, n, cache, medi
             audio = f"[sound:{snd}]"
         deck.add_note(genanki.Note(MODEL, tags=[tag, "eval", item["kind"]],
                                    fields=[item["question"], *opts[:4], item["answer"],
-                                           item["explanation"], audio]))
+                                           item["explanation"], item["correct_da"], audio]))
     print(f"  week{week:02d}: {kept} kept, {rejected} rejected by verify (of {len(raw)} generated)")
     return deck
 

@@ -43,6 +43,7 @@ BACK = """{{FrontSide}}
 <div class="answer">Answer: {{Answer}}</div>
 <div class="exp">{{Explanation}}</div>
 <div class="voiced">{{Correct}} {{Audio}}</div>
+<div class="voiced-en">{{CorrectEn}}</div>
 """
 CSS = """
 .card{font-family:-apple-system,Segoe UI,sans-serif;font-size:18px;text-align:left;
@@ -52,12 +53,13 @@ CSS = """
 .answer{font-weight:600;color:#2a8a2a;margin-top:6px}
 .exp{margin-top:8px;color:#555}
 .voiced{margin-top:10px;font-weight:500}
-@media (prefers-color-scheme:dark){.card{color:#eee}.exp{color:#bbb}}
+.voiced-en{color:#777;font-weight:400}
+@media (prefers-color-scheme:dark){.card{color:#eee}.exp{color:#bbb}.voiced-en{color:#999}}
 """
 MODEL = genanki.Model(
-    1_607_392_504, "Danish MCQ (eval)",
+    1_607_392_505, "Danish MCQ (eval)",
     fields=[{"name": n} for n in ("Question", "A", "B", "C", "D", "Answer",
-                                  "Explanation", "Correct", "Audio")],
+                                  "Explanation", "Correct", "CorrectEn", "Audio")],
     templates=[{"name": "MCQ", "qfmt": FRONT, "afmt": BACK}], css=CSS,
 )
 
@@ -77,6 +79,7 @@ Each item:
   "options": [3-4 strings],
   "answer": <letter of the option to pick>,
   "correct_da": <the full correct sentence: the blank filled in, or the error corrected>,
+  "correct_en": <English translation of correct_da>,
   "explanation": <one line: why>}}
 
 Return JSON {{"items": [...]}}.
@@ -135,6 +138,7 @@ def clean_item(it: dict) -> dict | None:
         return None
     return {"kind": it.get("kind", "evaluate"), "question": (it.get("question") or "").strip(),
             "options": opts, "answer": ans, "correct_da": (it.get("correct_da") or "").strip(),
+            "correct_en": (it.get("correct_en") or "").strip(),
             "explanation": (it.get("explanation") or "").strip()}
 
 
@@ -155,7 +159,8 @@ def build_week_deck(client, model, week, wdir, *, level, grammar, n, cache, medi
             audio = f"[sound:{snd}]"
         deck.add_note(genanki.Note(MODEL, tags=[tag, "eval", item["kind"]],
                                    fields=[item["question"], *opts[:4], item["answer"],
-                                           item["explanation"], item["correct_da"], audio]))
+                                           item["explanation"], item["correct_da"],
+                                           item["correct_en"], audio]))
     print(f"  week{week:02d}: {kept} kept, {rejected} rejected by verify (of {len(raw)} generated)")
     return deck
 

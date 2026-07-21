@@ -67,7 +67,8 @@ GEN_PROMPT = """You are writing quiz questions for a Danish course (learner leve
 focus: {grammar}.
 
 Write {n} multiple-choice questions:
-- "evaluate": pick the correct form. The options are competing forms.
+- "evaluate": pick the correct form. For bare word forms, the question shows a sentence with a
+  blank (____).
 - "analyze": pick the sentence with an error. The options are full sentences; exactly one has a
   single error in the grammar focus, the rest are correct.
 
@@ -91,8 +92,9 @@ Scene lines:
 VERIFY_PROMPT = """Check this multiple-choice question for a Danish course (grammar focus: {grammar}).
 Reject if anything is wrong.
 
-Confirm all of: the labeled answer is correct; exactly one option fits; for an analyze item, exactly
-one option has an error and the rest are correct; correct_da is correct.
+Confirm all of: the question is answerable from what it shows (a fill-in item shows its sentence); the
+labeled answer is correct; exactly one option fits; for an analyze item, exactly one option has an
+error and the rest are correct; correct_da is correct.
 
 Item:
 {item}

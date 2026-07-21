@@ -15,6 +15,7 @@ Run: set -a; . ./.env; set +a; export ALL_PROXY=... ; .venv/bin/python gen_eval.
 from __future__ import annotations
 import argparse
 import json
+import re
 from pathlib import Path
 
 import genanki
@@ -123,7 +124,9 @@ def verify(client, model, *, grammar, item) -> bool:
 
 def clean_item(it: dict) -> dict | None:
     """Normalise + sanity-check an item's shape before it's worth verifying."""
-    opts = [str(o).strip() for o in (it.get("options") or []) if str(o).strip()]
+    # strip any leading label the model added ("A)", "B.", "c:") — the template adds its own
+    opts = [re.sub(r"^\s*[A-Da-d][).:]\s*", "", str(o)).strip()
+            for o in (it.get("options") or []) if str(o).strip()]
     ans = str(it.get("answer") or "").strip().upper()[:1]
     letters = "ABCD"[:len(opts)]
     if not (2 <= len(opts) <= 4) or ans not in letters:

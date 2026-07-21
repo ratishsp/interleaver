@@ -67,7 +67,7 @@ Write {n} multiple-choice questions:
 - "analyze": pick the sentence with an error. The options are full sentences; exactly one has a
   single error in the grammar focus, the rest are correct.
 
-Use the scene lines below.
+Phrase each question in English; only the options are Danish. Use the scene lines below.
 
 Each item:
 {{"kind": "evaluate" | "analyze",

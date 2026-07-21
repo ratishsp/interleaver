@@ -76,7 +76,7 @@ Each item:
   "question": <the prompt>,
   "options": [3-4 strings],
   "answer": <letter of the option to pick>,
-  "correct_da": <the correct form, or the corrected sentence>,
+  "correct_da": <the full correct sentence: the blank filled in, or the error corrected>,
   "explanation": <one line: why>}}
 
 Return JSON {{"items": [...]}}.

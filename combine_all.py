@@ -29,6 +29,9 @@ def main() -> int:
     ap.add_argument("--speaker", default="Sulafat")
     ap.add_argument("--out", default="combined")
     ap.add_argument("--weeks", default="1-8", help="e.g. '1-8' (default) or '1,4,7'")
+    ap.add_argument("--direction", default="both", choices=["both", "src-first", "tgt-first"],
+                    help="which interleave to build: 'both' (default), 'src-first' (L2 first, e.g. da-then-en), "
+                         "or 'tgt-first' (gloss first)")
     a = ap.parse_args()
     src, tgt = a.src, a.tgt
 
@@ -49,6 +52,10 @@ def main() -> int:
         (f"{span}_{LANG_NAME[tgt]}-then-{LANG_NAME[src]}.mp3", False),  # gloss (L1) first
         (f"{span}_{LANG_NAME[src]}-then-{LANG_NAME[tgt]}.mp3", True),   # target (L2) first
     ]
+    if a.direction == "src-first":
+        directions = [d for d in directions if d[1]]
+    elif a.direction == "tgt-first":
+        directions = [d for d in directions if not d[1]]
 
     for fname, src_first in directions:
         cfg = BuildConfig(src_lang=src, tgt_lang=tgt, src_first=src_first,

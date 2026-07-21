@@ -34,3 +34,4 @@ service-account*.json
 .claude/
 cache/
 samples/
+deck/

@@ -77,9 +77,8 @@ The week's grammar focus is: {grammar}.
 
 From the scene below (Danish line | English gloss), produce two lists:
 
-- "vocab": a few of the most useful words to drill, each as
-  {{"da": <citation form (with article or infinitive marker)>, "en": <English>}}. Skip proper nouns
-  and trivial function words.
+- "vocab": a few of the most useful words to drill, including any central to the grammar focus,
+  each as {{"da": <citation form>, "en": <English>}}.
 
 - "cloze": sentences that exercise the grammar focus. Wrap the target word as Anki cloze markup
   {{{{c1::WORD::HINT}}}}, leaving the rest of the sentence exactly as written. HINT = the English
@@ -154,6 +153,7 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
     deck = genanki.Deck(DECK_BASE + week, f"{TOP}::Week {week:02d}")
     tag = f"week{week:02d}"
     prod, vocab_n, cloze_n = [], [], []
+    seen_vocab = set()          # dedupe words across scenes (same word recurs scene to scene)
     n_snd = 0
     for r in parse_storyboard(wdir / "storyboard.md"):
         da_p, en_p = wdir / f"{r['stem']}.da", wdir / f"{r['stem']}.en"
@@ -178,14 +178,17 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
             if max_vocab and added >= max_vocab:      # cap per scene (guards mix if the model over-lists)
                 break
             d, e = (v.get("da") or "").strip(), (v.get("en") or "").strip()
-            if d and e:
-                da_field = d
-                if cache and (snd := _voice(cache, d, media)):   # vocab word — synthesised once, then cached
-                    da_field = f"{d} [sound:{snd}]"
-                    n_snd += 1
-                vocab_n.append(genanki.Note(genanki.BASIC_AND_REVERSED_CARD_MODEL,
-                                            fields=[da_field, e], tags=[tag, "vocab"]))
-                added += 1
+            key = _norm(d).lower()
+            if not (d and e) or key in seen_vocab:    # skip a word already added this week
+                continue
+            seen_vocab.add(key)
+            da_field = d
+            if cache and (snd := _voice(cache, d, media)):   # vocab word — synthesised once, then cached
+                da_field = f"{d} [sound:{snd}]"
+                n_snd += 1
+            vocab_n.append(genanki.Note(genanki.BASIC_AND_REVERSED_CARD_MODEL,
+                                        fields=[da_field, e], tags=[tag, "vocab"]))
+            added += 1
         for c in cloze:
             made = make_cloze(c, da)
             if not made:

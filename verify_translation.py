@@ -3,8 +3,8 @@
 For each scene and target language, judge the translated {stem}.{lang} against the English source, with
 the aligned Danish as the DISAMBIGUATION reference (the same trio translate_week.py used to produce it).
 Prints a per-line issue list. Deterministic gates (alignment, empty, untranslated echo, multi-sentence)
-run always; an independent LLM review scores fidelity / disambiguation_carried / naturalness /
-no_relocation.
+run always; an independent LLM review scores fidelity / disambiguation_carried / naturalness per line,
+plus a passage-level discourse pass that catches the cross-line class the per-line review is blind to.
 
 Default is report-only — you act on the Malayalam by ear; the machine's real value is the Tamil gloss
 you cannot check. Pass --fix to auto-revise the FLAGGED lines (revise_translation, mirroring the

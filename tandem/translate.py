@@ -141,13 +141,37 @@ Return JSON exactly:
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 
+def verify_scene_prompt(*, src_lang: str, tgt_lang: str, en_lines: list[str],
+                        tgt_lines: list[str], context: str = "") -> str:
+    """Build the PASSAGE-level review prompt — the complement to the per-line verifier (also --show-prompt).
+
+    The per-line verifier grades each line against its source and is blind to whatever only reads as off
+    ACROSS lines (a drifting honorific, a referent with no antecedent, a mechanically-repeated tag) —
+    each line passes alone, the fault is in the passage. Deliberately NOT enumerated in the prompt:
+    naming the cases narrows the judge (see the de-enumerated naturalness dim), so the prompt stays open
+    and this docstring carries the examples.
+    """
+    body = "\n".join(f"{i+1}. {src_lang}: {e}    {tgt_lang}: {t}"
+                     for i, (e, t) in enumerate(zip(en_lines, tgt_lines)))
+    return f"""You are reviewing a {tgt_lang} translation as a single passage against its {src_lang} source.
+{f'Scene context: {context}' if context else ''}
+Flag ONLY what a native speaker would find unnatural ACROSS lines. Return an empty list if the scene reads naturally.
+
+PASSAGE ({src_lang} source / {tgt_lang} under test):
+{body}
+
+Return JSON exactly: {{"issues": [{{"lines": "<line number(s), e.g. '6, 10, 13'>", "problem": "<text>"}}]}}."""
+
+
 def verify_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_lang: str,
                        en_lines: list[str], ref_lines: list[str], tgt_lines: list[str],
                        context: str = "") -> dict:
     """Programmatic checks + an independent LLM review of one translated scene. Returns a report dict.
 
-    Deterministic gates run always; the LLM review runs only when the three columns are aligned (an
-    unaligned zip would silently drop lines). Triage output — nothing here blocks the pipeline.
+    Deterministic gates run always; the LLM reviews run only when the three columns are aligned (an
+    unaligned zip would silently drop lines). Two LLM passes: the per-line dimensions (fidelity /
+    disambiguation / naturalness) and a PASSAGE-level pass (verify_scene_prompt) that catches the
+    cross-line class the per-line one cannot see. Triage output — nothing here blocks the pipeline.
     """
     # Quote+attribution lines («"Hello!" she says.») are ONE utterance, but the script-agnostic detector
     # has no speech-verb exemption (the Danish one does) and trips on them. The source is guaranteed
@@ -171,6 +195,9 @@ def verify_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_
                                            en_lines=en_lines, ref_lines=ref_lines, tgt_lines=tgt_lines,
                                            context=context)
         report["llm"] = _json_call(client, model, prompt, stage=f"verify_translation.{tgt_lang}")
+        scene_prompt = verify_scene_prompt(src_lang=src_lang, tgt_lang=tgt_lang,
+                                           en_lines=en_lines, tgt_lines=tgt_lines, context=context)
+        report["scene"] = _json_call(client, model, scene_prompt, stage=f"verify_scene.{tgt_lang}")
     return report
 
 
@@ -197,6 +224,12 @@ def print_translation_report(rep: dict, *, label: str = "") -> int:
             for iss in issues:
                 n += 1
                 print(f"      - line {iss.get('line', '?')}: {iss.get('problem', '')}")
+    scene_issues = (rep.get("scene") or {}).get("issues") or []
+    if scene_issues:
+        print("  discourse (passage-level):")
+        for iss in scene_issues:
+            n += 1
+            print(f"      - lines {iss.get('lines', '?')}: {iss.get('problem', '')}")
     if n == 0:
         print("  clean ✓")
     return n
@@ -223,6 +256,8 @@ def format_translation_flags(rep: dict, *, src_lang: str = "the source",
         d = llm.get(dim) or {}
         for iss in (d.get("issues") or []):
             out.append(f"- Line {iss.get('line', '?')} [{dim}]: {iss.get('problem', '')}")
+    for iss in ((rep.get("scene") or {}).get("issues") or []):
+        out.append(f"- Lines {iss.get('lines', '?')} [discourse]: {iss.get('problem', '')}")
     return "\n".join(out)
 
 

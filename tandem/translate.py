@@ -201,6 +201,15 @@ def verify_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_
     return report
 
 
+def _scene_issues(rep: dict) -> list:
+    """The passage pass's issue list, tolerating the model returning a bare list, the {"issues": [...]}
+    object, or something malformed — and dropping any non-dict item so callers can .get() each safely."""
+    scene = rep.get("scene")
+    if isinstance(scene, dict):
+        scene = scene.get("issues")
+    return [i for i in scene if isinstance(i, dict)] if isinstance(scene, list) else []
+
+
 def print_translation_report(rep: dict, *, label: str = "") -> int:
     """Pretty-print a translation-verify report; return the number of flagged issues (0 = clean)."""
     n = 0
@@ -224,7 +233,7 @@ def print_translation_report(rep: dict, *, label: str = "") -> int:
             for iss in issues:
                 n += 1
                 print(f"      - line {iss.get('line', '?')}: {iss.get('problem', '')}")
-    scene_issues = (rep.get("scene") or {}).get("issues") or []
+    scene_issues = _scene_issues(rep)
     if scene_issues:
         print("  discourse (passage-level):")
         for iss in scene_issues:
@@ -256,7 +265,7 @@ def format_translation_flags(rep: dict, *, src_lang: str = "the source",
         d = llm.get(dim) or {}
         for iss in (d.get("issues") or []):
             out.append(f"- Line {iss.get('line', '?')} [{dim}]: {iss.get('problem', '')}")
-    for iss in ((rep.get("scene") or {}).get("issues") or []):
+    for iss in _scene_issues(rep):
         out.append(f"- Lines {iss.get('lines', '?')} [discourse]: {iss.get('problem', '')}")
     return "\n".join(out)
 

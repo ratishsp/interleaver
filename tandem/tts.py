@@ -101,6 +101,11 @@ class GoogleTTS:
         "ta": "ta-IN-Chirp3-HD-Aoede",
         "ml": "ml-IN-Chirp3-HD-Aoede",
         "bn": "bn-IN-Chirp3-HD-Aoede",
+        "gu": "gu-IN-Chirp3-HD-Aoede", "kn": "kn-IN-Chirp3-HD-Aoede", "mr": "mr-IN-Chirp3-HD-Aoede",
+        "pa": "pa-IN-Chirp3-HD-Aoede", "te": "te-IN-Chirp3-HD-Aoede", "ur": "ur-IN-Chirp3-HD-Aoede",
+        "fr": "fr-FR-Chirp3-HD-Aoede", "de": "de-DE-Chirp3-HD-Aoede", "it": "it-IT-Chirp3-HD-Aoede",
+        "pt": "pt-BR-Chirp3-HD-Aoede", "ru": "ru-RU-Chirp3-HD-Aoede", "ar": "ar-XA-Chirp3-HD-Aoede",
+        "cmn": "cmn-CN-Chirp3-HD-Aoede", "ja": "ja-JP-Chirp3-HD-Aoede", "ko": "ko-KR-Chirp3-HD-Aoede",
     }
 
     def __init__(self, voices: dict[str, str] | None = None,

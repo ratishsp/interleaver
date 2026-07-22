@@ -20,10 +20,9 @@ from pathlib import Path
 
 from tandem.gen import parse_storyboard, DEFAULT_MODEL
 from tandem.llm import make_client
-from tandem.translate import (verify_translation, revise_translation,
+from tandem.translate import (verify_translation, revise_translation, LANG_NAMES,
                               format_translation_flags, print_translation_report)
 
-LANG_NAMES = {"ml": "Malayalam", "ta": "Tamil", "es": "Spanish", "hi": "Hindi"}
 VERIFY_TRIES = 3       # retry a flaky/truncated verify this many times before skipping the scene
 
 

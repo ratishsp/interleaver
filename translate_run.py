@@ -80,7 +80,7 @@ def main() -> int:
         if not sb.exists():
             print(f"[skip week {n}] no {sb}")
             continue
-        os.environ["TANDEM_TRACE"] = str(wk / "trace.jsonl")   # per-week local provenance
+        os.environ["TANDEM_TRACE"] = str(wk / f"trace.{'_'.join(a.langs)}.jsonl")  # per-week + per-lang: fan-out safe
         force = n in redo_weeks
         print(f"\n########## week {n:02d}  ({', '.join(a.langs)} · {mode}"
               f"{' · redo' if force else ''}) ##########")

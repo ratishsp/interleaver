@@ -12,6 +12,21 @@ from tandem.gen import load_story_bible, _ABBREVS
 from tandem.llm import _json_call
 
 
+# Canonical language code -> name for the translate/verify prompts — one source of truth, imported by
+# translate_week / verify_translation (which used to keep partial copies that drifted). Voice + locale for
+# the audio build live in tandem/tts.py and build_lang.py.
+LANG_NAMES = {
+    "da": "Danish", "en": "English", "sv": "Swedish", "sa": "Sanskrit",
+    # Indian
+    "hi": "Hindi", "ta": "Tamil", "ml": "Malayalam", "bn": "Bengali", "gu": "Gujarati",
+    "kn": "Kannada", "mr": "Marathi", "pa": "Punjabi", "te": "Telugu", "ur": "Urdu",
+    # European
+    "es": "Spanish", "fr": "French", "de": "German", "it": "Italian", "pt": "Portuguese", "ru": "Russian",
+    # Asian / other
+    "cmn": "Mandarin Chinese", "ja": "Japanese", "ko": "Korean", "ar": "Arabic",
+}
+
+
 def translate_prompt(*, src_lang: str, tgt_lang: str, lines: list[str], context: str = "",
                      level: str = "", glossary: str = "", ref_lang: str = "",
                      ref_lines: list[str] | None = None, bible: str | None = None) -> str:

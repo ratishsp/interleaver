@@ -145,7 +145,7 @@ def clean_item(it: dict) -> dict | None:
 
 
 def build_week_deck(client, model, week, wdir, *, level, grammar, n, cache, media):
-    deck = genanki.Deck(EVAL_DECK_BASE + week, f"{TOP}::Eval::Week {week:02d}")
+    deck = genanki.Deck(EVAL_DECK_BASE + week, f"{TOP}::Week {week:02d}::Eval")
     tag = f"week{week:02d}"
     raw = generate(client, model, level=level, grammar=grammar, scene=scene_text(wdir), n=n)
     kept = rejected = 0
@@ -159,7 +159,7 @@ def build_week_deck(client, model, week, wdir, *, level, grammar, n, cache, medi
         audio = ""
         if cache and item["correct_da"] and (snd := _voice(cache, item["correct_da"], media)):
             audio = f"[sound:{snd}]"
-        deck.add_note(genanki.Note(MODEL, tags=[tag, "eval", item["kind"]],
+        deck.add_note(genanki.Note(MODEL, tags=[tag, "eval", item["kind"], f"bloom::{item['kind']}"],
                                    fields=[item["question"], *opts[:4], item["answer"],
                                            item["explanation"], item["correct_da"],
                                            item["correct_en"], audio]))

@@ -2,9 +2,9 @@
 
 Per pedagogy.md, three self-graded card types per week, aligned to the week's ILO (its grammar
 target):
-  - production : each da/en line pair as English->Danish, bidirectional (the comprehension reverse
-                 comes free). Deterministic — read straight from the aligned pairs.
-  - vocab      : useful words from each scene, bidirectional. LLM-selected per scene.
+  - production : each da/en line pair, split into two single-sided notes — English->Danish (Apply) and
+                 Danish->English comprehension (Understand), tagged apart. Deterministic from the pairs.
+  - vocab      : useful words from each scene, both directions as separate notes (Remember). LLM-picked.
   - cloze      : the week's TARGET grammar form blanked in a REAL sentence from the scene. LLM picks
                  the sentence + the token to blank, keyed to the grammar focus.
 
@@ -152,7 +152,9 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
                     max_vocab, cache, media):
     deck = genanki.Deck(DECK_BASE + week, f"{TOP}::Week {week:02d}")
     tag = f"week{week:02d}"
-    prod, vocab_n, cloze_n = [], [], []
+    # each direction is its OWN single-sided note (not a bidirectional card): so they can be tagged apart
+    # (E->D = Apply, D->E = Understand) AND ordered far apart, with no sibling-burying to defer one a day.
+    prod_fwd, prod_rev, vocab_fwd, vocab_rev, cloze_n = [], [], [], [], []
     seen_vocab = set()          # dedupe words across scenes (same word recurs scene to scene)
     n_snd = 0
     for r in parse_storyboard(wdir / "storyboard.md"):
@@ -168,8 +170,10 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
             if cache and (snd := _voice(cache, d, media)):   # [sound:] on Danish field → plays whenever DA shows
                 da_field = f"{d} [sound:{snd}]"
                 n_snd += 1
-            prod.append(genanki.Note(genanki.BASIC_AND_REVERSED_CARD_MODEL,
-                                     fields=[e, da_field], tags=[tag, "production"]))
+            prod_fwd.append(genanki.Note(genanki.BASIC_MODEL,   # E->D: generate the Danish (Apply)
+                                         fields=[e, da_field], tags=[tag, "production", "bloom::apply"]))
+            prod_rev.append(genanki.Note(genanki.BASIC_MODEL,   # D->E: comprehend the Danish (Understand)
+                                         fields=[da_field, e], tags=[tag, "comprehension", "bloom::understand"]))
         if not use_llm:
             continue
         vocab, cloze = scene_cards(client, model, level=level, grammar=grammar, da=da, en=en)
@@ -186,8 +190,10 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
             if cache and (snd := _voice(cache, d, media)):   # vocab word — synthesised once, then cached
                 da_field = f"{d} [sound:{snd}]"
                 n_snd += 1
-            vocab_n.append(genanki.Note(genanki.BASIC_AND_REVERSED_CARD_MODEL,
-                                        fields=[da_field, e], tags=[tag, "vocab"]))
+            vocab_fwd.append(genanki.Note(genanki.BASIC_MODEL,  # D->E: recognise the word (Remember)
+                                          fields=[da_field, e], tags=[tag, "vocab", "bloom::remember"]))
+            vocab_rev.append(genanki.Note(genanki.BASIC_MODEL,  # E->D: recall the word (Remember)
+                                          fields=[e, da_field], tags=[tag, "vocab", "bloom::remember"]))
             added += 1
         for c in cloze:
             made = make_cloze(c, da)
@@ -199,12 +205,21 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
                 back = f"{back} [sound:{snd}]".strip()
                 n_snd += 1
             cloze_n.append(genanki.Note(CLOZE_QA_MODEL,
-                                        fields=[text, back, blanked], tags=[tag, "cloze"]))
-    # lead with cloze (the ILO drill), then interleave vocab + production
-    for note in _interleave(cloze_n, vocab_n, prod):
+                                        fields=[text, back, blanked], tags=[tag, "cloze", "bloom::apply"]))
+    # Two streams: primaries (remember-first: vocab recognition, cloze, production=Apply) and mirrors
+    # (word recall + Danish->English comprehension=Understand). Interleave the two streams so
+    # comprehension shows up throughout (not blocked at the end), but rotate the mirrors by half first so
+    # a given sentence's two directions stay ~a few days apart instead of landing back-to-back.
+    primaries = _interleave(vocab_fwd, cloze_n, prod_fwd)
+    mirrors = _interleave(vocab_rev, prod_rev)
+    if mirrors:
+        h = len(mirrors) // 2
+        mirrors = mirrors[h:] + mirrors[:h]
+    for note in _interleave(primaries, mirrors):
         deck.add_note(note)
     snd = f", {n_snd} with audio" if cache else ""
-    print(f"  week{week:02d}: {len(prod)} production, {len(vocab_n)} vocab, {len(cloze_n)} cloze{snd}")
+    print(f"  week{week:02d}: {len(vocab_fwd)}x2 vocab, {len(cloze_n)} cloze, {len(prod_fwd)} production, "
+          f"{len(prod_rev)} comprehension{snd}")
     return deck
 
 

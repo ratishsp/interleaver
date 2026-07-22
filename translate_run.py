@@ -29,6 +29,11 @@ from tandem.translate import translate_lines
 from translate_week import LANG_NAMES, _lines
 from verify_translation import check_scene_lang
 
+# One scene failing after its own retries is a bad scene — log it and move on. But this many failures in
+# a ROW means the backend is down (or creds/quota died): stop hammering and abort. Nothing is lost — the
+# run is resumable, so re-running when the server is back picks up where it stopped.
+STOP_AFTER_CONSECUTIVE_FAILS = 3
+
 
 def parse_weeks(spec: str) -> list[int]:
     """'3' -> [3]; '3-28' -> [3..28]; '3,5,7' -> [3,5,7]; combinations allowed."""
@@ -63,10 +68,13 @@ def main() -> int:
     client = make_client()
 
     summary: list[tuple[int, int]] = []       # (week, issues remaining/flagged)
-    failed: list[str] = []                     # scenes whose translate errored (alignment) — re-run these
+    failed: list[str] = []                     # scenes that failed (alignment/blip) — re-run these
     mode = "fix" if a.fix else "report-only"
+    consecutive = 0                            # scene failures in a row (any success resets it)
+    aborted = False                            # tripped when the backend looks down — stop the batch
+    weeks = parse_weeks(a.weeks)
 
-    for n in parse_weeks(a.weeks):
+    for n in weeks:
         wk = root / f"week{n:02d}"
         sb = wk / "storyboard.md"
         if not sb.exists():
@@ -79,6 +87,8 @@ def main() -> int:
 
         wk_issues = 0
         for r in parse_storyboard(sb):
+            if aborted:
+                break
             stem = r["stem"]
             da, en = wk / f"{stem}.da", wk / f"{stem}.en"
             if not (da.exists() and en.exists()):
@@ -103,11 +113,22 @@ def main() -> int:
                     wk_issues += check_scene_lang(client, model=a.model, wk=wk, stem=stem, lang=lang,
                                                   en_lines=en_lines, da_lines=da_lines,
                                                   fix=a.fix, max_rounds=a.max_rounds if a.fix else 0)
-                except (SystemExit, Exception) as e:   # a persistent failure on ONE scene (alignment,
-                    print(f"  [FAIL] {stem}.{lang}: {e}")  # or a blip that outlived its retries) must
-                    failed.append(f"{wk.name}/{stem}.{lang}")   # not abort the batch — log it, move on
+                    consecutive = 0                    # a success clears the down-backend counter
+                except (SystemExit, Exception) as e:   # ONE scene failing after its retries is a bad
+                    print(f"  [FAIL] {stem}.{lang}: {e}")   # scene — log it and go on...
+                    failed.append(f"{wk.name}/{stem}.{lang}")
+                    consecutive += 1
+                    if consecutive >= STOP_AFTER_CONSECUTIVE_FAILS:   # ...but N in a row = backend down
+                        print(f"\n[ABORT] {consecutive} scenes failed in a row — the backend looks "
+                              f"down. Resume with --weeks {n}-{weeks[-1]} --redo {n} when it is back.")
+                        aborted = True
+                        break
                     continue
+            if aborted:
+                break
 
+        if aborted:
+            break
         summary.append((n, wk_issues))
         print(f"\n=== week {n:02d}: {wk_issues} issue(s) "
               f"{'remaining after fix' if a.fix else 'flagged'} ===")
@@ -116,9 +137,12 @@ def main() -> int:
     for n, iss in summary:
         print(f"  week {n:02d}: {iss} issue(s) {'remaining' if a.fix else 'flagged'}")
     if failed:
-        print("FAILED to translate (alignment) — re-run:")
+        print("FAILED (re-run these):")
         for f in failed:
             print(f"  {f}")
+    if aborted:
+        print("ABORTED early — the backend looked down (see the [ABORT] line above). Nothing lost; resume.")
+        return 1
     return 0
 
 

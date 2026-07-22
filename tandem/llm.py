@@ -119,17 +119,26 @@ _TRANSIENT_STATUS = {429, 500, 502, 503, 504}     # capacity + momentary upstrea
 
 
 def _is_transient(exc) -> bool:
-    """A retryable server-side blip: 429 (RESOURCE_EXHAUSTED) or a 5xx (502 Bad Gateway etc.).
+    """A retryable blip: a 429 (RESOURCE_EXHAUSTED), a 5xx (502 Bad Gateway etc.), or a transport-level
+    network error (the server disconnecting without a response, a reset connection, a connect/read
+    timeout).
 
-    These are not our bug and not a permanent state — Google's own remedy is backoff-and-retry.
-    They spike on concurrent bursts (the 5 gate lenses, the parallel scenes) and over a proxied
-    egress; a single one used to fail a whole gate lens or scene."""
+    None are our bug or a permanent state — Google's own remedy is backoff-and-retry. They spike on
+    concurrent bursts (the 5 gate lenses, the parallel scenes) and over a proxied egress; a single one
+    used to fail a whole gate lens or scene, and over a long unattended batch a lone disconnect aborted
+    the entire run."""
     code = getattr(exc, "code", None)
     if isinstance(code, int) and code in _TRANSIENT_STATUS:
         return True
+    try:
+        import httpx
+        if isinstance(exc, httpx.TransportError):    # disconnect / reset / connect+read timeout
+            return True
+    except ImportError:
+        pass
     s = str(exc)
     return any(t in s for t in ("RESOURCE_EXHAUSTED", "Bad Gateway", "Service Unavailable",
-                                "Internal error", "502", "503", "504"))
+                                "Internal error", "Server disconnected", "502", "503", "504"))
 
 
 def generate_retrying(client, model: str, prompt: str, config, *, tries: int = 5):

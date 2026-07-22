@@ -98,15 +98,15 @@ def main() -> int:
                                           tgt_lang=LANG_NAMES.get(lang, lang), lines=en_lines,
                                           ref_lang="Danish", ref_lines=da_lines,
                                           context=f"{wk.name} · {stem}")
-                except SystemExit as e:                        # alignment broke — don't abort the run
-                    print(f"  [FAIL translate] {stem}.{lang}: {e}")
-                    failed.append(f"{wk.name}/{stem}.{lang}")
+                    tgt.write_text("\n".join(s.strip() for s in out) + "\n", encoding="utf-8")
+                    print(f"  [ok] {stem}.{lang}: {len(out)} lines")
+                    wk_issues += check_scene_lang(client, model=a.model, wk=wk, stem=stem, lang=lang,
+                                                  en_lines=en_lines, da_lines=da_lines,
+                                                  fix=a.fix, max_rounds=a.max_rounds if a.fix else 0)
+                except (SystemExit, Exception) as e:   # a persistent failure on ONE scene (alignment,
+                    print(f"  [FAIL] {stem}.{lang}: {e}")  # or a blip that outlived its retries) must
+                    failed.append(f"{wk.name}/{stem}.{lang}")   # not abort the batch — log it, move on
                     continue
-                tgt.write_text("\n".join(s.strip() for s in out) + "\n", encoding="utf-8")
-                print(f"  [ok] {stem}.{lang}: {len(out)} lines")
-                wk_issues += check_scene_lang(client, model=a.model, wk=wk, stem=stem, lang=lang,
-                                              en_lines=en_lines, da_lines=da_lines,
-                                              fix=a.fix, max_rounds=a.max_rounds if a.fix else 0)
 
         summary.append((n, wk_issues))
         print(f"\n=== week {n:02d}: {wk_issues} issue(s) "

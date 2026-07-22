@@ -90,7 +90,7 @@ The week's grammar focus is: {grammar}.
 From the scene below ({lang} line | English gloss), produce two lists:
 
 - "vocab": a few of the most useful words to drill, including any central to the grammar focus,
-  each as {{"l2": <{lang} citation form>, "en": <English>}}.
+  each as {{"l2": <citation form>, "en": <English>}}.
 
 - "cloze": sentences that exercise the grammar focus. Wrap the target word as Anki cloze markup
   {{{{c1::WORD::HINT}}}}, leaving the rest of the sentence exactly as written. HINT = the English

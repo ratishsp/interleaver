@@ -56,6 +56,13 @@ def trace(stage: str, model: str, prompt: str, response) -> None:
 def make_client():
     """Return a google-genai Client, auto-selecting backend from the environment."""
     from google import genai
+    from google.genai import types
+
+    # A per-request timeout (ms) so a silently-dropped connection RAISES a retryable timeout instead of
+    # hanging forever. Without it, generate_retrying only fires on an exception, and a hung read throws
+    # nothing — one stalled call blocked a whole overnight batch at 0% CPU. The timeout surfaces as an
+    # httpx.TimeoutException, which _is_transient already treats as retryable (backoff, then move on).
+    http_options = types.HttpOptions(timeout=int(os.environ.get("TANDEM_TIMEOUT_MS", "120000")))
 
     use_vertex = os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in {"1", "true", "yes"}
     if use_vertex:
@@ -63,7 +70,7 @@ def make_client():
         location = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
         if not project:
             raise SystemExit("Vertex backend: set GOOGLE_CLOUD_PROJECT (and optionally GOOGLE_CLOUD_LOCATION).")
-        return genai.Client(vertexai=True, project=project, location=location)
+        return genai.Client(vertexai=True, project=project, location=location, http_options=http_options)
 
     key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not key:
@@ -72,7 +79,7 @@ def make_client():
             "https://aistudio.google.com/apikey), or use Vertex (GOOGLE_GENAI_USE_VERTEXAI=true + "
             "GOOGLE_CLOUD_PROJECT)."
         )
-    return genai.Client(api_key=key)
+    return genai.Client(api_key=key, http_options=http_options)
 
 
 def _parse_json_object(text: str) -> dict | None:

@@ -27,6 +27,15 @@ LANG_NAMES = {
 }
 
 
+def _lines_field(out) -> list:
+    """The 'lines' list from a model reply, tolerating a bare [...] where {"lines": [...]} was asked for.
+    The model returns the bare array sometimes — same class as _scene_issues; it used to crash
+    translate_lines / revise_translation with 'list has no attribute get' and abort a run."""
+    if isinstance(out, dict):
+        return out.get("lines", [])
+    return out if isinstance(out, list) else []
+
+
 def translate_prompt(*, src_lang: str, tgt_lang: str, lines: list[str], context: str = "",
                      level: str = "", glossary: str = "", ref_lang: str = "",
                      ref_lines: list[str] | None = None, bible: str | None = None) -> str:
@@ -78,7 +87,7 @@ def translate_lines(client, *, model: str, src_lang: str, tgt_lang: str, lines: 
                               context=context, level=level, glossary=glossary,
                               ref_lang=ref_lang, ref_lines=ref_lines, bible=bible)
     out = _json_call(client, model, prompt, stage=f"translate.{tgt_lang}")
-    res = out.get("lines", [])
+    res = _lines_field(out)
     if len(res) != len(lines):
         raise SystemExit(f"Alignment broken: {len(lines)} in vs {len(res)} out.")
     return res
@@ -320,7 +329,7 @@ def revise_translation(client, *, model: str, src_lang: str, tgt_lang: str, ref_
                                        en_lines=en_lines, ref_lines=ref_lines, tgt_lines=tgt_lines,
                                        feedback=feedback, context=context)
     out = _json_call(client, model, prompt, stage=f"revise_translation.{tgt_lang}")
-    res = out.get("lines", [])
+    res = _lines_field(out)
     if len(res) != len(tgt_lines):
         raise SystemExit(f"Alignment broken: {len(tgt_lines)} in vs {len(res)} out.")
     return res

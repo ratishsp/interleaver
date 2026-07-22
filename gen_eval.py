@@ -24,7 +24,7 @@ from tandem.gen import DEFAULT_MODEL, parse_storyboard
 from tandem.llm import make_client, _json_call
 from tandem.tts import GoogleTTS
 from tandem.cache import ClipCache
-from gen_deck import curriculum_fields, DA_VOICE, DA_SPEED, CLIP_DIR, TOP, _voice
+from gen_deck import curriculum_fields, DA_VOICE, DA_SPEED, CLIP_DIR, TOP, _voice, _note
 
 ROOT = Path(__file__).resolve().parent
 EVAL_DECK_BASE = 2_059_500_000
@@ -159,10 +159,11 @@ def build_week_deck(client, model, week, wdir, *, level, grammar, n, cache, medi
         audio = ""
         if cache and item["correct_da"] and (snd := _voice(cache, item["correct_da"], media)):
             audio = f"[sound:{snd}]"
-        deck.add_note(genanki.Note(MODEL, tags=[tag, "eval", item["kind"], f"bloom::{item['kind']}"],
-                                   fields=[item["question"], *opts[:4], item["answer"],
-                                           item["explanation"], item["correct_da"],
-                                           item["correct_en"], audio]))
+        deck.add_note(_note(MODEL, tags=[tag, "eval", item["kind"], f"bloom::{item['kind']}"],
+                            fields=[item["question"], *opts[:4], item["answer"],
+                                    item["explanation"], item["correct_da"],
+                                    item["correct_en"], audio],
+                            guid_parts=["da", week, "eval", item["question"]]))
     print(f"  week{week:02d}: {kept} kept, {rejected} rejected by verify (of {len(raw)} generated)")
     return deck
 

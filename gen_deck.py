@@ -29,20 +29,32 @@ from tandem.cache import ClipCache
 
 ROOT = Path(__file__).resolve().parent
 DECK_BASE = 2_059_400_000            # stable base; per-week deck id = DECK_BASE + week
-TOP = "Danish (Maya)"
 MIN_PROD_WORDS = 4                   # skip trivial line pairs ("Ja, tak.") as production cards
 
-# Danish audio via the shared ClipCache (build_week_audio's Maya voice, natural speed). Real scene
-# lines (production/cloze) hit the course's existing clips; vocab words are synthesised once and cached.
+LANG_NAMES = {"da": "Danish", "en": "English", "ml": "Malayalam", "ta": "Tamil", "es": "Spanish",
+              "hi": "Hindi", "fr": "French", "sa": "Sanskrit", "sv": "Swedish", "bn": "Bengali"}
+
+# Audio via the shared ClipCache. Danish reuses the course's cached clips (build_week_audio's Maya
+# voice, Sulafat) so real lines are cache HITS; other languages fall back to the tts default voice and
+# synth fresh. English is the universal gloss. Voice overrides where we need a specific cached speaker:
 CLIP_DIR = ROOT / "cache/clips"
-DA_VOICE, DA_SPEED = "da-DK-Chirp3-HD-Sulafat", 1.0
+VOICE_OVERRIDES = {"da": "da-DK-Chirp3-HD-Sulafat", "fr": "fr-FR-Chirp3-HD-Aoede"}
+DECK_SPEED = 1.0
+
+# gen_eval imports these; keep the Danish names as aliases so the eval path is untouched.
+TOP = f"{LANG_NAMES['da']} (Maya)"
+DA_VOICE, DA_SPEED = VOICE_OVERRIDES["da"], DECK_SPEED
 
 
-def _voice(cache, text: str, media: dict) -> str | None:
-    """Get/synthesise the Danish clip for `text`, register it in `media`, return its filename
-    (None on failure). Real lines hit the cache; new vocab words are voiced once and cached."""
+def deck_top(lang: str) -> str:
+    return f"{LANG_NAMES.get(lang, lang)} (Maya)"
+
+
+def _voice(cache, text: str, media: dict, lang: str = "da") -> str | None:
+    """Get/synthesise the clip for `text` in `lang`, register it in `media`, return its filename
+    (None on failure — e.g. a language with no configured voice, so the deck ships text-only)."""
     try:
-        clip = cache.clip(text, "da")
+        clip = cache.clip(text, lang)
     except Exception:
         return None
     media[clip.name] = clip
@@ -72,13 +84,13 @@ def curriculum_fields(week: int, curriculum_path: Path) -> tuple[str, str]:
     return "", ""
 
 
-CARD_PROMPT = """You are building Anki study cards for a graded Danish course (learner level {level}).
+CARD_PROMPT = """You are building Anki study cards for a graded {lang} course (learner level {level}).
 The week's grammar focus is: {grammar}.
 
-From the scene below (Danish line | English gloss), produce two lists:
+From the scene below ({lang} line | English gloss), produce two lists:
 
 - "vocab": a few of the most useful words to drill, including any central to the grammar focus,
-  each as {{"da": <citation form>, "en": <English>}}.
+  each as {{"l2": <{lang} citation form>, "en": <English>}}.
 
 - "cloze": sentences that exercise the grammar focus. Wrap the target word as Anki cloze markup
   {{{{c1::WORD::HINT}}}}, leaving the rest of the sentence exactly as written. HINT = the English
@@ -93,15 +105,16 @@ Scene:
 """
 
 
-def scene_cards(client, model, *, level, grammar, da, en):
-    """LLM: vocab + cloze for one scene. Returns (vocab_list, cloze_list); tolerant of a bad call."""
-    body = "\n".join(f"{d} | {e}" for d, e in zip(da, en))
-    prompt = CARD_PROMPT.format(level=level or "A1/A2", grammar=grammar or "(general)", scene=body)
+def scene_cards(client, model, *, lang, level, grammar, l2, en, want_cloze=True):
+    """LLM: vocab (+ cloze) for one scene. Returns (vocab_list, cloze_list); tolerant of a bad call."""
+    body = "\n".join(f"{d} | {e}" for d, e in zip(l2, en))
+    prompt = CARD_PROMPT.format(lang=LANG_NAMES.get(lang, lang), level=level or "A1/A2",
+                                grammar=grammar or "(general)", scene=body)
     try:
         out = _json_call(client, model, prompt, stage="gen_deck.cards")
     except SystemExit:
         return [], []
-    return out.get("vocab") or [], out.get("cloze") or []
+    return out.get("vocab") or [], (out.get("cloze") or [] if want_cloze else [])
 
 
 CLOZE_RE = re.compile(r"\{\{c\d+::(.+?)(?:::(.+?))?\}\}")   # {{cN::answer}} or {{cN::answer::hint}}
@@ -148,64 +161,81 @@ def _interleave(*lists):
     return out
 
 
-def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use_llm, max_prod,
+def _note(model, *, fields, tags, guid_parts):
+    """A note with a STABLE guid (from guid_parts, not the editable fields) — so a later content fix
+    updates the same card in place on re-import instead of orphaning it."""
+    n = genanki.Note(model, fields=fields, tags=tags)
+    n.guid = genanki.guid_for(*[str(p) for p in guid_parts])
+    return n
+
+
+def build_week_deck(client, model, week: int, wdir: Path, *, lang, level, grammar, use_llm, max_prod,
                     max_vocab, cache, media):
-    deck = genanki.Deck(DECK_BASE + week, f"{TOP}::Week {week:02d}")
+    deck = genanki.Deck(DECK_BASE + week, f"{deck_top(lang)}::Week {week:02d}")
     tag = f"week{week:02d}"
+    want_cloze = bool(grammar)          # cloze/eval need a grammar focus — only where a curriculum exists
     # each direction is its OWN single-sided note (not a bidirectional card): so they can be tagged apart
-    # (E->D = Apply, D->E = Understand) AND ordered far apart, with no sibling-burying to defer one a day.
+    # (L2->EN = Apply, EN->L2... = Understand) AND ordered far apart, with no sibling-burying to defer one.
     prod_fwd, prod_rev, vocab_fwd, vocab_rev, cloze_n = [], [], [], [], []
     seen_vocab = set()          # dedupe words across scenes (same word recurs scene to scene)
     n_snd = 0
     for r in parse_storyboard(wdir / "storyboard.md"):
-        da_p, en_p = wdir / f"{r['stem']}.da", wdir / f"{r['stem']}.en"
-        if not (da_p.exists() and en_p.exists()):
+        l2_p, en_p = wdir / f"{r['stem']}.{lang}", wdir / f"{r['stem']}.en"
+        if not (l2_p.exists() and en_p.exists()):
             continue
-        da = [l for l in da_p.read_text(encoding="utf-8").splitlines() if l.strip()]
+        stem = r["stem"]
+        l2 = [l for l in l2_p.read_text(encoding="utf-8").splitlines() if l.strip()]
         en = [l for l in en_p.read_text(encoding="utf-8").splitlines() if l.strip()]
         # production — deterministic; cap per scene, sampled across it, to keep the mix sane
-        pairs = [(e, d) for d, e in zip(da, en) if len(d.split()) >= MIN_PROD_WORDS]
+        pairs = [(e, d) for d, e in zip(l2, en) if len(d.split()) >= MIN_PROD_WORDS]
         for e, d in _sample_even(pairs, max_prod):
-            da_field = d
-            if cache and (snd := _voice(cache, d, media)):   # [sound:] on Danish field → plays whenever DA shows
-                da_field = f"{d} [sound:{snd}]"
+            l2_field = d
+            if cache and (snd := _voice(cache, d, media, lang)):   # [sound:] on L2 field → plays when L2 shows
+                l2_field = f"{d} [sound:{snd}]"
                 n_snd += 1
-            prod_fwd.append(genanki.Note(genanki.BASIC_MODEL,   # E->D: generate the Danish (Apply)
-                                         fields=[e, da_field], tags=[tag, "production", "bloom::apply"]))
-            prod_rev.append(genanki.Note(genanki.BASIC_MODEL,   # D->E: comprehend the Danish (Understand)
-                                         fields=[da_field, e], tags=[tag, "comprehension", "bloom::understand"]))
+            # guid anchors on the English line (stable across L2 edits → a target-lang fix updates in place)
+            prod_fwd.append(_note(genanki.BASIC_MODEL,   # L2<-EN: generate the target (Apply)
+                                  fields=[e, l2_field], tags=[tag, "production", "bloom::apply"],
+                                  guid_parts=[lang, week, stem, "prod", e]))
+            prod_rev.append(_note(genanki.BASIC_MODEL,   # L2->EN: comprehend the target (Understand)
+                                  fields=[l2_field, e], tags=[tag, "comprehension", "bloom::understand"],
+                                  guid_parts=[lang, week, stem, "comp", e]))
         if not use_llm:
             continue
-        vocab, cloze = scene_cards(client, model, level=level, grammar=grammar, da=da, en=en)
+        vocab, cloze = scene_cards(client, model, lang=lang, level=level, grammar=grammar,
+                                   l2=l2, en=en, want_cloze=want_cloze)
         added = 0
         for v in vocab:
             if max_vocab and added >= max_vocab:      # cap per scene (guards mix if the model over-lists)
                 break
-            d, e = (v.get("da") or "").strip(), (v.get("en") or "").strip()
+            d, e = (v.get("l2") or "").strip(), (v.get("en") or "").strip()
             key = _norm(d).lower()
             if not (d and e) or key in seen_vocab:    # skip a word already added this week
                 continue
             seen_vocab.add(key)
-            da_field = d
-            if cache and (snd := _voice(cache, d, media)):   # vocab word — synthesised once, then cached
-                da_field = f"{d} [sound:{snd}]"
+            l2_field = d
+            if cache and (snd := _voice(cache, d, media, lang)):   # vocab word — synthesised once, then cached
+                l2_field = f"{d} [sound:{snd}]"
                 n_snd += 1
-            vocab_fwd.append(genanki.Note(genanki.BASIC_MODEL,  # D->E: recognise the word (Remember)
-                                          fields=[da_field, e], tags=[tag, "vocab", "bloom::remember"]))
-            vocab_rev.append(genanki.Note(genanki.BASIC_MODEL,  # E->D: recall the word (Remember)
-                                          fields=[e, da_field], tags=[tag, "vocab", "bloom::remember"]))
+            vocab_fwd.append(_note(genanki.BASIC_MODEL,  # L2->EN: recognise the word (Remember)
+                                   fields=[l2_field, e], tags=[tag, "vocab", "bloom::remember"],
+                                   guid_parts=[lang, week, "vocab-fwd", key]))
+            vocab_rev.append(_note(genanki.BASIC_MODEL,  # EN->L2: recall the word (Remember)
+                                   fields=[e, l2_field], tags=[tag, "vocab", "bloom::remember"],
+                                   guid_parts=[lang, week, "vocab-rev", key]))
             added += 1
         for c in cloze:
-            made = make_cloze(c, da)
+            made = make_cloze(c, l2)
             if not made:
                 continue
             text, blanked, source = made
             back = (c.get("en") or "").strip()
-            if cache and (snd := _voice(cache, source, media)):    # full-sentence audio on the back only
+            if cache and (snd := _voice(cache, source, media, lang)):    # full-sentence audio on the back only
                 back = f"{back} [sound:{snd}]".strip()
                 n_snd += 1
-            cloze_n.append(genanki.Note(CLOZE_QA_MODEL,
-                                        fields=[text, back, blanked], tags=[tag, "cloze", "bloom::apply"]))
+            cloze_n.append(_note(CLOZE_QA_MODEL, fields=[text, back, blanked],
+                                 tags=[tag, "cloze", "bloom::apply"],
+                                 guid_parts=[lang, week, stem, "cloze", (c.get("en") or "").strip()]))
     # Two streams: primaries (remember-first: vocab recognition, cloze, production=Apply) and mirrors
     # (word recall + Danish->English comprehension=Understand). Interleave the two streams so
     # comprehension shows up throughout (not blocked at the end), but rotate the mirrors by half first so
@@ -226,8 +256,11 @@ def build_week_deck(client, model, week: int, wdir: Path, *, level, grammar, use
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Build a principled Anki deck (.apkg) from week content.")
     ap.add_argument("weeks", help="e.g. '10,24' or '1-15'")
+    ap.add_argument("--lang", default="da", help="target language code (da, ta, ml, fr, ...). Default da.")
     ap.add_argument("--out", default="deck", help="output dir (default: deck/)")
-    ap.add_argument("--curriculum", default="curriculum_da.md")
+    ap.add_argument("--curriculum", default=None,
+                    help="grammar curriculum (default: curriculum_<lang>.md if it exists). Drives cloze; "
+                         "without one, cloze is skipped and the deck is vocab/production/comprehension.")
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--no-llm", action="store_true",
                     help="production cards only (deterministic; skip vocab/cloze LLM calls)")
@@ -236,15 +269,16 @@ def main(argv=None):
     ap.add_argument("--max-vocab-per-scene", type=int, default=5, dest="max_vocab",
                     help="cap vocab cards per scene (default 5; 0 = no cap)")
     ap.add_argument("--audio", action="store_true",
-                    help="attach Danish audio to all cards: production/cloze reuse the course's cached "
-                         "clips, vocab words are synthesised once (then cached)")
+                    help="attach audio: Danish reuses cached clips; other languages synth from the "
+                         "per-language voice (a language with no configured voice ships text-only)")
     a = ap.parse_args(argv)
 
     nums = sorted({n for part in a.weeks.split(",") for n in (
         range(int(part.split("-")[0]), int(part.split("-")[1]) + 1) if "-" in part else [int(part)])})
-    curriculum = ROOT / a.curriculum
+    cur_path = ROOT / (a.curriculum or f"curriculum_{a.lang}.md")
+    have_curriculum = cur_path.exists()
     client = None if a.no_llm else make_client()
-    cache = ClipCache(GoogleTTS(voices={"da": DA_VOICE}, speed=DA_SPEED), str(CLIP_DIR)) if a.audio else None
+    cache = ClipCache(GoogleTTS(voices=VOICE_OVERRIDES, speed=DECK_SPEED), str(CLIP_DIR)) if a.audio else None
 
     decks, media = [], {}          # media: clip filename -> path (deduped across weeks)
     for w in nums:
@@ -252,8 +286,8 @@ def main(argv=None):
         if not (wdir / "storyboard.md").exists():
             print(f"  week{w:02d}: no storyboard — skipped")
             continue
-        level, grammar = curriculum_fields(w, curriculum)
-        decks.append(build_week_deck(client, a.model, w, wdir,
+        level, grammar = curriculum_fields(w, cur_path) if have_curriculum else ("", "")
+        decks.append(build_week_deck(client, a.model, w, wdir, lang=a.lang,
                                      level=level, grammar=grammar, use_llm=not a.no_llm,
                                      max_prod=a.max_prod, max_vocab=a.max_vocab,
                                      cache=cache, media=media))
@@ -261,7 +295,7 @@ def main(argv=None):
     out_dir = ROOT / a.out
     out_dir.mkdir(parents=True, exist_ok=True)
     span = f"weeks{nums[0]:02d}-{nums[-1]:02d}" if len(nums) > 1 else f"week{nums[0]:02d}"
-    out_path = out_dir / f"{span}_da.apkg"
+    out_path = out_dir / f"{span}_{a.lang}.apkg"
     pkg = genanki.Package(decks, media_files=[str(p) for p in media.values()])
     pkg.write_to_file(str(out_path))
     total = sum(len(d.notes) for d in decks)

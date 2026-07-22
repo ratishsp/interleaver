@@ -132,7 +132,7 @@ LINES ({src_lang} source / {ref_lang} reference / {tgt_lang} under test):
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. fidelity — does each {tgt_lang} line convey the meaning of its {src_lang} source? Flag SUBSTANTIVE divergence, NOT natural rewordings that keep the meaning.
 2. disambiguation_carried — where the {ref_lang} line marks a distinction {src_lang} leaves open, does the {tgt_lang} line carry that SAME distinction wherever {tgt_lang} grammatically marks it? Flag a line that carries the wrong distinction, or defaults when {ref_lang} clearly marks it. Ignore distinctions {tgt_lang} does not mark.
-3. naturalness — would a native {tgt_lang} speaker actually say this? Flag translationese (word-for-word from {src_lang}), constructions a native would not use, and register that jumps around from line to line. Do NOT flag mere taste.
+3. naturalness — would a native {tgt_lang} speaker actually say this? Flag anything that you find unnatural in the native language.
 
 Return JSON exactly:
 {{"fidelity": {{"pass": true, "issues": []}},

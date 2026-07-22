@@ -21,6 +21,7 @@ from verify_translation import check_scene_lang
 
 LANG_NAMES = {"ml": "Malayalam", "ta": "Tamil", "es": "Spanish", "hi": "Hindi", "fr": "French",
               "sa": "Sanskrit"}
+VERIFY_TRIES = 3       # retry a flaky/truncated verify this many times before listing it for re-run
 
 
 def _lines(path: Path) -> list[str]:
@@ -40,6 +41,7 @@ def main() -> int:
     client = make_client()
 
     total = 0
+    unverified: list[str] = []      # scenes whose verify kept failing — listed at the end for re-run
     for r in parse_storyboard(wk / "storyboard.md"):
         stem = r["stem"]
         if a.scenes and a.scenes not in stem:
@@ -62,11 +64,26 @@ def main() -> int:
         print(f"  [ok] {stem}: {len(en_lines)} lines -> {', '.join('.' + l for l in a.langs)}")
         if not a.no_verify:
             for lang in a.langs:
-                total += check_scene_lang(client, model=a.model, wk=wk, stem=stem, lang=lang,
-                                          en_lines=en_lines, da_lines=da_lines,
-                                          fix=False, max_rounds=0)
+                # verify is TRIAGE, not a gate: a flaky/truncated verify response must never abort a
+                # translation that already succeeded (the .{lang} is written above). But don't silently
+                # drop it — RETRY the flaky verify a few times (most transients clear on a fresh call),
+                # and only if it STILL fails, record the scene for an explicit re-run list at the end.
+                for attempt in range(1, VERIFY_TRIES + 1):
+                    try:
+                        total += check_scene_lang(client, model=a.model, wk=wk, stem=stem, lang=lang,
+                                                  en_lines=en_lines, da_lines=da_lines,
+                                                  fix=False, max_rounds=0)
+                        break
+                    except SystemExit as e:
+                        print(f"  [verify retry {attempt}/{VERIFY_TRIES}] {stem}.{lang}: {e}")
+                        if attempt == VERIFY_TRIES:
+                            unverified.append(f"{wk.name}/{stem}.{lang}")
     if not a.no_verify:
         print(f"\n=== {wk.name}: {total} issue(s) flagged across {', '.join(a.langs)} ===")
+        if unverified:
+            print(f"UN-TRIAGED after {VERIFY_TRIES} tries — re-run verify on these:")
+            for u in unverified:
+                print(f"  {u}")
     return 0
 
 

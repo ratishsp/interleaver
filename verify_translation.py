@@ -24,6 +24,7 @@ from tandem.translate import (verify_translation, revise_translation,
                               format_translation_flags, print_translation_report)
 
 LANG_NAMES = {"ml": "Malayalam", "ta": "Tamil", "es": "Spanish", "hi": "Hindi"}
+VERIFY_TRIES = 3       # retry a flaky/truncated verify this many times before skipping the scene
 
 
 def _lines(path: Path) -> list[str]:
@@ -41,8 +42,16 @@ def check_scene_lang(client, *, model, wk, stem, lang, en_lines, da_lines, fix, 
     ctx = f"{wk.name} · {stem}"
     kw = dict(src_lang="English", tgt_lang=tgt_lang, ref_lang="Danish")
     for rnd in range(max_rounds + 1):
-        rep = verify_translation(client, model=model, en_lines=en_lines, ref_lines=da_lines,
-                                 tgt_lines=tgt_lines, context=ctx, **kw)
+        for attempt in range(1, VERIFY_TRIES + 1):
+            try:                                  # verify is triage — retry a flaky/truncated response
+                rep = verify_translation(client, model=model, en_lines=en_lines, ref_lines=da_lines,
+                                         tgt_lines=tgt_lines, context=ctx, **kw)
+                break
+            except SystemExit as e:               # ...but never let it abort the whole run
+                print(f"  [verify retry {attempt}/{VERIFY_TRIES}] {stem}.{lang}: {e}")
+                if attempt == VERIFY_TRIES:
+                    print(f"  [verify skipped] {stem}.{lang} — un-triaged this run")
+                    return 0
         label = f"\n{stem}.{lang}" + (f"  (re-check {rnd})" if rnd else "")
         n = print_translation_report(rep, label=label)
         if n == 0 or not fix or rnd == max_rounds:

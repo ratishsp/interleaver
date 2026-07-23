@@ -42,7 +42,7 @@ locked. The continuity lens treats everything here as established truth: a new w
 - Timeline: arrived January (deep winter) → **summer** by end of A2 → B1 moves into **autumn**.
 - **Cast — all established, do NOT re-introduce as new:** Nina (+ her dog **Ludwig**, whom
   Maya dog-sat a weekend, wk24); Peter & **Eva** at work (Eva a digital designer, now a friend — she
-  hosted Maya, wk23); **Kasper & Sara** from badminton (Maya cooked them dinner, wk22). Family video
+  hosted Maya, wk23); **Kasper & Sara** from badminton (Maya cooked them dinner, wk22; **Emil** a fourth from the club). Family video
   calls continue (mor/far, Sofía, Diego, dog Lola).
 
 ## Cross-cutting rules (every week)

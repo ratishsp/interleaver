@@ -49,7 +49,8 @@ YOUR PREVIOUS DRAFT for this week was reviewed and did NOT pass. Here it is:
 {prior_md}
 PRIOR_DRAFT
 
-A strict review panel returned these problems. Modify the storyboard to address the issues:
+A strict review panel returned these problems. Address ONLY them — modify the affected scenes;
+reproduce the rest verbatim:
 {items}
 """
 

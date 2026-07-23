@@ -145,7 +145,12 @@ def _is_transient(exc) -> bool:
         pass
     s = str(exc)
     return any(t in s for t in ("RESOURCE_EXHAUSTED", "Bad Gateway", "Service Unavailable",
-                                "Internal error", "Server disconnected", "502", "503", "504"))
+                                "Internal error", "Server disconnected", "502", "503", "504",
+                                # transient LOCAL network / DNS blips (the auth-token fetch to
+                                # oauth2.googleapis.com uses requests, not httpx, so it isn't a
+                                # TransportError — a momentary resolver hiccup once aborted a whole run)
+                                "Temporary failure in name resolution", "Max retries exceeded",
+                                "Connection reset", "Connection refused", "NameResolutionError"))
 
 
 def generate_retrying(client, model: str, prompt: str, config, *, tries: int = 5):

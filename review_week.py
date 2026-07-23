@@ -31,6 +31,7 @@ import argparse
 import concurrent.futures
 import json
 import os
+import re
 from pathlib import Path
 
 from tandem.gen import DEFAULT_MODEL, parse_storyboard, parse_storyboard_header, revise_scene
@@ -197,6 +198,15 @@ def run_panel(client, model, prompts, workers):
 # SCENE (the fix unit); whole-week findings (the smile/ready refrain) aren't scene-local, so they're
 # reported for a human, never auto-fixed.
 
+def _scene_keys(label) -> list[str]:
+    """Normalize a judge's scene label into tally keys. The judge writes '2', 'Scene 2', or joint
+    labels like '4 and 5' / 'Scenes 8 & 9' — the raw-string tally treated each spelling as a
+    different scene (double-revising one, silently dropping a 3/3 joint survivor)."""
+    s = re.sub(r"(?i)^scenes?\s*", "", str(label).strip())
+    parts = [p.strip() for p in re.split(r"\s*(?:&|,|\band\b)\s*", s) if p.strip()]
+    return parts or [str(label).strip()]
+
+
 def collect_votes(client, model, prompts, *, votes, min_votes, workers):
     """Panel ×votes, tallied by scene. Returns (scene_survivors, week_survivors); each survivor is
     {scene, votes, severity, issues[]}. A scene survives when ≥min_votes distinct runs flag it."""
@@ -205,7 +215,8 @@ def collect_votes(client, model, prompts, *, votes, min_votes, workers):
         fs, _ = run_panel(client, model, prompts, workers)
         print(f"  vote {i + 1}/{votes}: {len(fs)} findings")
         for f in fs:
-            b = tally.setdefault(f["scene"], {"scene": f["scene"], "runs": set(), "issues": [], "sev": "Low"})
+          for key in _scene_keys(f["scene"]):
+            b = tally.setdefault(key, {"scene": key, "runs": set(), "issues": [], "sev": "Low"})
             b["runs"].add(i)
             b["issues"].append(f"[{f['severity']}/{f['lens']}] {f['issue']}"
                                + (f" — {f['why']}" if f["why"] else ""))

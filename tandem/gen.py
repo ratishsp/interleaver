@@ -64,7 +64,8 @@ def load_story_bible(path: str | Path | None = None) -> str:
 
 def scene_prompt(*, week: int, level: str, scene_title: str, scene: str, grammar: str,
                  arc: list | None = None, scene_num: int | None = None,
-                 bible: str | None = None, brief: str | None = None) -> str:
+                 bible: str | None = None, brief: str | None = None,
+                 language: str = "Danish", key: str = "da") -> str:
     """Build the exact generation prompt (also used by --show-prompt for inspection).
 
     Scene length is not a caller quota — the prompt steers toward a rich ~15-20 line-pair situation.
@@ -83,32 +84,37 @@ def scene_prompt(*, week: int, level: str, scene_title: str, scene: str, grammar
             for a in arc)
         arc_block = ("\nThis week's arc (write ONLY the marked scene; do not cover the other "
                      "scenes or bring in characters who first appear in a later scene):\n" + rows + "\n")
+    # the A1-complexity examples are Danish; for another language the generic rule stands alone
+    modals = " (kan/vil/skal/må)" if language == "Danish" else ""
+    subs = " (fordi/hvis/når/at-clauses)" if language == "Danish" else ""
     return f"""{bible}
 
-TASK: Write ONE scene for WEEK {week} (CEFR level {level}) of the Danish course.
+TASK: Write ONE scene for WEEK {week} (CEFR level {level}) of the {language} course.
 Scene title: "{scene_title}". Scene: {scene}
 {brief_block}{arc_block}
-The Danish is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss.
+The {language} is what's being learned — author it natively and idiomatically; the English is a faithful, natural gloss.
 
-- Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural Danish first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
+- Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural {language} first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
 - Tell it as Maya's own first-person account; attribute any quoted speech so it's clear who's speaking.
-- Match sentence complexity to {level}. At A1 especially, keep sentences short and mostly single-clause; don't reach for modals (kan/vil/skal/må), subordinate clauses (fordi/hvis/når/at-clauses), imperatives, or infinitive constructions unless they're within this week's grammar. Favor MORE short sentences over fewer complex ones.
-- One sentence per line in both arrays; let the scene run to a full ~15-20 line-pairs (a complete situation, not a sketch). The "da" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- Match sentence complexity to {level}. At A1 especially, keep sentences short and mostly single-clause; don't reach for modals{modals}, subordinate clauses{subs}, imperatives, or infinitive constructions unless they're within this week's grammar. Favor MORE short sentences over fewer complex ones.
+- One sentence per line in both arrays; let the scene run to a full ~15-20 line-pairs (a complete situation, not a sketch). The "{key}" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
-Return JSON: {{"da": [...], "en": [...]}}."""
+Return JSON: {{"{key}": [...], "en": [...]}}."""
 
 
 def generate_scene(client, *, model: str, week: int, level: str, scene_title: str, scene: str,
                    grammar: str, arc: list | None = None, scene_num: int | None = None,
-                   bible: str | None = None, brief: str | None = None) -> dict:
-    """Author a graded scene natively in Danish + an English gloss. Returns {'da': [...], 'en': [...]}."""
+                   bible: str | None = None, brief: str | None = None,
+                   language: str = "Danish", key: str = "da") -> dict:
+    """Author a graded scene natively in the course language + an English gloss ({key: [...], 'en': [...]})."""
     prompt = scene_prompt(week=week, level=level, scene_title=scene_title, scene=scene,
-                          grammar=grammar, arc=arc, scene_num=scene_num, bible=bible, brief=brief)
+                          grammar=grammar, arc=arc, scene_num=scene_num, bible=bible, brief=brief,
+                          language=language, key=key)
     out = _json_call(client, model, prompt, stage=f"generate_scene.{scene_num or '?'}")
-    da, en = out.get("da", []), out.get("en", [])
-    if len(da) != len(en):
-        raise SystemExit(f"Alignment broken: {len(da)} DA lines vs {len(en)} EN lines.")
-    return {"da": da, "en": en}
+    tgt, en = out.get(key, []), out.get("en", [])
+    if len(tgt) != len(en):
+        raise SystemExit(f"Alignment broken: {len(tgt)} {key.upper()} lines vs {len(en)} EN lines.")
+    return {key: tgt, "en": en}
 
 
 def revise_prompt(*, level: str, grammar: str, scene: str, da_lines: list[str],

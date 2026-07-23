@@ -25,8 +25,8 @@ from tandem.llm import make_client, _json_call
 CURRICULUM = "curriculum_da.md"
 
 
-def curriculum_row(week: int) -> dict:
-    for line in Path(CURRICULUM).read_text(encoding="utf-8").splitlines():
+def curriculum_row(week: int, path: str = CURRICULUM) -> dict:
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line.startswith("|"):
             continue
@@ -34,7 +34,7 @@ def curriculum_row(week: int) -> dict:
         if len(cells) >= 5 and cells[0].isdigit() and int(cells[0]) == week:
             return {"wk": week, "level": cells[1], "theme": cells[2],
                     "grammar": cells[3], "brief": cells[4]}
-    raise SystemExit(f"week {week} not found in {CURRICULUM}")
+    raise SystemExit(f"week {week} not found in {path}")
 
 
 def _revise_block(prior_md: str, findings: list[dict]) -> str:
@@ -55,8 +55,9 @@ A strict review panel returned these problems. Modify the storyboard to address 
 
 
 def build_prompt(row: dict, exemplar_text: str, exemplar_wk: int,
-                 prior_md: str | None = None, findings: list[dict] | None = None) -> str:
-    bible = load_story_bible()
+                 prior_md: str | None = None, findings: list[dict] | None = None,
+                 bible: str | None = None, language: str = "Danish") -> str:
+    bible = bible if bible is not None else load_story_bible()
     revise = _revise_block(prior_md, findings) if (prior_md and findings) else ""
     if exemplar_text:
         fmt_block = (
@@ -70,9 +71,9 @@ def build_prompt(row: dict, exemplar_text: str, exemplar_wk: int,
         )
     return f"""{bible}
 
-You are authoring the STORYBOARD for one week of a Danish (A1->B2) audio course told as Maya's
+You are authoring the STORYBOARD for one week of a {language} (A1->B2) audio course told as Maya's
 first-person story. A storyboard decomposes the week's brief into an ordered
-sequence of scenes; each scene is later written as line-aligned Danish/English.
+sequence of scenes; each scene is later written as line-aligned {language}/English.
 
 {fmt_block}
 

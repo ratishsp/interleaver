@@ -1,0 +1,58 @@
+[
+  {
+    "lens": "Cross-scene continuity & consistency",
+    "scene": "5",
+    "issue": "Unaddressed schedule conflict with Wednesday gym session.",
+    "severity": "Med",
+    "why": "In Scene 1, Maya establishes that her gym time is 6:00 PM on Wednesdays ('ബുധനാഴ്ചകളിലും ഞാൻ ജിമ്മിൽ പോകും. വൈകുന്നേരം ആറു മണിക്ക് ആണ് എന്റെ ജിം സമയം.'). However, in Scene 5, it is Wednesday at 6:15 PM and she is picking up her bicycle without mentioning the gym. In a week focused heavily on calendar management and schedule conflicts, missing this overlap feels like an oversight.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive whole-week listener (no checklist)",
+    "scene": "week",
+    "issue": "Unacknowledged scheduling conflict with the gym.",
+    "severity": "Med",
+    "why": "In Scene 1, Maya makes a point of establishing her strict routine: she always goes to the gym on Wednesdays at 6:00 PM. But in Scene 5 (Wednesday at 6:15 PM), she picks up her bike and rides home with no mention of skipping the gym. Since the entire plot of the week revolves around calendar planning and resolving double-bookings, accidentally creating a clash that the narrative ignores feels like a plot hole.",
+    "advisory": true
+  },
+  {
+    "lens": "Repetition & monotony",
+    "scene": "week",
+    "issue": "Over-repetition of 'It is February' and 'The weather is nice'.",
+    "severity": "Med",
+    "why": "Across Scenes 1, 2, 5, and 7, Maya states that it is February and/or that the weather in Kochi is pleasant. While reinforcing the vocabulary for months is useful, repeating this exact observation four times as scene filler draws attention to itself and feels monotonous in a single sitting.",
+    "advisory": false
+  },
+  {
+    "lens": "Repetition & monotony",
+    "scene": "week",
+    "issue": "Constant repetition of being 'happy' or doing things 'happily' (സന്തോഷത്തോടെ / സന്തോഷമുണ്ട്).",
+    "severity": "Med",
+    "why": "Maya's emotional state is overly homogenous. She walks to the office happily (Scene 2), is very happy and reaches the flat happily (Scene 5), smiles happily (Scene 8), and in Scene 9 her sister speaks happily, the dog plays happily, and Maya is very happy. Using the same emotion/adverb as a crutch flattens the emotional arc of the week.",
+    "advisory": false
+  },
+  {
+    "lens": "Cross-scene continuity & consistency",
+    "scene": "6",
+    "issue": "Maya does not identify herself when calling to reschedule.",
+    "severity": "Low",
+    "why": "When Maya calls the salon back to move her appointment, she simply says 'Sorry, I have another thing on Thursday' without stating her name (Maya) or her current appointment time. In reality, the receptionist wouldn't know whose appointment to move.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive whole-week listener (no checklist)",
+    "scene": "Scene 2",
+    "issue": "Jarring back-to-back repetition of the current month.",
+    "severity": "Low",
+    "why": "Scene 1 states \"ഇപ്പോൾ ഫെബ്രുവരി മാസമാണ്\" (Now it is the month of February). Scene 2 immediately opens with exactly the same sentence. When listening in a single sitting, stating the month again two minutes later feels robotic, unlike the natural daily progression of 'Today is Tuesday/Wednesday'.",
+    "advisory": true
+  },
+  {
+    "lens": "Naive whole-week listener (no checklist)",
+    "scene": "Scene 4",
+    "issue": "Accepting the invite without checking the calendar makes Maya seem unusually forgetful.",
+    "severity": "Low",
+    "why": "Maya spends Scene 1 meticulously setting up her calendar because she's 'very busy', but then instantly texts Anitha 'Okay, 5:30' in Scene 4 without checking it, only to realize the clash later in Scene 6. It's a bit contrived, though it effectively sets up the target language for rescheduling.",
+    "advisory": true
+  }
+]

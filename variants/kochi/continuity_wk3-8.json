@@ -1,0 +1,32 @@
+[
+  {
+    "category": "memory_knowledge",
+    "lens": "Memory & knowledge",
+    "severity": "High",
+    "fact_quote": "I am going to the bus stop.",
+    "location": "Week 6 · Scene 2",
+    "contradiction_quote": "\"Excuse me, where is the main bus stop?\" I ask.",
+    "contradiction_location": "Week 8 · Scene 2",
+    "why": "In Week 6, Maya knows exactly where the bus stop near her flat is and confidently uses it for her daily office commute. By Week 8, she suddenly has no knowledge of the bus stop outside her flat, gets lost looking for it, and has to ask a local tea seller for directions."
+  },
+  {
+    "category": "other",
+    "lens": "Anything else (open — no checklist)",
+    "severity": "Med",
+    "fact_quote": "I make a cup of hot coffee.",
+    "location": "Week 6 · Scene 1",
+    "contradiction_quote": "I drink hot tea every day.",
+    "contradiction_location": "Week 7 · Scene 1",
+    "why": "Maya claims she has an absolute daily habit of drinking hot tea in Week 7, which directly contradicts her making and drinking a cup of hot coffee for her morning routine in Week 6."
+  },
+  {
+    "category": "nomenclature",
+    "lens": "Names & roles",
+    "severity": "Low",
+    "fact_quote": "My younger sister Sofía answers the call.",
+    "location": "Week 7 · Scene 9",
+    "contradiction_quote": "My sister Sofia sees the photos.",
+    "contradiction_location": "Week 8 · Scene 8",
+    "why": "The sister's name is rendered with an accent as 'Sofía' in earlier weeks, but appears without the accent as 'Sofia' in Week 8."
+  }
+]

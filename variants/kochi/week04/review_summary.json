@@ -1,0 +1,42 @@
+[
+  {
+    "lens": "Naive whole-week listener (no checklist)",
+    "scene": "week",
+    "issue": "The 'pleasant breeze' is mentioned in 5 out of 8 scenes.",
+    "severity": "Med",
+    "why": "While vocabulary repetition is necessary, having Maya notice the January breeze coming through the window in Scenes 1, 4, 5, 6, and 8 feels highly repetitive as a narrative device and starts to feel like a broken record.",
+    "advisory": true
+  },
+  {
+    "lens": "Repetition & monotony",
+    "scene": "week",
+    "issue": "Overuse of 'I am very happy / I like this room/home' to end scenes.",
+    "severity": "Med",
+    "why": "Scenes 1, 2, 4, 6, and 8 all conclude with Maya explicitly declaring how happy she is or how much she likes the space. While repetition is good for A1, repeating the identical emotional wrap-up in over half the scenes makes the narrative feel formulaic.",
+    "advisory": false
+  },
+  {
+    "lens": "Repetition & monotony",
+    "scene": "week",
+    "issue": "The 'January breeze' motif is repeated too often.",
+    "severity": "Med",
+    "why": "The nice breeze or 'January breeze' coming through the window is explicitly mentioned in scenes 1, 4, 5, 6, and 8. It becomes a noticeable, slightly unnatural refrain to remark on the weather in almost every room.",
+    "advisory": false
+  },
+  {
+    "lens": "Cross-scene continuity & consistency",
+    "scene": "8",
+    "issue": "Placement verb inconsistency for the big bag.",
+    "severity": "Low",
+    "why": "In Scene 2, the empty big bag is placed under the bed and the text explicitly states it 'lies flat' (പരന്നു കിടക്കുന്നു). In Scene 8, recalling this same bag, it 'sits' (ഇരിക്കുന്നു). While natural in casual speech, since the week's grammar focus is exactly on 'കിടക്കുന്നു' vs 'ഇരിക്കുന്നു', keeping the verb consistent for the same object in the same position will better reinforce the grammar rule for learners.",
+    "advisory": false
+  },
+  {
+    "lens": "Naive whole-week listener (no checklist)",
+    "scene": "7",
+    "issue": "Maya pulls a photo out of a bag, but the living room bag was previously described as empty.",
+    "severity": "Low",
+    "why": "In Scene 4, the bag under the living room desk is explicitly described as 'empty'. In Scene 7, she opens a bag near her chair to pull out a family photo. While she brought multiple bags, an attentive learner might be slightly confused about where this non-empty bag came from.",
+    "advisory": true
+  }
+]

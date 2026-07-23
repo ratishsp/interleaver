@@ -1,0 +1,42 @@
+[
+  {
+    "category": "other",
+    "lens": "Anything else (open — no checklist)",
+    "severity": "High",
+    "fact_quote": "\"Does this bus go to Kakkanad?\"",
+    "location": "Week 8 · Scene 9",
+    "contradiction_quote": "\"I need to go to Kaloor,\" I told the driver.",
+    "contradiction_location": "Week 9 · Scene 8",
+    "why": "In Week 8, Maya takes a bus to Kakkanad to go to her place, implying her flat is located there. However, in Week 9, she tells an auto driver she needs to go to Kaloor, and the auto begins the journey to her flat, placing her home in a completely different neighborhood."
+  },
+  {
+    "category": "memory_knowledge",
+    "lens": "Memory & knowledge",
+    "severity": "High",
+    "fact_quote": "\"Does this bus go to Kakkanad?\"",
+    "location": "Week 8 · Scene 9",
+    "contradiction_quote": "\"I need to go to Kaloor,\" I told the driver.",
+    "contradiction_location": "Week 9 · Scene 8",
+    "why": "In Week 8, Maya boards a bus to Kakkanad to go home, but in Week 9 she tells the auto driver she lives in Kaloor to go to her flat. These are two completely different locations in Kochi, creating a contradiction about where she actually resides."
+  },
+  {
+    "category": "nomenclature",
+    "lens": "Names & roles",
+    "severity": "Low",
+    "fact_quote": "My father, mother, sister Sofía, and brother Diego.",
+    "location": "Week 4 · Scene 7",
+    "contradiction_quote": "My sister Sofia sees the photos.",
+    "contradiction_location": "Week 8 · Scene 8",
+    "why": "Maya's sister's name is spelled with an accented 'í' (Sofía) in earlier weeks, but without the accent (Sofia) in Week 8."
+  },
+  {
+    "category": "quantitative",
+    "lens": "Numbers",
+    "severity": "Low",
+    "fact_quote": "The cardamom is eighty rupees.",
+    "location": "Week 5 · Scene 5",
+    "contradiction_quote": "The price of cardamom is one hundred and fifty rupees.",
+    "contradiction_location": "Week 9 · Scene 5",
+    "why": "Maya buys a 'small packet of cardamom' in both scenes, but the price is inconsistently restated as jumping from 80 to 150 rupees (though technically defensible as the difference between a supermarket and an open market)."
+  }
+]

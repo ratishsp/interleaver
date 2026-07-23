@@ -26,7 +26,8 @@ authored natively in Malayalam.
 ## Cross-cutting rules (every week)
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women
   and അദ്ദേഹം for men (അവൻ/അവൾ only for her siblings and the dogs). Second person is
-  നിങ്ങൾ.
+  നിങ്ങൾ; within the family, elders say നീ to younger, and younger address elders with the
+  kin-term (ചേച്ചി/ചേട്ടൻ).
 - **Privacy** — her ID/registration numbers are sensitive: never read aloud digit-by-digit. Phone
   numbers may be shared; any phone number is an obvious placeholder, never plausibly real.
   Maya's mobile: **98765 43210** (spoken as Malayalam number words when read aloud).

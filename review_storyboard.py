@@ -1,17 +1,15 @@
-"""Storyboard review gate — a 5-lens panel that reviews a week's storyboard BEFORE generation.
+"""Storyboard review gate — a 4-lens panel that reviews a week's storyboard BEFORE generation.
 
 Mirrors `verify_scene`, one tier up:  author scenes → REVIEW → revise → pass → generate.
-Four mechanical lenses (continuity / narrative-logic / realism+privacy / density+variety)
-carry a prescribed checklist as a FLOOR *plus* explicit agency; a fifth "naive learner" lens has
-NO checklist — it catches what a checklist can't (pacing, monotony, flat mood). The text verifier
-checks the generated Danish; this checks the *design*, before any Danish exists.
+Three mechanical lenses (continuity / narrative-logic / realism+privacy) carry a prescribed
+checklist as a FLOOR *plus* explicit agency; a fourth "naive learner" lens has NO checklist — it
+catches what a checklist can't (pacing, monotony, flat mood). The text verifier checks the
+generated Danish; this checks the *design*, before any Danish exists.
 
-The DENSITY lens (added 2026-06-27) is the root-cause catch: week 4 ("moving into a flat") passed
-this gate clean, then the whole-week text gate forced two scene cuts because the week was one thin
-event (a move-in) micro-sliced 14 ways — static room-description scenes, three evening reflections,
-a smile/glad flood. All of that is visible in the SCENES. The standard is Anna's-week density: each
-scene a complete mini-vignette that MOVES (a market visit hitting several stalls), not a furniture
-inventory; the week spanning varied situations, not one thin event micro-sliced.
+(A DENSITY lens existed 2026-06-27 → 2026-07-24; removed on the user's call — scene density and
+week shape are controlled by the curriculum brief, and the lens had begun re-judging deliberate
+briefs, e.g. High-flagging a week whose brief centers one long family call. Micro-slicing residue
+is still visible to the logic/learner lenses and the whole-week text gate.)
 
 Why a panel, why agency: a reviewer's errors are asymmetric — a false alarm costs seconds to
 dismiss, a miss costs a bad week (×50 at scale). So each lens is told its checklist is a MINIMUM,
@@ -112,25 +110,6 @@ LENSES = [
             "(d) Translation/gloss hazards — scenes likely to produce constructions awkward to render in\n"
             "    English / another L1 (written-out abbreviations, lexically ambiguous words, inaccurate\n"
             "    inline glosses of culture-specific terms)."
-        ),
-    },
-    {
-        "key": "density",
-        "title": "Density, activity & variety",
-        "lens": "whether each scene is a real activity that moves and the week is varied, not one thin situation micro-sliced to fill a scene count",
-        "floor": (
-            "(a) ACTIVITY per scene — each scene should be a complete mini-vignette that MOVES (a small\n"
-            "    beginning→middle→end), not a static description, object inventory, or restated feeling.\n"
-            "    FLAG description-only scenes; an ordinary task done well IS the standard.\n"
-            "(b) WEEK variety — does the week span several DISTINCT situations (different places, people,\n"
-            "    tasks)?\n"
-            "    FLAG a week that is one thin situation stretched to length.\n"
-            "(c) CONCRETE texture — does each scene bring its OWN concrete detail — nouns, actions, the\n"
-            "    odd sensory note (a smell, warmth, a taste, a small pleasure) — or lean on generic\n"
-            "    filler (small, nice, happy, good, lovely, smiles)? FLAG generic/interchangeable scenes.\n"
-            "(d) COMMON VOCABULARY — keep the scenes in common, everyday words (the axis is common-vs-\n"
-            "    technical, not specific-vs-generic: 'rye bread' is great, 'a thermostat' is not). FLAG\n"
-            "    any scene that drags in technical/rare nouns when a common one of the same shape would do."
         ),
     },
     {
@@ -266,7 +245,7 @@ _SEV_RANK = {"High": 0, "Med": 1, "Low": 2}
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="Review a week's storyboard with the 5-lens panel.")
+    ap = argparse.ArgumentParser(description="Review a week's storyboard with the 4-lens panel.")
     ap.add_argument("storyboard", help="path to the week's storyboard.md")
     ap.add_argument("--bible", default="story_bible.md")
     ap.add_argument("--curriculum", default="curriculum_da.md")

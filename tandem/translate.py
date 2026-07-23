@@ -10,7 +10,7 @@ import re
 
 from pathlib import Path
 
-from tandem.gen import load_story_bible, _ABBREVS
+from tandem.gen import load_story_bible, _multi_sentence_lines_generic
 from tandem.langs import LANG_NAMES  # noqa: F401 — re-export; the registry lives in tandem/langs.py
 from tandem.llm import _json_call
 
@@ -118,29 +118,8 @@ def translate_scene(client, *, model: str, wk: Path, stem: str, lang: str,
 # the single most human-trivially-visible error (a relocated proper noun), and never fired.
 TRANSLATION_VERIFY_DIMENSIONS = ("fidelity", "disambiguation_carried", "naturalness")
 
-# Script-agnostic sentence-final marks: '.', '!', '?' plus the Devanagari danda/double-danda. The
-# Danish _MULTI_SENTENCE_RE keys on a following CAPITAL, which Indic scripts do not have — so it is
-# blind to a two-sentence Malayalam/Tamil line. This flags a sentence-final mark followed by more text.
-_SENT_FINAL_RE = re.compile(r"[.!?।॥][\"»«')\]]?\s+\S")
-
-
-def _multi_sentence_lines_generic(lines: list[str]) -> list[int]:
-    """1-based indices of target-language lines that appear to hold more than one sentence.
-
-    Script-agnostic (no capital-letter cue): a sentence-final mark followed by whitespace and more
-    content. The period is abbreviation-guarded (reuses _ABBREVS + the single-initial rule); the Indic
-    danda is unambiguous. Advisory triage — points the ear at a line, does not hard-gate the audio.
-    """
-    out = []
-    for i, ln in enumerate(lines):
-        for m in _SENT_FINAL_RE.finditer(ln):
-            if ln[m.start()] == ".":
-                before = ln[:m.start()].lower()
-                if any(before.endswith(a) for a in _ABBREVS) or re.search(r"(?:^|\s)\w$", before):
-                    continue
-            out.append(i + 1)
-            break
-    return out
+# The script-agnostic multi-sentence detector now lives in tandem/gen.py (verify_scene needs it for
+# non-Danish course languages); imported above. Advisory triage here — points the ear at a line.
 
 
 def verify_translation_prompt(*, src_lang: str, tgt_lang: str, ref_lang: str, en_lines: list[str],

@@ -17,8 +17,10 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from tandem.gen import (generate_scene, revise_scene, verify_scene, format_failures,
-                        parse_storyboard, parse_storyboard_header, VERIFY_DIMENSIONS, ADVISORY_DIMS)
-from gen_storyboard import curriculum_row
+                        parse_storyboard, parse_storyboard_header, load_story_bible,
+                        VERIFY_DIMENSIONS, ADVISORY_DIMS)
+from tandem.langs import LANG_NAMES
+from gen_storyboard import curriculum_row, CURRICULUM
 from tandem.llm import make_client
 
 
@@ -53,6 +55,13 @@ _ap.add_argument("--location", default="global",
 _ap.add_argument("--model", default="gemini-3.1-pro-preview",
                  help="model for BOTH generate/revise and the verify self-check (default "
                       "gemini-3.1-pro-preview; e.g. gemini-3.5-flash when the preview pool is starved)")
+_ap.add_argument("--lang", default="da",
+                 help="course language code (default da). Non-da tracks author their L2 natively — "
+                      "pair with --curriculum/--bible, e.g. the Kochi Malayalam track:  "
+                      "gen_week.py variants/kochi/week01/storyboard.md --lang ml "
+                      "--curriculum variants/kochi/curriculum_ml.md --bible variants/kochi/story_bible_ml.md")
+_ap.add_argument("--curriculum", default=CURRICULUM, help="curriculum table for the week's brief")
+_ap.add_argument("--bible", help="story bible path (default: the Danish story_bible.md)")
 _args = _ap.parse_args()
 os.environ["GOOGLE_CLOUD_LOCATION"] = _args.location   # gen + verify (both gemini-3.1-pro) run in global
 STORYBOARD = _args.storyboard
@@ -62,7 +71,10 @@ _SPEC = parse_storyboard_header(STORYBOARD)            # single source: the stor
 WEEK = _SPEC["week"]
 LEVEL = _SPEC["level"]
 GRAMMAR = _SPEC["grammar"]
-BRIEF = curriculum_row(WEEK)["brief"]      # the generator ELABORATES, so the week's prohibitions must reach IT
+BRIEF = curriculum_row(WEEK, _args.curriculum)["brief"]  # the generator ELABORATES, so the week's prohibitions must reach IT
+KEY = _args.lang                                       # file extension + JSON array key
+LANGUAGE = LANG_NAMES.get(KEY, KEY)                    # prompt-facing name
+BIBLE = load_story_bible(_args.bible) if _args.bible else None   # None -> the Danish default inside the prompts
 
 GEN_MODEL = _args.model                   # gen + revise on the strongest model — best first drafts, fewest
                                           # hand-fixes (user choice 2026-06-27). Needs location='global'.
@@ -107,13 +119,16 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
             if attempt == 0 or best is None:          # fresh draft (or the prior attempt errored)
                 res = generate_scene(client, model=GEN_MODEL, week=WEEK, level=LEVEL,
                                      scene_title=row["title"], scene=row["scene"], grammar=GRAMMAR,
-                                     arc=arc, scene_num=n, brief=BRIEF)
+                                     arc=arc, scene_num=n, brief=BRIEF,
+                                     bible=BIBLE, language=LANGUAGE, key=KEY)
             else:                                     # revise the rejected draft — fix only what failed
                 res = revise_scene(client, model=GEN_MODEL, level=LEVEL, grammar=GRAMMAR,
-                                   scene=row["scene"], da_lines=best["da"], en_lines=best["en"],
-                                   feedback=format_failures(best_rep))
+                                   scene=row["scene"], da_lines=best[KEY], en_lines=best["en"],
+                                   feedback=format_failures(best_rep),
+                                   bible=BIBLE, language=LANGUAGE, key=KEY)
             rep = verify_scene(client, model=VERIFY_MODEL, level=LEVEL, grammar=GRAMMAR,
-                              da_lines=res["da"], en_lines=res["en"], scene=row["scene"])
+                              da_lines=res[KEY], en_lines=res["en"], scene=row["scene"],
+                              language=LANGUAGE, key=KEY)
         except (Exception, SystemExit) as e:  # noqa: BLE001 — don't let one scene kill the week
             print(f"[{n:2}/{total}] {stem}: attempt {attempts} ERROR {type(e).__name__}: "
                   f"{str(e)[:120]}", flush=True)
@@ -126,7 +141,7 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
         print(f"[{n:2}/{total}] {stem}: ALL ATTEMPTS FAILED — skipping", flush=True)
         return {"n": n, "stem": stem, "attempts": attempts, "status": "failed"}
 
-    (outdir / f"{stem}.da").write_text("\n".join(best["da"]) + "\n", encoding="utf-8")
+    (outdir / f"{stem}.{KEY}").write_text("\n".join(best[KEY]) + "\n", encoding="utf-8")
     (outdir / f"{stem}.en").write_text("\n".join(best["en"]) + "\n", encoding="utf-8")
 
     llm = best_rep.get("llm", {})
@@ -138,7 +153,7 @@ def process_scene(client, arc: list, outdir: Path, row: dict) -> dict:
           f"G={g} cohere={coh} natural={nat} gloss={gl}", flush=True)
     return {"n": n, "stem": stem, "attempts": attempts, "hard_pass": hard_pass(best_rep),
             "grammar": g, "coherence": coh, "natural": nat, "gloss": gl,
-            "lines": len(best["da"]),
+            "lines": len(best[KEY]),
             "issues": {d: _dim(llm, d).get("issues", []) for d in VERIFY_DIMENSIONS}}
 
 
@@ -151,7 +166,8 @@ def main() -> int:
     # A regen that renames the stems leaves the old scenes behind, and everything downstream reads the
     # whole DIRECTORY — so the dead files are graded, linted and voiced as part of the week.
     stems = {r["stem"] for r in arc}
-    orphans = sorted(p for p in outdir.glob("*.[de][an]") if p.stem not in stems)
+    orphans = sorted(p for p in list(outdir.glob(f"*.{KEY}")) + list(outdir.glob("*.en"))
+                     if p.stem not in stems)
     for p in orphans:
         p.unlink()
     if orphans:

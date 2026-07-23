@@ -118,38 +118,40 @@ def generate_scene(client, *, model: str, week: int, level: str, scene_title: st
 
 
 def revise_prompt(*, level: str, grammar: str, scene: str, da_lines: list[str],
-                  en_lines: list[str], feedback: str, bible: str | None = None) -> str:
+                  en_lines: list[str], feedback: str, bible: str | None = None,
+                  language: str = "Danish", key: str = "da") -> str:
     """Build the revise prompt: a rejected draft + the QA problems to fix (also used by --show-prompt)."""
     bible = bible if bible is not None else load_story_bible()
-    pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
+    pairs = "\n".join(f"{i+1}. {key.upper()}: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
     return f"""{bible}
 
-A draft scene for this Danish course (CEFR level {level}) was rejected by QA. Fix ONLY the problems listed below; keep everything else — the story, the line order, and every line that wasn't flagged — unchanged.
+A draft scene for this {language} course (CEFR level {level}) was rejected by QA. Fix ONLY the problems listed below; keep everything else — the story, the line order, and every line that wasn't flagged — unchanged.
 
 Scene (for context): {scene}
 Level {level}; this week's grammar: {grammar}.
 
-DRAFT (line-aligned Danish / English):
+DRAFT (line-aligned {language} / English):
 {pairs}
 
 PROBLEMS TO FIX:
 {feedback}
 
-Return the FULL corrected scene as JSON: {{"da": [...], "en": [...]}} — one sentence per line, the two arrays the same length and aligned line-for-line. Splitting a line to fix it changes the line count; that's fine, just keep "da" and "en" aligned."""
+Return the FULL corrected scene as JSON: {{"{key}": [...], "en": [...]}} — one sentence per line, the two arrays the same length and aligned line-for-line. Splitting a line to fix it changes the line count; that's fine, just keep "{key}" and "en" aligned."""
 
 
 def revise_scene(client, *, model: str, level: str, grammar: str, scene: str,
                  da_lines: list[str], en_lines: list[str], feedback: str,
-                 bible: str | None = None) -> dict:
-    """Revise a rejected draft to fix the QA problems, keeping the rest. Returns {'da': [...], 'en': [...]}."""
+                 bible: str | None = None, language: str = "Danish", key: str = "da") -> dict:
+    """Revise a rejected draft to fix the QA problems, keeping the rest ({key: [...], 'en': [...]})."""
     prompt = revise_prompt(level=level, grammar=grammar, scene=scene,
-                           da_lines=da_lines, en_lines=en_lines, feedback=feedback, bible=bible)
+                           da_lines=da_lines, en_lines=en_lines, feedback=feedback, bible=bible,
+                           language=language, key=key)
     out = _json_call(client, model, prompt, stage="revise_scene")
-    da, en = out.get("da", []), out.get("en", [])
+    da, en = out.get(key, []), out.get("en", [])
     if len(da) != len(en):
-        raise SystemExit(f"Alignment broken: {len(da)} DA lines vs {len(en)} EN lines.")
-    return {"da": da, "en": en}
+        raise SystemExit(f"Alignment broken: {len(da)} {key.upper()} lines vs {len(en)} EN lines.")
+    return {key: da, "en": en}
 
 
 _WORD_RE = re.compile(r"[a-zA-ZæøåÆØÅ]+")
@@ -201,6 +203,33 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
             out.append(i + 1)
             break
     return out
+
+
+# Script-agnostic sentence-final marks: '.', '!', '?' plus the Devanagari danda/double-danda. The
+# Danish _MULTI_SENTENCE_RE keys on a following CAPITAL, which Indic scripts do not have — so it is
+# blind to a two-sentence Malayalam/Hindi line. Serves non-Danish course languages in verify_scene
+# and the translation verifier (tandem/translate.py imports it from here).
+_SENT_FINAL_RE = re.compile(r"[.!?।॥][\"»«')\]]?\s+\S")
+
+
+def _multi_sentence_lines_generic(lines: list[str]) -> list[int]:
+    """1-based indices of target-language lines that appear to hold more than one sentence.
+
+    Script-agnostic (no capital-letter cue): a sentence-final mark followed by whitespace and more
+    content. The period is abbreviation-guarded (reuses _ABBREVS + the single-initial rule); the Indic
+    danda is unambiguous.
+    """
+    out = []
+    for i, ln in enumerate(lines):
+        for m in _SENT_FINAL_RE.finditer(ln):
+            if ln[m.start()] == ".":
+                before = ln[:m.start()].lower()
+                if any(before.endswith(a) for a in _ABBREVS) or re.search(r"(?:^|\s)\w$", before):
+                    continue
+            out.append(i + 1)
+            break
+    return out
+
 
 # Dimensions the LLM reviewer scores (order = display order).
 VERIFY_DIMENSIONS = ("grammar_whitelist", "coherence", "naturalness",
@@ -265,17 +294,17 @@ def band_check(da_lines: list[str], *, level: str, ranks: dict[str, int] | None 
 
 
 def verify_prompt(*, level: str, grammar: str, scene: str, da_lines: list[str],
-                  en_lines: list[str]) -> str:
+                  en_lines: list[str], language: str = "Danish", key: str = "da") -> str:
     """Build the independent-QA prompt (also used by --show-prompt).
 
     Note: first-person POV (Maya's own voice) is an AUTHORING invariant set in scene_prompt, not
     re-checked here — a POV dimension would false-flag legitimate quoted speech by other characters.
     """
-    pairs = "\n".join(f"{i+1}. DA: {d}    EN: {e}"
+    pairs = "\n".join(f"{i+1}. {key.upper()}: {d}    EN: {e}"
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
     sb_line = (f"- The storyboard's line for this scene (what it should depict): {scene}"
                if scene.strip() else "- (No storyboard line provided — skip the faithfulness check.)")
-    return f"""You are an INDEPENDENT QA reviewer for a graded Danish language course. Judge the scene below against its spec. Be concrete and cite the offending Danish by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
+    return f"""You are an INDEPENDENT QA reviewer for a graded {language} language course. Judge the scene below against its spec. Be concrete and cite the offending {language} by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
 
 SPEC:
 - CEFR level: {level}
@@ -283,16 +312,16 @@ SPEC:
 - ALSO always allowed (never flag these): the basic function words every sentence needs. Only count SUBSTANTIVE structures beyond the level as violations.
 {sb_line}
 
-The Danish is the language being learned — judge it as real, native Danish; the English is its faithful gloss.
+The {language} is the language being learned — judge it as real, native {language}; the English is its faithful gloss.
 
-SCENE (line-aligned Danish / English):
+SCENE (line-aligned {language} / English):
 {pairs}
 
 Score each dimension. For each: pass = true/false, and list specific issues as {{line, problem}}.
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures ONLY when clearly beyond {level} and not part of this week's focus.
 2. coherence — read the lines in order: do they hold together? Flag ONLY hard logical breaks — not taste or pacing.
 3. naturalness — would a native speaker actually say this? Flag ONLY lines that do not sound natural.
-4. gloss_fidelity — does each English line convey the meaning of its Danish line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
+4. gloss_fidelity — does each English line convey the meaning of its {language} line? The English is the pivot ~100 other languages are translated from, so a wrong gloss propagates everywhere. Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
 5. show_dont_tell — flag a narrator line that LABELS a scene's mood instead of showing it — a character stating their own plain feeling is fine.
 6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.
 
@@ -307,9 +336,16 @@ Return JSON exactly:
 
 
 def verify_scene(client, *, model: str, level: str, grammar: str,
-                 da_lines: list[str], en_lines: list[str], scene: str = "") -> dict:
-    """Programmatic checks + an independent LLM review. Returns a report dict."""
-    multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
+                 da_lines: list[str], en_lines: list[str], scene: str = "",
+                 language: str = "Danish", key: str = "da") -> dict:
+    """Programmatic checks + an independent LLM review. Returns a report dict.
+
+    For a non-Danish course language: the target's multi-sentence check uses the script-agnostic
+    detector (the Danish one keys on a following CAPITAL, blind to Indic scripts), and the Danish
+    frequency band-check is skipped (its wordlist is Danish).
+    """
+    tgt_multi = _multi_sentence_lines if key == "da" else _multi_sentence_lines_generic
+    multi = sorted(set(tgt_multi(da_lines)) | set(_multi_sentence_lines(en_lines)))
     report = {
         "aligned": len(da_lines) == len(en_lines),
         "one_per_line": not multi,                 # hard structural gate (audio segmentation)
@@ -317,9 +353,10 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
         "da_lines": len(da_lines),
         "en_lines": len(en_lines),
         "distinct_da_words": len(_distinct_words(da_lines)),
-        "band": band_check(da_lines, level=level),
+        "band": band_check(da_lines, level=level) if key == "da" else None,
     }
-    prompt = verify_prompt(level=level, grammar=grammar, scene=scene, da_lines=da_lines, en_lines=en_lines)
+    prompt = verify_prompt(level=level, grammar=grammar, scene=scene, da_lines=da_lines,
+                           en_lines=en_lines, language=language, key=key)
     report["llm"] = _json_call(client, model, prompt, stage="verify_scene")
     return report
 

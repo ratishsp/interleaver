@@ -12,8 +12,7 @@ authored natively in Malayalam.
 
 ## Timeline & seasons
 - Arrives **January** — Kochi's pleasant dry season. The year builds through the **March–May heat**
-  and breaks into the **June monsoon**. Season cues stay relative where possible; the month is fixed
-  here, never improvised per scene.
+  and breaks into the **June monsoon**.
 
 ## Recurring cast
 - **Anitha** — Malayali neighbour, met day 1 (week 1), Maya's first friend; lives in the same building.
@@ -24,8 +23,7 @@ authored natively in Malayalam.
   **Diego**, and the family dog **Lola**.
 
 ## Cross-cutting rules (every week)
-- **Register** — polite **നിങ്ങൾ** is the default with strangers and colleagues; **നീ** only where real
-  intimacy is established (family; a close friend much later). Do not mirror the Danish *du*.
+- **Register** — polite.
 - **Privacy** — her ID/registration numbers are sensitive: never read aloud digit-by-digit. Phone
   numbers may be shared; any phone number is an obvious placeholder, never plausibly real.
 - **Numbers said aloud are Malayalam words, not digits** — this is an audio course. Currency is

@@ -161,7 +161,7 @@ def main() -> int:
 
     if not a.cycle:
         data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, bible=bible,
-                                                        language=a.language), stage="storyboard")
+                                                        language=a.language), stage="storyboard", retries=3)
         sys.stdout.write(to_markdown(row, data))
         return 0
 
@@ -177,7 +177,7 @@ def main() -> int:
         print(f"\n{'=' * 70}\n[{tag}] week {a.week}\n{'=' * 70}", flush=True)
         data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, prior_md, findings,
                                                         bible=bible, language=a.language),
-                          stage=f"storyboard.r{rnd}")
+                          stage=f"storyboard.r{rnd}", retries=3)
         md = to_markdown(row, data)
         sb_path.write_text(md, encoding="utf-8")
         round_path = work / f"wk{a.week:02d}_storyboard_r{rnd}.md"   # per-round copy, preserved for inspection

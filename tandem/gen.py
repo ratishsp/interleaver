@@ -328,7 +328,7 @@ Score each dimension. For each: pass = true/false, and list specific issues as {
 4. gloss_fidelity — does each English line convey the meaning of its {language} line?{pivot} Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
 5. show_dont_tell — flag a narrator line that LABELS a scene's mood instead of showing it — a character stating their own plain feeling is fine.
 6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.
-7. dialogue_plausibility — for each quoted line: would this speaker plausibly say this to this listener in this situation? Flag ONLY clear violations (e.g. asking what the speaker obviously already knows) — not stiffness or style.
+7. dialogue_plausibility — scenes are sometimes engineered so a character asks a question purely to showcase a grammar form — a question that person could not sincerely ask there (they already know the answer, or no one would say it in that situation). Hunt for such lines; report ONLY clear cases, not stiffness or style.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},

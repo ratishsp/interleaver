@@ -25,7 +25,7 @@ from review_storyboard import _call_findings, _SEV_RANK
 
 YEAR = "year1"
 
-COMMON = """You are a continuity editor for a graded Danish→English audio course told as Maya's
+COMMON = """You are a continuity editor for a graded {language}→English audio course told as Maya's
 first-person story across many weeks. Below is the ENGLISH gloss of every scene so far, in order, each
 block labelled [Week N · Scene M]. A separate per-scene check already vetted each scene in isolation —
 YOUR job is CROSS-WEEK continuity: contradictions BETWEEN scenes in DIFFERENT weeks.
@@ -84,9 +84,9 @@ CATEGORIES = [
 ]
 
 
-def discover_weeks() -> list[int]:
+def discover_weeks(root: str = YEAR) -> list[int]:
     out = []
-    for d in sorted(Path(YEAR).glob("week*")):
+    for d in sorted(Path(root).glob("week*")):
         m = re.match(r"week(\d+)$", d.name)
         if m:
             out.append(int(m.group(1)))
@@ -107,10 +107,10 @@ def parse_weeks(s: str | None) -> list[int]:
     return nums
 
 
-def assemble_corpus(weeks: list[int]) -> tuple[str, int]:
+def assemble_corpus(weeks: list[int], root: str = YEAR) -> tuple[str, int]:
     parts, n_scenes = [], 0
     for w in weeks:
-        d = Path(f"{YEAR}/week{w:02d}")
+        d = Path(f"{root}/week{w:02d}")
         sb = d / "storyboard.md"
         if sb.exists():
             order = [(r["num"], r["stem"]) for r in parse_storyboard(sb)]
@@ -126,8 +126,8 @@ def assemble_corpus(weeks: list[int]) -> tuple[str, int]:
     return "\n\n".join(parts), n_scenes
 
 
-def build_prompt(cat: dict, *, bible: str, corpus: str) -> str:
-    return COMMON.format(bible=bible, corpus=corpus) + LENS.format(**cat)
+def build_prompt(cat: dict, *, bible: str, corpus: str, language: str = "Danish") -> str:
+    return COMMON.format(bible=bible, corpus=corpus, language=language) + LENS.format(**cat)
 
 
 def run_lens(client, model: str, cat: dict, prompt: str) -> list[dict]:
@@ -150,6 +150,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Cross-week continuity check (read-only).")
     ap.add_argument("--weeks", help="e.g. '1-10' or '1,4,7' (default: all weeks found in year1/)")
     ap.add_argument("--bible", default="story_bible.md")
+    ap.add_argument("--root", default=YEAR, help="course root holding weekNN/ (default year1)")
+    ap.add_argument("--language", default="Danish", help="course language name for the prompt")
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--location", default="global",
                     help="Vertex location (default 'global' — required for gemini-3 models)")
@@ -158,8 +160,8 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     os.environ["GOOGLE_CLOUD_LOCATION"] = args.location
 
-    weeks = parse_weeks(args.weeks)
-    corpus, n_scenes = assemble_corpus(weeks)
+    weeks = parse_weeks(args.weeks) if args.weeks else discover_weeks(args.root)
+    corpus, n_scenes = assemble_corpus(weeks, root=args.root)
     if not n_scenes:
         raise SystemExit(f"no English scenes found for weeks {weeks}")
     bible = Path(args.bible).read_text(encoding="utf-8") if Path(args.bible).exists() else "(no bible)"
@@ -167,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Checking weeks {weeks[0]}–{weeks[-1]}: {n_scenes} scenes, ~{approx_words} words of English.\n")
 
     client = make_client()
-    prompts = {c["key"]: build_prompt(c, bible=bible, corpus=corpus) for c in CATEGORIES}
+    prompts = {c["key"]: build_prompt(c, bible=bible, corpus=corpus, language=args.language) for c in CATEGORIES}
 
     findings: list[dict] = []
     failed: list[str] = []

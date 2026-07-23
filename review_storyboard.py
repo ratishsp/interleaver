@@ -43,13 +43,13 @@ from tandem.gen import (
     parse_storyboard_header,
 )
 
-COMMON = """This is a Danish-for-English-speakers graded AUDIO course (interleaved English→Danish, beginner→up).
+COMMON = """This is a {language}-for-English-speakers graded AUDIO course (interleaved English→{language}, beginner→up).
 A "week" is a STORYBOARD: a set of SCENES (one-paragraph summaries). From each scene a model later
-generates a short passage of Danish sentences + English glosses, then text-to-speech. You are reviewing the
-STORYBOARD (the scenes), BEFORE any Danish is generated, to catch design problems while a fix is cheap
+generates a short passage of {language} sentences + English glosses, then text-to-speech. You are reviewing the
+STORYBOARD (the scenes), BEFORE any {language} is generated, to catch design problems while a fix is cheap
 (edit a scene, not regenerate + re-verify + re-render).
 
-CONVENTION (do NOT flag): scenes are 3rd-person summaries ("Maya sits..."); the generator converts them to Maya's 1st-person Danish. Never flag the 3rd-person phrasing.
+CONVENTION (do NOT flag): scenes are 3rd-person summaries ("Maya sits..."); the generator converts them to Maya's 1st-person {language}. Never flag the 3rd-person phrasing.
 
 GROUND TRUTH:
 --- story_bible.md (established story facts + cross-cutting rules) ---
@@ -101,11 +101,11 @@ LENSES = [
     },
     {
         "key": "realism",
-        "title": "Danish realism, privacy & translation-robustness",
-        "lens": "real-world plausibility in a Danish setting, data privacy/safety, and clean glossing",
+        "title": "{setting} realism, privacy & translation-robustness",
+        "lens": "real-world plausibility in a {setting} setting, data privacy/safety, and clean glossing",
         "floor": (
-            "(a) Are Danish procedures realistic (offices, IDs, the order of steps)?\n"
-            "(b) Privacy/safety — is any sensitive datum (esp. a CPR number) mishandled (read aloud /\n"
+            "(a) Are {setting} procedures realistic (offices, IDs, the order of steps)?\n"
+            "(b) Privacy/safety — is any sensitive datum (esp. {id_example}) mishandled (read aloud /\n"
             "    repeated digit-by-digit)? Are numbers obviously FICTIONAL, not plausibly-real?\n"
             "(c) Dialogue attribution — would each speaker say things appropriate to their role (a clerk\n"
             "    speaking TO Maya, not in Maya's own voice)?\n"
@@ -181,13 +181,19 @@ def curriculum_row(curriculum_path: str | Path, week: int | None) -> str:
     return f"(no row found for week {week})"
 
 
-def build_prompt(lens: dict, *, header: str, scenes: str, bible: str, curric: str) -> str:
-    common = COMMON.format(bible=bible, curric=curric, header=header, scenes=scenes)
+def build_prompt(lens: dict, *, header: str, scenes: str, bible: str, curric: str,
+                 language: str = "Danish", setting: str = "Denmark") -> str:
+    fmt = {"language": language, "setting": setting,
+           "id_example": "a CPR number" if language == "Danish" else "a national ID number"}
+    common = COMMON.format(bible=bible, curric=curric, header=header, scenes=scenes, language=language)
     if lens["key"] == "learner":
         return common + _LEARNER_BODY + _CONTRACT
+    def _t(s):
+        return s.format(**fmt) if any("{" + k + "}" in s for k in fmt) else s
+    floor = _t(lens["floor"])
     body = (
-        f"\nYOUR LENS: **{lens['title']}** — {lens['lens']}.\n"
-        + _FLOOR_AGENCY.format(floor=lens["floor"])
+        f"\nYOUR LENS: **{_t(lens['title'])}** — {_t(lens['lens'])}.\n"
+        + _FLOOR_AGENCY.format(floor=floor)
     )
     return common + body + _CONTRACT
 
@@ -264,6 +270,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("storyboard", help="path to the week's storyboard.md")
     ap.add_argument("--bible", default="story_bible.md")
     ap.add_argument("--curriculum", default="curriculum_da.md")
+    ap.add_argument("--language", default="Danish", help="course language name")
+    ap.add_argument("--setting", default="Denmark", help="course setting for the realism lens")
     ap.add_argument("--model", default=DEFAULT_MODEL,
                     help="judge model (e.g. gemini-3.1-pro-preview — stronger critic than the generator)")
     ap.add_argument("--location", default="global",
@@ -286,11 +294,13 @@ def main(argv: list[str] | None = None) -> int:
     if args.show_prompt:
         for l in LENSES:
             print(f"\n{'=' * 70}\nLENS: {l['title']}\n{'=' * 70}\n"
-                  + build_prompt(l, header=header_line, scenes=scenes, bible=bible, curric=curric))
+                  + build_prompt(l, header=header_line, scenes=scenes, bible=bible, curric=curric,
+                                 language=args.language, setting=args.setting))
         return 0
 
     client = make_client()
-    prompts = {l["key"]: build_prompt(l, header=header_line, scenes=scenes, bible=bible, curric=curric)
+    prompts = {l["key"]: build_prompt(l, header=header_line, scenes=scenes, bible=bible, curric=curric,
+                                      language=args.language, setting=args.setting)
                for l in LENSES}
 
     findings: list[dict] = []

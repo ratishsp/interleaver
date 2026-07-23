@@ -110,11 +110,13 @@ def to_markdown(row: dict, data: dict) -> str:
     return "\n".join(out) + "\n"
 
 
-def run_gate(storyboard_path: Path, findings_path: Path, model: str, location: str) -> int:
+def run_gate(storyboard_path: Path, findings_path: Path, model: str, location: str,
+             track_args: list[str] | None = None) -> int:
     """Run review_storyboard.py as the gate; stream its output; return its exit code."""
     proc = subprocess.run(
         [sys.executable, "review_storyboard.py", str(storyboard_path),
-         "--model", model, "--location", location, "--out", str(findings_path)],
+         "--model", model, "--location", location, "--out", str(findings_path)]
+        + (track_args or []),
         check=False)
     return proc.returncode
 
@@ -134,6 +136,11 @@ def main() -> int:
     ap.add_argument("--location", default="global")
     ap.add_argument("--show-prompt", action="store_true",
                     help="print the generation prompt and exit (no API call)")
+    ap.add_argument("--curriculum", default=CURRICULUM, help="curriculum table (default curriculum_da.md)")
+    ap.add_argument("--bible", help="story bible path (default: the Danish story_bible.md)")
+    ap.add_argument("--language", default="Danish", help="course language name")
+    ap.add_argument("--setting", default="Denmark", help="course setting (realism lens)")
+    ap.add_argument("--root", default="year1", help="course root for the exemplar storyboard")
     a = ap.parse_args()
     os.environ["GOOGLE_CLOUD_LOCATION"] = a.location
 
@@ -141,18 +148,20 @@ def main() -> int:
         exemplar, ex_wk = None, None       # week 1 has no predecessor — generate without an exemplar
     else:
         ex_wk = a.example_week or (a.week - 1)
-        ex_path = Path(f"year1/week{ex_wk:02d}/storyboard.md")
+        ex_path = Path(f"{a.root}/week{ex_wk:02d}/storyboard.md")
         if not ex_path.exists():
             raise SystemExit(f"no exemplar storyboard at {ex_path} (pass --example-week or --no-example)")
         exemplar = ex_path.read_text(encoding="utf-8")
-    row = curriculum_row(a.week)
+    row = curriculum_row(a.week, a.curriculum)
+    bible = load_story_bible(a.bible) if a.bible else None
     if a.show_prompt:
-        print(build_prompt(row, exemplar, ex_wk))
+        print(build_prompt(row, exemplar, ex_wk, bible=bible, language=a.language))
         return 0
     client = make_client()
 
     if not a.cycle:
-        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk), stage="storyboard")
+        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, bible=bible,
+                                                        language=a.language), stage="storyboard")
         sys.stdout.write(to_markdown(row, data))
         return 0
 
@@ -166,7 +175,8 @@ def main() -> int:
     for rnd in range(1, a.max_rounds + 1):
         tag = "GENERATE" if rnd == 1 else f"REVISE (round {rnd})"
         print(f"\n{'=' * 70}\n[{tag}] week {a.week}\n{'=' * 70}", flush=True)
-        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, prior_md, findings),
+        data = _json_call(client, a.model, build_prompt(row, exemplar, ex_wk, prior_md, findings,
+                                                        bible=bible, language=a.language),
                           stage=f"storyboard.r{rnd}")
         md = to_markdown(row, data)
         sb_path.write_text(md, encoding="utf-8")
@@ -175,7 +185,10 @@ def main() -> int:
         print(f"  → {len(data['scenes'])} scenes  ({round_path})", flush=True)
 
         fp_round = work / f"wk{a.week:02d}_findings_r{rnd}.json"   # per-round findings, preserved
-        rc = run_gate(sb_path, fp_round, a.model, a.location)
+        track = ([] if a.language == "Danish" else
+                 ["--bible", a.bible or "story_bible.md", "--curriculum", a.curriculum,
+                  "--language", a.language, "--setting", a.setting])
+        rc = run_gate(sb_path, fp_round, a.model, a.location, track)
         if rc == 2:
             print(f"\n⚠ Gate INCOMPLETE (a lens errored) on round {rnd} — escalating to a human.\n")
             return 2

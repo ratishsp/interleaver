@@ -37,11 +37,11 @@ from tandem.gen import DEFAULT_MODEL, parse_storyboard, parse_storyboard_header,
 from tandem.llm import make_client
 from review_storyboard import _call_findings, _SEV_RANK, _FLOOR_AGENCY, _CONTRACT, curriculum_row
 
-COMMON = """This is a Danish-for-English-speakers graded AUDIO course (interleaved English→Danish). A
+COMMON = """This is a {language}-for-English-speakers graded AUDIO course (interleaved English→{language}). A
 "week" is several scenes; the learner hears them one after another in a sitting. You are reviewing
-the GENERATED TEXT of a FULL WEEK — every scene, in order, as "Danish line  |  English gloss".
+the GENERATED TEXT of a FULL WEEK — every scene, in order, as "{language} line  |  English gloss".
 
-A separate PER-SCENE verifier already checked each scene's Danish in isolation (grammar, alignment,
+A separate PER-SCENE verifier already checked each scene's {language} in isolation (grammar, alignment,
 naturalness). Do NOT re-do that. YOUR job is the WHOLE-WEEK view — only what is visible ACROSS scenes:
 repetition, the emotional arc, cross-scene consistency, and pacing.
 
@@ -101,7 +101,7 @@ LENSES = [
         "advisory": True,   # reports for the human ear — never blocks, never mandates warmth
         "floor": (
             "Text that is harsher or colder than intended.\n"
-            "Do not flag ordinary Danish directness as rude. Reserve High for a genuinely "
+            "Do not flag ordinary {language} directness as rude. Reserve High for a genuinely "
             "off-putting exchange."
         ),
     },
@@ -114,13 +114,13 @@ LENSES = [
 ]
 
 
-def assemble_week(storyboard_path: str | Path) -> str:
-    """Read every scene's .da/.en (in storyboard order) into one 'DA | EN' block per scene."""
+def assemble_week(storyboard_path: str | Path, key: str = "da") -> str:
+    """Read every scene's .{key}/.en (in storyboard order) into one target|gloss block per scene."""
     rows = parse_storyboard(storyboard_path)
     wdir = Path(storyboard_path).parent
     parts = []
     for r in rows:
-        da, en = wdir / f"{r['stem']}.da", wdir / f"{r['stem']}.en"
+        da, en = wdir / f"{r['stem']}.{key}", wdir / f"{r['stem']}.en"
         if not (da.exists() and en.exists()):
             continue
         dal = da.read_text(encoding="utf-8").splitlines()
@@ -130,12 +130,15 @@ def assemble_week(storyboard_path: str | Path) -> str:
     return "\n\n".join(parts)
 
 
-def build_prompt(lens: dict, *, header: str, week_text: str, bible: str, curric: str) -> str:
-    common = COMMON.format(bible=bible, curric=curric, header=header, week_text=week_text)
+def build_prompt(lens: dict, *, header: str, week_text: str, bible: str, curric: str,
+                 language: str = "Danish") -> str:
+    common = COMMON.format(bible=bible, curric=curric, header=header, week_text=week_text,
+                           language=language)
     if lens["key"] == "listener":
         return common + _LISTENER_BODY + _CONTRACT
+    floor = lens["floor"].format(language=language) if "{language}" in (lens["floor"] or "") else lens["floor"]
     body = (f"\nYOUR LENS: **{lens['title']}** — {lens['lens']}.\n"
-            + _FLOOR_AGENCY.format(floor=lens["floor"]))
+            + _FLOOR_AGENCY.format(floor=floor))
     return common + body + _CONTRACT
 
 
@@ -154,8 +157,9 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
     return out
 
 
-def _build_prompts(header_line, week_text, bible, curric):
-    return {l["key"]: build_prompt(l, header=header_line, week_text=week_text, bible=bible, curric=curric)
+def _build_prompts(header_line, week_text, bible, curric, language="Danish"):
+    return {l["key"]: build_prompt(l, header=header_line, week_text=week_text, bible=bible,
+                                   curric=curric, language=language)
             for l in LENSES}
 
 
@@ -205,30 +209,34 @@ def collect_votes(client, model, prompts, *, votes, min_votes, workers):
     return scenes, weekly
 
 
-def apply_fix(client, model, row, *, level, grammar, wdir, issues, bible):
+def apply_fix(client, model, row, *, level, grammar, wdir, issues, bible, language="Danish", key="da"):
     """Revise one scene from its pooled feedback and write it back. revise_scene raises if it breaks
     the 1:1 alignment, so a broken revision is caught and the scene is left untouched."""
     stem = row["stem"]
-    da_p, en_p = wdir / f"{stem}.da", wdir / f"{stem}.en"
+    da_p, en_p = wdir / f"{stem}.{key}", wdir / f"{stem}.en"
     da = da_p.read_text(encoding="utf-8").splitlines()
     en = en_p.read_text(encoding="utf-8").splitlines()
     feedback = ("The whole-week review panel flagged this scene (fix only what is named, keep the rest, "
                 "1 sentence per line, stay in scope):\n" + "\n".join(f"- {x}" for x in issues))
     try:
         rev = revise_scene(client, model=model, level=level, grammar=grammar, scene=row["scene"],
-                           da_lines=da, en_lines=en, feedback=feedback, bible=bible)
+                           da_lines=da, en_lines=en, feedback=feedback, bible=bible,
+                           language=language, key=key)
     except (Exception, SystemExit) as exc:
         return {"stem": stem, "status": "rejected", "n0": len(da), "n1": len(da), "err": str(exc)[:80]}
-    da_p.write_text("\n".join(rev["da"]) + "\n", encoding="utf-8")
+    da_p.write_text("\n".join(rev[key]) + "\n", encoding="utf-8")
     en_p.write_text("\n".join(rev["en"]) + "\n", encoding="utf-8")
-    return {"stem": stem, "status": "fixed", "n0": len(da), "n1": len(rev["da"])}
+    return {"stem": stem, "status": "fixed", "n0": len(da), "n1": len(rev[key])}
 
 
 def run_fix(client, model, args, *, hdr, rows, bible, curric):
     """Vote → revise the scenes the panel agrees on. One pass; re-run the command to iterate."""
     wdir = Path(args.storyboard).parent
     header_line = f"Week {hdr['week']} · {hdr['level']} · grammar: {hdr['grammar']} · {len(rows)} scenes"
-    prompts = _build_prompts(header_line, assemble_week(args.storyboard), bible, curric)
+    from tandem.langs import LANG_NAMES
+    language = LANG_NAMES.get(args.lang, args.lang)
+    prompts = _build_prompts(header_line, assemble_week(args.storyboard, key=args.lang), bible, curric,
+                             language=language)
     print(f"\n--- vote-gated fix: {args.votes} panel runs, revise scenes flagged by ≥{args.min_votes} ---")
     scenes, weekly = collect_votes(client, model, prompts,
                                    votes=args.votes, min_votes=args.min_votes, workers=args.workers)
@@ -252,7 +260,8 @@ def run_fix(client, model, args, *, hdr, rows, bible, curric):
             print(f"  ⚠ survivor '{s['scene']}' {s['votes']}/{args.votes} matched no scene — SKIPPED (fix lost)")
             continue
         res = apply_fix(client, model, row, level=hdr["level"], grammar=hdr["grammar"],
-                        wdir=wdir, issues=s["issues"], bible=bible)
+                        wdir=wdir, issues=s["issues"], bible=bible,
+                        language=language, key=args.lang)
         results.append({"scene": s["scene"], "stem": row["stem"], "votes": s["votes"],
                         "severity": s["severity"], **res})
         tag = f"scene {s['scene']} ({row['stem']}) {s['votes']}/{args.votes} votes {s['severity']}"
@@ -282,6 +291,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("storyboard", help="path to the week's storyboard.md (its dir holds the .da/.en)")
     ap.add_argument("--bible", default="story_bible.md")
     ap.add_argument("--curriculum", default="curriculum_da.md")
+    ap.add_argument("--lang", default="da", help="course language code (default da)")
     ap.add_argument("--model", default=DEFAULT_MODEL,
                     help="judge model (e.g. gemini-3.1-pro-preview)")
     ap.add_argument("--location", default="global",
@@ -297,10 +307,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.location:
         os.environ["GOOGLE_CLOUD_LOCATION"] = args.location
 
+    from tandem.langs import LANG_NAMES
+    language = LANG_NAMES.get(args.lang, args.lang)
     hdr = parse_storyboard_header(args.storyboard)
     rows = parse_storyboard(args.storyboard)
     header_line = f"Week {hdr['week']} · {hdr['level']} · grammar: {hdr['grammar']} · {len(rows)} scenes"
-    week_text = assemble_week(args.storyboard)
+    week_text = assemble_week(args.storyboard, key=args.lang)
     bible = Path(args.bible).read_text(encoding="utf-8") if Path(args.bible).exists() else "(no bible)"
     curric = curriculum_row(args.curriculum, hdr["week"])
 
@@ -308,7 +320,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.fix:
         return run_fix(client, args.model, args, hdr=hdr, rows=rows, bible=bible, curric=curric)
 
-    prompts = _build_prompts(header_line, week_text, bible, curric)
+    prompts = _build_prompts(header_line, week_text, bible, curric, language=language)
     findings, failed = run_panel(client, args.model, prompts, args.workers)
 
     findings.sort(key=lambda f: (_SEV_RANK.get(f["severity"], 1), f["lens"]))

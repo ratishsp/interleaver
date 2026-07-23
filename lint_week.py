@@ -56,7 +56,7 @@ def _norm(line: str) -> str:
 def lint(target: Path) -> int:
     files = _scene_files(target)
     if not files:
-        print(f"no NN_*.da scene files under {target}", file=sys.stderr)
+        print(f"no NN_*.en scene files under {target}", file=sys.stderr)
         return 2
     n = len(files)
     scenes = {f.name.replace(".en", ""): [ln.rstrip("\n") for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip()]

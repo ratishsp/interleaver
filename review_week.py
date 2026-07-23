@@ -338,6 +338,14 @@ def main(argv: list[str] | None = None) -> int:
         if f["why"]:
             print(f"         ↳ {f['why']}")
     print()
+    # Deterministic repetition lint (advisory, no API) — fix loops revise scenes AFTER gen_week's
+    # lint ran, so re-lint here or a post-revise repeat ships silently (it did: wk1 kochi).
+    try:
+        from lint_week import lint as _lint_week
+        _lint_week(Path(args.storyboard).parent)
+    except Exception as exc:
+        print(f"[warn] repetition lint skipped: {exc}")
+
     if failed:
         print(f"GATE: ⚠ INCOMPLETE — {len(failed)} lens(es) errored ({', '.join(failed)}). Re-run; not a pass.")
         return 2

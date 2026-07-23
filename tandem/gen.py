@@ -347,14 +347,12 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
     if key == "da":
         multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
     else:
-        # The generic detector has no speech-verb exemption, so a quote+attribution line ("...?" അവർ
-        # ചോദിക്കുന്നു.) trips it — and one_per_line is a HARD gate, so that phantom would churn every
-        # dialogue scene through revise (the wk1/2 Tamil failure, 20c3c08). The aligned gloss trips on
-        # the same shapes: mask target trips where the gloss also trips. The speech-verb-aware Danish
-        # check still runs on the EN side, so a genuine two-sentence line is caught via its gloss.
-        en_mask = set(_multi_sentence_lines_generic(en_lines))
-        tgt = [i for i in _multi_sentence_lines_generic(da_lines) if i not in en_mask]
-        multi = sorted(set(tgt) | set(_multi_sentence_lines(en_lines)))
+        # Check the GLOSS only (the lint_week principle): the gloss is line-aligned and faithful, so a
+        # two-sentence target line surfaces as a two-sentence gloss — and the English-side detector is
+        # the tested, speech-verb-aware one. Running a script-agnostic detector on the target itself
+        # false-flagged quote+attribution lines ("...?" അവർ ചോദിക്കുന്നു.), and one_per_line is a HARD
+        # gate, so every dialogue scene churned through revise on a phantom (user call: drop it).
+        multi = sorted(_multi_sentence_lines(en_lines))
     report = {
         "aligned": len(da_lines) == len(en_lines),
         "one_per_line": not multi,                 # hard structural gate (audio segmentation)

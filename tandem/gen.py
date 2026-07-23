@@ -233,10 +233,10 @@ def _multi_sentence_lines_generic(lines: list[str]) -> list[int]:
 
 # Dimensions the LLM reviewer scores (order = display order).
 VERIFY_DIMENSIONS = ("grammar_whitelist", "coherence", "naturalness",
-                     "gloss_fidelity", "show_dont_tell", "faithfulness", "dialogue_plausibility")
+                     "gloss_fidelity", "show_dont_tell", "faithfulness")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
 # grammar_whitelist = scope: correct-but-slightly-advanced Danish is fine (judged by level, not a strict whitelist).
-ADVISORY_DIMS = ("grammar_whitelist", "show_dont_tell", "faithfulness", "dialogue_plausibility")
+ADVISORY_DIMS = ("grammar_whitelist", "show_dont_tell", "faithfulness")
 
 # CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
 # These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
@@ -328,7 +328,6 @@ Score each dimension. For each: pass = true/false, and list specific issues as {
 4. gloss_fidelity — does each English line convey the meaning of its {language} line?{pivot} Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
 5. show_dont_tell — flag a narrator line that LABELS a scene's mood instead of showing it — a character stating their own plain feeling is fine.
 6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.
-7. dialogue_plausibility — scenes are sometimes engineered so a character asks a question purely to showcase a grammar form — a question that person could not sincerely ask there (they already know the answer, or no one would say it in that situation). Hunt for such lines; report ONLY clear cases, not stiffness or style.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
@@ -336,8 +335,7 @@ Return JSON exactly:
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}},
  "show_dont_tell": {{"pass": true, "issues": []}},
- "faithfulness": {{"pass": true, "issues": []}},
- "dialogue_plausibility": {{"pass": true, "issues": []}}}}
+ "faithfulness": {{"pass": true, "issues": []}}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 

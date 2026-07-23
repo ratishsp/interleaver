@@ -97,7 +97,7 @@ The {language} is what's being learned — author it natively and idiomatically;
 - Level {level}, this week's grammar: {grammar} (earlier-week grammar may recur). Author natural {language} first — it may sit slightly above {level} where that's what's natural, but don't reach clearly beyond it.
 - Tell it as Maya's own first-person account; attribute any quoted speech so it's clear who's speaking.
 - Match sentence complexity to {level}. At A1 especially, keep sentences short and mostly single-clause; don't reach for modals{modals}, subordinate clauses{subs}, imperatives, or infinitive constructions unless they're within this week's grammar. Favor MORE short sentences over fewer complex ones.
-- One sentence per line in both arrays; let the scene run to a full ~15-20 line-pairs (a complete situation, not a sketch). The "{key}" and "en" arrays MUST have the same number of entries, aligned line-for-line.
+- One sentence per line in both arrays; let the scene run to a full ~15-20 line-pairs (a complete situation, not a sketch; if the story runs out sooner, stop rather than pad). The "{key}" and "en" arrays MUST have the same number of entries, aligned line-for-line.
 
 Return JSON: {{"{key}": [...], "en": [...]}}."""
 

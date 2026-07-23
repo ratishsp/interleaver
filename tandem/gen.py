@@ -233,10 +233,10 @@ def _multi_sentence_lines_generic(lines: list[str]) -> list[int]:
 
 # Dimensions the LLM reviewer scores (order = display order).
 VERIFY_DIMENSIONS = ("grammar_whitelist", "coherence", "naturalness",
-                     "gloss_fidelity", "show_dont_tell", "faithfulness")
+                     "gloss_fidelity", "show_dont_tell", "faithfulness", "padding")
 # Advisory dims are reported but never block/retry; everything else (+ alignment) is a hard gate.
 # grammar_whitelist = scope: correct-but-slightly-advanced Danish is fine (judged by level, not a strict whitelist).
-ADVISORY_DIMS = ("grammar_whitelist", "show_dont_tell", "faithfulness")
+ADVISORY_DIMS = ("grammar_whitelist", "show_dont_tell", "faithfulness", "padding")
 
 # CEFR level → approximate frequency-rank cutoff (the most-common-N Danish word-forms).
 # These mirror the curriculum's vocabulary bands. NOTE: the freq list is OpenSubtitles-derived
@@ -328,6 +328,7 @@ Score each dimension. For each: pass = true/false, and list specific issues as {
 4. gloss_fidelity — does each English line convey the meaning of its {language} line?{pivot} Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
 5. show_dont_tell — flag a narrator line that LABELS a scene's mood instead of showing it — a character stating their own plain feeling is fine.
 6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.
+7. padding — flag ONLY lines that look like fillers.
 
 Return JSON exactly:
 {{"grammar_whitelist": {{"pass": true, "issues": []}},
@@ -335,7 +336,8 @@ Return JSON exactly:
  "naturalness": {{"pass": true, "issues": []}},
  "gloss_fidelity": {{"pass": true, "issues": []}},
  "show_dont_tell": {{"pass": true, "issues": []}},
- "faithfulness": {{"pass": true, "issues": []}}}}
+ "faithfulness": {{"pass": true, "issues": []}},
+ "padding": {{"pass": true, "issues": []}}}}
 (Use false and fill issues where there are problems; each issue is {{"line": <int>, "problem": "<text>"}}.)"""
 
 

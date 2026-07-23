@@ -11,5 +11,5 @@
 | 5 | 05_green_city | Maya leans out the window to look at the lush green trees. She feels the pleasant January sea breeze against her face and misses the familiar streets of Mexico for a brief moment. |
 | 6 | 06_calling_mom | Maya sits on the edge of the bed and makes an audio call to her mother back in Mexico. She tells her family that she is safely in her flat and that she is happy. |
 | 7 | 07_meeting_anitha | Maya steps out into the hallway, and the door next to hers opens. A kind woman smiles, introduces herself as Anitha, and asks Maya where she is from. |
-| 8 | 08_family_photo | Maya returns to her room and opens her suitcase. She unpacks her clothes and places a cheerful photo of her sister Sofía, her brother Diego, and their dog Lola on the table. |
+| 8 | 08_family_photo | Maya returns to her room and opens her suitcase. She unpacks her clothes and places a cheerful photo of her sister Sofia, her brother Diego, and their dog Lola on the table. |
 | 9 | 09_bedtime_routine | Maya brushes her teeth in the small bathroom and washes her face. She crawls into bed, listens to the whir of the ceiling fan, and sets her alarm for the morning. |

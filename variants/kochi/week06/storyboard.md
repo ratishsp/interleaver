@@ -12,5 +12,5 @@
 | 6 | 06_lunch_with_prakash | At midday, Maya takes a break in the bright office canteen. Her colleague Prakash sits at her table and tells a funny story. Maya is eating her spicy fish curry and laughs out loud. |
 | 7 | 07_evening_return | The workday ends, and Maya rides the green bus back home. The sun is setting over the city. She watches the colorful shop awnings outside the window and relaxes completely. |
 | 8 | 08_boiling_rice | Back in her peaceful flat, Maya stands in the kitchen. A pot of local red rice is boiling on the stove. She chops fresh vegetables for dinner and hums an upbeat song. |
-| 9 | 09_sofia_and_lola | Maya sits comfortably on her sofa with a full stomach. She starts a video call with her sister Sofía. On the screen, the family dog, Lola, is sleeping heavily on the floor back in Mexico. |
+| 9 | 09_sofia_and_lola | Maya sits comfortably on her sofa with a full stomach. She starts a video call with her sister Sofia. On the screen, the family dog, Lola, is sleeping heavily on the floor back in Mexico. |
 | 10 | 10_falling_asleep | Maya turns off the main lights and lies under her lightweight blanket. She is reading a new book. Her eyes feel heavy, so she puts the novel down and quickly falls asleep. |

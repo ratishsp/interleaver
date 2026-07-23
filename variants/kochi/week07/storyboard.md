@@ -12,4 +12,4 @@
 | 6 | 06_the_double_booking | Back inside her flat, Maya writes the coffee date into her calendar and sees the haircut appointment at the exact same time. She immediately calls the beauty parlor again, apologizes, and reschedules her haircut to Friday at six forty-five in the evening. |
 | 7 | 07_thursday_coffee | It is Thursday at five thirty. Maya meets Anitha at a popular cafe in Panampilly Nagar. They drink cold coffee and talk about their busy work weeks. |
 | 8 | 08_friday_haircut | On Friday evening, Maya arrives at the beauty parlor at six forty-five. The hairdresser washes Maya's hair and cuts it short. Maya looks in the mirror and smiles broadly at her new style. |
-| 9 | 09_family_video_call | Sometimes Maya calls her family on Friday nights. She shows her sister Sofía the new haircut through the video screen. The family dog, Lola, is playing happily in the background back in Mexico. |
+| 9 | 09_family_video_call | Sometimes Maya calls her family on Friday nights. She shows her sister Sofia the new haircut through the video screen. The family dog, Lola, is playing happily in the background back in Mexico. |

@@ -19,7 +19,7 @@ authored natively in Malayalam.
   Kind, helpful.
 - **Prakash** — a colleague at Maya's software company (met on her first day, week 2). Use him when a
   work colleague is needed rather than an anonymous colleague.
-- **Family** — back home in Mexico, contact by video call: parents, younger sister **Sofía**, elder brother
+- **Family** — back home in Mexico, contact by video call: parents, younger sister **Sofia**, elder brother
   **Diego**, and the family dog **Lola**.
 - **Malayalam spellings** (canonical): മായ, അനിത, പ്രകാശ്, സോഫിയ, ഡീഗോ, ലോല.
 

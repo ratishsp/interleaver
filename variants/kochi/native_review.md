@@ -21,10 +21,9 @@ once and the fix can be applied mechanically.
 - **Open for the reviewer — strangers:** vendors/shopkeepers/clerks are അയാൾ throughout (~30
   lines, wk02/wk09); natural transactional register, or should any shift to അദ്ദേഹം?
 
-- **Open for the reviewer — Maya to her ELDER brother:** regen wk3 sc6 has Maya asking Diego "ഇത്
-  നിന്റെ സ്കാർഫ് ആണോ?" — നീ upward, playful-teasing context. No shipped precedent either way;
-  the kin-term alternative is ചേട്ടന്റെ. (Sibling policy otherwise now in the bible: elders say നീ
-  down; younger address elders with ചേച്ചി/ചേട്ടൻ — matches shipped wk2/wk3.)
+- **Maya to her ELDER brother — settled ചേട്ടന്റെ (user, 2026-07-23):** the scarf tease uses the
+  kin-term ("ഇത് ചേട്ടന്റെ സ്കാർഫ് ആണോ?"), consistent with the bible's family clause. Reviewer
+  may relax to playful നീ if that reads more natural for teasing.
 
 ## 3. Name transliterations
 - **Diego = ഡീഗോ** standardized course-wide (2026-07-23; content had drifted 3 ways). Chosen as

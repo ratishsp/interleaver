@@ -304,6 +304,10 @@ def verify_prompt(*, level: str, grammar: str, scene: str, da_lines: list[str],
                       for i, (d, e) in enumerate(zip(da_lines, en_lines)))
     sb_line = (f"- The storyboard's line for this scene (what it should depict): {scene}"
                if scene.strip() else "- (No storyboard line provided — skip the faithfulness check.)")
+    # Phase 1 (the Danish course) really does translate other languages FROM its English gloss, so the
+    # stakes-rationale holds there; authored tracks' glosses are not a pivot, so they drop it.
+    pivot = (" The English is the pivot ~100 other languages are translated from, so a wrong gloss "
+             "propagates everywhere." if key == "da" else "")
     return f"""You are an INDEPENDENT QA reviewer for a graded {language} language course. Judge the scene below against its spec. Be concrete and cite the offending {language} by line number. Apply each dimension's threshold exactly as written — neither harsher nor more lenient than it says.
 
 SPEC:
@@ -321,7 +325,7 @@ Score each dimension. For each: pass = true/false, and list specific issues as {
 1. grammar_whitelist — is the grammar within {level}? (Earlier weeks' exact structures aren't listed here, so judge by level, not a strict whitelist.) Flag substantive structures ONLY when clearly beyond {level} and not part of this week's focus.
 2. coherence — read the lines in order: do they hold together? Flag ONLY hard logical breaks — not taste or pacing.
 3. naturalness — would a native speaker actually say this? Flag ONLY lines that do not sound natural.
-4. gloss_fidelity — does each English line convey the meaning of its {language} line? Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
+4. gloss_fidelity — does each English line convey the meaning of its {language} line?{pivot} Flag ONLY SUBSTANTIVE divergence in meaning — NOT defensible word choices or natural rewordings that keep the meaning.
 5. show_dont_tell — flag a narrator line that LABELS a scene's mood instead of showing it — a character stating their own plain feeling is fine.
 6. faithfulness — does the scene depict the storyboard's line above? Flag ONLY a direct CONTRADICTION of what it specifies; normal elaboration or rephrasing is not a violation.
 

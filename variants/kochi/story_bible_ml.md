@@ -26,6 +26,7 @@ authored natively in Malayalam.
 - **Register** — polite.
 - **Privacy** — her ID/registration numbers are sensitive: never read aloud digit-by-digit. Phone
   numbers may be shared; any phone number is an obvious placeholder, never plausibly real.
+  Maya's mobile: **98765 43210** (spoken as Malayalam number words when read aloud).
 - **Numbers said aloud are Malayalam words, not digits** — this is an audio course. Currency is
   **rupees**, spelled as words. Numbers woven into action, not drilled.
 - **Setting is authentically Kochi** — local places, food, weather, and transit are the point of this

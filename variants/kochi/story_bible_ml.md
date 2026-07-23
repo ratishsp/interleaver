@@ -19,12 +19,12 @@ authored natively in Malayalam.
   Kind, helpful.
 - **Prakash** — a colleague at Maya's software company (met on her first day, week 2). Use him when a
   work colleague is needed rather than an anonymous colleague.
-- **Family** — back home in Mexico, contact by video call: parents, sister **Sofía**, brother
+- **Family** — back home in Mexico, contact by video call: parents, younger sister **Sofía**, elder brother
   **Diego**, and the family dog **Lola**.
 
 ## Cross-cutting rules (every week)
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women
-  and അയാൾ for men (അവൻ/അവൾ only for her younger siblings and the dogs). Second person is
+  and അയാൾ for men (അവൻ/അവൾ only for her siblings and the dogs). Second person is
   നിങ്ങൾ.
 - **Privacy** — her ID/registration numbers are sensitive: never read aloud digit-by-digit. Phone
   numbers may be shared; any phone number is an obvious placeholder, never plausibly real.

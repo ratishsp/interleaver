@@ -99,6 +99,9 @@ LENSES = [
         "key": "padding",
         "title": "Padding & filler",
         "lens": "lines that look like fillers",
+        # min_votes 1: this lens's findings apply without needing cross-run agreement — earned by
+        # its record (all vote-gated survivors correct; its sub-threshold singles proved real too).
+        "min_votes": 1,
         "floor": (
             "Flag ONLY what looks like filler; a line whose purpose is visible elsewhere in the "
             "week is not filler.\n"
@@ -210,20 +213,23 @@ def _scene_keys(label) -> list[str]:
 def collect_votes(client, model, prompts, *, votes, min_votes, workers):
     """Panel ×votes, tallied by scene. Returns (scene_survivors, week_survivors); each survivor is
     {scene, votes, severity, issues[]}. A scene survives when ≥min_votes distinct runs flag it."""
+    lens_min = {l["title"]: l["min_votes"] for l in LENSES if l.get("min_votes")}
     tally: dict[str, dict] = {}
     for i in range(votes):
         fs, _ = run_panel(client, model, prompts, workers)
         print(f"  vote {i + 1}/{votes}: {len(fs)} findings")
         for f in fs:
           for key in _scene_keys(f["scene"]):
-            b = tally.setdefault(key, {"scene": key, "runs": set(), "issues": [], "sev": "Low"})
+            b = tally.setdefault(key, {"scene": key, "runs": set(), "issues": [], "sev": "Low",
+                                       "thr": min_votes})
             b["runs"].add(i)
+            b["thr"] = min(b["thr"], lens_min.get(f["lens"], min_votes))
             b["issues"].append(f"[{f['severity']}/{f['lens']}] {f['issue']}"
                                + (f" — {f['why']}" if f["why"] else ""))
             if _SEV_RANK.get(f["severity"], 1) < _SEV_RANK.get(b["sev"], 1):
                 b["sev"] = f["severity"]
     kept = [{"scene": b["scene"], "votes": len(b["runs"]), "severity": b["sev"], "issues": b["issues"]}
-            for b in tally.values() if len(b["runs"]) >= min_votes]
+            for b in tally.values() if len(b["runs"]) >= b["thr"]]
     scenes = sorted((k for k in kept if k["scene"] not in ("week", "?")),
                     key=lambda k: (_SEV_RANK.get(k["severity"], 1), k["scene"]))
     weekly = [k for k in kept if k["scene"] in ("week", "?")]

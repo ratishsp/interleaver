@@ -21,6 +21,7 @@ authored natively in Malayalam.
   work colleague is needed rather than an anonymous colleague.
 - **Family** — back home in Mexico, contact by video call: parents, younger sister **Sofía**, elder brother
   **Diego**, and the family dog **Lola**.
+- **Malayalam spellings** (canonical): മായ, അനിത, പ്രകാശ്, സോഫിയ, ഡീഗോ, ലോല.
 
 ## Cross-cutting rules (every week)
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women

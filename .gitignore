@@ -35,3 +35,6 @@ service-account*.json
 cache/
 samples/
 deck/
+variants/*/week*/verify_summary.json
+variants/*/week*/review_summary.json
+variants/*/continuity_wk*.json

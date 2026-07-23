@@ -250,7 +250,7 @@ def run_lens(client, model: str, lens: dict, prompt: str) -> list[dict]:
     for f in raw:
         severity = (f.get("severity") or "Med").strip().capitalize()
         out.append({
-            "lens": lens["title"],
+            "lens": lens["title"].replace("{setting}", "").strip() or lens["title"],
             "scene": str(f.get("scene", "?")),
             "issue": (f.get("issue") or f.get("reaction") or "").strip(),
             "severity": severity,

@@ -95,6 +95,16 @@ LENSES = [
         ),
     },
     {
+        "key": "padding",
+        "title": "Padding & filler",
+        "lens": "lines that look like fillers",
+        "floor": (
+            "Flag ONLY what looks like filler; a line whose purpose is visible elsewhere in the "
+            "week is not filler.\n"
+            "Name the scene and quote the lines in the issue."
+        ),
+    },
+    {
         "key": "register",
         "title": "Register & rudeness",
         "lens": "whether anyone sounds unintentionally rude or cold",

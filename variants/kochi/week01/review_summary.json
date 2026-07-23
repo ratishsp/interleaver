@@ -1,0 +1,26 @@
+{
+  "mode": "fix",
+  "votes": 3,
+  "min_votes": 2,
+  "whole_week": [
+    {
+      "scene": "week",
+      "votes": 3,
+      "severity": "High",
+      "issues": [
+        "[High/Repetition & monotony] Overuse of the exact phrase 'I am very happy' (എനിക്ക് വളരെ സന്തോഷം ഉണ്ട്) across the week. — Maya explicitly states 'I am very happy' in Scenes 1, 3, 5, 6, and 8 (and other characters are 'very happy' in scenes 2 and 7). While vocabulary repetition is necessary for A1, relying on the exact same emotional resolution for almost every scene makes the narrative arc feel flat, robotic, and noticeably monotonous.",
+        "[Med/Naive whole-week listener (no checklist)] Overuse of the exact phrase 'I am very happy' (എനിക്ക് വളരെ സന്തോഷം ഉണ്ട്). — Maya or another character explicitly states they are 'very happy' in almost every scene (Scenes 1, 2, 3, 5, 6, 7, and 8). While reinforcing the grammar is great, as a listener it starts to feel slightly comical and robotic to hear the exact same emotional declaration in every scenario, which flattens the narrative arc.",
+        "[High/Repetition & monotony] Overuse of the phrase 'I am very happy' (എനിക്ക് വളരെ സന്തോഷം ഉണ്ട്) as a recurring emotional beat. — Maya states that she is 'very happy' in Scenes 1, 3, 5, 6, and 8. Additionally, the driver is 'very happy' in Scene 2, and Anitha is 'very happy' in Scene 7. While practicing the 'ഉണ്ട്' (there is) grammar structure with emotions is pedagogically useful, relying on the exact same emotion to resolve almost every scene in the week creates a highly monotonous emotional arc.",
+        "[Med/Repetition & monotony] Consecutive scenes starting with near-identical establishing lines. — Scenes 4 and 5 begin with the exact same sentence, 'ഞാൻ എന്റെ പുതിയ മുറിയിൽ ആണ്.' (I am in my new room.), and Scene 6 follows closely with 'ഇത് എന്റെ പുതിയ മുറി ആണ്.' (This is my new room.). Reusing this exact establishing template across three sequential scenes feels unintentionally repetitive.",
+        "[Med/Naive whole-week listener (no checklist)] Overuse of the exact phrase 'I am very happy' (എനിക്ക് വളരെ സന്തോഷം ഉണ്ട്). — Maya explicitly states she is 'very happy' in Scenes 1, 3, 6, and 8. While pedagogical repetition is expected, using the exact same sentence to resolve half the scenes makes her emotional arc feel a bit flat and robotic.",
+        "[High/Repetition & monotony] Over-repetition of the exact phrase \"എനിക്ക് വളരെ സന്തോഷം ഉണ്ട്\" (I am very happy). — Maya asserts she is \"very happy\" using this exact or near-exact phrasing in Scenes 1, 3, 5, 6, and 8 (and the driver/Anitha are described as \"very happy\" in Scenes 2 and 7). While grammatical repetition is expected in A1, hitting the identical emotional beat in almost every scene creates a highly unnatural narrative monotony.",
+        "[Med/Repetition & monotony] Repetitive scene openings (Scenes 4, 5, and 6). — Scenes 4 and 5 begin with the exact same sentence: \"ഞാൻ എന്റെ പുതിയ മുറിയിൽ ആണ്.\" (I am in my new room), and Scene 6 opens with the near-identical \"ഇത് എന്റെ പുതിയ മുറി ആണ്.\" (This is my new room). Varying the opening actions slightly would prevent the scenes from feeling like a rigid template.",
+        "[Med/Naive whole-week listener (no checklist)] Overuse of 'I am very happy' (എനിക്ക് വളരെ സന്തോഷം ഉണ്ട് / സന്തോഷമുണ്ട്) as a scene ending. — Maya declares she is 'very happy' in 5 out of the 9 scenes (Scenes 1, 3, 5, 6, and 8). While repetition of vocabulary is good for A1, stamping the end of so many scenes with the exact same emotional declaration feels robotic and flattens the natural emotional arc of her first day.",
+        "[Med/Naive whole-week listener (no checklist)] Inconsistent spacing/joining of the week's focal grammar words (ആണ് and ഉണ്ട്). — Since the explicit grammar focus of this week is Equational 'ആണ്' and Existential 'ഉണ്ട്', their text representation should be consistent for a beginner reading along. Scene 1 joins them (പുറത്താണ്, സന്തോഷമുണ്ട്), while Scenes 2 and 3 mostly split them into separate words (പുറത്ത് ആണ്, എവിടെ ആണ്, സന്തോഷം ഉണ്ട്).",
+        "[Low/Naive whole-week listener (no checklist)] Inconsistent spelling of 'Engineer' across scenes. — In Scene 1 and Scene 7, it is spelled എഞ്ചിനീയർ (and എഞ്ചിനീയറാണ്), whereas in Scene 2 it is spelled എൻജിനീയർ. Standardizing the spelling of her core profession across the week helps visual recognition for learners."
+      ]
+    }
+  ],
+  "scene_survivors": [],
+  "revised": []
+}

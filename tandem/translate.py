@@ -8,23 +8,21 @@ abbreviation list). Kept apart so gen.py stays the authoring/QA core and this st
 from __future__ import annotations
 import re
 
+from pathlib import Path
+
 from tandem.gen import load_story_bible, _ABBREVS
+from tandem.langs import LANG_NAMES  # noqa: F401 — re-export; the registry lives in tandem/langs.py
 from tandem.llm import _json_call
 
 
-# Canonical language code -> name for the translate/verify prompts — one source of truth, imported by
-# translate_week / verify_translation (which used to keep partial copies that drifted). Voice + locale for
-# the audio build live in tandem/tts.py and build_lang.py.
-LANG_NAMES = {
-    "da": "Danish", "en": "English", "sv": "Swedish", "sa": "Sanskrit",
-    # Indian
-    "hi": "Hindi", "ta": "Tamil", "ml": "Malayalam", "bn": "Bengali", "gu": "Gujarati",
-    "kn": "Kannada", "mr": "Marathi", "pa": "Punjabi", "te": "Telugu", "ur": "Urdu",
-    # European
-    "es": "Spanish", "fr": "French", "de": "German", "it": "Italian", "pt": "Portuguese", "ru": "Russian",
-    # Asian / other
-    "cmn": "Mandarin Chinese", "ja": "Japanese", "ko": "Korean", "ar": "Arabic",
-}
+def read_lines(path) -> list[str]:
+    """The non-blank lines of an aligned scene file — the one reader every script had its own copy of."""
+    return [l for l in Path(path).read_text(encoding="utf-8").splitlines() if l.strip()]
+
+
+def write_lines(path, lines: list[str]) -> None:
+    """Write scene lines in the canonical one-per-line form (stripped, trailing newline)."""
+    Path(path).write_text("\n".join(s.strip() for s in lines) + "\n", encoding="utf-8")
 
 
 def _lines_field(out) -> list:
@@ -91,6 +89,17 @@ def translate_lines(client, *, model: str, src_lang: str, tgt_lang: str, lines: 
     if len(res) != len(lines):
         raise SystemExit(f"Alignment broken: {len(lines)} in vs {len(res)} out.")
     return res
+
+
+def translate_scene(client, *, model: str, wk: Path, stem: str, lang: str,
+                    en_lines: list[str], da_lines: list[str]) -> list[str]:
+    """Translate one scene into `lang` and write {stem}.{lang} beside the .da/.en — the per-scene body
+    shared by translate_week (one week) and translate_run (a week range)."""
+    out = translate_lines(client, model=model, src_lang="English",
+                          tgt_lang=LANG_NAMES.get(lang, lang), lines=en_lines,
+                          ref_lang="Danish", ref_lines=da_lines, context=f"{wk.name} · {stem}")
+    write_lines(wk / f"{stem}.{lang}", out)
+    return out
 
 
 # Translation verification — the mirror of gen.py's verify_scene, but for a TRANSLATED target

@@ -2,7 +2,7 @@
 
   build_lang.py <weekdir> <lang> [out.mp3]
 
-Mirrors build_en.py, parameterized by language. Scene order comes from the storyboard; the character
+(Supersedes build_en.py — this with lang=en.) Scene order comes from the storyboard; the character
 voice is Chirp3-HD Sulafat (Maya) where the locale offers it, else Aoede. Loudness/spacing match the
 course tracks (-18 dBFS, 1.1s between lines). Output defaults to <weekdir>/audio_<lang>.mp3.
 """
@@ -15,13 +15,10 @@ from pydub import AudioSegment
 from google.cloud import texttospeech as tts
 
 from tandem.gen import parse_storyboard
+from tandem.langs import LOCALES
+from tandem.translate import read_lines
 
 SPEAKER = "Sulafat"                       # Maya's voice, kept across languages where it exists
-LOCALES = {"en": "en-US", "da": "da-DK", "hi": "hi-IN", "ta": "ta-IN", "ml": "ml-IN",
-           "fr": "fr-FR", "es": "es-ES", "sv": "sv-SE", "bn": "bn-IN",
-           "gu": "gu-IN", "kn": "kn-IN", "mr": "mr-IN", "pa": "pa-IN", "te": "te-IN", "ur": "ur-IN",
-           "de": "de-DE", "it": "it-IT", "pt": "pt-BR", "ru": "ru-RU", "ar": "ar-XA",
-           "cmn": "cmn-CN", "ja": "ja-JP", "ko": "ko-KR"}
 OUTER = AudioSegment.silent(duration=1100)
 TARGET_DBFS = -18.0
 
@@ -58,7 +55,7 @@ def main() -> int:
         if not f.exists():
             print(f"  [skip] {row['stem']}")
             continue
-        for line in [l for l in f.read_text(encoding="utf-8").splitlines() if l.strip()]:
+        for line in read_lines(f):
             full += _synth(line, locale, voice) + OUTER
             n += 1
         print(f"  [ok] {row['stem']}", flush=True)

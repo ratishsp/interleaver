@@ -10,6 +10,8 @@ import asyncio
 from pathlib import Path
 from typing import Protocol
 
+from tandem.langs import LOCALES
+
 
 class Engine(Protocol):
     def synth(self, text: str, lang: str, out_path: Path) -> None: ...
@@ -90,23 +92,9 @@ class GoogleTTS:
     Speed is `speaking_rate` (0.25–4.0), a native prosody change — not a post-hoc time-stretch.
     """
 
-    DEFAULT_VOICES = {
-        # Chirp 3 HD voice names look like "<locale>-Chirp3-HD-<Speaker>"; confirmed/adjusted via
-        # client.list_voices(). Maya narrates first-person, so female voices.
-        "da": "da-DK-Chirp3-HD-Aoede",
-        "en": "en-US-Chirp3-HD-Aoede",
-        "es": "es-ES-Chirp3-HD-Aoede",
-        "sv": "sv-SE-Chirp3-HD-Aoede",
-        "hi": "hi-IN-Chirp3-HD-Aoede",
-        "ta": "ta-IN-Chirp3-HD-Aoede",
-        "ml": "ml-IN-Chirp3-HD-Aoede",
-        "bn": "bn-IN-Chirp3-HD-Aoede",
-        "gu": "gu-IN-Chirp3-HD-Aoede", "kn": "kn-IN-Chirp3-HD-Aoede", "mr": "mr-IN-Chirp3-HD-Aoede",
-        "pa": "pa-IN-Chirp3-HD-Aoede", "te": "te-IN-Chirp3-HD-Aoede", "ur": "ur-IN-Chirp3-HD-Aoede",
-        "fr": "fr-FR-Chirp3-HD-Aoede", "de": "de-DE-Chirp3-HD-Aoede", "it": "it-IT-Chirp3-HD-Aoede",
-        "pt": "pt-BR-Chirp3-HD-Aoede", "ru": "ru-RU-Chirp3-HD-Aoede", "ar": "ar-XA-Chirp3-HD-Aoede",
-        "cmn": "cmn-CN-Chirp3-HD-Aoede", "ja": "ja-JP-Chirp3-HD-Aoede", "ko": "ko-KR-Chirp3-HD-Aoede",
-    }
+    # Chirp 3 HD voice names are "<locale>-Chirp3-HD-<Speaker>" (confirmed via client.list_voices():
+    # every registry locale offers Aoede). Maya narrates first-person, so a female default voice.
+    DEFAULT_VOICES = {code: f"{loc}-Chirp3-HD-Aoede" for code, loc in LOCALES.items()}
 
     def __init__(self, voices: dict[str, str] | None = None,
                  speed: float | dict[str, float] = 1.0):

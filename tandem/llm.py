@@ -124,6 +124,21 @@ def _parse_json_object(text: str) -> dict | None:
 
 _TRANSIENT_STATUS = {429, 500, 502, 503, 504}     # capacity + momentary upstream/gateway errors
 
+# Typed transient exception classes, gathered once. Two transports are in play: the genai client speaks
+# httpx, but its auth-token fetch (oauth2.googleapis.com) goes through requests — both must be covered,
+# and a typed check beats matching the error message's wording.
+_TRANSIENT_TYPES: tuple = ()
+try:
+    import httpx
+    _TRANSIENT_TYPES += (httpx.TransportError,)    # disconnect / reset / connect+read timeout
+except ImportError:
+    pass
+try:
+    import requests
+    _TRANSIENT_TYPES += (requests.exceptions.ConnectionError, requests.exceptions.Timeout)
+except ImportError:
+    pass
+
 
 def _is_transient(exc) -> bool:
     """A retryable blip: a 429 (RESOURCE_EXHAUSTED), a 5xx (502 Bad Gateway etc.), or a transport-level
@@ -137,18 +152,12 @@ def _is_transient(exc) -> bool:
     code = getattr(exc, "code", None)
     if isinstance(code, int) and code in _TRANSIENT_STATUS:
         return True
-    try:
-        import httpx
-        if isinstance(exc, httpx.TransportError):    # disconnect / reset / connect+read timeout
-            return True
-    except ImportError:
-        pass
+    if _TRANSIENT_TYPES and isinstance(exc, _TRANSIENT_TYPES):
+        return True
+    # last-resort string match — some genai-stack errors arrive wrapped/re-stringified, typeless
     s = str(exc)
     return any(t in s for t in ("RESOURCE_EXHAUSTED", "Bad Gateway", "Service Unavailable",
                                 "Internal error", "Server disconnected", "502", "503", "504",
-                                # transient LOCAL network / DNS blips (the auth-token fetch to
-                                # oauth2.googleapis.com uses requests, not httpx, so it isn't a
-                                # TransportError — a momentary resolver hiccup once aborted a whole run)
                                 "Temporary failure in name resolution", "Max retries exceeded",
                                 "Connection reset", "Connection refused", "NameResolutionError"))
 

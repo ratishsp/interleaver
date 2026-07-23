@@ -31,8 +31,7 @@ ROOT = Path(__file__).resolve().parent
 DECK_BASE = 2_059_400_000            # stable base; per-week deck id = DECK_BASE + week
 MIN_PROD_WORDS = 4                   # skip trivial line pairs ("Ja, tak.") as production cards
 
-LANG_NAMES = {"da": "Danish", "en": "English", "ml": "Malayalam", "ta": "Tamil", "es": "Spanish",
-              "hi": "Hindi", "fr": "French", "sa": "Sanskrit", "sv": "Swedish", "bn": "Bengali"}
+from tandem.langs import LANG_NAMES
 
 # Audio via the shared ClipCache. Danish reuses the course's cached clips (build_week_audio's Maya
 # voice, Sulafat) so real lines are cache HITS; other languages fall back to the tts default voice and

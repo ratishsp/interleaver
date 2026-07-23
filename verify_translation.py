@@ -21,13 +21,10 @@ from pathlib import Path
 from tandem.gen import parse_storyboard, DEFAULT_MODEL
 from tandem.llm import make_client
 from tandem.translate import (verify_translation, revise_translation, LANG_NAMES,
-                              format_translation_flags, print_translation_report)
+                              format_translation_flags, print_translation_report,
+                              read_lines as _lines, write_lines)
 
 VERIFY_TRIES = 3       # retry a flaky/truncated verify this many times before skipping the scene
-
-
-def _lines(path: Path) -> list[str]:
-    return [l for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
 def check_scene_lang(client, *, model, wk, stem, lang, en_lines, da_lines, fix, max_rounds) -> int:
@@ -64,7 +61,7 @@ def check_scene_lang(client, *, model, wk, stem, lang, en_lines, da_lines, fix, 
         except SystemExit as e:
             print(f"  [revise skipped] {e}")
             return n
-        tgt_path.write_text("\n".join(s.strip() for s in tgt_lines) + "\n", encoding="utf-8")
+        write_lines(tgt_path, tgt_lines)
         print(f"  [revised {stem}.{lang}] round {rnd + 1}")
     return n
 

@@ -14,7 +14,7 @@ from tandem.build import BuildConfig, build_audio
 from tandem.tts import GoogleTTS
 from tandem.gen import parse_storyboard
 
-LANG_LOCALE = {"da": "da-DK", "en": "en-US", "ml": "ml-IN", "ta": "ta-IN", "fr": "fr-FR"}
+from tandem.langs import LOCALES as LANG_LOCALE
 GAP_SCENE = AudioSegment.silent(duration=1500)
 
 

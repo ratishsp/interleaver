@@ -16,14 +16,10 @@ from pathlib import Path
 
 from tandem.gen import parse_storyboard, DEFAULT_MODEL
 from tandem.llm import make_client
-from tandem.translate import translate_lines, LANG_NAMES
+from tandem.translate import translate_scene, read_lines as _lines, LANG_NAMES  # noqa: F401
 from verify_translation import check_scene_lang
 
 VERIFY_TRIES = 3       # retry a flaky/truncated verify this many times before listing it for re-run
-
-
-def _lines(path: Path) -> list[str]:
-    return [l for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
 def main() -> int:
@@ -53,12 +49,8 @@ def main() -> int:
             print(f"  [skip] {stem}: da/en mismatch ({len(da_lines)} vs {len(en_lines)})")
             continue
         for lang in a.langs:
-            out = translate_lines(
-                client, model=a.model, src_lang="English", tgt_lang=LANG_NAMES.get(lang, lang),
-                lines=en_lines, ref_lang="Danish", ref_lines=da_lines,
-                context=f"{wk.name} · {stem}")
-            (wk / f"{stem}.{lang}").write_text("\n".join(s.strip() for s in out) + "\n",
-                                               encoding="utf-8")
+            translate_scene(client, model=a.model, wk=wk, stem=stem, lang=lang,
+                            en_lines=en_lines, da_lines=da_lines)
         print(f"  [ok] {stem}: {len(en_lines)} lines -> {', '.join('.' + l for l in a.langs)}")
         if not a.no_verify:
             for lang in a.langs:

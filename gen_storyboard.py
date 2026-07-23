@@ -88,7 +88,8 @@ Rules:
   8-10 RICHER scenes (each a complete
   activity that moves) over many thin object-by-object scenes. Vary the scene shapes and span several
   DISTINCT situations so no single kind of scene repeats until it grates.
-- Every scene must carry the week's grammar through action, not a static inventory.
+- The week's scenes together carry the week's grammar through action, not a static inventory — a
+  scene may sit the grammar out, and no scene should script a line just to exercise it.
 - Honor the story bible exactly — never contradict it or re-introduce as new something already established.
 - Give each scene a short snake_case stem with no number, e.g. "the_keys", "first_dinner".
 

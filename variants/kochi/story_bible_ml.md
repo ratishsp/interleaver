@@ -24,7 +24,7 @@ authored natively in Malayalam.
 
 ## Cross-cutting rules (every week)
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women
-  and അയാൾ for men (അവൻ/അവൾ only for her siblings and the dogs). Second person is
+  and അദ്ദേഹം for men (അവൻ/അവൾ only for her siblings and the dogs). Second person is
   നിങ്ങൾ.
 - **Privacy** — her ID/registration numbers are sensitive: never read aloud digit-by-digit. Phone
   numbers may be shared; any phone number is an obvious placeholder, never plausibly real.

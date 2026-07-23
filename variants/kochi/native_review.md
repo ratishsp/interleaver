@@ -21,6 +21,12 @@ once and the fix can be applied mechanically.
 - **Open for the reviewer — strangers:** vendors/shopkeepers/clerks are അയാൾ throughout (~30
   lines, wk02/wk09); natural transactional register, or should any shift to അദ്ദേഹം?
 
+## 3. Name transliterations
+- **Diego = ഡീഗോ** standardized course-wide (2026-07-23; content had drifted 3 ways). Chosen as
+  the majority + week-1-introduction spelling; ഡിയേഗോ is arguably closer to Spanish [ˈdjeɣo] —
+  re-rule if preferred, the swap is mechanical. Other names are uniform: മായ, അനിത, പ്രകാശ്,
+  സോഫിയ, ലോല (now canonical in the bible).
+
 ## 2. Second-person register — നിങ്ങൾ everywhere?
 - **Current state:** polite നിങ്ങൾ throughout, including between Maya and close friends as the
   friendship deepens.

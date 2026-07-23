@@ -344,8 +344,17 @@ def verify_scene(client, *, model: str, level: str, grammar: str,
     detector (the Danish one keys on a following CAPITAL, blind to Indic scripts), and the Danish
     frequency band-check is skipped (its wordlist is Danish).
     """
-    tgt_multi = _multi_sentence_lines if key == "da" else _multi_sentence_lines_generic
-    multi = sorted(set(tgt_multi(da_lines)) | set(_multi_sentence_lines(en_lines)))
+    if key == "da":
+        multi = sorted(set(_multi_sentence_lines(da_lines)) | set(_multi_sentence_lines(en_lines)))
+    else:
+        # The generic detector has no speech-verb exemption, so a quote+attribution line ("...?" അവർ
+        # ചോദിക്കുന്നു.) trips it — and one_per_line is a HARD gate, so that phantom would churn every
+        # dialogue scene through revise (the wk1/2 Tamil failure, 20c3c08). The aligned gloss trips on
+        # the same shapes: mask target trips where the gloss also trips. The speech-verb-aware Danish
+        # check still runs on the EN side, so a genuine two-sentence line is caught via its gloss.
+        en_mask = set(_multi_sentence_lines_generic(en_lines))
+        tgt = [i for i in _multi_sentence_lines_generic(da_lines) if i not in en_mask]
+        multi = sorted(set(tgt) | set(_multi_sentence_lines(en_lines)))
     report = {
         "aligned": len(da_lines) == len(en_lines),
         "one_per_line": not multi,                 # hard structural gate (audio segmentation)

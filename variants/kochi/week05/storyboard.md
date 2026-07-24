@@ -4,12 +4,13 @@
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_empty_cupboards | Maya opens her kitchen cabinets and sees only bare shelves. She decides she wants a proper home-cooked dinner tonight, so she writes a shopping list. |
-| 2 | 02_corner_shop_veggies | Maya walks to the local vegetable stall and waves to the friendly shopkeeper. She selects familiar vegetables like tomatoes and onions because she likes them for her base sauce. |
-| 3 | 03_the_unknown_vegetable | She notices a long, bumpy green vegetable in a small basket. She points to the bitter gourd and tells the shopkeeper she wants exactly one to try. |
-| 4 | 04_supermarket_basket | Moving to the nearby supermarket, Maya picks up a plastic shopping basket. She finds the grain aisle and lifts a small one-kilo bag of local red rice because she wants it for her daily meals. |
-| 5 | 05_spice_aisle | Maya explores the spice section and smells the rich aromas. She chooses small packets of green cardamom and black pepper, knowing she likes strong flavors in her morning tea. |
-| 6 | 06_spotting_prakash | While looking at lentils, Maya notices her colleague Prakash standing nearby. She greets Prakash happily, and they briefly discuss the local banana chips they both like. |
-| 7 | 07_paying_the_cashier | Maya brings her basket to the front counter. She hands eight hundred rupees to the cashier and packs her groceries into two sturdy cloth bags. |
-| 8 | 08_the_street_dog | Carrying her bags home, a brown street dog steps into her path and sniffs the fresh vegetables. Maya watches the dog carefully, steps around it, and continues walking. |
-| 9 | 09_a_full_kitchen | Maya enters her flat and unloads her cloth bags onto the counter. She organizes the fresh vegetables and admires her full shelves, ready to cook the exact meal she wants. |
+| 1 | 01_empty_cupboards | Maya opens her kitchen cupboards in the morning and looks at the bare shelves. Realizing she wants fresh food for the week, she writes a shopping list at her desk. |
+| 2 | 02_supermarket_staples | Maya walks into a large supermarket in Kochi and grabs a shopping cart. She navigates the aisles, picking up the heavy bags of local rice and lentils she wants for her pantry. |
+| 3 | 03_tea_aisle | In the beverage aisle, Maya looks at the many different boxes of local tea. She likes Indian tea very much, so she selects a box of cardamom tea and places it in her cart. |
+| 4 | 04_spice_section | In the spice section, Maya cannot find the black pepper. She asks a friendly store assistant, and he points out a specific brand of black pepper that he likes. |
+| 5 | 05_supermarket_checkout | Maya takes her shopping cart to the checkout counter and pays for her groceries. She carefully packs the heavy rice, lentils, tea, and spices into her two reusable cloth bags before exiting the large store. |
+| 6 | 06_local_vegetable_shop | On her way home in the pleasant morning weather, Maya stops at a small vegetable stand near her building. She points to the familiar vegetables she wants, selecting fresh tomatoes, carrots, and onions. |
+| 7 | 07_the_snake_gourd | Among the familiar items, Maya spots a very long, pale green vegetable with white stripes. She asks the friendly shopkeeper what it is, deciding she wants to buy it and try something new. |
+| 8 | 08_paying_in_rupees | The shopkeeper weighs all the fresh vegetables on a small scale. Maya hands him two hundred rupees for the produce and carefully packs everything into her remaining bags. |
+| 9 | 09_meeting_anitha | Carrying her heavy grocery bags back into her apartment building, Maya meets Anitha near the stairs. Anitha kindly holds the main door open for Maya and asks what she plans to cook for dinner. |
+| 10 | 10_a_full_kitchen | Back inside her peaceful flat, Maya unpacks her bags on the kitchen counter. She smiles as she places the vegetables in the fridge and the spices in the cupboards, happy because she finally has the stocked kitchen she wants. |

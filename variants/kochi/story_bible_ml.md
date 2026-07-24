@@ -65,5 +65,5 @@ authored natively in Malayalam.
 - **wk5**: kitchen stocked (supermarket + vegetable stand near home; two cloth bags).
 - **wk6**: steady work routine — bus commute, canteen lunch with Prakash, evening cooking,
   regular family calls.
-- **wk7**: gym fixture Tue/Thu 18:30; bicycle serviced (rides it sometimes); haircut moved
+- **wk7**: gym fixture Tue/Thu 17:30; bicycle serviced (rides it sometimes); haircut moved
   to Friday 18:15; celebrated ONE MONTH in Kochi with Anitha (coffee) — so wk7 ≈ February.

@@ -21,10 +21,10 @@ authored natively in Malayalam.
   work colleague is needed rather than an anonymous colleague.
 - **Family** — back home in Mexico, contact by video call: parents, younger sister **Sofia**, elder brother
   **Diego**, and the family dog **Lola**.
-- **Malayalam spellings** (canonical; a new character's spelling is added here when the week
-  introducing them locks): മായ, അനിത, പ്രകാശ്, സോഫിയ, ഡീഗോ, ലോല.
 
 ## Cross-cutting rules (every week)
+- **Malayalam spellings** (canonical; a new character's spelling is added here when the week
+  introducing them locks): മായ, അനിത, പ്രകാശ്, സോഫിയ, ഡീഗോ, ലോല.
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women
   and അദ്ദേഹം for men (അവൻ/അവൾ only for her siblings and the dogs). Second person is
   നിങ്ങൾ; within the family, elders say നീ to younger, and younger address elders with the

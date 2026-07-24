@@ -14,7 +14,7 @@ from pathlib import Path
 from pydub import AudioSegment
 from google.cloud import texttospeech as tts
 
-from tandem.gen import parse_storyboard
+from tandem.gen import parse_storyboard, parse_storyboard_header
 from tandem.langs import LOCALES
 from tandem.translate import read_lines
 
@@ -41,6 +41,24 @@ def _synth(text: str, locale: str, voice: str) -> AudioSegment:
     return s if s.dBFS == float("-inf") else s.apply_gain(TARGET_DBFS - s.dBFS)
 
 
+def grammar_intro(weekdir: Path, lang: str) -> str:
+    """English announcement spoken before the week: 'Week N. This week's grammar: …'.
+
+    Prefers the curriculum's plain-English 'Grammar in English' column (last column,
+    appended so positional parsers of the earlier columns stay valid); falls back to the
+    storyboard header's Grammar field. The week's own voice reads it.
+    """
+    h = parse_storyboard_header(weekdir / "storyboard.md")
+    curric = weekdir.parent / f"curriculum_{lang}.md"
+    if curric.exists():
+        for line in curric.read_text(encoding="utf-8").splitlines():
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if len(cells) >= 6 and cells[0].isdigit() and int(cells[0]) == h["week"]:
+                return f"Week {h['week']}. This week's grammar: {cells[5]}"
+    g = h["grammar"].replace("**", "").replace("*", "").replace("/", ", ")
+    return f"Week {h['week']}. This week's grammar: {g}"
+
+
 def main() -> int:
     weekdir = Path(sys.argv[1])
     lang = sys.argv[2]
@@ -48,7 +66,7 @@ def main() -> int:
     locale = LOCALES.get(lang, f"{lang}-{lang.upper()}")
     voice = _voice_for(locale)
     print(f"  {weekdir.name} · {lang} · voice {voice}")
-    full = AudioSegment.empty()
+    full = _synth(grammar_intro(weekdir, lang), locale, voice) + OUTER + OUTER
     n = 0
     for row in parse_storyboard(weekdir / "storyboard.md"):
         f = weekdir / f"{row['stem']}.{lang}"

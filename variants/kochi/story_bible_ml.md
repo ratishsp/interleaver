@@ -62,8 +62,11 @@ authored natively in Malayalam.
 - **wk4**: her own permanent flat, same building (moved from the temporary room); Anitha's
   welcome plant by the window; her Mexican coffee and mugs from home stock the kitchen
   (she brews this coffee at home — she buys tea, not coffee, at shops).
-- **wk5**: kitchen stocked (supermarket + vegetable stand near home; two cloth bags).
+- **wk5**: kitchen stocked (supermarket + vegetable stand near home; one cloth bag).
 - **wk6**: steady work routine — bus commute, canteen lunch with Prakash, evening cooking,
   regular family calls.
 - **wk7**: gym fixture Tue/Thu 17:30; bicycle serviced (rides it sometimes); haircut moved
   to Friday 18:15; celebrated ONE MONTH in Kochi with Anitha (coffee) — so wk7 ≈ February.
+- **wk11**: (April) hot-season days; her first Kochi thundershower one evening.
+- **wk18**: (mid-May) the monsoon rains ARRIVE, breaking the heat — from here rain is the
+  default weather; Maya caught a cold, saw a clinic doctor, recovered on Anitha's kanji.

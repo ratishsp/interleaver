@@ -12,4 +12,3 @@
 | 6 | 06_government_office | The following day, Maya visits a busy government office in the city to complete her residence registration. She takes a paper ticket and sits patiently on a wooden bench. |
 | 7 | 07_registration_desk | An official calls Maya to the desk and requests her local contact number. Maya recites her new mobile number aloud in Malayalam words again. The official asks if she has a local driving license, and she answers that she does not. |
 | 8 | 08_tea_stall_treat | Her errands finally complete, Maya stops at a small roadside thattukada. She orders a steaming glass of chaya and a warm pazhampori, happily paying a few rupees for the snack. |
-| 9 | 09_calling_diego | Maya returns to her flat and initiates a video call to her brother Diego in Mexico. She proudly tells him that she now has a working Indian phone number and a wonderful new desk at her job. |

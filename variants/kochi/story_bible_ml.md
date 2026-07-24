@@ -42,6 +42,8 @@ authored natively in Malayalam.
   Maya's mobile: **98765 43210** (spoken as Malayalam number words when read aloud).
 - **Numbers said aloud are Malayalam words, not digits** — this is an audio course. Currency is
   **rupees**, spelled as words. Numbers woven into action, not drilled.
+- **Maya's home neighbourhood is never named** — real Kochi places (Infopark, Panampilly
+  Nagar, Ernakulam market, Marine Drive) are for outings and work, not her address.
 - **Setting is authentically Kochi** — local places, food, weather, and transit are the point of this
   track; no need to genericize.
 - **Dialogue** — other characters speak *to* Maya, never in her first-person voice.

@@ -69,5 +69,8 @@ authored natively in Malayalam.
 - **wk7**: gym fixture Tue/Thu 17:30; bicycle serviced (rides it sometimes); haircut moved
   to Friday 18:15; celebrated ONE MONTH in Kochi with Anitha (coffee) — so wk7 ≈ February.
 - **wk11**: (April) hot-season days; her first Kochi thundershower one evening.
+- **wk15**: she PREPARES her part for the upcoming project (not yet started).
 - **wk18**: (mid-May) the monsoon rains ARRIVE, breaking the heat — from here rain is the
   default weather; Maya caught a cold, saw a clinic doctor, recovered on Anitha's kanji.
+- **wk19**: the project officially KICKS OFF — Maya on the core team with Prakash,
+  Deepa (designer), Arun (tester), under Suresh; her first stand-up presentation.

@@ -18,8 +18,9 @@ once and the fix can be applied mechanically.
   wk08 sc1 (Anitha → അവർ). Left as-is for the reviewer: wk03 sc4 — Maya and her father use അവൾ
   for Anitha *inside family dialogue about a friend*, natural for in-group casual speech; ratify
   or extend the policy to dialogue.
-- **Open for the reviewer — strangers:** vendors/shopkeepers/clerks are അയാൾ throughout (~30
-  lines, wk02/wk09); natural transactional register, or should any shift to അദ്ദേഹം?
+- **Strangers — settled അയാൾ (2026-07-24):** the generator once applied അദ്ദേഹം to an auto
+  driver and the scene verifier rejected it; shipped vendor content is uniformly അയാൾ. The
+  bible register rule now says so explicitly. Reviewer may still re-rule.
 
 - **Maya to her ELDER brother — settled ചേട്ടന്റെ (user, 2026-07-23):** the scarf tease uses the
   kin-term ("ഇത് ചേട്ടന്റെ സ്കാർഫ് ആണോ?"), consistent with the bible's family clause. Reviewer

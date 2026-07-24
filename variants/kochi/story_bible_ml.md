@@ -30,8 +30,8 @@ authored natively in Malayalam.
 
 ## Cross-cutting rules (every week)
 - **Malayalam spellings** (canonical): മായ, അനിത, പ്രകാശ്, സോഫിയ, ഡീഗോ, ലോല. Upcoming cast —
-  do NOT use anyone before their week: കിരൺ, സാറ, വിഷ്ണു (week 12); ദീപ, അരുൺ, സുരേഷ്
-  (week 19); ജെസ്സി — the café's experienced worker (week 20); ടോമി (week 24). NOTE: the café
+  do NOT use anyone before their week: കിരൺ, സാറ, വിഷ്ണു (week 12); ദീപ, അരുൺ (week 19); സുരേഷ് — Maya's manager
+  (week 18: named on the sick-call phone; met properly at the week-19 kickoff); ജെസ്സി — the café's experienced worker (week 20); ടോമി (week 24). NOTE: the café
   mentor is ജെസ്സി, NOT സാറ — സാറ is the badminton player. A character not listed gets their spelling added when their
   week locks.
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women

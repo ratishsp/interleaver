@@ -60,7 +60,8 @@ authored natively in Malayalam.
 - **wk2**: first office day (Infopark), met Prakash; local SIM + number (98765 43210).
 - **wk3**: first full family video call — parents, Sofia (younger), Diego (elder), Lola.
 - **wk4**: her own permanent flat, same building (moved from the temporary room); Anitha's
-  welcome plant by the window.
+  welcome plant by the window; her Mexican coffee and mugs from home stock the kitchen
+  (she brews this coffee at home — she buys tea, not coffee, at shops).
 - **wk5**: kitchen stocked (supermarket + vegetable stand near home; two cloth bags).
 - **wk6**: steady work routine — bus commute, canteen lunch with Prakash, evening cooking,
   regular family calls.

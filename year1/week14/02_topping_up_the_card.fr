@@ -1,0 +1,16 @@
+Je me dirige vers un distributeur de tickets dans la rue.
+D'abord, ma carte de transport a besoin de plus d'argent.
+Je sors ma carte de transport de mon sac.
+C'est une petite carte bleue.
+Je place la carte sur l'écran de la machine.
+L'écran affiche mon solde.
+Le solde est trop bas pour un long trajet.
+J'appuie sur l'écran.
+Je choisis un montant.
+Je paie deux cents couronnes avec ma carte de paiement.
+La machine écrit « Approuvé » sur l'écran.
+Maintenant, j'ai de l'argent sur la carte.
+Je remets la carte dans le sac.
+Je suis prête pour le long trajet.
+Maintenant, je dois prendre le bus.
+Je me dirige vers l'arrêt de bus.

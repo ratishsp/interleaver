@@ -1,15 +1,14 @@
-# Week 8 — Storyboard (Maya explores the city and finds the waterfront)
+# Week 8 — Storyboard (Maya explores the city center)
 
 **Level:** A1 · **Grammar:** Polite imperatives **പോകൂ/തിരിയൂ**; directions **നേരെ, ഇടത്തോട്ട്/വലത്തോട്ട്**; directional **-ലേക്ക്**
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_saturday_route_anitha | It is a pleasant Saturday morning in Kochi. Maya meets Anitha in the hallway of their apartment building. Anitha suggests a trip to the Marine Drive walkway and gives Maya a simple route, telling her to walk straight and then take a bus to the city center. |
-| 2 | 02_finding_the_bus_stop | Maya walks out of her neighborhood and reaches a busy junction. She asks a nearby tea vendor for directions to the main bus stop. The vendor politely tells her to go straight and turn right at the large banyan tree. |
-| 3 | 03_boarding_city_bus | Maya waits at the bus stop and boards a crowded red bus. She asks the conductor if the bus goes to Ernakulam and Marine Drive. The conductor nods, says yes, and tells her to move inside and find a seat. |
-| 4 | 04_police_officer_directions | Maya gets off the bus in the city center but feels disoriented by the heavy traffic and multiple roads. She approaches a traffic police officer and asks for the walkway. He points down a wide road and tells her to walk straight and turn left. |
-| 5 | 05_getting_lost_market | Maya turns too early and wanders into a narrow, bustling market street full of vegetable stalls. Realizing she is lost, she stops a kind woman carrying a cloth bag and asks for the way to Marine Drive. |
-| 6 | 06_stranger_helps_back | The woman smiles, understanding Maya's confusion. She walks with Maya to the end of the market street, points towards a tall building in the distance, and politely instructs her to walk straight towards it. |
-| 7 | 07_reaching_marine_drive | Maya follows the woman's directions and suddenly sees the open water. She happily steps onto the wide Marine Drive walkway. She joins the locals enjoying the dry February breeze and the scenic view. |
-| 8 | 08_watching_the_harbour | Maya leans against the railing and watches passenger ferries and fishing boats moving towards the distant harbour. She takes a few photos of the water and sends them to her family group chat. |
-| 9 | 09_bus_ride_home | As evening approaches, Maya walks to a nearby bus stand and easily finds a bus returning to her neighborhood. She sits by the window, watching the familiar roads, and finally pictures how her part of the city connects to the waterfront. |
+| 1 | 01_saturday_morning_route | On a bright Saturday morning, Maya decides to explore the city. She meets Anitha in the apartment hallway and asks for a good place to walk. Anitha suggests the waterfront walkway and gives her directions, telling her to walk straight out of the building and turn left towards the main bus stop. |
+| 2 | 02_bus_to_the_center | Maya follows Anitha's route, boards a city bus, and rides towards the bustling center of Kochi. She looks out the window and watches the unfamiliar streets, shops, and buildings pass by. |
+| 3 | 03_asking_the_vendor | Maya steps off the bus at a busy stop but does not see the water. She walks up to a roadside fruit vendor and asks him the way to the walkway. He politely tells her to go straight to the end of the main road and then turn right. |
+| 4 | 04_getting_lost_in_the_market | Maya walks straight but turns right too early, at a narrow corner that looks like the end of the road. She wanders into a crowded, narrow market street full of spice shops and clothing stalls, pauses a moment over the sacks of cardamom and pepper — and then realizes she is lost among the crowds. |
+| 5 | 05_asking_for_help | Maya spots a friendly-looking woman carrying shopping bags and asks her the way to the waterfront. The woman smiles and instructs her: walk back out of the market, continue straight to the end of the road, and there turn right — that road leads straight to the water. |
+| 6 | 06_reaching_the_waterfront | Maya carefully follows the woman's directions and finds her way out of the market. She finally arrives at the broad, paved waterfront walkway and sees the open water. |
+| 7 | 07_watching_the_harbor | Maya sits on a bench facing the harbor and takes a deep breath. She watches the passenger ferries move across the water and enjoys the pleasant February breeze; she gets a hot tea and a pazham pori from a small stall nearby, and the morning slips into afternoon as she sits, unhurried. |
+| 8 | 08_confident_journey_home | After her long afternoon by the water, Maya walks confidently back to the correct bus stop without needing to ask for directions. She rides the bus back to her apartment, happily picturing how her neighborhood connects to the rest of the city. |

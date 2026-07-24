@@ -4,11 +4,11 @@
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_entering_the_flat | Maya unlocks the door to her new permanent flat in the same building and carries her heavy bags inside. She leaves her main suitcase near the front door and stands in the middle of the bright, furnished living room, taking in her new home. |
-| 2 | 02_unpacking_the_clothes | She brings her largest bag into the bedroom and opens the wooden wardrobe. She places her folded clothes neatly inside the cupboard and pushes the empty bag so it lies flat under the bed. |
-| 3 | 03_arranging_the_kitchen | Moving into the kitchen, Maya unpacks a small box of dishes and groceries. She stores the heavy jars in the lower cabinets under the counter and places her favorite tea tin on top of the shelf so she sees it every morning. |
-| 4 | 04_setting_up_the_desk | Maya organizes a simple wooden table in the corner of the living room for her work. She places her laptop so it sits securely on the desk near the open window, catching the pleasant January breeze. |
-| 5 | 05_anithas_welcome_gift | Her neighbor Anitha knocks on the open door and steps inside with a warm smile. Anitha carries a small, green potted plant and carefully puts it on the windowsill near the desk. |
-| 6 | 06_tea_in_the_living_room | Maya quickly boils water in the kitchen and brings out two cups of black tea. Anitha sits comfortably in the armchair, and they enjoy the warm drinks while chatting about the quiet building. |
-| 7 | 07_placing_the_family_photo | Maya takes a framed photograph of her family in Mexico out of her backpack to show Anitha. She proudly places the picture on the high shelf above the books, adding a final personal touch to the room. |
-| 8 | 08_resting_in_the_bedroom | After Anitha returns to her own flat, Maya walks slowly through the tidy rooms. She lies down on the fresh sheets in her quiet bedroom, finally feeling perfectly at home in Kochi. |
+| 1 | 01_unlocking_the_door | Maya stands in the hallway of her building and unlocks the door to her new permanent flat. She steps inside and happily looks around the quiet, furnished living room, taking it all in. |
+| 2 | 02_carrying_suitcases | Maya makes a few trips to bring her luggage from her temporary room down the hall. She takes her heavy suitcase into the bedroom and drops her smaller bags in the living room, observing how the bags now lie on the floor next to the sofa. |
+| 3 | 03_unpacking_the_workspace | Maya immediately sets up her workspace in the living room. She arranges her things so that her laptop now sits on the desk, and a few favorite books sit neatly on a small shelf near her chair. |
+| 4 | 04_bedroom_storage | In the bedroom, Maya unpacks her clothes and stacks them inside the wooden wardrobe. Once her large suitcase is completely empty, she pushes it out of the way so that the suitcase lies under the bed. |
+| 5 | 05_kitchen_basics | Maya walks into the small kitchen and opens the empty cupboards. She unpacks her favorite Mexican coffee and two coffee mugs from home, setting them down so the items sit on the kitchen counter. |
+| 6 | 06_anithas_visit | Anitha knocks lightly on the open front door, holding a small potted plant as a welcome gift. Maya smiles brightly, greets her friend, and invites her inside to see the newly organized flat. |
+| 7 | 07_placing_the_plant | Maya and Anitha look around the living room for the perfect spot for the new plant. Maya chooses a small table near the window, admiring how the plant pot now sits right in the pleasant January sunlight. |
+| 8 | 08_first_coffee_break | On the little stove in her furnished kitchen, Maya brews the Mexican coffee and pours it into the two mugs. The two women sit together on the sofa, sharing the special coffee from home, relaxing and enjoying the peaceful atmosphere of Maya's own flat. |

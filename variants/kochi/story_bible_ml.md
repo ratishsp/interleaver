@@ -9,7 +9,10 @@ authored natively in Malayalam.
   at a software company here; the job is *why* she came. 31 when she arrived; turns 32 the following
   summer. Gradually settling in.
 - First-person narrator throughout.
-- **Commute**: she takes the **bus** to the Infopark office (established week 6).
+- **Commute**: she takes the **bus** to the Infopark office (wk6). She owns a **bicycle**
+  (serviced wk7) and sometimes rides it.
+- **Weekly fixtures** (don't double-book; grows as weeks lock): **gym Tuesday and Thursday
+  evenings at half past six** (wk7).
 
 ## Timeline & seasons
 - Arrives **January** — Kochi's pleasant dry season. The year builds through the **March–May heat**
@@ -40,8 +43,21 @@ authored natively in Malayalam.
 - **Setting is authentically Kochi** — local places, food, weather, and transit are the point of this
   track; no need to genericize.
 - **Dialogue** — other characters speak *to* Maya, never in her first-person voice.
+- **Scene-to-scene flow** — where natural, a scene may foreshadow the next or pay off the
+  previous; don't force a bridge on every scene.
 - **Cast used sparingly** — do not force recurring cast into scenes; a week may stand on its own.
 - **The story never depicts Maya *learning* Malayalam** — she simply lives her life in it.
 
 ## Status ledger — what is TRUE by end of each week
-(filled in as weeks are built)
+(gate-only — never shown to the authors; grows as weeks lock)
+- **wk1**: temporary room in the same building as Anitha; has the job (starts wk2); met
+  Anitha. No local SIM yet.
+- **wk2**: first office day (Infopark), met Prakash; local SIM + number (98765 43210).
+- **wk3**: first full family video call — parents, Sofia (younger), Diego (elder), Lola.
+- **wk4**: her own permanent flat, same building (moved from the temporary room); Anitha's
+  welcome plant by the window.
+- **wk5**: kitchen stocked (supermarket + vegetable stand near home; two cloth bags).
+- **wk6**: steady work routine — bus commute, canteen lunch with Prakash, evening cooking,
+  regular family calls.
+- **wk7**: gym fixture Tue/Thu 18:30; bicycle serviced (rides it sometimes); haircut moved
+  to Friday 18:15; celebrated ONE MONTH in Kochi with Anitha (coffee) — so wk7 ≈ February.

@@ -1,14 +1,14 @@
-# Week 3 — Storyboard (Maya calls her family in Mexico)
+# Week 3 — Storyboard (A Sunday call to Mexico)
 
 **Level:** A1 · **Grammar:** Genitive possessives **എന്റെ/നിങ്ങളുടെ/അവന്റെ/അവളുടെ** (making wk1's *എന്റെ പേര്* pattern productive); the indefinite marker **ഒരു**; **ആര്** questions
 
 | # | stem | scene |
 |---|------|------|
-| 1 | 01_sunday_bakery_visit | Maya visits a local bakery on a calm Sunday morning in Kochi. She looks at the glass display case and asks the busy shopkeeper for a small box of traditional halwa. |
-| 2 | 02_buying_the_sweets | The shopkeeper packs the vibrant halwa and tells Maya the price is fifty rupees. Maya pays the exact amount, takes her sweet purchase, and walks back to her apartment. |
-| 3 | 03_calling_the_parents | Maya props her phone against the tea tin on the kitchen counter and starts a video call to Mexico while she puts water on for her morning chaya. Her mother answers, notices the morning sunlight, and asks whose kitchen looks so bright, prompting Maya to happily turn her laptop and show off her new Kochi space. |
-| 4 | 04_discussing_new_friends | Her father joins the screen and asks who helps her find her way in the new city. Carrying the phone to the desk with her fresh chaya, Maya warmly explains that her neighbor Anitha is a great guide and a very good friend. |
-| 5 | 05_showing_the_halwa | Maya's younger sister Sofia squeezes into the frame next to their parents. Maya opens the bakery box, holds a piece of halwa up to the camera, and describes the sweet local dessert to her curious sister. |
-| 6 | 06_greeting_dog_and_brother | Her older brother Diego sits down, struggling to hold the energetic family dog, Lola. Lola barks at the screen, and Maya carries the phone to the window so the dog can see the green trees while Maya talks to her pet, enjoying the familiar chaos of her household. |
-| 7 | 07_saying_goodbye | As evening deepens in Mexico, the family waves a loud, cheerful goodbye. Maya ends the call, puts down her phone, and sits alone in the quiet room with a sudden wave of homesickness. |
-| 8 | 08_homesick_street_walk | Maya steps outside for a slow walk down the peaceful leafy street. She listens to the gentle Kochi morning sounds, feels the warm breeze, and keeps the memory of her family's voices close to her heart. |
+| 1 | 01_sunday_morning | Maya wakes up to a quiet January Sunday in Kochi. She plans her first proper video call with her family back home, and decides to fetch a small treat to show them first. |
+| 2 | 02_bakery_sweets | Before the call, Maya walks to a small local bakery down the street. She buys a box of bright orange Kozhikodan halwa, wanting a colorful local treat to show her family on the camera. |
+| 3 | 03_starting_the_call | Maya returns to her flat, sets up her laptop at the small table, and initiates the video call. Her mother and father answer the screen with wide smiles from their living room, where it is currently Saturday evening, and Maya asks who else is at home. |
+| 4 | 04_diego_and_lola | Her big brother Diego walks into the frame carrying Lola, the family dog. Maya enthusiastically calls out to the dog, so happy to see her again. |
+| 5 | 05_room_tour | Wanting to share her new world, Maya picks up her laptop and gives her family a walking tour of her room. She turns the camera to the window, showing them the bright Kochi sunlight outside. |
+| 6 | 06_show_and_tell | Maya sits back at the table and proudly holds up the box of halwa. In response, her little sister Sofia squeezes into the frame and holds up a colorful new drawing to share. |
+| 7 | 07_ending_the_call | Because it is getting late in Mexico, her parents say it is time for bed. Maya waves them a warm goodbye, wishes everyone a good night, and closes the laptop. |
+| 8 | 08_quiet_street_walk | Feeling a little homesick in the sudden quiet of her room, Maya steps outside for a slow walk. She strolls along her peaceful street, keeping the familiar voices of her family warm in her mind. |

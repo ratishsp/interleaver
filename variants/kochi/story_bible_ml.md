@@ -12,7 +12,7 @@ authored natively in Malayalam.
 - **Commute**: she takes the **bus** to the Infopark office (wk6). She owns a **bicycle**
   (serviced wk7) and sometimes rides it.
 - **Weekly fixtures** (don't double-book; grows as weeks lock): **gym Tuesday and Thursday
-  evenings at half past six** (wk7). Coming later (do not use early): **badminton Thursday
+  evenings at half past five** (wk7). Coming later (do not use early): **badminton Thursday
   evenings** from wk12 (the Thursday gym slot becomes badminton; gym continues Tuesdays);
   **café volunteering, Saturday mornings** (wk20).
 

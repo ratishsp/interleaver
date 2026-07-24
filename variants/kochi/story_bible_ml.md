@@ -34,7 +34,8 @@ authored natively in Malayalam.
   (week 19); ടോമി (week 24). A character not listed gets their spelling added when their
   week locks.
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women
-  and അദ്ദേഹം for men (അവൻ/അവൾ only for her siblings and the dogs). Second person is
+  and അദ്ദേഹം for men; strangers in passing (drivers, vendors, clerks) are അയാൾ
+  (അവൻ/അവൾ only for her siblings and the dogs). Second person is
   നിങ്ങൾ; within the family, elders say നീ to younger, and younger address elders with the
   kin-term (ചേച്ചി/ചേട്ടൻ).
 - **Privacy** — her ID/registration numbers are sensitive: never read aloud digit-by-digit. Phone

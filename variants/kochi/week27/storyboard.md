@@ -1,0 +1,12 @@
+# Week 27 — Storyboard (Maya updates her telecom account online)
+
+**Level:** A2 · **Grammar:** Habitual **-ാറുണ്ട്** (ചെയ്യാറുണ്ട് — usually do); instructions; the formal passive **-പ്പെടുന്നു** of official language
+
+| # | stem | scene |
+|---|------|------|
+| 1 | 01_official_notification | During a morning coffee break at the Infopark office, Maya receives a formal text message from her mobile service provider stating that her identity details 'are required to be updated' to keep the connection active. She shows the screen to Prakash, who assures her that this is just a standard, periodic check. |
+| 2 | 02_tuesday_evening_routine | Returning to her flat on a rainy Tuesday evening after her half-past-five gym session, Maya decides to get the digital admin out of the way. She usually puts off official paperwork, but she is in the habit of handling these quick web updates on her phone while drinking her homemade Mexican coffee on the sofa. |
+| 3 | 03_portal_instructions | She opens the telecom provider's public self-service website on her mobile browser. She carefully reads through the formal instructions on the landing page, which guide users to log in by entering their registered ten-digit mobile number and their static password, bypassing the need for a login text. |
+| 4 | 04_updating_details | Once logged in, she navigates to the profile section to update her records. She works her way through the digital form, taking a clear photo of her work visa to upload as her official proof of identity, noticing how she usually navigates these Indian bureaucratic requirements much faster now than she did back in January. Rain drums steadily on the window while the upload bar crawls. |
+| 5 | 05_the_missing_otp | She taps 'Submit', and the website displays a formal message stating that a one-time password 'is sent' to her mobile device. The sixty-second timer ticks down to zero — no message arrives. Outside, thunder rolls over the wet street; Maya sighs, gets up to stretch her legs by the window, and then follows the on-screen instructions for the alternative: the code is to be sent to her registered email address instead. |
+| 6 | 06_success_confirmation | Her email app chimes immediately with the new code, which she copies into the telecom portal. She submits the final form and smiles with relief as a green checkmark appears alongside a formal notification declaring that her account details 'are successfully updated'. |

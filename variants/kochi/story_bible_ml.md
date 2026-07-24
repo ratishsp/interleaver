@@ -77,3 +77,5 @@ authored natively in Malayalam.
   default weather; Maya caught a cold, saw a clinic doctor, recovered on Anitha's kanji.
 - **wk19**: the project officially KICKS OFF — Maya on the core team with Prakash,
   Deepa (designer), Arun (tester), under Suresh; her first stand-up presentation.
+- **wk24**: dog-sat Anitha's Tommy for the weekend; the Saturday café shift was
+  ARRANGED OFF IN ADVANCE (not skipped) — one-week fixture exception.

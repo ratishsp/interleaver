@@ -22,7 +22,8 @@ authored natively in Malayalam.
 
 ## Recurring cast
 - **Anitha** — Malayali neighbour, met day 1 (week 1), Maya's first friend; lives in the same building.
-  Kind, helpful.
+  Kind, helpful. Has a dog, **ടോമി** (Tommy) — Maya dog-sat him one weekend (wk24);
+  അവനെ/അവൻ apply to him (dogs rule).
 - **Prakash** — a colleague at Maya's software company (met on her first day, week 2). Use him when a
   work colleague is needed rather than an anonymous colleague.
 - **Family** — back home in Mexico, contact by video call: parents, younger sister **Sofia**, elder brother

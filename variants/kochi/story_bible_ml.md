@@ -23,8 +23,10 @@ authored natively in Malayalam.
   **Diego**, and the family dog **Lola**.
 
 ## Cross-cutting rules (every week)
-- **Malayalam spellings** (canonical; a new character's spelling is added here when the week
-  introducing them locks): മായ, അനിത, പ്രകാശ്, സോഫിയ, ഡീഗോ, ലോല.
+- **Malayalam spellings** (canonical): മായ, അനിത, പ്രകാശ്, സോഫിയ, ഡീഗോ, ലോല. Upcoming cast —
+  do NOT use anyone before their week: കിരൺ, സാറ, വിഷ്ണു (week 12); ദീപ, അരുൺ, സുരേഷ്
+  (week 19); ടോമി (week 24). A character not listed gets their spelling added when their
+  week locks.
 - **Register** — polite. In Maya's narration, adults are referred to by name, or അവർ for women
   and അദ്ദേഹം for men (അവൻ/അവൾ only for her siblings and the dogs). Second person is
   നിങ്ങൾ; within the family, elders say നീ to younger, and younger address elders with the

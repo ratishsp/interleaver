@@ -9,6 +9,7 @@ authored natively in Malayalam.
   at a software company here; the job is *why* she came. 31 when she arrived; turns 32 the following
   summer. Gradually settling in.
 - First-person narrator throughout.
+- **Commute**: she takes the **bus** to the Infopark office (established week 6).
 
 ## Timeline & seasons
 - Arrives **January** — Kochi's pleasant dry season. The year builds through the **March–May heat**

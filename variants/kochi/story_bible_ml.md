@@ -18,7 +18,7 @@ authored natively in Malayalam.
 
 ## Timeline & seasons
 - Arrives **January** — Kochi's pleasant dry season. The year builds through the **March–May heat**
-  and breaks into the **June monsoon**.
+  and breaks into the **monsoon** (arrives mid-May, wk18; peak rains June–July).
 
 ## Recurring cast
 - **Anitha** — Malayali neighbour, met day 1 (week 1), Maya's first friend; lives in the same building.

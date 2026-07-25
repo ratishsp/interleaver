@@ -31,13 +31,19 @@ def _voice_for(locale: str) -> str:
     return want if want in names else f"{locale}-Chirp3-HD-Aoede"
 
 
+_cache = None                              # ClipCache, built once main() knows the voice
+
+
 def _synth(text: str, locale: str, voice: str) -> AudioSegment:
-    r = _client.synthesize_speech(
-        input=tts.SynthesisInput(text=text),
-        voice=tts.VoiceSelectionParams(language_code=locale, name=voice),
-        audio_config=tts.AudioConfig(audio_encoding=tts.AudioEncoding.MP3),
-    )
-    s = AudioSegment.from_file(io.BytesIO(r.audio_content), format="mp3")
+    """Cache-backed synthesis: same clips (and cache keys) as the interleave builds,
+    so a language voiced for any pair costs no new TTS here. Gain-normalized on load
+    (the cache stores raw clips; normalization is an assembly-time concern)."""
+    global _cache
+    if _cache is None:
+        from tandem.cache import ClipCache
+        from tandem.tts import GoogleTTS
+        _cache = ClipCache(GoogleTTS(voices={"x": voice}, speed={"x": 1.0}), "cache/clips")
+    s = AudioSegment.from_file(_cache.clip(text, "x"))
     return s if s.dBFS == float("-inf") else s.apply_gain(TARGET_DBFS - s.dBFS)
 
 

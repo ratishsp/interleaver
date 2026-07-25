@@ -1,8 +1,17 @@
-# Core pipeline (light, no big downloads)
-ebooklib          # EPUB parsing
-beautifulsoup4    # EPUB HTML -> text
-lxml              # fast parser for BeautifulSoup
-pymupdf           # PDF text extraction
-sentence-splitter # rule-based sentence segmentation (da/en, no model)
-edge-tts          # free neural TTS (no API key)
-pydub             # audio assembly (uses ffmpeg)
+# Course pipeline
+google-genai               # Gemini calls: storyboards, scenes, review panels
+google-cloud-texttospeech  # Chirp 3 HD synthesis
+pydub                      # audio assembly (needs ffmpeg on PATH)
+genanki                    # Anki deck generation
+numpy
+
+# Book-pairing tool (the original tandem extract/segment/align path)
+ebooklib
+beautifulsoup4
+lxml
+pymupdf
+sentence-splitter
+edge-tts                   # free TTS fallback engine
+
+# Optional, only for gefion/ (GPU Sanskrit TTS on a cluster):
+# torch transformers parler_tts soundfile

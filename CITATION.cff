@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use Interleaver, please cite it as below."
+title: "Interleaver: story-driven audio language courses generated and verified by an LLM pipeline"
+authors:
+  - family-names: Puduppully
+    given-names: Ratish
+year: 2026
+url: "https://github.com/ratishsp/interleaver"
+license: MIT

@@ -29,6 +29,7 @@ def main() -> int:
     ap.add_argument("--speaker", default="Sulafat")
     ap.add_argument("--out", default="combined")
     ap.add_argument("--weeks", default="1-8", help="e.g. '1-8' (default) or '1,4,7'")
+    ap.add_argument("--root", default="year1", help="course root holding weekNN/ (default year1)")
     ap.add_argument("--direction", default="both", choices=["both", "src-first", "tgt-first"],
                     help="which interleave to build: 'both' (default), 'src-first' (L2 first, e.g. da-then-en), "
                          "or 'tgt-first' (gloss first)")
@@ -37,7 +38,7 @@ def main() -> int:
 
     nums = sorted({n for part in a.weeks.split(",") for n in (
         range(int(part.split("-")[0]), int(part.split("-")[1]) + 1) if "-" in part else [int(part)])})
-    weeks = [Path(f"year1/week{w:02d}") for w in nums]
+    weeks = [Path(a.root) / f"week{w:02d}" for w in nums]
     span = f"weeks{nums[0]:02d}-{nums[-1]:02d}"
     out_dir = Path(a.out)
     scratch = out_dir / "_scenes"

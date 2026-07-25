@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interleaver</title><style>
+:root { --fg:#1a1a1a; --muted:#666; --line:#e3e3e3; --accent:#0b5fa5; }
+* { box-sizing:border-box; }
+body { font:16px/1.55 system-ui,-apple-system,sans-serif; color:var(--fg);
+       max-width:64rem; margin:0 auto; padding:1.5rem; }
+h1,h2 { line-height:1.25; } a { color:var(--accent); }
+table { border-collapse:collapse; width:100%; }
+td,th { padding:.5rem .6rem; border-bottom:1px solid var(--line); vertical-align:top;
+        text-align:left; }
+audio { width:15rem; max-width:100%; height:2rem; }
+.muted { color:var(--muted); font-size:.9rem; }
+.dl a { margin-right:.6rem; white-space:nowrap; font-size:.9rem; }
+.tr td:first-child { width:50%; }
+nav a { margin-right:1rem; }
+</style></head><body>
+<nav><a href="index.html">Interleaver</a><a href="danish.html">Danish</a>
+<a href="malayalam.html">Malayalam</a></nav>
+
+<h1>Interleaver</h1>
+<p>Free, open audio language courses that follow one story: <b>Maya</b>, a software
+engineer from Mexico, moves abroad for a job, and you learn the language by following
+her year, one week at a time. Each line is spoken in the language you are
+learning and in English. No app, no screen: press play while you commute or
+work out.</p>
+<ul>
+<li><a href="danish.html"><b>Danish</b></a>: Maya in Copenhagen (28 weeks, ~4 h)</li>
+<li><a href="malayalam.html"><b>Malayalam</b></a>: Maya in Kochi (28 weeks, ~4 h)</li>
+</ul>
+<p class=muted>Both courses currently cover levels A1–A2 (weeks 1–28). 24 more weeks
+(B1–B2) are planned to complete Maya's year, and more language/city combinations
+are coming.</p>
+<h2>Which audio variant should I pick?</h2>
+<p><b>First listen:</b> English first, then the target language, so you always know
+what's being said. <b>Re-listen:</b> target language first, where you try to understand
+before the English confirms it. <b>Review:</b> target language only: pure immersion, once a week feels familiar.</p>
+<h2>Flashcards (spaced repetition)</h2>
+<p>Each course has a free <a href="https://apps.ankiweb.net/">Anki</a> deck with
+vocabulary, translation, and cloze cards, all voiced with the course audio.
+Download the <code>.apkg</code> from the
+<a href="https://github.com/ratishsp/interleaver/releases">releases page</a> and
+double-click it.</p>
+<h2>More languages</h2>
+<p>The same story exists in <b>21 languages</b>: Danish, English, and 19 more,
+every line aligned through the English gloss. That allows up to
+<b>21 × 20 = 420</b> ordered pairings of a language you know with a language you
+want to learn. Pick one:</p>
+<p><select id="beta" onchange="if(this.value)location.href=this.value">
+<option value="">choose a language</option>
+<option value="trans_hindi.html">Hindi</option>
+<option value="trans_tamil.html">Tamil</option>
+<option value="trans_gujarati.html">Gujarati</option>
+<option value="trans_kannada.html">Kannada</option>
+<option value="trans_punjabi.html">Punjabi</option>
+<option value="trans_telugu.html">Telugu</option>
+<option value="trans_urdu.html">Urdu</option>
+<option value="trans_marathi.html">Marathi</option>
+<option value="trans_bengali.html">Bengali</option>
+<option value="trans_malayalam.html">Malayalam</option>
+<option value="trans_spanish.html">Spanish</option>
+<option value="trans_french.html">French</option>
+<option value="trans_german.html">German</option>
+<option value="trans_italian.html">Italian</option>
+<option value="trans_portuguese.html">Portuguese</option>
+<option value="trans_japanese.html">Japanese</option>
+<option value="trans_korean.html">Korean</option>
+<option value="trans_mandarin.html">Mandarin</option>
+<option value="trans_arabic.html">Arabic</option>
+</select></p>
+<noscript><p><a href="trans_hindi.html">Hindi</a> · <a href="trans_tamil.html">Tamil</a> · <a href="trans_gujarati.html">Gujarati</a> · <a href="trans_kannada.html">Kannada</a> · <a href="trans_punjabi.html">Punjabi</a> · <a href="trans_telugu.html">Telugu</a> · <a href="trans_urdu.html">Urdu</a> · <a href="trans_marathi.html">Marathi</a> · <a href="trans_bengali.html">Bengali</a> · <a href="trans_malayalam.html">Malayalam</a> · <a href="trans_spanish.html">Spanish</a> · <a href="trans_french.html">French</a> · <a href="trans_german.html">German</a> · <a href="trans_italian.html">Italian</a> · <a href="trans_portuguese.html">Portuguese</a> · <a href="trans_japanese.html">Japanese</a> · <a href="trans_korean.html">Korean</a> · <a href="trans_mandarin.html">Mandarin</a> · <a href="trans_arabic.html">Arabic</a></p></noscript>
+<p class=muted>The 19 tracks are machine-translated. They may sound a bit
+odd as they are apart from the Copenhagen setting they are translated from. In
+contrast, the Danish and Malayalam courses are generated source-language-first and
+thus more realistic sounding.</p>
+<h2>Build your own language pair</h2>
+<p>Every synthesized line is published as an individual audio clip (see the
+<code>clips-cache</code> asset on the releases page). With the repository's scripts
+and those clips, you can assemble any interleave yourself (either direction, your
+own pause lengths, any pair of voiced languages) without any text-to-speech account:
+<code>python combine_all.py --src da --tgt en</code>.</p>
+<h2>Read along</h2>
+<p>Every week has a line-aligned transcript: see the course pages.</p>
+<h2>How it's made</h2>
+<p>Each week starts from a curriculum row: a theme, a grammar focus, and a story
+brief. Gemini turns it into a storyboard and then into scenes. Next we have verifiers which are also built on Gemini. Every storyboard
+passes a four-lens verifier, every scene is verified, every week is reviewed by a
+three-vote panel, and the whole story is swept for continuity across weeks. A human
+can intervene at any stage. The full pipeline, prompts, and checks are open in the
+<a href="https://github.com/ratishsp/interleaver">repo</a>. The audio is synthesized
+with Google Cloud TTS.</p>
+<h2>Feedback, issues, and PRs are welcome</h2>
+<p>Tell us what works and what doesn't on
+<a href="https://github.com/ratishsp/interleaver/issues">GitHub issues</a>,
+or open a pull request.</p>
+
+<p class="muted">Content licensed CC BY 4.0 · <a href="https://github.com/ratishsp/interleaver">source &amp; code</a></p>
+</body></html>

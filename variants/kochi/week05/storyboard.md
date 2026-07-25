@@ -13,4 +13,3 @@
 | 7 | 07_the_snake_gourd | Among the familiar items, Maya spots a very long, pale green vegetable with white stripes. She asks the friendly shopkeeper what it is, deciding she wants to buy it and try something new. |
 | 8 | 08_paying_in_rupees | The shopkeeper weighs all the fresh vegetables on a small scale. Maya hands him two hundred rupees for the produce and carefully packs everything into her remaining bags. |
 | 9 | 09_meeting_anitha | Carrying her heavy grocery bags back into her apartment building, Maya meets Anitha near the stairs. Anitha kindly holds the main door open for Maya and asks what she plans to cook for dinner. |
-| 10 | 10_a_full_kitchen | Back inside her peaceful flat, Maya unpacks her bags on the kitchen counter. She smiles as she places the vegetables in the fridge and the spices in the cupboards, happy because she finally has the stocked kitchen she wants. |

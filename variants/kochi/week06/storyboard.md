@@ -13,4 +13,4 @@
 | 7 | 07_evening_commute | Maya leaves the office and waits for the return bus. The sun is setting. She boards the bus and looks out the window, watching the familiar streets as she travels home. |
 | 8 | 08_cooking_dinner | Back inside her flat, Maya changes into comfortable clothes and goes to the kitchen. She is chopping onions and tomatoes, cooking a simple dinner using the fresh vegetables she buys locally. |
 | 9 | 09_calling_mexico | After eating, Maya sits on her sofa and starts a video call with her family in Mexico. She smiles as she watches her younger sister Sofia, who is playing with their dog Lola on the screen. |
-| 10 | 10_going_to_sleep | Maya finishes her call and washes her dinner plate. She turns off the lights in the flat, gets into bed, and goes to sleep, ready to start her routine again the next day. |
+| 10 | 10_falling_asleep | Maya finishes her call and washes her dinner plate. She turns off the lights in the flat, gets into bed, and goes to sleep, ready to start her routine again the next day. |

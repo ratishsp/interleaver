@@ -74,7 +74,7 @@ sections differ by language. Scenes are authored natively in each language.
   throughout (the everyday -तवत् past, natural loanwords for modern things — मेट्रो, मोबाइल —
   written as pronounced; no classical-corpus constructions). **Canonical object vocabulary** —
   one word per everyday object, never synonyms across scenes: पेटिका (suitcase), स्यूतः (bag),
-  पर्यङ्कः (bed), सङ्गणकम् (laptop/computer). Extend this list when a new recurring object
+  पर्यङ्कः (bed), सङ्गणकम् (laptop/computer), रक्तफलम् (tomato), पालक-शाकम् (spinach). Extend this list when a new recurring object
   appears; a synonym swap mid-course is a continuity defect (wk1 bed, wk4 suitcase/laptop).
 
 ## Status ledger — what is TRUE by end of each week

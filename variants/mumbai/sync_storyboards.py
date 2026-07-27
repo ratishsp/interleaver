@@ -23,9 +23,24 @@ def grammar_focus(lang: str, week: int) -> str:
     raise SystemExit(f"week {week} not found in curriculum_{lang}.md")
 
 
+def check_plain_english(master: Path, text: str) -> None:
+    # A shared master's scene rows feed EVERY track's generator, so they must be
+    # plain English — a language-specific token leaks into the other tracks
+    # (wk1: the Hindi vocative surfaced verbatim in the Sanskrit scenes). Only
+    # the Grammar header line (swapped per track) may carry the course script.
+    for ln in text.splitlines():
+        if ln.startswith("|") and ln.split("|")[1].strip().isdigit():
+            # allow Latin (incl. accents, to U+024F) and typographic punctuation/currency
+            bad = [ch for ch in ln if ord(ch) > 0x024F and not (0x2000 <= ord(ch) <= 0x20BF)]
+            if bad:
+                raise SystemExit(f"{master.name}: scene row contains non-English text "
+                                 f"({''.join(bad[:8])}…) — keep masters register-neutral")
+
+
 for master in sorted(HERE.glob("storyboards/week*.md")):
     week = int(re.search(r"week(\d+)", master.name).group(1))
     text = master.read_text("utf-8")
+    check_plain_english(master, text)
     for lang in TRACKS:
         g = grammar_focus(lang, week)
         out = re.sub(r"(\*\*Grammar:\*\* ).*", lambda m: m.group(1) + g, text, count=1)

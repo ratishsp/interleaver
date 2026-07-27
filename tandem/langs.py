@@ -20,6 +20,15 @@ LANGS = {
     # Asian / other
     "cmn": ("Mandarin Chinese", "cmn-CN"), "ja": ("Japanese", "ja-JP"), "ko": ("Korean", "ko-KR"),
     "ar": ("Arabic", "ar-XA"),
+    # 2026-07 expansion (every remaining Chirp3-HD Sulafat locale, one narrator everywhere)
+    "nl": ("Dutch", "nl-NL"), "pl": ("Polish", "pl-PL"), "nb": ("Norwegian", "nb-NO"),
+    "fi": ("Finnish", "fi-FI"), "cs": ("Czech", "cs-CZ"), "sk": ("Slovak", "sk-SK"),
+    "hu": ("Hungarian", "hu-HU"), "ro": ("Romanian", "ro-RO"), "bg": ("Bulgarian", "bg-BG"),
+    "el": ("Greek", "el-GR"), "hr": ("Croatian", "hr-HR"), "sr": ("Serbian", "sr-RS"),
+    "sl": ("Slovenian", "sl-SI"), "lt": ("Lithuanian", "lt-LT"), "lv": ("Latvian", "lv-LV"),
+    "et": ("Estonian", "et-EE"), "uk": ("Ukrainian", "uk-UA"), "tr": ("Turkish", "tr-TR"),
+    "id": ("Indonesian", "id-ID"), "th": ("Thai", "th-TH"), "vi": ("Vietnamese", "vi-VN"),
+    "yue": ("Cantonese", "yue-HK"), "he": ("Hebrew", "he-IL"), "sw": ("Swahili", "sw-KE"),
 }
 
 LANG_NAMES = {code: name for code, (name, _) in LANGS.items()}

@@ -55,7 +55,11 @@ def grammar_intro(weekdir: Path, lang: str) -> str:
     storyboard header's Grammar field. The week's own voice reads it.
     """
     h = parse_storyboard_header(weekdir / "storyboard.md")
-    curric = weekdir.parent / f"curriculum_{lang}.md"
+    # The curriculum sits next to the week dirs (kochi) or one level up at the repo
+    # root (year1) — take the first that exists.
+    candidates = [weekdir.parent / f"curriculum_{lang}.md",
+                  weekdir.parent.parent / f"curriculum_{lang}.md"]
+    curric = next((c for c in candidates if c.exists()), candidates[0])
     if curric.exists():
         for line in curric.read_text(encoding="utf-8").splitlines():
             cells = [c.strip() for c in line.strip().strip("|").split("|")]

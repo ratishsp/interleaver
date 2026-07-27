@@ -267,6 +267,7 @@ def main(argv=None):
                     help="cap production cards per scene, sampled across it (default 5; 0 = no cap)")
     ap.add_argument("--max-vocab-per-scene", type=int, default=5, dest="max_vocab",
                     help="cap vocab cards per scene (default 5; 0 = no cap)")
+    ap.add_argument("--root", default="year1", help="course root holding weekNN/ (default year1)")
     ap.add_argument("--audio", action="store_true",
                     help="attach audio: Danish reuses cached clips; other languages synth from the "
                          "per-language voice (a language with no configured voice ships text-only)")
@@ -281,7 +282,7 @@ def main(argv=None):
 
     decks, media = [], {}          # media: clip filename -> path (deduped across weeks)
     for w in nums:
-        wdir = ROOT / f"year1/week{w:02d}"
+        wdir = ROOT / a.root / f"week{w:02d}"
         if not (wdir / "storyboard.md").exists():
             print(f"  week{w:02d}: no storyboard — skipped")
             continue

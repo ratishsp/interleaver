@@ -5,8 +5,7 @@ re-instantiated in Mumbai, and the grammar is re-derived for Hindi. Scenes are a
 
 The **Theme** and **Brief** columns are identical across `curriculum_hi.md`, `curriculum_mr.md` and
 `curriculum_sa.md` — one Mumbai story, three language tracks. Edit a brief in one file only via the
-sync script, never by hand in a single file. Continuity ground-truth will live in `story_bible_hi.md`
-(derived per track at generation time; the cast below is shared by all three).
+sync script, never by hand in a single file. Continuity ground-truth lives in `story_bible.md` (one shared bible for all three tracks).
 
 | Wk | Lvl | Theme | Grammar focus | Brief | Grammar in English |
 |----|-----|-------|---------------|----------------|--------------------|

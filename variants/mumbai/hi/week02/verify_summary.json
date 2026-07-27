@@ -1,0 +1,164 @@
+[
+  {
+    "n": 1,
+    "stem": "01_morning_prep",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 2,
+    "stem": "02_meeting_rohan",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 3,
+    "stem": "03_the_desk",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 4,
+    "stem": "04_mobile_shop",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 5,
+    "stem": "05_sim_form",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": false,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [
+        {
+          "line": 19,
+          "problem": "The verb structure 'हो गया है' is the present perfect tense utilizing a compound verb ('हो जाना'). Perfective aspect and compound verbs are A2-level structures, which are clearly beyond A1."
+        }
+      ],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [
+        {
+          "line": 9,
+          "problem": "The narrator labels the shopkeeper's mood by stating he is 'surprised' rather than showing it through his facial expressions, dialogue, or body language."
+        }
+      ],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 6,
+    "stem": "06_memorizing_number",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 7,
+    "stem": "07_frro_registration",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 8,
+    "stem": "08_celebratory_snack",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  }
+]

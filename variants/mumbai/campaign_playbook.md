@@ -40,7 +40,8 @@ reordered, facts changed) — never for wording-level repairs.
   vocatives (माये not माया), vowel length in stems (स्वादूनि) — the generator
   reliably fumbles these; expect hand fixes on family/group scenes. No street
   vocative (user ruling); no voice approximation — audio waits for the real
-  Gefion indic-parler voice.
+  Gefion indic-parler voice. Synonym drift is its steadiest failure (bed wk1,
+  suitcase+laptop wk4) — keep the bible's canonical-object-vocabulary list current.
 - **Hindi/Marathi**: kin-term address registers differ per language and per
   age (भैया vs चाचा; दादा vs काका) — codify in each track's bible register
   section, never in shared masters.

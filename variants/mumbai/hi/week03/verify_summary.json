@@ -1,0 +1,183 @@
+[
+  {
+    "n": 1,
+    "stem": "01_sunday_sweets",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [
+        {
+          "line": 3,
+          "problem": "The narrator explicitly labels the scene's mood as 'very quiet' (बहुत शांत) instead of showing this atmosphere through sensory details (e.g., 'there are no cars' or 'no one is outside')."
+        }
+      ],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 2,
+    "stem": "02_connecting_home",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 3,
+    "stem": "03_parents_greeting",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 4,
+    "stem": "04_showing_the_treats",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 5,
+    "stem": "05_sister_sofia",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [
+        {
+          "line": 3,
+          "problem": "The narrator explicitly labels the character's mood ('Sofia is very happy') instead of showing her happiness through description or action."
+        }
+      ],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 6,
+    "stem": "06_brother_diego",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 7,
+    "stem": "07_lola_the_dog",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 21,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 8,
+    "stem": "08_saying_goodbye",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 9,
+    "stem": "09_quiet_street_walk",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  }
+]

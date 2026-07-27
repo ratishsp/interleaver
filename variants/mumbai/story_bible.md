@@ -58,13 +58,13 @@ sections differ by language. Scenes are authored natively in each language.
 - **Hindi** — polite. Strangers, elders and service staff take **आप**; in Maya's narration adults
   are referred to respectfully (वे where natural). Maya addresses shopkeepers, vendors and drivers
   with the kin-term **भैया** (**दीदी** for a woman where natural) — that is the everyday street
-  register; an elderly man is **चाचा** (never भैया), an elderly woman **आंटी**; **सर/मैडम** belong only to government officials and formal counters, and service staff
+  register; an elderly man is **चाचा**, an elderly woman **आंटी**; **सर/मैडम** belong only to government officials and formal counters, and service staff
   addressing Maya say **मैडम**. At the software office everyone — colleagues AND managers — is
   addressed by first name, never सर/मैडम (Indian IT first-name culture). Within the family, elders
   say तुम to younger; Maya uses आप to her parents, तुम to her siblings and the dogs.
 - **Marathi** — polite. Strangers, elders and service staff take **तुम्ही** (अहो-जाहो register).
   Maya addresses stallholders, vendors and drivers with the kin-term **दादा** (**ताई** for a woman)
-  — the everyday street register; an elderly man is **काका** (never दादा), an elderly woman **मावशी**; **साहेब/मॅडम** belong only to officials and formal counters, and
+  — the everyday street register; an elderly man is **काका**, an elderly woman **मावशी**; **साहेब/मॅडम** belong only to officials and formal counters, and
   service staff addressing Maya say **मॅडम**. At the office, first names with तुम्ही among peers.
   Within the family, elders say तू to younger; Maya uses तुम्ही/अहो to her parents, तू to her
   siblings and the dogs.

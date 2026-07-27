@@ -1,0 +1,201 @@
+[
+  {
+    "n": 1,
+    "stem": "01_entering_the_cafe",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [
+        {
+          "line": 9,
+          "problem": "The narrator directly labels the mood and atmosphere of the scene ('The atmosphere here is very vintage') instead of letting the subsequent physical descriptions of the dark wooden chairs, checkered tablecloths, and slow fans show it."
+        }
+      ],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 2,
+    "stem": "02_greeting_the_cashier",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": false,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [
+        {
+          "line": 12,
+          "problem": "The phrase 'लिखा हुआ' uses a past participle as an adjective, which is a substantive structure generally introduced in A2."
+        },
+        {
+          "line": 16,
+          "problem": "The word 'देखकर' uses the conjunctive participle suffix '-कर' to link two verbs, which is typically an A2 level structure."
+        }
+      ],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [
+        {
+          "line": 6,
+          "problem": "The narrator labels the manner of her speech as 'आदर से' (respectfully) instead of showing this respect through observable actions."
+        },
+        {
+          "line": 8,
+          "problem": "The narrator labels the mood of the chacha's smile as 'बहुत प्यार से' (very warmly) instead of showing the warmth through physical description."
+        }
+      ],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 3,
+    "stem": "03_ordering_classics",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 16,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 4,
+    "stem": "04_finding_a_seat",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [
+        {
+          "line": 14,
+          "problem": "The narrator explicitly labels the mood of the scene by stating 'the atmosphere here is very lively' (माहौल बहुत जीवंत है) instead of showing this liveliness through actions, sounds, or visual details."
+        }
+      ],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 5,
+    "stem": "05_the_waiter_arrives",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 6,
+    "stem": "06_enjoying_the_flavors",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 7,
+    "stem": "07_ordering_sweet_treat",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 8,
+    "stem": "08_asking_for_bill",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 9,
+    "stem": "09_paying_and_leaving",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 22,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  }
+]

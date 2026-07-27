@@ -60,7 +60,10 @@ sections differ by language. Scenes are authored natively in each language.
   with the kin-term **भैया** (**दीदी** for a woman where natural) — that is the everyday street
   register; an elderly man is **चाचा**, an elderly woman **आंटी**; **सर/मैडम** belong only to government officials and formal counters, and service staff
   addressing Maya say **मैडम**. At the software office everyone — colleagues AND managers — is
-  addressed by first name, never सर/मैडम (Indian IT first-name culture). Within the family, elders
+  addressed by first name, never सर/मैडम (Indian IT first-name culture). The badminton
+  trio (Amit/Neha/Sanjay) and Maya use आप in wk12 (first meeting) and stay on आप through
+  wk15; from wk16 (established friendship) they may shift to तुम — but consistently, never
+  mixed within a week. Within the family, elders
   say तुम to younger; Maya uses आप to her parents, तुम to her siblings and the dogs.
 
 ## Status ledger — what is TRUE by end of each week

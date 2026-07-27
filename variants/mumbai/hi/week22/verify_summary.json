@@ -1,0 +1,183 @@
+[
+  {
+    "n": 1,
+    "stem": "01_finding_the_recipe",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 16,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 2,
+    "stem": "02_writing_the_shopping_list",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": [
+        {
+          "line": 17,
+          "problem": "The storyboard dictates that Maya writes down some peanuts and a few spoons of basic spices. However, the scene contradicts this by having her omit the peanuts from her writing process and explicitly deciding not to write down the spices because she already has them."
+        }
+      ]
+    }
+  },
+  {
+    "n": 3,
+    "stem": "03_buying_dry_groceries",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 4,
+    "stem": "04_buying_fresh_vegetables",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": [
+        {
+          "line": 13,
+          "problem": "The storyboard specifies she asks for a 'generous bunch' of green coriander. The Hindi uses 'थोड़ा' (a little / some), which directly contradicts the requested generous quantity."
+        }
+      ]
+    }
+  },
+  {
+    "n": 5,
+    "stem": "05_kitchen_prep_work",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 6,
+    "stem": "06_step_by_step_cooking",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 7,
+    "stem": "07_finishing_the_dish",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 8,
+    "stem": "08_friends_arrive",
+    "attempts": 3,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 21,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 9,
+    "stem": "09_sharing_the_meal",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  }
+]

@@ -1,0 +1,154 @@
+[
+  {
+    "n": 1,
+    "stem": "01_humid_saturday_shopping",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 2,
+    "stem": "02_buying_the_raincoat",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 3,
+    "stem": "03_buying_the_shirt",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 4,
+    "stem": "04_too_small_at_home",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 5,
+    "stem": "05_sunday_return_trip",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 6,
+    "stem": "06_asking_for_exchange",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 7,
+    "stem": "07_trying_the_bigger_size",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 8,
+    "stem": "08_a_better_fit",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 16,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  }
+]

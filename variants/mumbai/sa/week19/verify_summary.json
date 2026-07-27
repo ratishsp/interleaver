@@ -1,0 +1,164 @@
+[
+  {
+    "n": 1,
+    "stem": "01_project_kickoff",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [
+        {
+          "line": 18,
+          "problem": "The narrator labels another character's mood ('He is very satisfied') instead of showing his satisfaction through an action like smiling or nodding."
+        }
+      ],
+      "faithfulness": [
+        {
+          "line": 10,
+          "problem": "The storyboard specifies that Suresh 'outlines exactly what the client has requested'. However, he never outlines the request in the dialogue; he only states that he sent the requirements to the computer for Maya to read."
+        }
+      ]
+    }
+  },
+  {
+    "n": 2,
+    "stem": "02_morning_standup",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 3,
+    "stem": "03_priya_the_designer",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 4,
+    "stem": "04_cutting_chai_break",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 21,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 5,
+    "stem": "05_vikram_the_tester",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 15,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 6,
+    "stem": "06_thursday_badminton",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 7,
+    "stem": "07_fixing_early_bugs",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 21,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 8,
+    "stem": "08_end_of_week_review",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  }
+]

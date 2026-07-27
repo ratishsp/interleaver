@@ -1,0 +1,197 @@
+[
+  {
+    "n": 1,
+    "stem": "01_a_hot_mumbai_morning",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": false,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [
+        {
+          "line": 15,
+          "problem": "The concessive participle structure '-ूनही' (असूनही - 'despite being') is a complex subordinating structure that belongs to the B1/B2 level. An A2 structure would use a simple conjunction like 'पण' (but) instead."
+        }
+      ],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": [
+        {
+          "line": 1,
+          "problem": "The storyboard specifies a third-person narrative about Maya ('Maya woke up...'), but the Marathi text is written in the first person ('मी' / I)."
+        },
+        {
+          "line": 6,
+          "problem": "The storyboard specifies that 'She packed her own backpack', but the scene continues incorrectly in the first person ('मी... स्वतःची पाठपिशवी काढली')."
+        }
+      ]
+    }
+  },
+  {
+    "n": 2,
+    "stem": "02_boarding_the_intercity_train",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 3,
+    "stem": "03_train_people_watching",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 4,
+    "stem": "04_climbing_the_ghats",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 17,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": [
+        {
+          "line": 4,
+          "problem": "The storyboard specifies 'Maya looked out of her window' (third-person narrative), but the Marathi text contradicts this by shifting to the first-person perspective using 'मी' (I)."
+        }
+      ]
+    }
+  },
+  {
+    "n": 5,
+    "stem": "05_arriving_in_the_hills",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": [
+        {
+          "line": 13,
+          "problem": "The storyboard explicitly specifies that she called him 'bhaiya', but the Marathi text uses 'दादा' (Dada)."
+        }
+      ]
+    }
+  },
+  {
+    "n": 6,
+    "stem": "06_the_slow_walk_up",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 18,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 7,
+    "stem": "07_the_mischievous_monkey",
+    "attempts": 2,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 8,
+    "stem": "08_the_valley_viewpoint",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 20,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  },
+  {
+    "n": 9,
+    "stem": "09_a_tired_but_happy_return",
+    "attempts": 1,
+    "hard_pass": true,
+    "grammar": true,
+    "coherence": true,
+    "natural": true,
+    "gloss": true,
+    "lines": 19,
+    "issues": {
+      "grammar_whitelist": [],
+      "coherence": [],
+      "naturalness": [],
+      "gloss_fidelity": [],
+      "show_dont_tell": [],
+      "faithfulness": []
+    }
+  }
+]

@@ -44,7 +44,10 @@ reordered, facts changed) — never for wording-level repairs.
   suitcase+laptop wk4) — keep the bible's canonical-object-vocabulary list current.
 - **Hindi/Marathi**: kin-term address registers differ per language and per
   age (भैया vs चाचा; दादा vs काका) — codify in each track's bible register
-  section, never in shared masters.
+  section, never in shared masters. Hindi's steadiest failure is
+  respectful-plural drift (वह/है for Asha and service staff where the bible
+  demands वे/हैं — recurred wk1, wk4, wk7); the panel catches it reliably,
+  fix mechanically, expect it.
 - Equational-only weeks invite English calques ("I am here for work") — the
   natural idiom often needs an untaught form; prefer an in-scope natural
   rephrase and save the idiom for the week that owns its grammar.

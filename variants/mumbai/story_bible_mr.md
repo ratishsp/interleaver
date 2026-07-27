@@ -69,8 +69,12 @@ detail gets added when each week locks.)
   local SIM yet.
 - **wk2**: first office day, met Rohan; local SIM + number (98765 43210).
 - **wk3**: first full family video call — parents, Sofia (younger), Diego (elder), Lola.
-- **wk4**: her own permanent flat, same building (moved from the temporary room).
-- **wk5**: kitchen stocked (supermarket + corner kirana shop).
+- **wk4**: her own permanent flat, same building (moved from the temporary room); the kitchen
+  cupboards hold heavy pots and pans but NO food yet (food arrives wk5); suitcase stored under
+  the bed; workspace set up (laptop + notebooks on the desk); Asha brought welcome chai.
+- **wk5**: kitchen stocked — rice, yellow dal, sugar, her coffee, tomatoes, spinach, spices
+  (supermarket + street vegetable cart + kirana shop); she owns THREE cloth shopping bags;
+  declined the bitter karela at the cart.
 - **wk6**: steady work routine — bus commute, midday meal with Rohan, evening cooking.
 - **wk7**: gym fixture Tue/Thu 17:30; bicycle serviced (rides it sometimes).
 - **wk12**: badminton Thursdays (gym now Tuesdays only); met Amit, Neha, Sanjay; rents her racket.

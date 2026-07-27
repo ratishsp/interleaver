@@ -47,6 +47,16 @@ BETA_LANGS = [  # translated tracks (machine-translated from the English gloss; 
     ("it", "italian", "Italian"), ("pt", "portuguese", "Portuguese"),
     ("ja", "japanese", "Japanese"), ("ko", "korean", "Korean"),
     ("cmn", "mandarin", "Mandarin"), ("ar", "arabic", "Arabic"),
+    ("nl", "dutch", "Dutch"), ("pl", "polish", "Polish"), ("sv", "swedish", "Swedish"),
+    ("nb", "norwegian", "Norwegian"), ("fi", "finnish", "Finnish"), ("cs", "czech", "Czech"),
+    ("sk", "slovak", "Slovak"), ("hu", "hungarian", "Hungarian"), ("ro", "romanian", "Romanian"),
+    ("bg", "bulgarian", "Bulgarian"), ("el", "greek", "Greek"), ("hr", "croatian", "Croatian"),
+    ("sr", "serbian", "Serbian"), ("sl", "slovenian", "Slovenian"),
+    ("lt", "lithuanian", "Lithuanian"), ("lv", "latvian", "Latvian"),
+    ("et", "estonian", "Estonian"), ("uk", "ukrainian", "Ukrainian"),
+    ("tr", "turkish", "Turkish"), ("id", "indonesian", "Indonesian"), ("th", "thai", "Thai"),
+    ("vi", "vietnamese", "Vietnamese"), ("yue", "cantonese", "Cantonese"),
+    ("he", "hebrew", "Hebrew"), ("sw", "swahili", "Swahili"),
 ]
 
 STYLE = """
@@ -226,16 +236,16 @@ Download the <code>.apkg</code> from the
 <a href="https://github.com/ratishsp/interleaver/releases">releases page</a> and
 double-click it.</p>
 <h2>More languages</h2>
-<p>The same story exists in <b>21 languages</b>: Danish, English, and 19 more,
+<p>The same story exists in <b>46 languages</b>: Danish, English, and 44 more,
 every line aligned through the English gloss. That allows up to
-<b>21 × 20 = 420</b> ordered pairings of a language you know with a language you
+<b>46 × 45 = 2,070</b> ordered pairings of a language you know with a language you
 want to learn. Pick one:</p>
 <p><select id="beta" onchange="if(this.value)location.href=this.value">
 <option value="">choose a language</option>
 __BETA_OPTIONS__
 </select></p>
 <noscript><p>__BETA_LINKS__</p></noscript>
-<p class=muted>The 19 tracks are machine-translated. They may sound a bit
+<p class=muted>The 44 tracks are machine-translated. They may sound a bit
 odd as they are apart from the Copenhagen setting they are translated from. In
 contrast, the Danish and Malayalam courses are generated source-language-first and
 thus more realistic sounding.</p>

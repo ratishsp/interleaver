@@ -5,6 +5,9 @@ The Kochi instantiation of the shared arc: same protagonist and story skeleton a
 authored natively in Malayalam.
 
 ## Maya (protagonist)
+- **Full name: Maya Flores** (cross-course canon). The surname is spoken only where formal address
+  requires it — German *Sie* (*Frau Flores*), and later French *vous*, Spanish *usted*, Italian *Lei*.
+  The Danish, Malayalam, Hindi and Marathi courses use her first name throughout and never need it.
 - From Mexico. A **software engineer** — she moved to Kochi in **January** because she landed a job
   at a software company here; the job is *why* she came. 31 when she arrived; turns 32 the following
   summer. Gradually settling in.

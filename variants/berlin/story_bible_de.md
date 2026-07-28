@@ -5,6 +5,9 @@ The Berlin version of the shared story: same protagonist and skeleton as the Dan
 authored natively in German.
 
 ## Maya (protagonist)
+- **Full name: Maya Flores** (cross-course canon). The surname is spoken only where formal address
+  requires it — German *Sie* (*Frau Flores*), and later French *vous*, Spanish *usted*, Italian *Lei*.
+  The Danish, Malayalam, Hindi and Marathi courses use her first name throughout and never need it.
 - From Mexico. A **software engineer** — she moved to Berlin in **January** because she landed a job
   at a software company here. 31 when she arrived; turns 32 the following
   summer (wk26). Gradually settling in.
@@ -17,7 +20,7 @@ authored natively in German.
   **café volunteering, Saturday mornings** (wk20).
 
 ## Recurring cast
-- **Sabine** — Maya's neighbour, met day 1 (week 1) on the stairs, her first friend. Warm,
+- **Sabine Krüger** — Maya's neighbour, met day 1 (week 1) on the stairs, her first friend. Warm,
   practical, a little brisk. Has a dog, **Bruno** — Maya dog-sits him one
   weekend (wk24).
 - **Jonas** — a colleague at Maya's software company (met on her first day, week 2). Use him when a
@@ -57,7 +60,9 @@ teachable social fact. Once a relationship is established, it NEVER mixes within
   - **The office, from wk2**: Berlin tech is *du* and first names for everyone, including the team
     lead **Katrin** (wk19).
   - **Family, always** (wk3 onward).
-  - **Sabine, from wk7**: over their midweek coffee she offers it.
+  - **Sabine, from wk7**: over their midweek coffee she offers it. Address changes with it —
+    **Frau Krüger** while they are on *Sie*, **Sabine** from wk7. The name and the pronoun switch
+    together; that is what the offer of *du* actually is.
   - **The badminton club, from wk12**: German club culture is *du* from the first evening.
   - **Elif at the café, from wk20**: colleagues behind the counter, so *du*.
 

@@ -60,11 +60,8 @@ teachable social fact. Once a relationship is established, it NEVER mixes within
   - **The office, from wk2**: Berlin tech is *du* and first names for everyone, including the team
     lead **Katrin** (wk19).
   - **Family, always** (wk3 onward).
-  - **Sabine, from wk7**: over their midweek coffee she offers it. How Maya *addresses* her changes
-    with it — **Frau Krüger** while they are on *Sie*, **Sabine** from wk7. The name and the pronoun
-    switch together; that is what the offer of *du* actually is. This governs address only: she
-    introduces herself by her full name, **Sabine Krüger**, when they first meet in wk1, and either
-    woman may be referred to by full name at any point.
+  - **Sabine, from wk7**: she offers it over their midweek coffee. Maya calls her **Frau Krüger**
+    before it, **Sabine** after.
   - **The badminton club, from wk12**: German club culture is *du* from the first evening.
   - **Elif at the café, from wk20**: colleagues behind the counter, so *du*.
 

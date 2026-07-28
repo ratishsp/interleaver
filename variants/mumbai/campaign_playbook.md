@@ -1,4 +1,4 @@
-# Multi-track course campaign playbook (distilled from Kochi + Mumbai wk1-3)
+# Course campaign playbook (distilled from Kochi, Mumbai, and Berlin's setup)
 
 How to build a course (or several language tracks over one story) to current
 quality. `chain_weeks.sh` automates the per-week loop; this file records WHY
@@ -34,6 +34,47 @@ reordered, facts changed) — never for wording-level repairs.
 - Bible **status ledger** entries as weeks lock (judgment; not automated).
 - Advisory review + the human ear pass.
 - Audio only after sweeps are clean: text is cheap to fix, audio is not.
+
+## Writing the curriculum and bible (before any generation)
+
+**A bible holds facts a later week could contradict — nothing else.** Cast, weekly fixtures,
+register, hard constraints (shop-closing days, transit modes), canonical object vocabulary. Not
+style coaching, not predictions, not restatements of the briefs.
+
+**A rule earns its place by pointing at an observed defect, not a predicted one.** Berlin's setup
+shed three rules that were all the same mistake — writing for problems predicted rather than
+problems seen:
+- a standing **seasons section** (Mumbai's was cut for the same reason: a per-week weather prompt
+  produces per-week weather chatter — the Kochi rain-refrain lesson);
+- a standing **"the setting is the point, use local colour"** instruction (or its inverse). A
+  generator produces local colour in proportion to what the *brief* invites. Fix the briefs; the
+  standing rule is belt-and-braces that mostly narrows the model;
+- a **pre-seeded status ledger** — 16 entries of "what is TRUE by week N" for a course with zero
+  generated scenes, versus Kochi's 12 after 28 real weeks. It only restated the briefs (which the
+  reviewer already reads), and any entry whose fact never reached the scenes would have the checker
+  validating later weeks against fiction.
+
+**The exception — pre-seed only when the violation is expensive to catch late.** Canonical object
+vocabulary and the register table survived scrutiny because both point at real Kochi/Mumbai failures
+AND their violations surface only across several weeks, often after audio is built. Local-colour
+hunting, by contrast, is caught cheaply in a week-1 review. Cost-of-late-catch is the test.
+
+**Ledger growth rule**: add an entry only for a fact a GENERATED scene established that the brief
+did not — a possession, a habit, a name, a decision a later week must not contradict.
+
+**Audit the grammar ramp against a published inventory where one exists.** Goethe (German),
+Instituto Cervantes's Plan Curricular (Spanish), the CEFR référentiels (French, Italian). Use it as
+a coverage check, never as the ordering — the ramp stays story-first. Berlin's audit found four A1
+items simply absent (plurals, *nicht*, the basic conjunctions, dative-as-object) AND corrected an
+over-caution of mine (the passive is A2, not B1). No such inventory exists for Hindi, Marathi,
+Malayalam or Sanskrit — those ramps are irreducibly bespoke, which is worth stating honestly rather
+than implying parity.
+
+**On `occam.py text` for hand-written prose**: it does not converge — round 4 returns as many
+findings as round 1 — so "run until clean" is the wrong stopping rule; it is counsel, not a gate.
+Past a couple of rounds it starts trading correctness for brevity (it proposed replacing a factual
+shop-closing rule with an invented legal category). And mechanical cuts break structure: verify
+brackets and read the result rather than trusting the edit.
 
 ## Language-specific watchpoints so far
 - **Sanskrit**: dual forms whenever TWO people are addressed (parents!),

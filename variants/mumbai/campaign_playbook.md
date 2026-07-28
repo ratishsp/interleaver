@@ -48,6 +48,13 @@ reordered, facts changed) — never for wording-level repairs.
   respectful-plural drift (वह/है for Asha and service staff where the bible
   demands वे/हैं — recurred wk1, wk4, wk7); the panel catches it reliably,
   fix mechanically, expect it.
+- **Clothing-exchange week (wk21)**: adopt Kochi's device — the trial-room queue
+  is too long, so Maya buys the shirt *untried*, which is *why* it's the wrong size
+  and drives the exchange. This motivates the plot AND keeps the try-on inside a
+  proper trial room on the return trip. Without it, a generator compressing the
+  scene count improvises an over-the-clothes look at a shop-floor mirror (Mumbai
+  wk21 — restaged + merged to one trial-room scene). Put the queue device in the
+  storyboard brief.
 - Equational-only weeks invite English calques ("I am here for work") — the
   natural idiom often needs an untaught form; prefer an in-scope natural
   rephrase and save the idiom for the week that owns its grammar.

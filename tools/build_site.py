@@ -16,7 +16,7 @@ import re
 from pathlib import Path
 
 REPO = "ratishsp/interleaver"
-TAG = "v1.0"
+TAG = "v1.1"
 ASSET = f"https://github.com/{REPO}/releases/download/{TAG}"
 
 COURSES = [

@@ -17,7 +17,13 @@ from pathlib import Path
 
 REPO = "ratishsp/interleaver"
 TAG = "v1.1"
+TAG2 = "v1.1-assets2"  # GitHub caps a release at 1,000 assets; the overflow lives here
 ASSET = f"https://github.com/{REPO}/releases/download/{TAG}"
+ASSET2 = f"https://github.com/{REPO}/releases/download/{TAG2}"
+_ASSETS2 = set(Path(__file__).with_name("release_assets2_manifest.txt").read_text().split())
+
+def asset_url(name: str) -> str:
+    return f"{ASSET2}/{name}" if name in _ASSETS2 else f"{ASSET}/{name}"
 
 COURSES = [
     {"key": "danish", "root": Path("year1"), "l2": "da", "l2_name": "Danish",
@@ -137,16 +143,16 @@ def course_page(course: dict) -> str:
     rows = []
     for wk in weeks:
         n = int(wk.name[4:])
-        player = f"{ASSET}/{course['key']}_{asset_name(course, n, default_variant)}"
+        player = asset_url(f"{course['key']}_{asset_name(course, n, default_variant)}")
         links = " ".join(
-            f'<a href="{ASSET}/{course["key"]}_{asset_name(course, n, v)}">{html.escape(label)}</a>'
+            f'<a href="{asset_url(course["key"] + "_" + asset_name(course, n, v))}">{html.escape(label)}</a>'
             for v, label in course["variants"])
         rows.append(
             f"<tr><td><b>Week {n}</b><br><span class=muted>{html.escape(week_title(wk))}</span></td>"
             f'<td><audio controls preload="none" src="{player}"></audio><br>'
             f'<span class=dl>{links} '
             f'<a href="transcripts/{course["key"]}/week{n:02d}.html">transcript</a></span></td></tr>')
-    full = "".join(f'<li><a href="{ASSET}/{f}">{html.escape(label)}</a></li>'
+    full = "".join(f'<li><a href="{asset_url(f)}">{html.escape(label)}</a></li>'
                    for f, label in course["full"])
     body = (f"<h1>{course['l2_name']} course</h1>"
             "<p>28 weeks, one continuing story. The player uses the English-first "
@@ -162,7 +168,7 @@ def beta_page(code: str, fname: str, label: str) -> str:
     rows = []
     for wk in weeks:
         n = int(wk.name[4:])
-        player = f"{ASSET}/trans-{fname}_week{n:02d}_english-then-{fname}.mp3"
+        player = asset_url(f"trans-{fname}_week{n:02d}_english-then-{fname}.mp3")
         rows.append(
             f"<tr><td><b>Week {n}</b><br><span class=muted>{html.escape(week_title(wk))}</span></td>"
             f'<td><audio controls preload="none" src="{player}"></audio><br>'

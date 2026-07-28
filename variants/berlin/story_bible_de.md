@@ -36,9 +36,6 @@ authored natively in German.
   **Euro**, spelled as words. Numbers woven into action, not drilled.
 - **Maya's home neighbourhood and the office's district are never named** — real Berlin places are
   for outings, not her address.
-- **Berlin is the setting, not the subject** — where a brief calls for a local thing, use it plainly
-  and move on; do not hunt for local colour in weeks that don't ask for it, and never explain a
-  local word to the listener. Plain German nouns beat name-drops: *ein Kaffee*, not *ein Milchkaffee*.
 - **Sunday closing is canon**: ordinary retail is shut on Sundays; hospitality, bakeries in the
   morning, transit and station shops, kiosks, flea markets and museums are open.
 - **Canonical object vocabulary** — one word per everyday object, never synonyms across scenes:

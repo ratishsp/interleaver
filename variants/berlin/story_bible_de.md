@@ -62,28 +62,7 @@ teachable social fact. Once a relationship is established, it NEVER mixes within
   - **Elif at the café, from wk20**: colleagues behind the counter, so *du*.
 
 ## Status ledger — what is TRUE by end of each week
-(gate-only — never shown to the authors; grows as weeks lock. Seeded from the curriculum; scene-level
-detail gets added when each week locks.)
-- **wk1**: temporary room in the same building as Sabine; has the job (starts wk2); met Sabine and
-  Bruno on the stairs, on *Sie*. No German SIM yet.
-- **wk2**: first office day, met Jonas (*du* from the first hour); German SIM + number
-  (0176 12345678); **Anmeldung done at the Bürgeramt**.
-- **wk3**: first full family video call. Sunday, so only the Späti was open.
-- **wk4**: her own permanent flat, same building (moved from the temporary room); high
-  ceilings, windows onto the courtyard.
-- **wk5**: kitchen stocked (supermarket + corner shop).
-- **wk6**: steady work routine — U-Bahn commute, lunch with Jonas, evening cooking.
-- **wk7**: gym fixture Tue/Thu 17:30; bicycle serviced (rides it sometimes); **Sabine offers du over
-  coffee — they are *du* from here on**; so wk7 ≈ February.
-- **wk11**: (late winter) sleet, then the first real sun of the year.
-- **wk12**: badminton Thursdays (gym now Tuesdays only); met Timo, Lena, Max, all *du*; rents her
-  racket each week.
-- **wk14**: knows the BVG network; buys and stamps her own tickets.
-- **wk17**: (spring) day trip to Potsdam by S-Bahn — the park and the lake.
-- **wk18**: caught a cold at the turn of the season; saw a doctor at the practice; the pharmacy.
-- **wk19**: the project kicks off — Maya on the core team with Jonas, Nele (designer), Sven
-  (tester), under Katrin; her first stand-up presentation.
-- **wk20**: café volunteering fixture, Saturday mornings; mentor **Elif** (*du*).
-- **wk24**: dog-sat Sabine's Bruno for the weekend.
-- **wk26**: (high summer) turned 32 — her first birthday away from home — a barbecue in the park
-  with Jonas and Nele on the warmest evening yet.
+(gate-only — never shown to the authors.) Empty until weeks lock. Add an entry only for a fact a
+**generated scene** established that the brief did not — a possession, a habit, a name, a decision
+a later week must not contradict. Restating the brief here adds nothing the reviewer cannot already
+read in the curriculum, and asserting canon that never made it into the scenes is worse than nothing.

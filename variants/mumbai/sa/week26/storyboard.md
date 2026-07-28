@@ -1,0 +1,14 @@
+# Week 26 — Storyboard (A Monsoon Birthday)
+
+**Level:** A2 · **Grammar:** **कृतवती अस्मि** vs bare **कृतवती** — "have done" vs "did" contrast
+
+| # | stem | scene |
+|---|------|------|
+| 1 | 01_birthday_morning | Maya wakes up to the sound of rain hammering against her apartment window. Looking out at the grey Mumbai sky, she reflects that she has officially turned thirty-two today. Using the perfect and past tenses, she thinks about how she arrived in January when the city was dry, and how the monsoon has now completely transformed the streets. |
+| 2 | 02_mexico_video_call | Before heading out, Maya video calls her family in Mexico. Her parents, Sofia, and Diego sing to her while Lola the dog barks in the background. Her mother asks if the birthday package they sent has arrived yet, and what Maya has planned for the evening, highlighting the grammar contrast as Maya explains this is her first birthday away from home. |
+| 3 | 03_flooded_bus_commute | Maya boards a BEST bus to the office, carrying her sturdy umbrella. The rain is relentless. Looking at the waterlogged streets, she chats briefly with the conductor, addressing him as 'bhaiya', noting how it rained heavily yesterday but today the water has completely flooded the roads. |
+| 4 | 04_office_cake_surprise | Arriving at the software company, Maya is warmly greeted by Rohan, Priya, and her manager Suresh. Keeping to their informal first-name office culture, they surprise her with a cake in the breakroom. Rohan mentions he ordered it yesterday, and Priya announces that it has finally arrived despite the chaotic weather. |
+| 5 | 05_metro_with_friends | After work, Maya, Rohan, and Priya decide to head back to Maya's flat to celebrate. Because the buses are heavily delayed by the monsoon, they navigate the metro. Maya notes how much easier the metro has become for her since she first learned to use it properly months ago. |
+| 6 | 06_asha_sweet_gift | Reaching her apartment building, Maya and her colleagues run into Asha and her dog Moti in the hallway. Asha warmly wishes Maya a happy birthday and hands her a box of local sweets she has bought especially for the occasion, prompting Maya to invite her in to join the gathering. |
+| 7 | 07_balcony_downpour | With everyone gathered in her flat, Maya, Asha, Rohan, and Priya stand safely just inside the open balcony doors with hot cups of chai. They watch in awe as the fiercest downpour of the season yet hammers the neighborhood, staying dry as the wind drives the rain horizontally. Maya tells them how much she loves this intense weather, contrasting it with the gentle rain they had last week. |
+| 8 | 08_birthday_dinner_reflection | Sitting in her living room eating a cozy dinner with Asha, Rohan, and Priya, Maya feels a deep sense of contentment. She looks at her friends and reflects on her journey: she came to Mumbai just for a job, but over the past six months, she has truly built a life here. |

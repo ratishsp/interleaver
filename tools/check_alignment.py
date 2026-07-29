@@ -14,7 +14,10 @@ import re
 import sys
 from pathlib import Path
 
-L2_EXTS = (".da", ".ml")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from tandem.langs import LANGS
+
+L2_EXTS = tuple(f".{code}" for code in LANGS if code != "en")
 errors: list[str] = []
 
 

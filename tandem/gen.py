@@ -167,7 +167,11 @@ _WORD_RE = re.compile(r"[a-zA-ZæøåÆØÅ]+")
 # ('... siger hun. "Hvad hedder du?"') is still a sentence break.
 _MULTI_SENTENCE_RE = re.compile(r"[.!?][\"»«')\]]?\s+[\"«»']?[A-ZÆØÅ]")
 _ABBREVS = ("f.eks", "bl.a", "m.m", "m.fl", "d.v.s", "dvs", "osv", "ca", "kl", "nr", "stk",
-            "o.l", "inkl", "ekskl", "tlf", "jf", "pga", "evt")
+            "o.l", "inkl", "ekskl", "tlf", "jf", "pga", "evt",
+            # Honorifics reachable in the English gloss of any course: "Ms. Flores." is ONE
+            # sentence, but period+space+capital reads as a break, and one_per_line is a HARD
+            # gate — so a scene can churn through every retry on a phantom (Berlin wk2).
+            "mr", "mrs", "ms", "dr", "prof", "st", "jr", "sr", "mme", "mlle", "sra", "srta")
 # Speech verbs (present tense, EN + DA): an attribution clause after a quoted utterance —
 # «"...?" Nina asks.» / «"...?" siger Nina.» — is ONE audio bead, not two sentences.
 _SPEECH_VERBS = frozenset({
@@ -186,8 +190,8 @@ def _multi_sentence_lines(lines: list[str]) -> list[int]:
         for m in _MULTI_SENTENCE_RE.finditer(ln):
             if ln[m.start()] == ".":                  # only a period can be an abbreviation
                 before = ln[:m.start()].lower()
-                if any(before.endswith(a) for a in _ABBREVS):
-                    continue                          # e.g. "f.eks.", "kl."
+                if any(re.search(rf"(?:^|[^\w]){re.escape(a)}$", before) for a in _ABBREVS):
+                    continue                          # e.g. "f.eks.", "kl.", "Ms."
                 if re.search(r"(?:^|\s)\w$", before):  # single initial, e.g. "H." / "C."
                     continue
             # Quoted speech + an attribution clause — «"...?" Nina asks» / «"...?" siger han» — is one

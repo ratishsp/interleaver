@@ -42,6 +42,14 @@ COURSES = [
      "full": [("weeks01-28_ml.mp3", "Malayalam only, whole course"),
               ("weeks01-28_malayalam-then-english.mp3", "Malayalam → English, whole course"),
               ("weeks01-28_english-then-malayalam.mp3", "English → Malayalam, whole course")]},
+    {"key": "german", "root": Path("variants/berlin"), "l2": "de", "l2_name": "German",
+     "curriculum": "variants/berlin/curriculum_de.md", "built_weeks": 28,
+     "variants": [("german", "German only"),
+                  ("german-then-english", "German → English"),
+                  ("english-then-german", "English → German")],
+     "full": [("weeks01-28_german.mp3", "German only, whole course"),
+              ("weeks01-28_german-then-english.mp3", "German → English, whole course"),
+              ("weeks01-28_english-then-german.mp3", "English → German, whole course")]},
 ]
 
 BETA_LANGS = [  # translated tracks (machine-translated from the English gloss; beta)
@@ -88,7 +96,7 @@ def page(title: str, body: str, depth: int = 0) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title><style>{STYLE}</style></head><body>
 <nav><a href="{up}index.html">Interleaver</a><a href="{up}danish.html">Danish</a>
-<a href="{up}malayalam.html">Malayalam</a></nav>
+<a href="{up}malayalam.html">Malayalam</a><a href="{up}german.html">German</a></nav>
 {body}
 <p class="muted">Content licensed CC BY 4.0 · <a href="https://github.com/{REPO}">source &amp; code</a></p>
 </body></html>"""
@@ -178,7 +186,7 @@ def beta_page(code: str, fname: str, label: str) -> str:
             f"<p>Maya's year in {html.escape(label)}: 28 weeks of one continuing story, every "
             "line paired with English audio and a line-aligned transcript.</p>"
             "<p class=muted>The track is machine-translated. It may sound a bit odd as it is "
-            "apart from the Copenhagen setting it is translated from. In contrast, the Danish "
+            "apart from the Copenhagen setting it is translated from. In contrast, the Danish, German "
             "and Malayalam courses are generated source-language-first and thus more realistic "
             "sounding.</p>"
             f"<table>{''.join(rows)}</table>"
@@ -227,8 +235,9 @@ work out.</p>
 <ul>
 <li><a href="danish.html"><b>Danish</b></a>: Maya in Copenhagen (28 weeks, ~4 h)</li>
 <li><a href="malayalam.html"><b>Malayalam</b></a>: Maya in Kochi (28 weeks, ~4 h)</li>
+<li><a href="german.html"><b>German</b></a>: Maya in Berlin (28 weeks, ~4 h)</li>
 </ul>
-<p class=muted>Both courses currently cover levels A1–A2 (weeks 1–28). 24 more weeks
+<p class=muted>All three courses currently cover levels A1–A2 (weeks 1–28). 24 more weeks
 (B1–B2) are planned to complete Maya's year, and more language/city combinations
 are coming.</p>
 <h2>Which audio variant should I pick?</h2>

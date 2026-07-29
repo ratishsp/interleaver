@@ -74,9 +74,10 @@ week may claim a **first** — first sunshine, first warm day, first time withou
 earlier week has had it. A single day's weather is free to vary within its season; a cold wet
 April day after a warm one is ordinary.
 
-Anchors the *scenes* fixed, beyond what the briefs already say (wk1 January, wk10 March, wk25
-June, wk26 summer):
+Anchors. The continuity checker reads only this file — it never sees the curriculum — so the
+months the briefs state have to appear here too, or it has no way to date a week.
 
+- **wk1** January · **wk10** March · **wk25** June · **wk26** summer (also in the briefs).
 - **wk11** the last of the winter weather, but after week 10 — the days are already lengthening.
 - **wk15** spring has arrived; bright sun into the flat.
 - **wk17** spring proper — warm enough for a long day outdoors by a lake.

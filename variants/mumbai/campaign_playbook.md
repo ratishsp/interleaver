@@ -30,6 +30,41 @@ retries · blocking panel finding · High continuity finding.
 Re-run a gate only when an edit changes WHAT HAPPENS (scenes added/merged/
 reordered, facts changed) — never for wording-level repairs.
 
+## Storyboard rows: story only (Berlin restart, validated wk1-28)
+Rows carry what happens; the grammar header, curriculum column, and bible carry
+everything else. In a row:
+- **No grammar names, register notes, or L2 tokens** — "uses an imperative",
+  "(using the formal Sie)", "('hatte')" all leaked or narrowed generation; the
+  header alone landed every target across 28 regenerated weeks.
+- **No asserted qualities or states** ("freezing", "feels at home") — the
+  generator restates them as narrator mood-labels.
+- **No L2 nouns that have plain-English equivalents** (her phone, not das
+  Handy); keep only true culture anchors (Späti, Anmeldung).
+- **One English word per object across all rows**, and for a loanword/native
+  pair the precise English IS the pin ("T-shirt" maps 1:1 to das T-Shirt;
+  removing the pin produced three competing nouns).
+- Name a generic container ONCE where the scene turns on it; never two rows
+  instructing the same action.
+- **Weave time into the action** ("On Wednesday evening she walks home") — a
+  day-list brief yields "It is [day]..." openers in 5 of 8 scenes.
+- Unnamed-character continuity pins phrased as behaviour ("a woman, the same
+  one through scenes 7 to 10") — proven 4x.
+- An innocent English SHAPE can bypass the week's L2 target (the double
+  definite kills bare -en/-et) — state the target's BOUNDARY in the curriculum
+  grammar column, which feeds the scene generator too.
+
+## Refrain-when-target rule
+When the week's grammar target is a sayable phrase (gern, mir geht es, seit +
+duration), the chant is intrinsic — do not thin it like a mood refrain. Keep
+every instance SAID to someone; cut only narrated ones. Confirmed three times
+in Berlin (wk12, wk18, wk19).
+
+## Retelling/recap weeks
+Diff each memory against its source scene BY HAND — verify_scene is
+fabrication-blind there (it checks the week, not the canon). Watch tone
+pile-up and grammar-scope regression on the hand edits; a judge will also
+propose "realism" that contradicts the source — source canon wins.
+
 ## Deferred to batches (before ANY audio)
 - Bible **status ledger** entries as weeks lock (judgment; not automated).
 - Advisory review + the human ear pass.

@@ -5,7 +5,7 @@
 | # | stem | scene |
 |---|------|------|
 | 1 | 01_empty_cupboards | Maya opens the kitchen cupboards, then the fridge. Both are nearly empty: no bread, no cheese, no fresh food. It is time to restock for the week. She sits down at the table and writes a shopping list. |
-| 2 | 02_grabbing_bags | Before she leaves the flat, Maya takes two cloth bags from a hook by the door. The supermarket does not give out free bags at the checkout. The way to the shop is not short. Maya wants to carry her groceries comfortably. |
+| 2 | 02_grabbing_bags | Before she leaves the flat, Maya takes two shopping bags from a hook by the door. The supermarket does not give out free bags at the checkout. The way to the shop is not short. Maya wants to carry her groceries comfortably. |
 | 3 | 03_supermarket_dairy | Maya arrives at the supermarket and takes a shopping basket. She goes straight to the dairy aisle. She picks out a large block of Emmentaler and puts the cheese into the basket. She also takes rice, pasta and coffee for her empty cupboards. |
 | 4 | 04_unfamiliar_vegetable | In the produce section Maya picks familiar red tomatoes and fresh apples. Next to them sits a pale green, knobbly vegetable. The small sign names it: Kohlrabi. The kohlrabi is not on her list. She does not know this vegetable. She wants to try something new. She puts the kohlrabi into the basket too. |
 | 5 | 05_checkout_till | At the checkout Maya unloads her basket onto the conveyor belt. The cashier rings everything up and says the total: twenty-five Euro. Maya pays with a fifty-Euro note and takes her change. The cashier offers her the receipt. Maya politely declines it. |

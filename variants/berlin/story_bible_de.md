@@ -48,6 +48,7 @@ authored natively in German.
   the gloss: *das Handy* (not *Smartphone*), *die Wohnung*, *das Fahrrad*, *der Laptop*,
   *das Brötchen*, *der Kaffee*, *der Kassenbon*, *der Rucksack* (her laptop bag, distinct from
   *die Einkaufstasche*).
+- **The English gloss keeps the German honorific** — *Frau Flores*, never *Ms./Mrs*.
 - **Dialogue** — other characters speak *to* Maya; they never narrate.
 - **Scene-to-scene flow** — where natural, a scene may foreshadow the next or pay off the previous;
   don't force a bridge on every scene.

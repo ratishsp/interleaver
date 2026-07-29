@@ -5,7 +5,7 @@
 | # | stem | scene |
 |---|------|------|
 | 1 | 01_monday_planning | It is a Monday morning in February. Maya sits in her flat and looks at her calendar for the month. She has plans for almost every day. She goes to the gym every Tuesday and Thursday at half past five. This week, she also needs a haircut and a repair service for her bicycle. |
-| 2 | 02_booking_haircut | Maya calls a local hair salon. She asks for an appointment for a haircut. The hairdresser suggests Wednesday at six o'clock. Maya checks her calendar, agrees, and books the time. |
+| 2 | 02_booking_haircut | Maya calls a local hair salon. A hairdresser — a man, the same one through the week — answers. She asks for an appointment for a haircut. He suggests Wednesday at six o'clock. Maya checks her calendar, agrees, and books the time. |
 | 3 | 03_bike_dropoff | On Tuesday morning, Maya pushes her bicycle to a repair shop near her flat. She hands it over to the mechanic. He says the bicycle will be ready on Wednesday afternoon. |
 | 4 | 04_tuesday_gym | It is Tuesday evening at half past five. Maya arrives at the gym. She always trains on Tuesdays and Thursdays. She exercises for an hour and then goes home to rest. |
 | 5 | 05_coffee_invitation | Wednesday morning on the stairs. Maya meets her neighbour, Frau Krüger. Frau Krüger invites Maya out for a coffee today at six o'clock. Maya happily says yes, but then suddenly realizes this clashes with her haircut. |

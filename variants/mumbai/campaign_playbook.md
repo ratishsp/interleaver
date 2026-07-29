@@ -47,8 +47,13 @@ everything else. In a row:
   instructing the same action.
 - **Weave time into the action** ("On Wednesday evening she walks home") — a
   day-list brief yields "It is [day]..." openers in 5 of 8 scenes.
-- Unnamed-character continuity pins phrased as behaviour ("a woman, the same
-  one through scenes 7 to 10") — proven 4x.
+- Unnamed-character continuity pins live in the rows (the bible holds only
+  facts a later WEEK could contradict — a one-week walk-on has no entry; if
+  she recurs across weeks, name her and add her to the cast) and are phrased
+  in-world, by story reference: a later row says "the same woman from the
+  examination room" — never "keep the doctor consistent", and not a
+  scene-number range ("the same one through scenes 7 to 10" worked 4x in
+  Berlin but is meta-flavoured; prefer the story reference).
 - An innocent English SHAPE can bypass the week's L2 target (the double
   definite kills bare -en/-et) — state the target's BOUNDARY in the curriculum
   grammar column, which feeds the scene generator too.

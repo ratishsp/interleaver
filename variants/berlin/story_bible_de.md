@@ -43,9 +43,9 @@ authored natively in German.
 - **Sunday closing is canon**: ordinary retail is shut on Sundays; hospitality, bakeries in the
   morning, transit and station shops, kiosks, flea markets and museums are open.
 - **One word per everyday object** — never a synonym for it in a later scene, in the German or in
-  the gloss. Which lemma, not which number or case: *das Handy* (not *Smartphone*), *die Wohnung*,
-  *das Fahrrad*, *der Laptop*, *das Brötchen*, *der Kaffee*, *der Kassenbon*, *der Rucksack* (her
-  laptop bag, distinct from *die Einkaufstasche*).
+  the gloss: *das Handy* (not *Smartphone*), *die Wohnung*, *das Fahrrad*, *der Laptop*,
+  *das Brötchen*, *der Kaffee*, *der Kassenbon*, *der Rucksack* (her laptop bag, distinct from
+  *die Einkaufstasche*).
 - **Dialogue** — other characters speak *to* Maya; they never narrate.
 - **Scene-to-scene flow** — where natural, a scene may foreshadow the next or pay off the previous;
   don't force a bridge on every scene.
@@ -86,10 +86,3 @@ June, wk26 summer):
 **generated scene** established that the brief did not — a possession, a habit, a name, a decision
 a later week must not contradict. Restating the brief here adds nothing the reviewer cannot already
 read in the curriculum, and asserting canon that never made it into the scenes is worse than nothing.
-
-- **wk1** — Maya's only outdoor garment is the thin, light jacket she brings from Mexico; she owns
-  **no winter coat** until wk10.
-- **wk1** — she arrives with **one** large, heavy suitcase plus a bag; never a second suitcase.
-- **wk10** — she now owns a heavy **dark green winter coat** (size 38), a grey sweatshirt (size M)
-  and a yellow wool hat. She wears the coat and hat out of the shop; the thin Mexican jacket is
-  retired. She did *not* buy the brown leather jacket — too expensive.

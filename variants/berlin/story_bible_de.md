@@ -45,7 +45,7 @@ authored natively in German.
 - **Sunday closing is canon**: ordinary retail is shut on Sundays; hospitality, bakeries in the
   morning, transit and station shops, kiosks, flea markets and museums are open.
 - **One word per everyday object** — never a synonym for it in a later scene, in the German or in
-  the gloss: *das Handy* (not *Smartphone*), *die Wohnung*, *das Fahrrad*, *der Laptop*,
+  the gloss: *das Handy* (not *Smartphone*; gloss: *phone*), *die Wohnung*, *das Fahrrad*, *der Laptop*,
   *das Brötchen* (the gloss keeps *Brötchen*), *der Kaffee*, *der Kassenbon*, *der Rucksack* (her laptop bag, distinct from
   *die Einkaufstasche*).
 - **The English gloss keeps the German honorific** — *Frau Flores*, never *Ms./Mrs*.

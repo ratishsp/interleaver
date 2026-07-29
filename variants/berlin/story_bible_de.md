@@ -8,8 +8,7 @@ authored natively in German.
 - **Full name: Maya Flores** (cross-course canon). The surname is spoken only where formal address
   requires it — German *Sie* (*Frau Flores*), and later French *vous*, Spanish *usted*, Italian *Lei*.
   The Danish, Malayalam, Hindi and Marathi courses use her first name throughout and never need it.
-- From Mexico. A **software engineer** — she moved to Berlin in **January** because she landed a job
-  at a software company here. 31 when she arrived; turns 32 the following
+- From Mexico. A **software engineer** — she moved to Berlin in **January**. 31 when she arrived; turns 32 the following
   summer (wk26). Gradually settling in.
 - First-person narrator throughout.
 - **Commute**: she takes the **U-Bahn** to the office (wk6). She owns a **bicycle** (serviced wk7)
@@ -24,7 +23,7 @@ authored natively in German.
   practical, a little brisk. Has a **small** dog, **Bruno** — Maya dog-sits him one
   weekend (wk24).
 - **Jonas** — a colleague at Maya's software company (met on her first day, week 2). Use him when a
-  work colleague is needed rather than an anonymous colleague.
+  work colleague is needed.
 - **Family** — back home in Mexico, **eight hours behind Berlin**, so calls fall in Maya's
   afternoon or evening. Contact by video call: parents, younger sister **Sofia**, elder
   brother **Diego**, and the family dog **Lola**.
@@ -36,7 +35,7 @@ authored natively in German.
 - **Privacy** — her ID/registration numbers are sensitive: never read aloud digit-by-digit. Phone
   numbers may be shared; any phone number is an obvious placeholder, never plausibly real.
   Maya's mobile: **0176 12345678**.
-- **Numbers said aloud are German words, not digits** — this is an audio course. Currency is
+- **Numbers said aloud are German words, not digits**. Currency is
   **Euro**, spelled as words. Numbers woven into action, not drilled.
 - **Maya's home neighbourhood and the office's district are never named** — real Berlin places are
   for outings, not her address.
@@ -72,7 +71,7 @@ teachable social fact. Once a relationship is established, it NEVER mixes within
 The **season only moves forward**: month, daylight and what is growing may not regress, and no
 week may claim a **first** — first sunshine, first warm day, first time without a coat — once an
 earlier week has had it. A single day's weather is free to vary within its season; a cold wet
-April day after a warm one is ordinary. Nothing inside a week can catch a breach of this.
+April day after a warm one is ordinary.
 
 Anchors the *scenes* fixed, beyond what the briefs already say (wk1 January, wk10 March, wk25
 June, wk26 summer):

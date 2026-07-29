@@ -11,6 +11,8 @@ authored natively in German.
 - From Mexico. A **software engineer** — she moved to Berlin in **January** because she landed a job
   at a software company here. 31 when she arrived; turns 32 the following
   summer (wk26). Gradually settling in.
+- She arrives with **no winter coat** — only the jacket she travelled in — and buys her first
+  one in wk10.
 - First-person narrator throughout.
 - **Commute**: she takes the **U-Bahn** to the office (wk6). She owns a **bicycle** (serviced wk7)
   and sometimes rides it.

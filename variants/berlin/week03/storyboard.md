@@ -6,7 +6,7 @@
 |---|------|------|
 | 1 | 01_sunday_morning | Maya wakes up late in her flat. She eats a late breakfast and checks her phone to see the time in Mexico. It is still night there, so she has a few hours to prepare for the family call. |
 | 2 | 02_the_spaeti_errand | Maya puts on her jacket and steps out into the January air. Because it is Sunday, the ordinary shops and supermarkets are shut. She walks down the street to a Späti to buy a small German treat to show her family later. |
-| 3 | 03_buying_the_treat | Inside the Späti, Maya picks out a bar of German chocolate. She goes to the counter, pays a few Euro, and turns to leave. She leaves her rucksack on the counter. The cashier calls after her and holds it up; she thanks him, takes it and heads home. |
+| 3 | 03_buying_the_treat | Inside the Späti, Maya picks out a bar of German chocolate. She goes to the counter, pays a few Euro, and turns to leave. She leaves her backpack on the counter. The cashier calls after her and holds it up; she thanks him, takes it and heads home. |
 | 4 | 04_laptop_setup | Back in the flat, the time for the call approaches. Maya sits at her table, opens her laptop, and sets the bar of chocolate next to it. She checks her camera and initiates the video call. |
 | 5 | 05_parents_on_screen | The screen lights up and connects to Mexico, where it is morning. Her mother and father appear and greet her warmly. Maya turns the laptop to show them her table, her chair and her window, and they ask how she is settling in. |
 | 6 | 06_who_is_that | A blurry figure walks behind her parents in the background. Maya asks who it is. It is her older brother, Diego. He leans in to say good morning, and moments later, her younger sister, Sofia, joins the frame too. |

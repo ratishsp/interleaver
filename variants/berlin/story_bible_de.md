@@ -18,7 +18,7 @@ authored natively in German.
   and sometimes rides it.
 - **Weekly fixtures** (don't double-book; grows as weeks lock): **gym Tuesday and Thursday evenings
   at half past five** (wk7). **Badminton Thursday evenings at half past five** (wk12 — took over the
-  Thursday gym slot; gym continues Tuesdays; Maya **rents a racket at the club**);
+  Thursday gym slot; gym continues Tuesdays);
   **café volunteering, Saturday mornings** (wk20).
 
 ## Recurring cast

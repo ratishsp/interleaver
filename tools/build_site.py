@@ -50,6 +50,30 @@ COURSES = [
      "full": [("weeks01-28_german.mp3", "German only, whole course"),
               ("weeks01-28_german-then-english.mp3", "German → English, whole course"),
               ("weeks01-28_english-then-german.mp3", "English → German, whole course")]},
+    {"key": "hindi", "root": Path("variants/mumbai/hi"), "l2": "hi", "l2_name": "Hindi",
+     "curriculum": "variants/mumbai/curriculum_hi.md", "built_weeks": 28,
+     "variants": [("hindi", "Hindi only"),
+                  ("hindi-then-english", "Hindi → English"),
+                  ("english-then-hindi", "English → Hindi")],
+     "full": [("weeks01-28_hindi.mp3", "Hindi only, whole course"),
+              ("weeks01-28_hindi-then-english.mp3", "Hindi → English, whole course"),
+              ("weeks01-28_english-then-hindi.mp3", "English → Hindi, whole course")]},
+    {"key": "marathi", "root": Path("variants/mumbai/mr"), "l2": "mr", "l2_name": "Marathi",
+     "curriculum": "variants/mumbai/curriculum_mr.md", "built_weeks": 28,
+     "variants": [("marathi", "Marathi only"),
+                  ("marathi-then-english", "Marathi → English"),
+                  ("english-then-marathi", "English → Marathi")],
+     "full": [("weeks01-28_marathi.mp3", "Marathi only, whole course"),
+              ("weeks01-28_marathi-then-english.mp3", "Marathi → English, whole course"),
+              ("weeks01-28_english-then-marathi.mp3", "English → Marathi, whole course")]},
+    {"key": "sanskrit", "root": Path("variants/mumbai/sa"), "l2": "sa", "l2_name": "Sanskrit",
+     "curriculum": "variants/mumbai/curriculum_sa.md", "built_weeks": 28,
+     "variants": [("sanskrit", "Sanskrit only"),
+                  ("sanskrit-then-english", "Sanskrit → English"),
+                  ("english-then-sanskrit", "English → Sanskrit")],
+     "full": [("weeks01-28_sanskrit.mp3", "Sanskrit only, whole course"),
+              ("weeks01-28_sanskrit-then-english.mp3", "Sanskrit → English, whole course"),
+              ("weeks01-28_english-then-sanskrit.mp3", "English → Sanskrit, whole course")]},
 ]
 
 BETA_LANGS = [  # translated tracks (machine-translated from the English gloss; beta)
@@ -96,7 +120,9 @@ def page(title: str, body: str, depth: int = 0) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title><style>{STYLE}</style></head><body>
 <nav><a href="{up}index.html">Interleaver</a><a href="{up}danish.html">Danish</a>
-<a href="{up}malayalam.html">Malayalam</a><a href="{up}german.html">German</a></nav>
+<a href="{up}malayalam.html">Malayalam</a><a href="{up}german.html">German</a>
+<a href="{up}hindi.html">Hindi</a><a href="{up}marathi.html">Marathi</a>
+<a href="{up}sanskrit.html">Sanskrit</a></nav>
 {body}
 <p class="muted">Content licensed CC BY 4.0 · <a href="https://github.com/{REPO}">source &amp; code</a></p>
 </body></html>"""
@@ -162,9 +188,12 @@ def course_page(course: dict) -> str:
             f'<a href="transcripts/{course["key"]}/week{n:02d}.html">transcript</a></span></td></tr>')
     full = "".join(f'<li><a href="{asset_url(f)}">{html.escape(label)}</a></li>'
                    for f, label in course["full"])
+    player_note = ("The player uses the English-first interleave (best for a first listen)"
+                   if default_variant.startswith("english-then")
+                   else f"The player uses the {course['l2_name']}-first interleave "
+                        "(the English meaning follows each line)")
     body = (f"<h1>{course['l2_name']} course</h1>"
-            "<p>28 weeks, one continuing story. The player uses the English-first "
-            "interleave (best for a first listen); the links offer every variant. "
+            f"<p>28 weeks, one continuing story. {player_note}; the links offer every variant. "
             f"See also the <a href='curriculum_{course['key']}.html'>full curriculum</a>.</p>"
             f"<table>{''.join(rows)}</table>"
             f"<h2>Whole course in one file</h2><ul>{full}</ul>")
@@ -186,7 +215,7 @@ def beta_page(code: str, fname: str, label: str) -> str:
             f"<p>Maya's year in {html.escape(label)}: 28 weeks of one continuing story, every "
             "line paired with English audio and a line-aligned transcript.</p>"
             "<p class=muted>The track is machine-translated. It may sound a bit odd as it is "
-            "apart from the Copenhagen setting it is translated from. In contrast, the Danish, German "
+            "apart from the Copenhagen setting it is translated from. In contrast, the Danish, German, Hindi, Marathi, Sanskrit "
             "and Malayalam courses are generated source-language-first and thus more realistic "
             "sounding.</p>"
             f"<table>{''.join(rows)}</table>"
@@ -236,8 +265,11 @@ work out.</p>
 <li><a href="danish.html"><b>Danish</b></a>: Maya in Copenhagen (28 weeks, ~4 h)</li>
 <li><a href="malayalam.html"><b>Malayalam</b></a>: Maya in Kochi (28 weeks, ~4 h)</li>
 <li><a href="german.html"><b>German</b></a>: Maya in Berlin (28 weeks, ~4 h)</li>
+<li><a href="hindi.html"><b>Hindi</b></a>: Maya in Mumbai (28 weeks, ~4 h)</li>
+<li><a href="marathi.html"><b>Marathi</b></a>: Maya in Mumbai (28 weeks, ~4 h)</li>
+<li><a href="sanskrit.html"><b>Sanskrit</b></a>: Maya in Mumbai (28 weeks, ~4 h)</li>
 </ul>
-<p class=muted>All three courses currently cover levels A1–A2 (weeks 1–28). 24 more weeks
+<p class=muted>All six courses currently cover levels A1–A2 (weeks 1–28). 24 more weeks
 (B1–B2) are planned to complete Maya's year, and more language/city combinations
 are coming.</p>
 <h2>Which audio variant should I pick?</h2>

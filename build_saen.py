@@ -2,7 +2,7 @@
 gloss (Google Chirp3-HD) into one da/en-style track: each line is Sanskrit (L2), a
 short pause, then the English meaning, a longer pause.
 
-  build_saen.py <weekdir> <sa_wav_dir> [out.mp3]
+  build_saen.py <weekdir> <sa_wav_dir> [out.mp3] [--en-first]
 
 <sa_wav_dir> holds <stem>__<i:02d>.wav (one per line) from synth_week_sa.py. Scene
 order + line count come from the .en files (the storyboard arc). Sanskrit has no
@@ -25,6 +25,7 @@ TARGET_DBFS = -18.0    # the parler Sanskrit wavs come out quieter than Google's
                        # normalise both to one loudness so the ear doesn't lurch between them
 
 _client = tts.TextToSpeechClient()
+_cache = None   # ClipCache, so the English clips synthesize once and both directions reuse them
 
 
 def _norm(seg: AudioSegment) -> AudioSegment:
@@ -32,18 +33,20 @@ def _norm(seg: AudioSegment) -> AudioSegment:
 
 
 def synth_en(text: str) -> AudioSegment:
-    r = _client.synthesize_speech(
-        input=tts.SynthesisInput(text=text),
-        voice=tts.VoiceSelectionParams(language_code="en-US", name=EN_VOICE),
-        audio_config=tts.AudioConfig(audio_encoding=tts.AudioEncoding.MP3),
-    )
-    return AudioSegment.from_file(io.BytesIO(r.audio_content), format="mp3")
+    global _cache
+    if _cache is None:
+        from tandem.cache import ClipCache
+        from tandem.tts import GoogleTTS
+        _cache = ClipCache(GoogleTTS(voices={"en": EN_VOICE}, speed={"en": 1.0}), "cache/clips")
+    return AudioSegment.from_file(_cache.clip(text, "en"))
 
 
 def main() -> int:
-    weekdir = Path(sys.argv[1])
-    sa_dir = Path(sys.argv[2])
-    out = sys.argv[3] if len(sys.argv) > 3 else str(weekdir / "audio_saen.mp3")
+    en_first = "--en-first" in sys.argv
+    argv = [a for a in sys.argv[1:] if not a.startswith("--")]
+    weekdir = Path(argv[0])
+    sa_dir = Path(argv[1])
+    out = argv[2] if len(argv) > 2 else str(weekdir / "audio_saen.mp3")
 
     rows = parse_storyboard(weekdir / "storyboard.md")
     full = AudioSegment.empty()
@@ -61,9 +64,10 @@ def main() -> int:
             if not sa_wav.exists():
                 print(f"  [warn] {stem} line {i}: missing sa wav — skipped")
                 continue
-            scene += _norm(AudioSegment.from_wav(sa_wav)) + INNER + _norm(synth_en(en)) + OUTER
+            sa_seg, en_seg = _norm(AudioSegment.from_wav(sa_wav)), _norm(synth_en(en))
+            first, second = (en_seg, sa_seg) if en_first else (sa_seg, en_seg)
+            scene += first + INNER + second + OUTER
             n_lines += 1
-        scene.export(str(weekdir / f"{stem}_saen.mp3"), format="mp3")
         full += scene
         print(f"  [ok] {stem}: {len(en_lines)} lines", flush=True)
     full.export(out, format="mp3")

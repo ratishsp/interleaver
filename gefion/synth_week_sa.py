@@ -42,12 +42,20 @@ def main():
         lines = [l.strip() for l in sa_path.read_text(encoding="utf-8").splitlines() if l.strip()]
         for i, line in enumerate(lines):
             p = tok(line, return_tensors="pt").to(device)
-            with torch.no_grad():
-                gen = model.generate(
-                    input_ids=desc.input_ids, attention_mask=desc.attention_mask,
-                    prompt_input_ids=p.input_ids, prompt_attention_mask=p.attention_mask,
-                )
-            audio = gen.cpu().numpy().squeeze().astype(np.float32)
+            audio = np.zeros(0, dtype=np.float32)
+            for attempt in (1, 2, 3):
+                with torch.no_grad():
+                    gen = model.generate(
+                        input_ids=desc.input_ids, attention_mask=desc.attention_mask,
+                        prompt_input_ids=p.input_ids, prompt_attention_mask=p.attention_mask,
+                    )
+                audio = np.atleast_1d(gen.cpu().numpy().squeeze().astype(np.float32))
+                if audio.size > sr // 10:      # >0.1s: the model sometimes emits empty audio
+                    break
+                print(f"  [retry {attempt}] {stem} [{i:02d}] empty output", flush=True)
+            if audio.size <= sr // 10:
+                audio = np.zeros(sr // 2, dtype=np.float32)   # 0.5s silence placeholder
+                print(f"  [WARN] {stem} [{i:02d}] silent after 3 attempts: {line[:44]}", flush=True)
             sf.write(out_dir / f"{stem}__{i:02d}.wav", audio, sr)
             print(f"  {stem} [{i:02d}] {line[:44]}", flush=True)
         print(f"[done] {stem}: {len(lines)} lines", flush=True)

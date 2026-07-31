@@ -10,10 +10,10 @@ her experiences there. The unit of the course is a **week**; the full design is 
 weeks, of which the **first 28 (levels A1 and A2) are complete**. The aim is to learn
 a language by following Maya's journey through the year.
 
-The overall spine of the story remains fixed; it is localized to each city. To start
-with, we have two instantiations: **Copenhagen** (learning Danish) and **Kochi**
-(learning Malayalam). The course never explicitly mentions learning a language;
-Maya simply lives her life in it.
+The overall spine of the story remains fixed; it is localized to each city. Six
+courses are live: **Copenhagen** (Danish), **Kochi** (Malayalam), **Berlin**
+(German), and **Mumbai** (Hindi, Marathi, and Sanskrit). The course never
+explicitly mentions learning a language; Maya simply lives her life in it.
 
 We follow a reasonable pacing and curriculum across the CEFR levels: **A1 for the
 first fifteen weeks**, **A2 for the next thirteen** (through week 28, built), then
@@ -104,23 +104,30 @@ flowchart TD
 ```
 
 **Audio.** Text-to-speech uses Google Cloud TTS with the **Chirp 3 HD "Sulafat"**
-voice: a warm voice, kept as the one consistent narrator across languages.
+voice: a warm voice, kept as the one consistent narrator across languages. Sanskrit
+is the exception as Google Cloud TTS doesn't support it. We synthesize its audio
+with **ai4bharat/indic-parler-tts**, an open TTS model for Indic languages. Every
+audio variant opens with a spoken "This week's grammar" introduction taken from
+the curriculum.
 
 ## Scaling to many languages
 
 To enable simple scaling to learning multiple languages, we translate the
-Danish–English scripts into **19 further languages** and create the respective audio
-files. With Danish and English themselves, the same story exists in 21 languages,
-which allows up to **21 × 20 = 420** ordered L2/L1 combinations of language learning.
+Danish–English scripts into **44 further languages** and create the respective audio
+files. With Danish and English themselves, the same story exists in **46 languages**,
+which allows up to **46 × 45 = 2,070** ordered L2/L1 combinations of language
+learning.
 
 ## Relocation: source-first generation
 
 To enable **source-first generation** in different languages, we start from scratch:
 a curriculum written in Malayalam, with a week sequence similar to the Danish one,
-but based in Kochi. In a pilot comparison, we found that natively generated content has a lower proportion of
-loan words and sounds less artificial than translated content. We plan to relocate
-Maya to multiple city/language pairs, including Paris/French, Rome/Italian,
-Mumbai/Hindi, Mumbai/Marathi, and so on.
+but based in Kochi. In a pilot comparison, we found that such source-first
+generated content has a lower proportion of loan words and sounds less artificial
+than translated content. This source-first path has since produced **Berlin**
+(German) and **Mumbai** (Hindi, Marathi, Sanskrit). In case of Mumbai, we have
+one shared storyboard, three source-first generated language tracks. Further
+city/language pairs such as Paris/French and Rome/Italian are planned.
 
 ## Disclaimer & community
 

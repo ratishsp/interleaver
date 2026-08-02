@@ -76,6 +76,15 @@ COURSES = [
               ("weeks01-28_english-then-sanskrit.mp3", "English → Sanskrit, whole course")]},
 ]
 
+DECK_URLS = {   # AnkiWeb shared-deck pages, one per course
+    "danish":    "https://ankiweb.net/shared/info/2094231827",
+    "malayalam": "https://ankiweb.net/shared/info/1442345050",
+    "german":    "https://ankiweb.net/shared/info/1993727826",
+    "hindi":     "https://ankiweb.net/shared/info/1057922805",
+    "marathi":   "https://ankiweb.net/shared/info/1885068308",
+    "sanskrit":  "https://ankiweb.net/shared/info/2080163912",
+}
+
 BETA_LANGS = [  # translated tracks (machine-translated from the English gloss; beta)
     ("hi", "hindi", "Hindi"), ("ta", "tamil", "Tamil"), ("gu", "gujarati", "Gujarati"),
     ("kn", "kannada", "Kannada"), ("pa", "punjabi", "Punjabi"), ("te", "telugu", "Telugu"),
@@ -194,7 +203,9 @@ def course_page(course: dict) -> str:
                         "(the English meaning follows each line)")
     body = (f"<h1>{course['l2_name']} course</h1>"
             f"<p>28 weeks, one continuing story. {player_note}; the links offer every variant. "
-            f"See also the <a href='curriculum_{course['key']}.html'>full curriculum</a>.</p>"
+            f"See also the <a href='curriculum_{course['key']}.html'>full curriculum</a>"
+            + (f" and the <a href='{DECK_URLS[course['key']]}'>free Anki flashcard deck</a>"
+               if course["key"] in DECK_URLS else "") + ".</p>"
             f"<table>{''.join(rows)}</table>"
             f"<h2>Whole course in one file</h2><ul>{full}</ul>")
     return page(f"{course['l2_name']} · Interleaver", body)
@@ -278,10 +289,16 @@ what's being said. <b>Re-listen:</b> target language first, where you try to und
 before the English confirms it. <b>Review:</b> target language only: pure immersion, once a week feels familiar.</p>
 <h2>Flashcards (spaced repetition)</h2>
 <p>Each course has a free <a href="https://apps.ankiweb.net/">Anki</a> deck with
-vocabulary, translation, and cloze cards, all voiced with the course audio.
-Download the <code>.apkg</code> from the
-<a href="https://github.com/ratishsp/interleaver/releases">releases page</a> and
-double-click it.</p>
+vocabulary, translation, and cloze cards, all voiced with the course audio. Get
+them on AnkiWeb:
+<a href="https://ankiweb.net/shared/info/2094231827">Danish</a> ·
+<a href="https://ankiweb.net/shared/info/1442345050">Malayalam</a> ·
+<a href="https://ankiweb.net/shared/info/1993727826">German</a> ·
+<a href="https://ankiweb.net/shared/info/1057922805">Hindi</a> ·
+<a href="https://ankiweb.net/shared/info/1885068308">Marathi</a> ·
+<a href="https://ankiweb.net/shared/info/2080163912">Sanskrit</a>.
+The <code>.apkg</code> files are also on the
+<a href="https://github.com/ratishsp/interleaver/releases">releases page</a>.</p>
 <h2>More languages</h2>
 <p>The same story exists in <b>46 languages</b>: Danish, English, and 44 more,
 every line aligned through the English gloss. That allows up to

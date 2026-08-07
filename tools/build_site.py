@@ -28,52 +28,52 @@ def asset_url(name: str) -> str:
 COURSES = [
     {"key": "danish", "root": Path("year1"), "l2": "da", "l2_name": "Danish",
      "curriculum": "curriculum_da.md", "built_weeks": 28,
-     "variants": [("danish", "Danish only"),
-                  ("danish-then-english", "Danish → English"),
-                  ("english-then-danish", "English → Danish")],
+     "variants": [("danish", "Danish only (immersion)"),
+                  ("danish-then-english", "Danish first (second listen)"),
+                  ("english-then-danish", "English first (recommended)")],
      "full": [("weeks01-28_danish.mp3", "Danish only, whole course"),
-              ("weeks01-28_danish-then-english.mp3", "Danish → English, whole course"),
-              ("weeks01-28_english-then-danish.mp3", "English → Danish, whole course")]},
+              ("weeks01-28_danish-then-english.mp3", "Danish first, whole course"),
+              ("weeks01-28_english-then-danish.mp3", "English first, whole course")]},
     {"key": "malayalam", "root": Path("variants/kochi"), "l2": "ml", "l2_name": "Malayalam",
      "curriculum": "variants/kochi/curriculum_ml.md", "built_weeks": 28,
-     "variants": [("malayalam", "Malayalam only"),
-                  ("malayalam-then-english", "Malayalam → English"),
-                  ("english-then-malayalam", "English → Malayalam")],
+     "variants": [("malayalam", "Malayalam only (immersion)"),
+                  ("malayalam-then-english", "Malayalam first (second listen)"),
+                  ("english-then-malayalam", "English first (recommended)")],
      "full": [("weeks01-28_ml.mp3", "Malayalam only, whole course"),
-              ("weeks01-28_malayalam-then-english.mp3", "Malayalam → English, whole course"),
-              ("weeks01-28_english-then-malayalam.mp3", "English → Malayalam, whole course")]},
+              ("weeks01-28_malayalam-then-english.mp3", "Malayalam first, whole course"),
+              ("weeks01-28_english-then-malayalam.mp3", "English first, whole course")]},
     {"key": "german", "root": Path("variants/berlin"), "l2": "de", "l2_name": "German",
      "curriculum": "variants/berlin/curriculum_de.md", "built_weeks": 28,
-     "variants": [("german", "German only"),
-                  ("german-then-english", "German → English"),
-                  ("english-then-german", "English → German")],
+     "variants": [("german", "German only (immersion)"),
+                  ("german-then-english", "German first (second listen)"),
+                  ("english-then-german", "English first (recommended)")],
      "full": [("weeks01-28_german.mp3", "German only, whole course"),
-              ("weeks01-28_german-then-english.mp3", "German → English, whole course"),
-              ("weeks01-28_english-then-german.mp3", "English → German, whole course")]},
+              ("weeks01-28_german-then-english.mp3", "German first, whole course"),
+              ("weeks01-28_english-then-german.mp3", "English first, whole course")]},
     {"key": "hindi", "root": Path("variants/mumbai/hi"), "l2": "hi", "l2_name": "Hindi",
      "curriculum": "variants/mumbai/curriculum_hi.md", "built_weeks": 28,
-     "variants": [("hindi", "Hindi only"),
-                  ("hindi-then-english", "Hindi → English"),
-                  ("english-then-hindi", "English → Hindi")],
+     "variants": [("hindi", "Hindi only (immersion)"),
+                  ("hindi-then-english", "Hindi first (second listen)"),
+                  ("english-then-hindi", "English first (recommended)")],
      "full": [("weeks01-28_hindi.mp3", "Hindi only, whole course"),
-              ("weeks01-28_hindi-then-english.mp3", "Hindi → English, whole course"),
-              ("weeks01-28_english-then-hindi.mp3", "English → Hindi, whole course")]},
+              ("weeks01-28_hindi-then-english.mp3", "Hindi first, whole course"),
+              ("weeks01-28_english-then-hindi.mp3", "English first, whole course")]},
     {"key": "marathi", "root": Path("variants/mumbai/mr"), "l2": "mr", "l2_name": "Marathi",
      "curriculum": "variants/mumbai/curriculum_mr.md", "built_weeks": 28,
-     "variants": [("marathi", "Marathi only"),
-                  ("marathi-then-english", "Marathi → English"),
-                  ("english-then-marathi", "English → Marathi")],
+     "variants": [("marathi", "Marathi only (immersion)"),
+                  ("marathi-then-english", "Marathi first (second listen)"),
+                  ("english-then-marathi", "English first (recommended)")],
      "full": [("weeks01-28_marathi.mp3", "Marathi only, whole course"),
-              ("weeks01-28_marathi-then-english.mp3", "Marathi → English, whole course"),
-              ("weeks01-28_english-then-marathi.mp3", "English → Marathi, whole course")]},
+              ("weeks01-28_marathi-then-english.mp3", "Marathi first, whole course"),
+              ("weeks01-28_english-then-marathi.mp3", "English first, whole course")]},
     {"key": "sanskrit", "root": Path("variants/mumbai/sa"), "l2": "sa", "l2_name": "Sanskrit",
      "curriculum": "variants/mumbai/curriculum_sa.md", "built_weeks": 28,
-     "variants": [("sanskrit", "Sanskrit only"),
-                  ("sanskrit-then-english", "Sanskrit → English"),
-                  ("english-then-sanskrit", "English → Sanskrit")],
+     "variants": [("sanskrit", "Sanskrit only (immersion)"),
+                  ("sanskrit-then-english", "Sanskrit first (second listen)"),
+                  ("english-then-sanskrit", "English first (recommended)")],
      "full": [("weeks01-28_sanskrit.mp3", "Sanskrit only, whole course"),
-              ("weeks01-28_sanskrit-then-english.mp3", "Sanskrit → English, whole course"),
-              ("weeks01-28_english-then-sanskrit.mp3", "English → Sanskrit, whole course")]},
+              ("weeks01-28_sanskrit-then-english.mp3", "Sanskrit first, whole course"),
+              ("weeks01-28_english-then-sanskrit.mp3", "English first, whole course")]},
 ]
 
 DECK_URLS = {   # AnkiWeb shared-deck pages, one per course
@@ -189,25 +189,27 @@ def course_page(course: dict) -> str:
         player = asset_url(f"{course['key']}_{asset_name(course, n, default_variant)}")
         links = " ".join(
             f'<a href="{asset_url(course["key"] + "_" + asset_name(course, n, v))}">{html.escape(label)}</a>'
-            for v, label in course["variants"])
+            for v, label in reversed(course["variants"]))
+        start = " <span class=muted>· start here</span>" if n == 1 else ""
         rows.append(
-            f"<tr><td><b>Week {n}</b><br><span class=muted>{html.escape(week_title(wk))}</span></td>"
+            f"<tr><td><b>Week {n}</b>{start}<br><span class=muted>{html.escape(week_title(wk))}</span></td>"
             f'<td><audio controls preload="none" src="{player}"></audio><br>'
             f'<span class=dl>{links} '
-            f'<a href="transcripts/{course["key"]}/week{n:02d}.html">transcript</a></span></td></tr>')
-    full = "".join(f'<li><a href="{asset_url(f)}">{html.escape(label)}</a></li>'
-                   for f, label in course["full"])
-    player_note = ("The player uses the English-first interleave (best for a first listen)"
+            f'<a href="transcripts/{course["key"]}/week{n:02d}.html">Transcript</a></span></td></tr>')
+    full = " · ".join(f'<a href="{asset_url(f)}">{html.escape(label)}</a>'
+                      for f, label in reversed(course["full"]))
+    player_note = ("Each player below is the English-first variant (recommended); "
+                   "the links under it download the three variants, plus the transcript"
                    if default_variant.startswith("english-then")
-                   else f"The player uses the {course['l2_name']}-first interleave "
+                   else f"Each player below is the {course['l2_name']}-first variant "
                         "(the English meaning follows each line)")
     body = (f"<h1>{course['l2_name']} course</h1>"
-            f"<p>28 weeks, one continuing story. {player_note}; the links offer every variant. "
+            f"<p>28 weeks, one continuing story. {player_note}. "
             f"See also the <a href='curriculum_{course['key']}.html'>full curriculum</a>"
             + (f" and the <a href='{DECK_URLS[course['key']]}'>free Anki flashcard deck</a>"
                if course["key"] in DECK_URLS else "") + ".</p>"
-            f"<table>{''.join(rows)}</table>"
-            f"<h2>Whole course in one file</h2><ul>{full}</ul>")
+            f"<p class=muted>Whole course in one file: {full}.</p>"
+            f"<table>{''.join(rows)}</table>")
     return page(f"{course['l2_name']} · Interleaver", body)
 
 
@@ -220,15 +222,14 @@ def beta_page(code: str, fname: str, label: str) -> str:
         rows.append(
             f"<tr><td><b>Week {n}</b><br><span class=muted>{html.escape(week_title(wk))}</span></td>"
             f'<td><audio controls preload="none" src="{player}"></audio><br>'
-            f'<span class=dl><a href="{player}">English → {html.escape(label)}</a> '
-            f'<a href="transcripts/trans-{fname}/week{n:02d}.html">transcript</a></span></td></tr>')
+            f'<span class=dl><a href="{player}">English first</a> '
+            f'<a href="transcripts/trans-{fname}/week{n:02d}.html">Transcript</a></span></td></tr>')
     body = (f"<h1>{html.escape(label)}</h1>"
             f"<p>Maya's year in {html.escape(label)}: 28 weeks of one continuing story, every "
             "line paired with English audio and a line-aligned transcript.</p>"
-            "<p class=muted>The track is machine-translated. It may sound a bit odd as it is "
-            "apart from the Copenhagen setting it is translated from. In contrast, the Danish, German, Hindi, Marathi, Sanskrit "
-            "and Malayalam courses are generated source-language-first and thus more realistic "
-            "sounding.</p>"
+            "<p class=muted>This track is machine-translated from the Danish course: the story "
+            "keeps its Copenhagen setting, and the phrasing can follow the Danish. The six main "
+            "courses are authored directly in their own language.</p>"
             f"<table>{''.join(rows)}</table>"
             "<p>Want a different direction or pause lengths? See “Build your own language pair” on "
             'the <a href="index.html">home page</a>.</p>')
@@ -280,13 +281,17 @@ work out.</p>
 <li><a href="marathi.html"><b>Marathi</b></a>: Maya in Mumbai (28 weeks, ~4 h)</li>
 <li><a href="sanskrit.html"><b>Sanskrit</b></a>: Maya in Mumbai (28 weeks, ~4 h)</li>
 </ul>
+<p><b>Hear it now</b> — week 1 of the Danish course (each line in English, then in Danish):<br>
+<audio controls preload="none" src="__SAMPLE_URL__"></audio></p>
 <p class=muted>All six courses currently cover levels A1–A2 (weeks 1–28). 24 more weeks
 (B1–B2) are planned to complete Maya's year, and more language/city combinations
 are coming.</p>
-<h2>Which audio variant should I pick?</h2>
-<p><b>First listen:</b> English first, then the target language, so you always know
-what's being said. <b>Re-listen:</b> target language first, where you try to understand
-before the English confirms it. <b>Review:</b> target language only: pure immersion, once a week feels familiar.</p>
+<h2>Three ways to listen</h2>
+<p>Every week comes as three audio files, named the same way on every course page.
+<b>English first (recommended)</b>: each line in English, then in the language you are
+learning, so you always know what's being said. <b>Language first (second listen)</b>: the
+new language first, where you try to understand before the English confirms it.
+<b>Language only (immersion)</b>: no English, for weeks that already feel familiar.</p>
 <h2>Flashcards (spaced repetition)</h2>
 <p>Each course has a free <a href="https://apps.ankiweb.net/">Anki</a> deck with
 vocabulary, translation, and cloze cards, all voiced with the course audio. Get
@@ -299,28 +304,26 @@ them on AnkiWeb:
 <a href="https://ankiweb.net/shared/info/2080163912">Sanskrit</a>.
 The <code>.apkg</code> files are also on the
 <a href="https://github.com/ratishsp/interleaver/releases">releases page</a>.</p>
+<h2>Read along</h2>
+<p>Every week has a line-aligned transcript, each line with its English, linked
+next to the week's player on the course pages.</p>
 <h2>More languages</h2>
 <p>The same story exists in <b>46 languages</b>: Danish, English, and 44 more,
-every line aligned through the English gloss. That allows up to
-<b>46 × 45 = 2,070</b> ordered pairings of a language you know with a language you
-want to learn. Pick one:</p>
+every line aligned through the English gloss. Pick the language you want to learn:</p>
 <p><select id="beta" onchange="if(this.value)location.href=this.value">
 <option value="">choose a language</option>
 __BETA_OPTIONS__
 </select></p>
 <noscript><p>__BETA_LINKS__</p></noscript>
-<p class=muted>The 44 tracks are machine-translated. They may sound a bit
-odd as they are apart from the Copenhagen setting they are translated from. In
-contrast, the Danish and Malayalam courses are generated source-language-first and
-thus more realistic sounding.</p>
+<p class=muted>These 44 tracks are machine-translated from the Danish course: the
+story keeps its Copenhagen setting, and the phrasing can follow the Danish. The
+six courses above are authored directly in their own language.</p>
 <h2>Build your own language pair</h2>
 <p>Every synthesized line is published as an individual audio clip (see the
 <code>clips-cache</code> asset on the releases page). With the repository's scripts
 and those clips, you can assemble any interleave yourself (either direction, your
 own pause lengths, any pair of voiced languages) without any text-to-speech account:
 <code>python combine_all.py --src da --tgt en</code>.</p>
-<h2>Read along</h2>
-<p>Every week has a line-aligned transcript: see the course pages.</p>
 <h2>How it's made</h2>
 <p>Each week starts from a curriculum row: a theme, a grammar focus, and a story
 brief. Gemini turns it into a storyboard and then into scenes. Next we have verifiers which are also built on Gemini. Every storyboard
@@ -339,7 +342,9 @@ or open a pull request.</p>
 def main() -> None:
     docs = Path("docs")
     (docs / "transcripts").mkdir(parents=True, exist_ok=True)
-    docs.joinpath("index.html").write_text(page("Interleaver", INDEX_BODY), encoding="utf-8")
+    index_body = INDEX_BODY.replace(
+        "__SAMPLE_URL__", asset_url("danish_week01_english-then-danish.mp3"))
+    docs.joinpath("index.html").write_text(page("Interleaver", index_body), encoding="utf-8")
     for course in COURSES:
         docs.joinpath(f"{course['key']}.html").write_text(course_page(course), encoding="utf-8")
         docs.joinpath(f"curriculum_{course['key']}.html").write_text(

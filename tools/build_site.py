@@ -120,6 +120,12 @@ audio { width:15rem; max-width:100%; height:2rem; }
 .dl a { margin-right:.6rem; white-space:nowrap; font-size:.9rem; }
 .tr td:first-child { width:50%; }
 nav a { margin-right:1rem; }
+@media (max-width: 40rem) {
+  body { padding:1rem; }
+  table.weeks td { display:block; border-bottom:none; padding:.15rem 0; }
+  table.weeks tr { display:block; border-bottom:1px solid var(--line); padding:.5rem 0; }
+  audio { width:100%; }
+}
 """
 
 
@@ -194,7 +200,7 @@ def course_page(course: dict) -> str:
         rows.append(
             f"<tr><td><b>Week {n}</b>{start}<br><span class=muted>{html.escape(week_title(wk))}</span></td>"
             f'<td><audio controls preload="none" src="{player}"></audio><br>'
-            f'<span class=dl>{links} '
+            f'<span class=dl>{links}<br>'
             f'<a href="transcripts/{course["key"]}/week{n:02d}.html">Transcript</a></span></td></tr>')
     full = " · ".join(f'<a href="{asset_url(f)}">{html.escape(label)}</a>'
                       for f, label in reversed(course["full"]))
@@ -209,7 +215,7 @@ def course_page(course: dict) -> str:
             + (f" and the <a href='{DECK_URLS[course['key']]}'>free Anki flashcard deck</a>"
                if course["key"] in DECK_URLS else "") + ".</p>"
             f"<p class=muted>Whole course in one file: {full}.</p>"
-            f"<table>{''.join(rows)}</table>")
+            f"<table class=weeks>{''.join(rows)}</table>")
     return page(f"{course['l2_name']} · Interleaver", body)
 
 
@@ -222,7 +228,7 @@ def beta_page(code: str, fname: str, label: str) -> str:
         rows.append(
             f"<tr><td><b>Week {n}</b><br><span class=muted>{html.escape(week_title(wk))}</span></td>"
             f'<td><audio controls preload="none" src="{player}"></audio><br>'
-            f'<span class=dl><a href="{player}">English first</a> '
+            f'<span class=dl><a href="{player}">English first</a><br>'
             f'<a href="transcripts/trans-{fname}/week{n:02d}.html">Transcript</a></span></td></tr>')
     body = (f"<h1>{html.escape(label)}</h1>"
             f"<p>Maya's year in {html.escape(label)}: 28 weeks of one continuing story, every "
@@ -230,7 +236,7 @@ def beta_page(code: str, fname: str, label: str) -> str:
             "<p class=muted>This track is machine-translated from the Danish course: the story "
             "keeps its Copenhagen setting, and the phrasing can follow the Danish. The six main "
             "courses are authored directly in their own language.</p>"
-            f"<table>{''.join(rows)}</table>"
+            f"<table class=weeks>{''.join(rows)}</table>"
             "<p>Want a different direction or pause lengths? See “Build your own language pair” on "
             'the <a href="index.html">home page</a>.</p>')
     return page(f"{label} · Interleaver", body)

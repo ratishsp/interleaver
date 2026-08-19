@@ -1,6 +1,6 @@
 # Interleaver
 
-**Listen:** [ratishsp.github.io/interleaver](https://ratishsp.github.io/interleaver/) plays every course in your browser.
+**Listen:** [interleaver.org](https://interleaver.org/) plays every course in your browser.
 
 This is a series of audio files, along with their transcripts, for language learning.
 There is an **L1** language you already know and an **L2** language you want to learn.
